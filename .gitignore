@@ -58,4 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+git rm --cached UserSettings/Layouts/default-2021.dwlt
+
 Party Crashers/UserSettings/EditorUserSettings.asset
