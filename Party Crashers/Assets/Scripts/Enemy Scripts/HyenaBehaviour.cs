@@ -17,6 +17,9 @@ public class HyenaBehaviour : MonoBehaviour
     [SerializeField] float AttackRange = 1;
 
     private UnityEngine.AI.NavMeshAgent meshAgent;
+
+    [SerializeField]
+    private int scoreAmount;
     // Start is called before the first frame update
     void Start()
     {
