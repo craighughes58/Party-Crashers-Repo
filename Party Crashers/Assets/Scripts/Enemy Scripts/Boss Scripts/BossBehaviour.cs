@@ -7,8 +7,10 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField]
     private int health;
 
-    [SerializeField]
-    private bool attackMode;//the boss has two modes, attack and exhaustion. When the boss is attacking they can't take damage but when they're exhausted they can't attack and they're open to taking damage
+
+    //the boss has two modes, attack and exhaustion. When the boss is attacking they can't take damage but when they're exhausted they can't attack and they're open to taking damage
+    private enum BossState { ATTACK, EXHAUSTION }
+    [SerializeField] private BossState _currentBossState;
 
     [SerializeField]
     private int maxAttacks; //the maximum amount of attacks the boss can make before entering exhaustion
@@ -22,6 +24,7 @@ public class BossBehaviour : MonoBehaviour
     void Start()
     {
         isActivated = false;
+        SetBossState("attack");
         currentAttacks = maxAttacks;
     }
 
@@ -32,12 +35,20 @@ public class BossBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// Here is where the boss will check if they take damage when they're hit
+    /// Sets the boss state
     /// </summary>
-    /// <param name="collision"></param>
-    private void OnCollisionEnter(Collision collision)
+    /// <param name="state"> string name of the state being set </param>
+    private void SetBossState(string state)
     {
-        //when the boss is hit by a bat, if they're not in attack mode and are activated they will lose a life
+        switch (state)
+        {
+            case "attack":
+                _currentBossState = BossState.ATTACK;
+                break;
+            case "exhaustion":
+                _currentBossState = BossState.EXHAUSTION;
+                break;
+        } 
     }
 
 
@@ -46,6 +57,8 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void ActivateBoss()
     {
+        //play starting animation
 
+        // set initial attack state
     }
 }
