@@ -444,7 +444,7 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
-  m_DirectoriesAreaWidth: 207
+  m_DirectoriesAreaWidth: 214
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -517,7 +517,6 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-
       m_SelectedIDs: fe600000
       m_LastClickedID: 24830
       m_ExpandedIDs: f8faffff
@@ -825,7 +824,6 @@ MonoBehaviour:
     m_Target: 47.389736
     speed: 2
     m_Value: 47.389736
-
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -908,8 +906,8 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 0
-    m_VSlider: 0
+    m_HSlider: 1
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
