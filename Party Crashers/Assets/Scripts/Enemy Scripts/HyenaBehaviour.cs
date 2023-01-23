@@ -32,6 +32,7 @@ public class HyenaBehaviour : MonoBehaviour
     void Start()
     {
 
+        pb = FindObjectOfType<PlayerBehaviour>();
         rb = GetComponent<Rigidbody>();
         meshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         //reference to the player transform
