@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 1173399314}
   - component: {fileID: 1173399313}
   - component: {fileID: 1173399312}
+  - component: {fileID: 1173399315}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -402,6 +403,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173399310}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1173399315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173399310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a811e130676963a45a3d46b554af24a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bossBehaviour: {fileID: 1284414583}
 --- !u!1 &1284414581
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,9 +462,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb37010e18e69cf4a9ca544de012b922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  _maxHealth: 3
+  _currentHealth: 0
   _currentBossState: 0
-  maxAttacks: 0
+  _maxAttacks: 3
+  _currentAttacks: 0
+  _exhaustionTimer: 2
+  _timeBetweenAttacks: 2
 --- !u!1 &1550405523
 GameObject:
   m_ObjectHideFlags: 0

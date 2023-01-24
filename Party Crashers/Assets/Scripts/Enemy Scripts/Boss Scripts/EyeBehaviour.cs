@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EyeBehavior : MonoBehaviour
+public class EyeBehaviour : MonoBehaviour
 {
+    [SerializeField] private BossBehaviour _bossBehaviour;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +25,9 @@ public class EyeBehavior : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //when the boss is hit by a bat, if they're not in attack mode and are activated they will lose a life
+        if (_bossBehaviour.GetBossState() == "ATTACK")
+        {
+            _bossBehaviour.LoseHealth();
+        }
     }
 }
