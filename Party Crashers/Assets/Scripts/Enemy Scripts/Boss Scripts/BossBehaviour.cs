@@ -31,12 +31,16 @@ public class BossBehaviour : MonoBehaviour
     #endregion
 
     #region Functions
+
+    private void Awake()
+    {
+        _currentAttacks = _maxAttacks;
+        _currentHealth = _maxHealth;
+    }
     // Start is called before the first frame update
     private void Start()
     {
         //_isActivated = false;
-        _currentAttacks = _maxAttacks;
-        _currentHealth = _maxHealth;
         ActivateBoss();
     }
 
@@ -60,6 +64,7 @@ public class BossBehaviour : MonoBehaviour
     /// <param name="state"> string name of the state being set </param>
     private void SetBossState(BossState state)
     {
+        Debug.Log("Entering " + state);
         _currentBossState = state;
         switch (state)
         {
@@ -86,6 +91,7 @@ public class BossBehaviour : MonoBehaviour
     public void EnterExhaustion()
     {
         SetBossState(BossState.EXHAUSTION);
+        StartCoroutine(ExhaustionPhase());
     }
 
     /// <summary>
@@ -94,6 +100,7 @@ public class BossBehaviour : MonoBehaviour
     public void EnterAttack()
     {
         SetBossState(BossState.ATTACK);
+        StartCoroutine(AttackPhase());
     }
 
     /// <summary>
@@ -109,7 +116,7 @@ public class BossBehaviour : MonoBehaviour
         }
         else
         {
-            StartCoroutine(AttackPhase());
+            EnterAttack();
         }
     }
 
@@ -127,8 +134,6 @@ public class BossBehaviour : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ExhaustionPhase()
     {
-        EnterExhaustion();
-
         yield return new WaitForSeconds(_exhaustionTimer);
 
         EnterAttack();
@@ -140,14 +145,13 @@ public class BossBehaviour : MonoBehaviour
     /// <returns></returns>
     private IEnumerator AttackPhase()
     {
-        EnterAttack();
+        _currentAttacks = _maxAttacks;
         while (_currentAttacks > 0)
         {
             AttackPlayer();
+            yield return new WaitForSeconds(_timeBetweenAttacks);
         }
-        yield return new WaitForSeconds(_timeBetweenAttacks);
-
-        EnterExhaustion();
+        EnterExhaustion();      
     }
 
     /// <summary>
@@ -157,10 +161,6 @@ public class BossBehaviour : MonoBehaviour
     {
         print("Boss attacks player");
         DecreaseAttacks();
-        if(_currentAttacks == 0)
-        {
-            StartCoroutine(ExhaustionPhase());
-        }
     }
 
     /// <summary>
@@ -168,6 +168,7 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     private void BossDeath()
     {
+        Debug.Log("boss dies");
         //do stuff when the boss dies
     }
     #endregion
