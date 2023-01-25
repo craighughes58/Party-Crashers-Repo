@@ -42,10 +42,6 @@ public class BossBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Q"))
-        {
-            LoseHealth();
-        }
     }
 
     #region Getters
