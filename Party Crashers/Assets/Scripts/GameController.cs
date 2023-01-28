@@ -12,6 +12,16 @@ public class GameController : MonoBehaviour
 
     private StopAtPoints SAP;
 
+    [Tooltip("Reference to the hyena prefab")]
+    [SerializeField]
+    private GameObject Hyena;
+
+    [Tooltip("Reference to the bird prefab")]
+    [SerializeField]
+    private GameObject Bird;
+
+    //reference to the squid
+    private GameObject Squid;
     // Start is called before the first frame update
     void Start()
     {
