@@ -5,20 +5,25 @@ using UnityEngine;
 public class StopAtPoints : MonoBehaviour
 {
     private bool isStopped = false;
+    private GameController GC;
+
+    private void Start()
+    {
+        GC = GameObject.Find("GameController").GetComponent<GameController>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Stop"))
         {
-            StartCoroutine(PauseMoving());
+            GC.MoveToNextPoint();
+            isStopped = true;
+            StartCoroutine(PauseMoving());//THIS IS TEMPORARY
         }
     }
 
-   
-
     IEnumerator PauseMoving()//THIS IS TEMPORARY
     {
-        isStopped = true;
         yield return new WaitForSeconds(3f);
         isStopped = false;
     }
@@ -26,5 +31,14 @@ public class StopAtPoints : MonoBehaviour
     public bool GetStopped()
     {
         return isStopped;
+    }
+
+    public void StopPlayer()
+    {
+        isStopped = true;
+    }
+    public void StartPlayer()
+    {
+        isStopped = false;
     }
 }
