@@ -18,8 +18,6 @@ public class BezierFollow : MonoBehaviour
 
     private bool coroutineAllowed;
 
-    // REFERENCE TO STOP SCRIPT
-    private StopAtPoints stop;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +26,7 @@ public class BezierFollow : MonoBehaviour
         tParam = 0f;
         speedModifier = 0.15f;
         coroutineAllowed = true;
-        stop = GetComponent<StopAtPoints>();
+
     }
 
     // Update is called once per frame
@@ -49,20 +47,21 @@ public class BezierFollow : MonoBehaviour
         Vector3 p2 = Routes[routeNumber].GetChild(2).position;
         Vector3 p3 = Routes[routeNumber].GetChild(3).position;
 
+        
+
         while(tParam < 1)
         {
-            if (!stop.GetStopped())
-            {
-                tParam += Time.deltaTime * speedModifier;
+            tParam += Time.deltaTime * speedModifier;
 
-                catPosition = Mathf.Pow(1 - tParam, 3) * p0 +
-                    3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
-                    3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
-                    Mathf.Pow(tParam, 3) * p3;
+            catPosition = Mathf.Pow(1 - tParam, 3) * p0 +
+                3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
+                3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
+                Mathf.Pow(tParam, 3) * p3;
 
-                transform.position = catPosition; //THIS IS THE LINE THAT NEEDS TO BE PAUSED
-            }
+            transform.LookAt(catPosition);
+            yield return new WaitForEndOfFrame();
 
+            transform.position = catPosition;
             yield return new WaitForEndOfFrame();
         }
 
