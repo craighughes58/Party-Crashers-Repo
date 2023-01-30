@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bat
   - Shield
+  - Stop
   layers:
   - Default
   - TransparentFX
