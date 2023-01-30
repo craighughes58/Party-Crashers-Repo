@@ -47,6 +47,8 @@ public class BezierFollow : MonoBehaviour
         Vector3 p2 = Routes[routeNumber].GetChild(2).position;
         Vector3 p3 = Routes[routeNumber].GetChild(3).position;
 
+        
+
         while(tParam < 1)
         {
             tParam += Time.deltaTime * speedModifier;
@@ -55,6 +57,9 @@ public class BezierFollow : MonoBehaviour
                 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
                 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
                 Mathf.Pow(tParam, 3) * p3;
+
+            transform.LookAt(catPosition);
+            yield return new WaitForEndOfFrame();
 
             transform.position = catPosition;
             yield return new WaitForEndOfFrame();
