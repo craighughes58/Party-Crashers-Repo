@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class EyeBehaviour : MonoBehaviour
 {
+    #region Variables
+    [Header("Script Dependencies")]
     [SerializeField] private BossBehaviour _bossBehaviour;
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()

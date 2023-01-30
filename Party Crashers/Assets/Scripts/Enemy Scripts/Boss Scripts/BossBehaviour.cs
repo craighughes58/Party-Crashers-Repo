@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 public class BossBehaviour : MonoBehaviour
 {
     #region Variables
+    [Header("Script Dependencies")]
+    [SerializeField] private BossAttacks _bossAttacks;
+    [SerializeField] private Transition _transition;
+
     [Header("Health")]
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _currentHealth;
@@ -16,32 +20,25 @@ public class BossBehaviour : MonoBehaviour
     [Header("States")]
     [SerializeField] private BossState _currentBossState;
 
-    [Header("Attacks")]
-    [SerializeField] private int _maxAttacks; //the maximum amount of attacks the boss can make before entering exhaustion
-    [SerializeField] private int _currentAttacks; //this is the variable that keeps track of how many attacks the boss has
-
-    [Header("Timers")]
+    [Header("Boss Activation")]
     [Range(0f, 10f)]
-    [SerializeField] private float _exhaustionTimer;
-
-    [Range(0f, 10f)]
-    [SerializeField] private float _timeBetweenAttacks;
-
+    [SerializeField] private float _bossActivationTime;
     private bool _isActivated; //the boss will stay stationary until he is activated by an external source in the ActivateBoss method
+
     #endregion
 
     #region Functions
 
     private void Awake()
     {
-        _currentAttacks = _maxAttacks;
         _currentHealth = _maxHealth;
     }
+
     // Start is called before the first frame update
     private void Start()
     {
         //_isActivated = false;
-        ActivateBoss();
+        StartCoroutine(ActivateBoss());
     }
 
     private void Update()
@@ -78,11 +75,15 @@ public class BossBehaviour : MonoBehaviour
     /// <summary>
     /// This method will be called by the game controller to activate the attacks of the boss
     /// </summary>
-    private void ActivateBoss()
+    private IEnumerator ActivateBoss()
     {
+        print("Boss is paused");
+        yield return new WaitForSeconds(_bossActivationTime);
+        print("Boss is active");
+        EnterAttack();
         // play starting animation
         // set initial attack state
-        EnterAttack();
+
     }
 
     /// <summary>
@@ -91,7 +92,7 @@ public class BossBehaviour : MonoBehaviour
     public void EnterExhaustion()
     {
         SetBossState(BossState.EXHAUSTION);
-        StartCoroutine(ExhaustionPhase());
+        StartCoroutine(_bossAttacks.ExhaustionPhase());
     }
 
     /// <summary>
@@ -100,7 +101,7 @@ public class BossBehaviour : MonoBehaviour
     public void EnterAttack()
     {
         SetBossState(BossState.ATTACK);
-        StartCoroutine(AttackPhase());
+        StartCoroutine(_bossAttacks.AttackPhase());
     }
 
     /// <summary>
@@ -118,50 +119,7 @@ public class BossBehaviour : MonoBehaviour
         {
             EnterAttack();
         }
-    }
-
-    /// <summary>
-    /// Decreases boss attacks by 1
-    /// </summary>
-    private void DecreaseAttacks()
-    {
-        _currentAttacks--;
-    }
-
-    /// <summary>
-    /// Controls the exhaustion phase duration & events
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator ExhaustionPhase()
-    {
-        yield return new WaitForSeconds(_exhaustionTimer);
-
-        EnterAttack();
-    }
-
-    /// <summary>
-    /// Controls the attach phase events
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator AttackPhase()
-    {
-        _currentAttacks = _maxAttacks;
-        while (_currentAttacks > 0)
-        {
-            AttackPlayer();
-            yield return new WaitForSeconds(_timeBetweenAttacks);
-        }
-        EnterExhaustion();      
-    }
-
-    /// <summary>
-    /// Attacks the player
-    /// </summary>
-    private void AttackPlayer()
-    {
-        print("Boss attacks player");
-        DecreaseAttacks();
-    }
+    }  
 
     /// <summary>
     /// Controls the boss's death events
@@ -170,6 +128,8 @@ public class BossBehaviour : MonoBehaviour
     {
         Debug.Log("boss dies");
         //do stuff when the boss dies
+
+        _transition.LoadLevel();
     }
     #endregion
     #endregion
