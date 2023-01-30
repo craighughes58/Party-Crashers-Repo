@@ -3889,5 +3889,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Complete XR Origin Set Up
       objectReference: {fileID: 0}
+    - target: {fileID: 5297495825590903243, guid: 0cc3b3efce92f7b4e8bb1355242b8b55, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2061.192
+      objectReference: {fileID: 0}
+    - target: {fileID: 5297495825590903243, guid: 0cc3b3efce92f7b4e8bb1355242b8b55, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1361.0546
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cc3b3efce92f7b4e8bb1355242b8b55, type: 3}
