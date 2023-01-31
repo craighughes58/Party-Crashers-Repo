@@ -11,6 +11,8 @@ public class BezierFollow : MonoBehaviour
 
     private float tParam;
 
+    private StopAtPoints Stopper;
+
     //THIS IS THE PLAYER POSITION
     private Vector3 catPosition;
 
@@ -22,6 +24,7 @@ public class BezierFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Stopper = GetComponent<StopAtPoints>();
         routeToGo = 0;
         tParam = 0f;
         speedModifier = 0.15f;
@@ -52,17 +55,19 @@ public class BezierFollow : MonoBehaviour
         while(tParam < 1)
         {
             tParam += Time.deltaTime * speedModifier;
-
-            catPosition = Mathf.Pow(1 - tParam, 3) * p0 +
+            if (!Stopper.GetStopped())
+            {
+                catPosition = Mathf.Pow(1 - tParam, 3) * p0 +
                 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
                 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
                 Mathf.Pow(tParam, 3) * p3;
 
-            transform.LookAt(catPosition);
-            yield return new WaitForEndOfFrame();
+                transform.LookAt(catPosition);
+                yield return new WaitForEndOfFrame();
 
-            transform.position = catPosition;
-            yield return new WaitForEndOfFrame();
+                transform.position = catPosition;
+                yield return new WaitForEndOfFrame();
+            }
         }
 
         tParam = 0f;
