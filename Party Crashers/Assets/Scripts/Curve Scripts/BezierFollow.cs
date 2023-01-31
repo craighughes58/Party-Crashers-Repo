@@ -27,7 +27,7 @@ public class BezierFollow : MonoBehaviour
         Stopper = GetComponent<StopAtPoints>();
         routeToGo = 0;
         tParam = 0f;
-        speedModifier = 0.15f;
+        speedModifier = 0.08f;
         coroutineAllowed = true;
 
     }
