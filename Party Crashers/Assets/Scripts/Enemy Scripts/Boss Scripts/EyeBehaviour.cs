@@ -29,7 +29,7 @@ public class EyeBehaviour : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //when the boss is hit by a bat, if they're not in attack mode and are activated they will lose a life
-        if (collision.gameObject.tag != "Missile" && _bossBehaviour.GetBossState() == "ATTACK")
+        if (_bossBehaviour.GetBossState() == "ATTACK")
         {
             _bossBehaviour.LoseHealth();
         }

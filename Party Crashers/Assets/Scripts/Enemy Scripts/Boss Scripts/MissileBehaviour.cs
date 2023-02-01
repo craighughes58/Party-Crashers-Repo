@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MissileBehaviour : MonoBehaviour
 {
@@ -23,9 +26,17 @@ public class MissileBehaviour : MonoBehaviour
     [SerializeField]
     private float rotateSpeed;
 
+    [Header("Spawning")]
+    private GameObject[] _spawnPoints = new GameObject[3];
+
     // Start is called before the first frame update
     void Start()
     {
+        for(int i = 0; i < _spawnPoints.Length; i++)
+        {
+            _spawnPoints[i] = GameObject.Find("Point " + i);
+        }
+
         //EXPLAIN
         rb = GetComponent<Rigidbody>();
         PlayerPos = GameObject.Find("XR Origin").GetComponent<Transform>();
@@ -52,10 +63,7 @@ public class MissileBehaviour : MonoBehaviour
     {
         while (Vector3.Distance(PlayerPos.position, transform.position) > .3)
         {
-            rb.velocity = transform.forward * speed;//perpetually move the rocket forward
-
-            Quaternion TargetRotation = Quaternion.LookRotation(PlayerPos.position - transform.position);
-            rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, TargetRotation, rotateSpeed));
+            MoveToPos(PlayerPos.position, 1f);
             //WAY 2
             //transform.position += (PlayerPos.position - transform.position).normalized * speed * Time.deltaTime;
             /*            Vector3 direction = PlayerPos.position - transform.position;
@@ -63,15 +71,46 @@ public class MissileBehaviour : MonoBehaviour
                         transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, speed * Time.time);*/
             //transform.LookAt(PlayerPos);//THIS MAY NEED TO BE CHANGED WITH SOMETHING THAT IS LESS PINPOINT
             yield return new WaitForSeconds(.01f);
-
         }
     }
 
+    /// <summary>
+    /// Launches the missile towards a rotation point. If the point is 1 (middle)
+    /// It is launched straight upwards until it hits the point.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator Launch()
     {
-        rb.AddForce(launchSpeed, ForceMode.Impulse);
-        yield return new WaitForSeconds(2f);
+        int pointNum = UnityEngine.Random.Range(0, 3);
+        Vector3 endPos = _spawnPoints[pointNum].transform.position;
+
+        if (pointNum == 1)
+        {
+            rb.AddForce(launchSpeed, ForceMode.Impulse);
+            yield return new WaitWhile(() => transform.position.y <= endPos.y);
+        }
+        else
+        {
+            while (Vector3.Distance(endPos, transform.position) > .3)
+            {
+                MoveToPos(endPos, 1.5f);
+
+                yield return new WaitForSeconds(.01f);
+            }
+        }
         rb.velocity = Vector3.zero;
         StartCoroutine(SeekPlayer());
+    }
+    
+    /// <summary>
+    /// Moves the game obj towards endPos
+    /// </summary>
+    /// <param name="endPos"> destination of game obj </param>
+    private void MoveToPos(Vector3 endPos, float addedSpeed)
+    {
+        rb.velocity = transform.forward * speed * addedSpeed;//perpetually move the obj forward
+
+        Quaternion TargetRotation = Quaternion.LookRotation(endPos - transform.position);
+        rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, TargetRotation, rotateSpeed));
     }
 }

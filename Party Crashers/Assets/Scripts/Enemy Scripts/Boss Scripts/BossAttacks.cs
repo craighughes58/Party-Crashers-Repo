@@ -21,12 +21,14 @@ public class BossAttacks : MonoBehaviour
 
     [Header("Attack Missiles")]
     [SerializeField] private GameObject _missileObject;
-    [SerializeField] Vector3 _missileSpawnPoint;
+    [SerializeField] private GameObject _missileSpawner;
+    private Vector3 _missileSpawnPoint;
     #endregion
 
     private void Awake()
     {
         _currentAttacks = _maxAttacks;
+        _missileSpawnPoint = _missileSpawner.transform.position;
     }
 
     /// <summary>
