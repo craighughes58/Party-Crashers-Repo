@@ -682,6 +682,7 @@ MonoBehaviour:
   - {fileID: 1886708608}
   - {fileID: 758116745}
   - {fileID: 2604914}
+  speedModifier: 0.07
 --- !u!114 &495935097
 MonoBehaviour:
   m_ObjectHideFlags: 0
