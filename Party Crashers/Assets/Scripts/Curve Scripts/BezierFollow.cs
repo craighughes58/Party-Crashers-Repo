@@ -16,6 +16,8 @@ public class BezierFollow : MonoBehaviour
     //THIS IS THE PLAYER POSITION
     private Vector3 catPosition;
 
+    [Tooltip("How fast the Player traverses the track")]
+    [SerializeField]
     private float speedModifier;
 
     private bool coroutineAllowed;
@@ -27,7 +29,7 @@ public class BezierFollow : MonoBehaviour
         Stopper = GetComponent<StopAtPoints>();
         routeToGo = 0;
         tParam = 0f;
-        speedModifier = 0.08f;
+        //speedModifier = 0.08f;
         coroutineAllowed = true;
 
     }
