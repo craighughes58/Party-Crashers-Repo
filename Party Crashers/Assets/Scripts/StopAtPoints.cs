@@ -25,7 +25,7 @@ public class StopAtPoints : MonoBehaviour
     IEnumerator PauseMoving()//THIS IS TEMPORARY
     {
         print("WAITING");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(13f);
         isStopped = false;
     }
 
