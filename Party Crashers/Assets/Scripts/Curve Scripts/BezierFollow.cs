@@ -16,7 +16,7 @@ public class BezierFollow : MonoBehaviour
     //THIS IS THE PLAYER POSITION
     private Vector3 catPosition;
 
-    [Tooltip("How fast the Player traverses the track")]
+    [Tooltip("How fast the player traverses the track")]
     [SerializeField]
     private float speedModifier;
 
