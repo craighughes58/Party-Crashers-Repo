@@ -17,6 +17,10 @@ public class HyenaBehaviour : MonoBehaviour
     [Tooltip("Speed at which the mutant moves")]
     [SerializeField] float moveSpeed = 1;
 
+    [Tooltip("How much score the player loses when being hit by this enemy")]
+    [SerializeField]
+    private int scoreDamage;
+
     Rigidbody rb;
 
     [Tooltip("Radius at which the enemy can attack")]
@@ -124,16 +128,16 @@ public class HyenaBehaviour : MonoBehaviour
         Debug.Log("Attack!");
 
         // The player then loses one life
-        LifeLoss();
+        ScoreLoss();
 
         // Go back to the movement function to determine whether the hyena can
         // keep attacking, or if it needs to start moving again
         Movement();
     }
 
-    private void LifeLoss()
+    private void ScoreLoss()
     {
-        pb.LoseLife(1);
+        pb.LoseScore(scoreDamage);
         Debug.Log("Life lost!");
     }
 
