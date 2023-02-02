@@ -712,10 +712,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  scoreDamage: 10
   AttackRange: 1
   attackTimer: 0
   attackInterval: 3
-  scoreAmount: 0
+  scoreAmount: 50
 --- !u!1001 &1002810163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1117,7 +1118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549244419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.57, y: -6.5799265, z: -5.393811}
+  m_LocalPosition: {x: 9, y: -6.5799265, z: -5.393811}
   m_LocalScale: {x: 15, y: 1.5, z: 15}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1170,6 +1171,7 @@ MonoBehaviour:
   Routes:
   - {fileID: 0}
   - {fileID: 0}
+  speedModifier: 0
 --- !u!114 &1964698810
 MonoBehaviour:
   m_ObjectHideFlags: 0

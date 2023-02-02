@@ -10,6 +10,10 @@ public class BirdProjectileScript : MonoBehaviour
     private Transform PlayerLocation;
     private bool isDeflected = false;
 
+    [Tooltip("How much score loss the player takes from the hit")]
+    [SerializeField]
+    private int scoreDamage;
+
     //HOW DO I FIND THE BIRD THAT SHOT THIS 
     private Transform SpawnBird;
 
@@ -50,6 +54,7 @@ public class BirdProjectileScript : MonoBehaviour
         if(collision.gameObject.tag.Equals("Player") && !isDeflected)
         {
             //LOSE SCORE
+            collision.gameObject.GetComponent<PlayerBehaviour>().LoseScore(scoreDamage);
             Destroy(gameObject);
         }
         else if (collision.gameObject.tag.Equals("Bird") && isDeflected)
