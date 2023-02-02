@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Transition : MonoBehaviour
 {
-    [SerializeField] Animator animator;
+    [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _transitionCanvas;
     private float _transitionDelayTime = 1.0f;
 
@@ -25,7 +25,7 @@ public class Transition : MonoBehaviour
     private IEnumerator DelayLoadLevel(int index)
     {
         _transitionCanvas.SetActive(true);
-        animator.SetTrigger("TriggerTransition");
+        _animator.SetTrigger("TriggerTransition");
         yield return new WaitForSeconds(_transitionDelayTime);
         _transitionCanvas.SetActive(false);
         SceneManager.LoadScene(index);
