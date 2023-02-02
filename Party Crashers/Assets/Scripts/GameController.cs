@@ -22,10 +22,19 @@ public class GameController : MonoBehaviour
 
     //reference to the squid
     private GameObject Squid;
+
+    public bool leftHanded = false;
+    private GameObject leftHand;
+    private GameObject rightHand;
+    public GameObject wrappingPapper;
+    public GameObject shield;
     // Start is called before the first frame update
     void Start()
     {
         SAP = GameObject.Find("XR Origin").GetComponent<StopAtPoints>();
+        leftHand = GameObject.Find("LeftHand (Smooth locomotion)");
+        rightHand = GameObject.Find("RightHand (Teleport Locomotion)");
+
     }
 
     //This script will spawn the enemies after each trigger
@@ -62,4 +71,26 @@ public class GameController : MonoBehaviour
     {
         currentEnemyNum++;
     }
+
+    public void SwapHands()
+    {
+        if (leftHand != null && rightHand != null && wrappingPapper != null && shield != null)
+        {
+            Vector3 localPos = wrappingPapper.transform.localPosition;
+            Vector3 localPos2 = shield.transform.localPosition;
+            if (!leftHanded)
+            {
+                wrappingPapper.transform.parent = rightHand.transform;
+                shield.transform.parent = leftHand.transform;
+            }
+            else
+            {
+                wrappingPapper.transform.parent = leftHand.transform;
+                shield.transform.parent = rightHand.transform;
+            }
+            wrappingPapper.transform.localPosition = localPos;
+            shield.transform.localPosition = localPos2;
+
+        }
+    }    
 }
