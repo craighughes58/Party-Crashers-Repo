@@ -99,7 +99,6 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void EnterAttack()
     {
-        LoseHealth();
         SetBossState(BossState.ATTACK);
         StartCoroutine(_bossAttacks.AttackPhase());
     }
@@ -113,10 +112,8 @@ public class BossBehaviour : MonoBehaviour
 
         if (_currentHealth == 0)
         {
-            if (hasnotbeencalled)
-            {
-                BossDeath();
-            }
+            BossDeath();
+            
         }
         else
         {
