@@ -59,6 +59,7 @@ public class BirdProjectileScript : MonoBehaviour
         }
         else if (collision.gameObject.tag.Equals("Bird") && isDeflected)
         {
+            collision.gameObject.GetComponent<BirdBehaviour>().BirdHit();//add score
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
