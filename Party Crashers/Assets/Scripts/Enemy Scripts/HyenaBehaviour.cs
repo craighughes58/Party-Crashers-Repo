@@ -144,6 +144,10 @@ public class HyenaBehaviour : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         gotHit = true;
+        if(collision.gameObject.tag.Equals("Bat"))
+        {
+            HitReaction();
+        }
     }
 
     /// <summary>
@@ -153,6 +157,7 @@ public class HyenaBehaviour : MonoBehaviour
     private void HitReaction()
     {
         // Have the hyena break apart and destroy it
+        //add score here
     }
 
 }
