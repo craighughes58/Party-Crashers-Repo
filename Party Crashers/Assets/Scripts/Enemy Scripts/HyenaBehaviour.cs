@@ -21,7 +21,16 @@ public class HyenaBehaviour : MonoBehaviour
     [SerializeField]
     private int scoreDamage;
 
+    [Tooltip("The player's score")]
+    [SerializeField] int victoryScore;
+
     Rigidbody rb;
+
+    [SerializeField] 
+    GameObject shatteredHyena1;
+
+    [SerializeField]
+    GameObject shatteredHyena2;
 
     [Tooltip("Radius at which the enemy can attack")]
     [SerializeField] float AttackRange = 1;
@@ -143,7 +152,6 @@ public class HyenaBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        gotHit = true;
         if(collision.gameObject.tag.Equals("Bat"))
         {
             HitReaction();
@@ -156,8 +164,19 @@ public class HyenaBehaviour : MonoBehaviour
     /// </summary>
     private void HitReaction()
     {
-        // Have the hyena break apart and destroy it
-        //add score here
+        if (name.Contains("Material 2"))
+        {
+            Instantiate(shatteredHyena2, transform.position, Quaternion.identity);
+            victoryScore += 50;
+            Destroy(gameObject);
+        }
+
+        if (name.Contains("Material 1"))
+        {
+            Instantiate(shatteredHyena1, transform.position, Quaternion.identity);
+            victoryScore += 50;
+            Destroy(gameObject);
+        }
     }
 
 }
