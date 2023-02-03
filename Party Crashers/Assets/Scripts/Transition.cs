@@ -25,9 +25,7 @@ public class Transition : MonoBehaviour
     private IEnumerator DelayLoadLevel(int index)
     {
         _transitionCanvas.SetActive(true);
-        _animator.SetTrigger("TriggerTransition");
         yield return new WaitForSeconds(_transitionDelayTime);
-        _transitionCanvas.SetActive(false);
         SceneManager.LoadScene(index);
     }
 }

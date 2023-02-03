@@ -115,7 +115,7 @@ public class BossBehaviour : MonoBehaviour
             BossDeath();
             
         }
-        else
+        else if(_currentHealth > 0)
         {
             EnterAttack();
         }
@@ -128,7 +128,6 @@ public class BossBehaviour : MonoBehaviour
     {
         Debug.Log("boss dies");
         //do stuff when the boss dies
-
         _transition.LoadLevel();
     }
     #endregion
