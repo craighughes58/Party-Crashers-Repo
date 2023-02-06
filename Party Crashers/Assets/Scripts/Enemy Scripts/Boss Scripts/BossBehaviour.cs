@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class BossBehaviour : MonoBehaviour
 {
     #region Variables
+
+    #region Scipt Dependencies
     [Header("Script Dependencies")]
     [SerializeField] private BossAttacks _bossAttacks;
     [SerializeField] private Transition _transition;
+    #endregion
 
+    #region Health 
     [Header("Health")]
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _currentHealth;
+    #endregion
 
+    #region Phases & Activation
     //the boss has two modes, attack and exhaustion. When the boss is attacking they can't take damage but when they're exhausted they can't attack and they're open to taking damage
     private enum BossState { ATTACK, EXHAUSTION }
     [Header("States")]
@@ -29,6 +36,8 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField] private Transform _attackPos;
     [SerializeField] private Transform _exhaustPos;
 
+    #endregion
+
     #region Movement Variables
     private Vector3 _moveVelocity;
 
@@ -42,6 +51,7 @@ public class BossBehaviour : MonoBehaviour
 
     #region Functions
 
+    #region Awake, Start, Update
     private void Awake()
     {
         _currentHealth = _maxHealth;
@@ -58,6 +68,7 @@ public class BossBehaviour : MonoBehaviour
     private void Update()
     {
     }
+    #endregion
 
     #region Getters
     /// <returns> _currentBossState as a string </returns>
@@ -69,6 +80,21 @@ public class BossBehaviour : MonoBehaviour
     #endregion
 
     #region Boss fight
+
+    /// <summary>
+    /// This method will be called by the game controller to activate the attacks of the boss
+    /// </summary>
+    private IEnumerator ActivateBoss()
+    {
+        print("Boss is paused");
+        yield return new WaitForSeconds(_bossActivationTime);
+        print("Boss is active");
+        EnterAttack();
+        // play starting animation
+        // set initial attack state
+    }
+
+    #region State Control Functions
     /// <summary>
     /// Sets the boss state
     /// </summary>
@@ -87,26 +113,11 @@ public class BossBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// This method will be called by the game controller to activate the attacks of the boss
-    /// </summary>
-    private IEnumerator ActivateBoss()
-    {
-        print("Boss is paused");
-        yield return new WaitForSeconds(_bossActivationTime);
-        print("Boss is active");
-        EnterAttack();
-        // play starting animation
-        // set initial attack state
-    }
-
-    /// <summary>
     /// Sets the boss state to exhaustion
     /// </summary>
     public void EnterExhaustion()
     {
-        MoveToExhPos();
-        SetBossState(BossState.EXHAUSTION);
-        StartCoroutine(_bossAttacks.ExhaustionPhase());
+        StartCoroutine(MoveToExhPos());
     }
 
     /// <summary>
@@ -115,37 +126,86 @@ public class BossBehaviour : MonoBehaviour
     public void EnterAttack()
     {
         StartCoroutine(MoveToAtkPos());
-        SetBossState(BossState.ATTACK); 
     }
 
+    /// <summary>
+    /// Initiates vulnerability and sets boss state
+    /// </summary>
+    private void BeginExhaustion()
+    {
+        SetBossState(BossState.EXHAUSTION);
+        StartCoroutine(_bossAttacks.ExhaustionPhase());
+    }
+
+    /// <summary>
+    /// Initiates missile spawning & sets boss state
+    /// </summary>
+    private void BeginAttack()
+    {
+        SetBossState(BossState.ATTACK);
+        StartCoroutine(_bossAttacks.AttackPhase());
+    }
+    #endregion
+
+    #region Movement & State begin Functions
     /// <summary>
     /// Moves the boss to the attack position
     /// </summary>
     private IEnumerator MoveToAtkPos()
     {
-        //gameObject.transform.position = _attackPos.position;
-        //gameObject.transform.rotation = _attackPos.rotation;
-        //_rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, _attackPos.rotation, _rotateSpeed));
-
-        while (Vector3.Distance(transform.position, _attackPos.position) > .1)
+        while (Vector3.Distance(transform.position, _attackPos.position) > 0.001f)
         {
-            _rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, _attackPos.rotation, _rotateSpeed));
-            transform.position = Vector3.MoveTowards(transform.position, _attackPos.position, _moveSpeed);
+            RotateToVal(transform.rotation, _attackPos.rotation, _rotateSpeed);
+            MoveToLocation(transform.position, _attackPos.position, _moveSpeed);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
         }
-        StartCoroutine(_bossAttacks.AttackPhase());
+        BeginAttack();
     }
 
     /// <summary>
     /// Moves the boss to the exh pos where the player can hit the eye
     /// </summary>
-    private void MoveToExhPos()
+    private IEnumerator MoveToExhPos()
     {
-        gameObject.transform.position = _exhaustPos.position;
-        gameObject.transform.rotation = _exhaustPos.rotation;
+        while (Vector3.Distance(transform.position, _exhaustPos.position) > 0.001f)
+        {
+            RotateToVal(transform.rotation, _exhaustPos.rotation, _rotateSpeed);
+            MoveToLocation(transform.position, _exhaustPos.position, _moveSpeed);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+        BeginExhaustion();
     }
 
+    #endregion
+
+    #region Helper Functions
+    /// <summary>
+    /// Moves the object from one point to another at a speed
+    /// </summary>
+    /// <param name="from"> original location </param>
+    /// <param name="to"> ending location </param>
+    /// <param name="moveSpeed"> speed of movement </param>
+    private void MoveToLocation(Vector3 from, Vector3 to, float moveSpeed)
+    {
+        transform.position = Vector3.Lerp(from, to, moveSpeed);
+    }
+
+    /// <summary>
+    /// Rotates the object at a specific speed
+    /// </summary>
+    /// <param name="from"> origal rotation </param>
+    /// <param name="to"> end rotation </param>
+    /// <param name="rotateSpeed"> speed of rotation </param>
+    private void RotateToVal(Quaternion from, Quaternion to, float rotateSpeed)
+    {
+        _rb.MoveRotation(Quaternion.RotateTowards(from, to, rotateSpeed));
+    }
+
+    #endregion
+
+    #region Boss life functions
     /// <summary>
     /// Decreases boss health by 1
     /// </summary>
@@ -160,6 +220,7 @@ public class BossBehaviour : MonoBehaviour
         }
         else if(_currentHealth > 0)
         {
+            _bossAttacks.StopAllCoroutines();
             EnterAttack();
         }
     }  
@@ -173,6 +234,9 @@ public class BossBehaviour : MonoBehaviour
         //do stuff when the boss dies
         _transition.LoadLevel();
     }
+
+    #endregion
+
     #endregion
     #endregion
 }

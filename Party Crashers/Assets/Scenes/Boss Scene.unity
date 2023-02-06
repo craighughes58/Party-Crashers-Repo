@@ -436,8 +436,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284414581}
-  m_LocalRotation: {x: 0.08247079, y: 0.6967923, z: -0.08374727, w: -0.7075772}
-  m_LocalPosition: {x: 0, y: 0.22, z: 3.5}
+  m_LocalRotation: {x: 0, y: 0.70165586, z: -0, w: -0.71251607}
+  m_LocalPosition: {x: 0, y: 1.6, z: 9.92}
   m_LocalScale: {x: 1.97, y: 1.97, z: 1.97}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -445,7 +445,7 @@ Transform:
   - {fileID: 1173399311}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 270.88, z: 13.5}
+  m_LocalEulerAnglesHint: {x: 0, y: 270.88, z: 0}
 --- !u!114 &1284414583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,8 +466,8 @@ MonoBehaviour:
   _bossActivationTime: 0
   _attackPos: {fileID: 953992807}
   _exhaustPos: {fileID: 543861842}
-  _moveSpeed: 3
-  _rotateSpeed: 1
+  _moveSpeed: 0.025
+  _rotateSpeed: 0.75
 --- !u!114 &1284414584
 MonoBehaviour:
   m_ObjectHideFlags: 0
