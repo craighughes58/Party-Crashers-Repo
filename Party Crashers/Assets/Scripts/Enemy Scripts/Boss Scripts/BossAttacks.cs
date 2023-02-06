@@ -21,14 +21,14 @@ public class BossAttacks : MonoBehaviour
 
     [Header("Attack Missiles")]
     [SerializeField] private GameObject _missileObject;
-    [SerializeField] private GameObject _missileSpawner;
-    private Vector3 _missileSpawnPoint;
+    [SerializeField] private Transform _missileSpawnPoint;
+    private Vector3 _missileSpawnPos;
     #endregion
 
     private void Awake()
     {
         _currentAttacks = _maxAttacks;
-        _missileSpawnPoint = _missileSpawner.transform.position;
+        _missileSpawnPos = _missileSpawnPoint.position;
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class BossAttacks : MonoBehaviour
     /// </summary>
     private void AttackPlayer()
     {
-        Instantiate(_missileObject, _missileSpawnPoint, Quaternion.identity);
+        Instantiate(_missileObject, _missileSpawnPos, Quaternion.identity);
         DecreaseAttacks();
     }
 }

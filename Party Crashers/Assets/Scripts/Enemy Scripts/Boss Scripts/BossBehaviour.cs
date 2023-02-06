@@ -25,6 +25,19 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField] private float _bossActivationTime;
     private bool _isActivated; //the boss will stay stationary until he is activated by an external source in the ActivateBoss method
 
+    [Header("Phase Positions")]
+    [SerializeField] private Transform _attackPos;
+    [SerializeField] private Transform _exhaustPos;
+
+    #region Movement Variables
+    private Vector3 _moveVelocity;
+
+    [Header("Movement Variables")]
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _rotateSpeed;
+    private Rigidbody _rb;
+    #endregion
+
     #endregion
 
     #region Functions
@@ -32,13 +45,14 @@ public class BossBehaviour : MonoBehaviour
     private void Awake()
     {
         _currentHealth = _maxHealth;
+        _moveVelocity = new Vector3(0f, _moveSpeed, 0f);
     }
 
     // Start is called before the first frame update
     private void Start()
     {
-        //_isActivated = false;
         StartCoroutine(ActivateBoss());
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -90,6 +104,7 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void EnterExhaustion()
     {
+        MoveToExhPos();
         SetBossState(BossState.EXHAUSTION);
         StartCoroutine(_bossAttacks.ExhaustionPhase());
     }
@@ -99,8 +114,36 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void EnterAttack()
     {
-        SetBossState(BossState.ATTACK);
+        StartCoroutine(MoveToAtkPos());
+        SetBossState(BossState.ATTACK); 
+    }
+
+    /// <summary>
+    /// Moves the boss to the attack position
+    /// </summary>
+    private IEnumerator MoveToAtkPos()
+    {
+        //gameObject.transform.position = _attackPos.position;
+        //gameObject.transform.rotation = _attackPos.rotation;
+        //_rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, _attackPos.rotation, _rotateSpeed));
+
+        while (Vector3.Distance(transform.position, _attackPos.position) > .1)
+        {
+            _rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, _attackPos.rotation, _rotateSpeed));
+            transform.position = Vector3.MoveTowards(transform.position, _attackPos.position, _moveSpeed);
+
+            yield return new WaitForSeconds(0.1f);
+        }
         StartCoroutine(_bossAttacks.AttackPhase());
+    }
+
+    /// <summary>
+    /// Moves the boss to the exh pos where the player can hit the eye
+    /// </summary>
+    private void MoveToExhPos()
+    {
+        gameObject.transform.position = _exhaustPos.position;
+        gameObject.transform.rotation = _exhaustPos.rotation;
     }
 
     /// <summary>
