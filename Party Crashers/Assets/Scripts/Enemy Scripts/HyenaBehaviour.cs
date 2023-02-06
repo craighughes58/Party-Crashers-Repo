@@ -17,7 +17,20 @@ public class HyenaBehaviour : MonoBehaviour
     [Tooltip("Speed at which the mutant moves")]
     [SerializeField] float moveSpeed = 1;
 
+    [Tooltip("How much score the player loses when being hit by this enemy")]
+    [SerializeField]
+    private int scoreDamage;
+
+    [Tooltip("The player's score")]
+    [SerializeField] int victoryScore;
+
     Rigidbody rb;
+
+    [SerializeField] 
+    GameObject shatteredHyena1;
+
+    [SerializeField]
+    GameObject shatteredHyena2;
 
     [Tooltip("Radius at which the enemy can attack")]
     [SerializeField] float AttackRange = 1;
@@ -26,6 +39,8 @@ public class HyenaBehaviour : MonoBehaviour
     [SerializeField] float attackInterval = 2;
 
     private UnityEngine.AI.NavMeshAgent meshAgent;
+
+    bool gotHit;
 
     [SerializeField] private int scoreAmount;
     // Start is called before the first frame update
@@ -45,6 +60,8 @@ public class HyenaBehaviour : MonoBehaviour
         enemy = transform;
 
         attackTimer = attackInterval;
+
+        gotHit = false;
     }
 
     // Update is called once per frame
@@ -52,13 +69,18 @@ public class HyenaBehaviour : MonoBehaviour
     {
         Movement();
         Rotation();
+
+        if (gotHit)
+        {
+            HitReaction();
+        }
     }
 
     private void Movement()
     {
         // An offset distance to ensure the hyenas don't get right up in the
         // player's face
-        Vector3 offset = new Vector3(6, 0, -3);
+        Vector3 offset = new Vector3(6, 0, 0);
 
         // If the hyena is close enough to the player, it gets ready to attack
         if (enemy.position.x == (player.position.x - offset.x))
@@ -73,7 +95,7 @@ public class HyenaBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Function that ensures that the 
     /// </summary>
     private void Rotation()
     {
@@ -89,20 +111,20 @@ public class HyenaBehaviour : MonoBehaviour
         // Freeze the hyena in place
         moveSpeed = 0;
 
-            // If there's still time on the attack timer, continue the
-            // countdown
-            if (attackTimer >= 0)
-            {
-                attackTimer -= Time.deltaTime;
-            }
+        // If there's still time on the attack timer, continue the
+        // countdown
+        if (attackTimer >= 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
 
-            // When the interval's up, attack and reset the timer
-            else
-            {
-                attackTimer = attackInterval;
-                Attack();
-            }
-        
+        // When the interval's up, attack and reset the timer
+        else
+        {
+            attackTimer = attackInterval;
+            Attack();
+        }
+
     }
 
     /// <summary>
@@ -115,10 +137,46 @@ public class HyenaBehaviour : MonoBehaviour
         Debug.Log("Attack!");
 
         // The player then loses one life
-        pb.LoseLife(1);
+        ScoreLoss();
 
         // Go back to the movement function to determine whether the hyena can
         // keep attacking, or if it needs to start moving again
         Movement();
     }
+
+    private void ScoreLoss()
+    {
+        pb.LoseScore(scoreDamage);
+        Debug.Log("Life lost!");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag.Equals("Bat"))
+        {
+            HitReaction();
+        }
+    }
+
+    /// <summary>
+    /// Function for handling the hyena's reaction to getting hit by the 
+    /// player
+    /// </summary>
+    private void HitReaction()
+    {
+        if (name.Contains("Material 2"))
+        {
+            Instantiate(shatteredHyena2, transform.position, Quaternion.identity);
+            victoryScore += 50;
+            Destroy(gameObject);
+        }
+
+        if (name.Contains("Material 1"))
+        {
+            Instantiate(shatteredHyena1, transform.position, Quaternion.identity);
+            victoryScore += 50;
+            Destroy(gameObject);
+        }
+    }
+
 }

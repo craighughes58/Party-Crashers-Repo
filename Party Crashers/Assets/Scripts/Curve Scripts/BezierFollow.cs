@@ -11,9 +11,13 @@ public class BezierFollow : MonoBehaviour
 
     private float tParam;
 
+    private StopAtPoints Stopper;
+
     //THIS IS THE PLAYER POSITION
     private Vector3 catPosition;
 
+    [Tooltip("How fast the player traverses the track")]
+    [SerializeField]
     private float speedModifier;
 
     private bool coroutineAllowed;
@@ -22,9 +26,10 @@ public class BezierFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Stopper = GetComponent<StopAtPoints>();
         routeToGo = 0;
         tParam = 0f;
-        speedModifier = 0.15f;
+        //speedModifier = 0.08f;
         coroutineAllowed = true;
 
     }
@@ -47,27 +52,34 @@ public class BezierFollow : MonoBehaviour
         Vector3 p2 = Routes[routeNumber].GetChild(2).position;
         Vector3 p3 = Routes[routeNumber].GetChild(3).position;
 
+        
+
         while(tParam < 1)
         {
-            tParam += Time.deltaTime * speedModifier;
+            if (!Stopper.GetStopped())
+            {
 
-            catPosition = Mathf.Pow(1 - tParam, 3) * p0 +
+                tParam += Time.deltaTime * speedModifier;//calculate the time
+
+                //calculate the next position
+                catPosition = Mathf.Pow(1 - tParam, 3) * p0 +
                 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
                 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
                 Mathf.Pow(tParam, 3) * p3;
-
-            transform.position = catPosition;
+                transform.LookAt(catPosition);
+                //yield return new WaitForEndOfFrame();
+                transform.position = catPosition;
+            }
             yield return new WaitForEndOfFrame();
         }
+        yield return new WaitForEndOfFrame();
 
         tParam = 0f;
         routeToGo += 1;
-
         if(routeToGo > Routes.Length - 1)
         {
             routeToGo = 0;
         }
-
         coroutineAllowed = true;
     }
 }
