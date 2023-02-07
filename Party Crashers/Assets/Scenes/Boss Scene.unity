@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossBehaviour: {fileID: 1284414583}
-  _playerBehaviour: {fileID: 0}
+  _playerBehaviour: {fileID: 1998632670}
   _maxAttacks: 3
   _currentAttacks: 0
   _exhaustionTimer: 4
@@ -946,6 +946,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+--- !u!114 &1998632670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3643865085148202720, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+  m_PrefabInstance: {fileID: 1998632669}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10949e125946f7d4280299bca7582c33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &347255806788905460
 PrefabInstance:
   m_ObjectHideFlags: 0
