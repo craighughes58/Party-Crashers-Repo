@@ -9,10 +9,12 @@ public class BossBehaviour : MonoBehaviour
 {
     #region Variables
 
+    [SerializeField] private Transition _transition;
+
     #region Scipt Dependencies
     [Header("Script Dependencies")]
     [SerializeField] private BossAttacks _bossAttacks;
-    [SerializeField] private Transition _transition;
+
     #endregion
 
     #region Health 

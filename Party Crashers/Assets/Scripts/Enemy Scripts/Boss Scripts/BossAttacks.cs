@@ -7,6 +7,7 @@ public class BossAttacks : MonoBehaviour
     #region Variables
     [Header("Script/Object Dependencies")]
     [SerializeField] private BossBehaviour _bossBehaviour;
+    [SerializeField] private PlayerBehaviour _playerBehaviour;
 
     [Header("Attacks")]
     [SerializeField] private int _maxAttacks; //the maximum amount of attacks the boss can make before entering exhaustion
@@ -23,24 +24,35 @@ public class BossAttacks : MonoBehaviour
     [SerializeField] private GameObject _missileObject;
     [SerializeField] private Transform _missileSpawnPoint;
     private Vector3 _missileSpawnPos;
+
+    [Header("Scores")]
+    [Tooltip("Amount score decreases if player is hit, increases if deflected, and scored if eye attack")]
+    [SerializeField] private int _scoreLost;
+    [SerializeField] private int _scoreGainedDeflect;
+    [SerializeField] private int _scoreGainedAttack;
+
+    #region Getters
+    [HideInInspector] public int ScoreLost => _scoreLost;
+    [HideInInspector] public int ScoreGainedDeflect => _scoreGainedDeflect;
+    [HideInInspector] public int ScoreGainedAttack => _scoreGainedAttack;
+    [HideInInspector] public PlayerBehaviour PB => _playerBehaviour;
+    [HideInInspector] public BossBehaviour BH => _bossBehaviour;
+
     #endregion
 
+    #endregion
+
+    #region Functions
+
+    #region Awake, Start, Update
     private void Awake()
     {
         _currentAttacks = _maxAttacks;
         _missileSpawnPos = _missileSpawnPoint.position;
     }
+    #endregion
 
-    /// <summary>
-    /// Controls the exhaustion phase duration & events
-    /// </summary>
-    /// <returns></returns>
-    public IEnumerator ExhaustionPhase()
-    {
-        yield return new WaitForSeconds(_exhaustionTimer);
-
-        _bossBehaviour.EnterAttack();
-    }
+    #region Attacks
 
     /// <summary>
     /// Controls the attach phase events
@@ -73,4 +85,21 @@ public class BossAttacks : MonoBehaviour
         Instantiate(_missileObject, _missileSpawnPos, Quaternion.identity);
         DecreaseAttacks();
     }
+
+    #endregion
+
+    #region Exhaustion
+    /// <summary>
+    /// Controls the exhaustion phase duration & events
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator ExhaustionPhase()
+    {
+        yield return new WaitForSeconds(_exhaustionTimer);
+
+        _bossBehaviour.EnterAttack();
+    }
+    #endregion
+
+    #endregion
 }

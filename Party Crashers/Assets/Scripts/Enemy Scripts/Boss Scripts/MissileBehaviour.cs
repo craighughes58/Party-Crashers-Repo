@@ -13,7 +13,7 @@ public class MissileBehaviour : MonoBehaviour
     private Transform PlayerPos;
     //private CharacterController CharCon;
 
-    [Header("SPEEDS")]
+    [Header("Speeds")]
     [Tooltip("how fast the missile can go")]
     [SerializeField]
     private float speed;
@@ -28,6 +28,9 @@ public class MissileBehaviour : MonoBehaviour
 
     [Header("Spawning")]
     private GameObject[] _spawnPoints = new GameObject[3];
+
+    [Header("Script Dependencies")]
+    [SerializeField] private BossAttacks _bossAttacks;
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +48,19 @@ public class MissileBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// when the missile hits an object, if it's the player they'll lose life. The rocket will always be destroyed from a collision
+    /// when the missile hits an object, if it's the player they'll lose score. The rocket will always be destroyed from a collision
     /// </summary>
     /// <param name="collision">the object the missile is colliding with</param>
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag.Equals("Shield"))
+        {
+            _bossAttacks.PB.AddScore(_bossAttacks.ScoreGainedDeflect);
+        }
+        else if (collision.gameObject.tag.Equals("Player"))
+        {
+            _bossAttacks.PB.LoseScore(_bossAttacks.ScoreLost);
+        }
         Destroy(gameObject);
     }
 
