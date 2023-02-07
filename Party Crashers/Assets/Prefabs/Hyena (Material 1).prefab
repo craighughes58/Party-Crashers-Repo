@@ -94,8 +94,8 @@ MonoBehaviour:
   moveSpeed: 1
   scoreDamage: 10
   victoryScore: 0
-  shatteredHyena1: {fileID: 0}
-  shatteredHyena2: {fileID: 0}
+  shatteredHyena1: {fileID: 2247773978899518682, guid: d0dcfa035ac7fc348ac4ec8e6ce878f7, type: 3}
+  shatteredHyena2: {fileID: 7859299251967649713, guid: f6bc245a1c976094cb3bd5c7ed0f65f3, type: 3}
   AttackRange: 1
   attackTimer: 0
   attackInterval: 3
