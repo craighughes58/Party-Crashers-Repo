@@ -26,6 +26,17 @@ public class HyenaBehaviour : MonoBehaviour
 
     Rigidbody rb;
 
+    [SerializeField]
+    GameObject entranceParticles;
+
+    [SerializeField] GameObject deathParticle1;
+    [SerializeField] GameObject deathParticle2;
+    [SerializeField] GameObject deathParticle3;
+    [SerializeField] GameObject deathParticle4;
+    [SerializeField] GameObject deathParticle5;
+    [SerializeField] GameObject deathParticle6;
+    [SerializeField] GameObject deathParticle7;
+
     [SerializeField] 
     GameObject shatteredHyena1;
 
@@ -46,6 +57,7 @@ public class HyenaBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instantiate(entranceParticles);
 
         pb = FindObjectOfType<PlayerBehaviour>();
         rb = GetComponent<Rigidbody>();
@@ -69,11 +81,6 @@ public class HyenaBehaviour : MonoBehaviour
     {
         Movement();
         Rotation();
-
-        if (gotHit)
-        {
-            HitReaction();
-        }
     }
 
     private void Movement()
@@ -164,6 +171,38 @@ public class HyenaBehaviour : MonoBehaviour
     /// </summary>
     private void HitReaction()
     {
+        int particleChoice = Random.Range(1, 7);
+        switch (particleChoice)
+        {
+            case 1:
+                Instantiate(deathParticle1);
+                break;
+
+            case 2:
+                Instantiate(deathParticle2);
+                break;
+
+            case 3:
+                Instantiate(deathParticle3);
+                break;
+
+            case 4:
+                Instantiate(deathParticle4);
+                break;
+
+            case 5:
+                Instantiate(deathParticle5);
+                break;
+
+            case 6:
+                Instantiate(deathParticle6);
+                break;
+
+            case 7:
+                Instantiate(deathParticle7);
+                break;
+        }
+
         if (name.Contains("Material 2"))
         {
             Instantiate(shatteredHyena2, transform.position, Quaternion.identity);
