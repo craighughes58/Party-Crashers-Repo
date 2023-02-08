@@ -166,15 +166,15 @@ public class HyenaBehaviour : MonoBehaviour
     {
         if (name.Contains("Material 2"))
         {
-            Instantiate(shatteredHyena2, transform.position, Quaternion.identity);
-            victoryScore += 50;
+            Destroy(Instantiate(shatteredHyena2, transform.position, transform.rotation),5f);
+            pb.AddScore(victoryScore);
             Destroy(gameObject);
         }
 
         if (name.Contains("Material 1"))
         {
-            Instantiate(shatteredHyena1, transform.position, Quaternion.identity);
-            victoryScore += 50;
+            Destroy(Instantiate(shatteredHyena1, transform.position, transform.rotation),5f);
+            pb.AddScore(victoryScore);
             Destroy(gameObject);
         }
     }
