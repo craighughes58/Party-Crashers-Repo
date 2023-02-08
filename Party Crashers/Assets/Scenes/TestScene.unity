@@ -1151,6 +1151,10 @@ PrefabInstance:
       propertyPath: shatteredHyena2
       value: 
       objectReference: {fileID: 2887056989792178110}
+    - target: {fileID: 4115398147921026020, guid: cf7907f887df3b343a054912c34ad94b, type: 3}
+      propertyPath: entranceParticles
+      value: 
+      objectReference: {fileID: 5074345790374232827, guid: 6dc77d5c87ce018479933e1a27242036, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf7907f887df3b343a054912c34ad94b, type: 3}
 --- !u!1001 &4972312701345294351
@@ -1218,6 +1222,34 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8543034923036692658, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
+      propertyPath: deathParticle1
+      value: 
+      objectReference: {fileID: 543330665106635849, guid: 52da3f49e54b87742ba5f25649181bf2, type: 3}
+    - target: {fileID: 8543034923036692658, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
+      propertyPath: deathParticle2
+      value: 
+      objectReference: {fileID: 7482457749623310666, guid: 0aa213e87b603f0429405c0e0938c3ee, type: 3}
+    - target: {fileID: 8543034923036692658, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
+      propertyPath: deathParticle3
+      value: 
+      objectReference: {fileID: 3658369566215705868, guid: 33e47254a3d8c88449c11ce526670ba2, type: 3}
+    - target: {fileID: 8543034923036692658, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
+      propertyPath: deathParticle4
+      value: 
+      objectReference: {fileID: 3174239208145536548, guid: 6f202c6aad733584c80ccf86c0f8d593, type: 3}
+    - target: {fileID: 8543034923036692658, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
+      propertyPath: deathParticle5
+      value: 
+      objectReference: {fileID: 1984742809932570101, guid: 6c253e79d36ceaf48bfb23fc6edbdf90, type: 3}
+    - target: {fileID: 8543034923036692658, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
+      propertyPath: deathParticle6
+      value: 
+      objectReference: {fileID: 2741224328572508706, guid: 594774dcc185c824cbf396c738c41fcf, type: 3}
+    - target: {fileID: 8543034923036692658, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
+      propertyPath: deathParticle7
+      value: 
+      objectReference: {fileID: 7565199352356911906, guid: df29b19ac3d6baa4e970a5d188461ade, type: 3}
+    - target: {fileID: 8543034923036692658, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
       propertyPath: shatteredHyena1
       value: 
       objectReference: {fileID: 1619683406}
@@ -1225,6 +1257,10 @@ PrefabInstance:
       propertyPath: shatteredHyena2
       value: 
       objectReference: {fileID: 2887056989792178110}
+    - target: {fileID: 8543034923036692658, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
+      propertyPath: entranceParticles
+      value: 
+      objectReference: {fileID: 5074345790374232827, guid: 6dc77d5c87ce018479933e1a27242036, type: 3}
     - target: {fileID: 8543034923036692660, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
       propertyPath: m_RootOrder
       value: 7
