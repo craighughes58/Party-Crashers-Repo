@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     //This int iterates across the different scense
     private int SectionNum = 0;
 
+    [SerializeField]
     private int currentEnemyNum;
 
     private StopAtPoints SAP;
@@ -15,10 +16,14 @@ public class GameController : MonoBehaviour
     [Tooltip("Reference to the hyena prefab")]
     [SerializeField]
     private GameObject Hyena;
+    [SerializeField]
+    private GameObject HyenaVariation;
 
     [Tooltip("Reference to the bird prefab")]
     [SerializeField]
     private GameObject Bird;
+    [SerializeField]
+    private GameObject BirdVariation;
 
     //reference to the squid
     private GameObject Squid;
@@ -43,11 +48,28 @@ public class GameController : MonoBehaviour
         SectionNum++;
         switch (SectionNum)
         {
+            //Tutorial Spawns
             case 1:
+                /*Vector3 spawnLocation = new Vector3(10, 0, -115);
+                Instantiate(Hyena, spawnLocation, Quaternion.identity);
+                AddEnemy();*/
                 return;
             case 2:
+                Vector3 spawnLocationStop1 = new Vector3(-30,0,-95);
+                Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop1.x = -20;
+                spawnLocationStop1.z = -80;
+                Instantiate(HyenaVariation, spawnLocationStop1, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop1.x = -5;
+                spawnLocationStop1.z = -75;
+                Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
+                AddEnemy();
                 return;
             case 3:
+                return;
+            case 4:
                 return;
             default:
                 print("SOMETHING IS TERRIBLY WRONG");

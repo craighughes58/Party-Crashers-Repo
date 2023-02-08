@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 825381481}
   - component: {fileID: 825381480}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Bird
   m_TagString: Bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

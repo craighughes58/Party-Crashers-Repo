@@ -15,8 +15,13 @@ public class BirdBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject Projectile;
 
+    [Tooltip("The difference between the bird origin and the projectile spawn point ")]
     [SerializeField]
     private Vector3 ProjectileOffset;
+
+    [Tooltip("The shattered version that spawns once this enemy dies")]
+    [SerializeField]
+    private GameObject DestroyedBird;
     //the current projectile
     private GameObject CurrentProjectile;
 
@@ -62,6 +67,8 @@ public class BirdBehaviour : MonoBehaviour
     /// </summary>
     public void BirdHit()
     {
+        Destroy(gameObject);
+        Destroy(Instantiate(DestroyedBird, transform.position, transform.rotation),5f);
         pb.AddScore(25);
 
     }

@@ -94,6 +94,7 @@ MonoBehaviour:
   moveSpeed: 1
   scoreDamage: 10
   victoryScore: 0
+
   entranceParticles: {fileID: 5074345790374232827, guid: 6dc77d5c87ce018479933e1a27242036, type: 3}
   deathParticle1: {fileID: 543330665106635849, guid: 52da3f49e54b87742ba5f25649181bf2, type: 3}
   deathParticle2: {fileID: 7482457749623310666, guid: 0aa213e87b603f0429405c0e0938c3ee, type: 3}
