@@ -54,8 +54,9 @@ public class GameController : MonoBehaviour
                 Instantiate(Hyena, spawnLocation, Quaternion.identity);
                 AddEnemy();*/
                 return;
+            //First Area Spawns
             case 2:
-                Vector3 spawnLocationStop1 = new Vector3(-30,0,-95);
+                /*Vector3 spawnLocationStop1 = new Vector3(-30,0,-95);
                 Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
                 AddEnemy();
                 spawnLocationStop1.x = -20;
@@ -65,11 +66,29 @@ public class GameController : MonoBehaviour
                 spawnLocationStop1.x = -5;
                 spawnLocationStop1.z = -75;
                 Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
-                AddEnemy();
+                AddEnemy();*/
                 return;
             case 3:
+                print("spawn birds");
                 return;
             case 4:
+                Vector3 spawnLocationStop3 = new Vector3(38, 0,140);
+                Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop3.x = 30;
+                Instantiate(Hyena, spawnLocationStop3, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop3.x = 22;
+                Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop3.x = 5;
+                spawnLocationStop3.z = 70;
+                Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop3.x = 1;
+                spawnLocationStop3.z = 85;
+                Instantiate(Hyena, spawnLocationStop3, Quaternion.identity);
+                AddEnemy();
                 return;
             default:
                 print("SOMETHING IS TERRIBLY WRONG");

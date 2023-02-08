@@ -212,3 +212,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 2028297784536322604, guid: e5fdeb1dbf71774438d8bde01c356591, type: 3}
   ProjectileOffset: {x: 0, y: 0, z: 0}
+  DestroyedBird: {fileID: 2969587629849225333, guid: 2ebb27b72d9a97d4d91cfec83133b262, type: 3}
