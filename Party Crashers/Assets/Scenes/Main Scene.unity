@@ -373,8 +373,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9196190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.6, y: -2.0814433, z: -109.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -23.6, y: -2.0814433, z: -110.6}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 516995977}
@@ -623,7 +623,7 @@ MonoBehaviour:
   currentEnemyNum: 0
   Hyena: {fileID: 8543034923036692670, guid: 7feb19b73b413e64a8fe732d2e7e3417, type: 3}
   HyenaVariation: {fileID: 4115398147921026013, guid: cf7907f887df3b343a054912c34ad94b, type: 3}
-  Bird: {fileID: 0}
+  Bird: {fileID: 7261322743497911848, guid: 89ac4b639b8b6114380ef82f023ef258, type: 3}
   BirdVariation: {fileID: 0}
   leftHanded: 0
   wrappingPapper: {fileID: 0}
@@ -8876,7 +8876,7 @@ Transform:
   m_GameObject: {fileID: 781672488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.5, y: -2.0814433, z: -132.55}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 516995977}
@@ -9081,7 +9081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &798011221
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9152,10 +9152,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798011220}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14, y: 2.9371877, z: -109}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.4, y: 2.918557, z: 84.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -12804,8 +12804,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125994002}
   m_LocalRotation: {x: 0, y: 0.3264756, z: 0, w: 0.9452056}
-  m_LocalPosition: {x: 16.08, y: 5, z: 47.5}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 16.08, y: -2.081443, z: 47.5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 516995977}
@@ -16960,7 +16960,7 @@ Transform:
   m_GameObject: {fileID: 1524411789}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.3, y: -2.0814433, z: -31.05}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 516995977}
@@ -25661,6 +25661,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2096468348}
     m_Modifications:
+    - target: {fileID: 2506943037498719812, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506943039167938235, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3827239427797239653, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -25709,9 +25717,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 5918597529567826211, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 6730508582396543208, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904783456669692841, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6904783456669692841, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: m_TagString
@@ -25733,11 +25749,20 @@ PrefabInstance:
       propertyPath: Routes.Array.data[2]
       value: 
       objectReference: {fileID: 2604914}
+    - target: {fileID: 7558621951504405555, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558621951504405555, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 8929096765193742374, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: m_TagString
       value: Bat
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8959081150531502694, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
 --- !u!1 &7313654230673175541
 GameObject:
