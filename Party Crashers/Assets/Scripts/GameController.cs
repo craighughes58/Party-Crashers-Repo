@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     //This int iterates across the different scense
     private int SectionNum = 0;
 
+    [SerializeField]
     private int currentEnemyNum;
 
     private StopAtPoints SAP;
@@ -15,10 +16,14 @@ public class GameController : MonoBehaviour
     [Tooltip("Reference to the hyena prefab")]
     [SerializeField]
     private GameObject Hyena;
+    [SerializeField]
+    private GameObject HyenaVariation;
 
     [Tooltip("Reference to the bird prefab")]
     [SerializeField]
     private GameObject Bird;
+    [SerializeField]
+    private GameObject BirdVariation;
 
     //reference to the squid
     private GameObject Squid;
@@ -43,11 +48,47 @@ public class GameController : MonoBehaviour
         SectionNum++;
         switch (SectionNum)
         {
+            //Tutorial Spawns
             case 1:
+                Vector3 spawnLocation = new Vector3(10, 0, -115);
+                Instantiate(Hyena, spawnLocation, Quaternion.identity);
+                AddEnemy();
                 return;
+            //First Area Spawns
             case 2:
+                /*Vector3 spawnLocationStop1 = new Vector3(-30,0,-95);
+                Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop1.x = -20;
+                spawnLocationStop1.z = -80;
+                Instantiate(HyenaVariation, spawnLocationStop1, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop1.x = -5;
+                spawnLocationStop1.z = -75;
+                Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
+                AddEnemy();*/
                 return;
             case 3:
+                print("spawn birds");
+                return;
+            case 4:
+                /*Vector3 spawnLocationStop3 = new Vector3(38, 0,140);
+                Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop3.x = 30;
+                Instantiate(Hyena, spawnLocationStop3, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop3.x = 22;
+                Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop3.x = 5;
+                spawnLocationStop3.z = 70;
+                Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
+                AddEnemy();
+                spawnLocationStop3.x = 1;
+                spawnLocationStop3.z = 85;
+                Instantiate(Hyena, spawnLocationStop3, Quaternion.identity);
+                AddEnemy();*/
                 return;
             default:
                 print("SOMETHING IS TERRIBLY WRONG");

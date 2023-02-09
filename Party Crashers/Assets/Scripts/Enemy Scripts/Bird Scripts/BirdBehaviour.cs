@@ -15,15 +15,30 @@ public class BirdBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject Projectile;
 
+    [Tooltip("The difference between the bird origin and the projectile spawn point ")]
     [SerializeField]
-    private Vector3 ProjectileOffset;
+    private float ProjectileOffset;
+
+    [Tooltip("The shattered version that spawns once this enemy dies")]
+    [SerializeField]
+    private GameObject DestroyedBird;
     //the current projectile
     private GameObject CurrentProjectile;
+
+    [Header("PARTICLES")]
+    [Tooltip("the particles that spawn when the bird script starts")]
+    [SerializeField]
+    private GameObject IntroParticles;
+    [Tooltip("the particles that spawn when the bird script is destroyed")]
+    [SerializeField]
+    private GameObject OutroParticles;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        Destroy(Instantiate(IntroParticles,transform.position,Quaternion.identity),10f);
         player = FindObjectOfType<PlayerBehaviour>().transform;
         pb = FindObjectOfType<PlayerBehaviour>();
 
@@ -52,7 +67,7 @@ public class BirdBehaviour : MonoBehaviour
     {
         if(CurrentProjectile == null)
         {
-            CurrentProjectile = Instantiate(Projectile, transform.position + ProjectileOffset, transform.rotation);
+            CurrentProjectile = Instantiate(Projectile, transform.position + (transform.forward * ProjectileOffset), transform.rotation);
             CurrentProjectile.GetComponent<BirdProjectileScript>().ConnectToBird(transform);
         }
     }
@@ -62,6 +77,9 @@ public class BirdBehaviour : MonoBehaviour
     /// </summary>
     public void BirdHit()
     {
+        Destroy(gameObject);
+        Destroy(Instantiate(OutroParticles, transform.position, Quaternion.identity), 10f);
+        Destroy(Instantiate(DestroyedBird, transform.position, transform.rotation),5f);
         pb.AddScore(25);
 
     }
