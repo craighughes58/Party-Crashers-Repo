@@ -44,8 +44,7 @@ public class BossBehaviour : MonoBehaviour
     private Vector3 _moveVelocity;
 
     [Header("Movement Variables")]
-    [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _rotateSpeed;
+    [SerializeField] private float _transitionTime;
     private Rigidbody _rb;
     #endregion
 
@@ -57,7 +56,7 @@ public class BossBehaviour : MonoBehaviour
     private void Awake()
     {
         _currentHealth = _maxHealth;
-        _moveVelocity = new Vector3(0f, _moveSpeed, 0f);
+        _moveVelocity = new Vector3(0f, _transitionTime, 0f);
     }
 
     // Start is called before the first frame update
@@ -67,9 +66,6 @@ public class BossBehaviour : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
-    {
-    }
     #endregion
 
     #region Getters
@@ -155,12 +151,17 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     private IEnumerator MoveToAtkPos()
     {
-        while (Vector3.Distance(transform.position, _attackPos.position) > 0.001f)
-        {
-            RotateToVal(transform.rotation, _attackPos.rotation, _rotateSpeed);
-            MoveToLocation(transform.position, _attackPos.position, _moveSpeed);
+        float pathPercentage = 0;
+        Vector3 startPos = transform.position;
+        Quaternion startQ = transform.rotation;
 
-            yield return new WaitForSeconds(0.01f);
+        while (pathPercentage < _transitionTime)
+        {
+            RotateToVal(startQ, _attackPos.rotation, pathPercentage / _transitionTime);
+            MoveToLocation(startPos, _attackPos.position, pathPercentage / _transitionTime);
+
+            pathPercentage += Time.deltaTime;
+            yield return null;
         }
         BeginAttack();
     }
@@ -170,12 +171,17 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     private IEnumerator MoveToExhPos()
     {
-        while (Vector3.Distance(transform.position, _exhaustPos.position) > 0.001f)
-        {
-            RotateToVal(transform.rotation, _exhaustPos.rotation, _rotateSpeed);
-            MoveToLocation(transform.position, _exhaustPos.position, _moveSpeed);
+        float pathPercentage = 0;
+        Vector3 startPos = transform.position;
+        Quaternion startQ = transform.rotation;
 
-            yield return new WaitForSeconds(0.01f);
+        while(pathPercentage < _transitionTime)
+        {
+            RotateToVal(startQ, _exhaustPos.rotation, pathPercentage / _transitionTime);
+            MoveToLocation(startPos, _exhaustPos.position, pathPercentage / _transitionTime);
+
+            pathPercentage += Time.deltaTime;
+            yield return null;
         }
         BeginExhaustion();
     }
@@ -189,9 +195,9 @@ public class BossBehaviour : MonoBehaviour
     /// <param name="from"> original location </param>
     /// <param name="to"> ending location </param>
     /// <param name="moveSpeed"> speed of movement </param>
-    private void MoveToLocation(Vector3 from, Vector3 to, float moveSpeed)
+    private void MoveToLocation(Vector3 from, Vector3 to, float transitionSpeed)
     {
-        transform.position = Vector3.Lerp(from, to, moveSpeed);
+        transform.position = Vector3.Lerp(from, to, transitionSpeed);
     }
 
     /// <summary>
@@ -200,9 +206,9 @@ public class BossBehaviour : MonoBehaviour
     /// <param name="from"> origal rotation </param>
     /// <param name="to"> end rotation </param>
     /// <param name="rotateSpeed"> speed of rotation </param>
-    private void RotateToVal(Quaternion from, Quaternion to, float rotateSpeed)
+    private void RotateToVal(Quaternion from, Quaternion to, float transitionSpeed)
     {
-        _rb.MoveRotation(Quaternion.RotateTowards(from, to, rotateSpeed));
+        transform.rotation = Quaternion.Lerp(from, to, transitionSpeed);
     }
 
     #endregion
