@@ -17,7 +17,7 @@ public class BirdBehaviour : MonoBehaviour
 
     [Tooltip("The difference between the bird origin and the projectile spawn point ")]
     [SerializeField]
-    private Vector3 ProjectileOffset;
+    private float ProjectileOffset;
 
     [Tooltip("The shattered version that spawns once this enemy dies")]
     [SerializeField]
@@ -67,7 +67,7 @@ public class BirdBehaviour : MonoBehaviour
     {
         if(CurrentProjectile == null)
         {
-            CurrentProjectile = Instantiate(Projectile, transform.position + ProjectileOffset, transform.rotation);
+            CurrentProjectile = Instantiate(Projectile, transform.position + (transform.forward * ProjectileOffset), transform.rotation);
             CurrentProjectile.GetComponent<BirdProjectileScript>().ConnectToBird(transform);
         }
     }
