@@ -264,8 +264,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 2028297784536322604, guid: e5fdeb1dbf71774438d8bde01c356591, type: 3}
-  ProjectileOffset: {x: 0, y: 0, z: 0}
+  ProjectileOffset: 0
   DestroyedBird: {fileID: 0}
+  IntroParticles: {fileID: 0}
+  OutroParticles: {fileID: 0}
 --- !u!23 &340686042
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -436,7 +438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533394709}
   m_LocalRotation: {x: 0.0012877418, y: -0.7116491, z: -0.0035399005, w: 0.702525}
-  m_LocalPosition: {x: 14.9, y: -3.12, z: 0.2}
+  m_LocalPosition: {x: -26.78, y: -3.12, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -627,6 +629,18 @@ PrefabInstance:
       propertyPath: DestroyedBird
       value: 
       objectReference: {fileID: 2969587629849225333, guid: 2ebb27b72d9a97d4d91cfec83133b262, type: 3}
+    - target: {fileID: 2069423921515746164, guid: 89ac4b639b8b6114380ef82f023ef258, type: 3}
+      propertyPath: ProjectileOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069423921515746164, guid: 89ac4b639b8b6114380ef82f023ef258, type: 3}
+      propertyPath: ProjectileOffset.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069423921515746164, guid: 89ac4b639b8b6114380ef82f023ef258, type: 3}
+      propertyPath: ProjectileOffset.z
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6578476986450750372, guid: 89ac4b639b8b6114380ef82f023ef258, type: 3}
       propertyPath: m_RootOrder
       value: 0
