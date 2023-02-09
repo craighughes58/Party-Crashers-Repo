@@ -161,6 +161,7 @@ public class HyenaBehaviour : MonoBehaviour
     {
         if(collision.gameObject.tag.Equals("Bat"))
         {
+            print("HEEEE");
             HitReaction();
         }
     }

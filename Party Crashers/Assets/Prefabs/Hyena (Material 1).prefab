@@ -102,8 +102,8 @@ MonoBehaviour:
   deathParticle5: {fileID: 1984742809932570101, guid: 6c253e79d36ceaf48bfb23fc6edbdf90, type: 3}
   deathParticle6: {fileID: 2741224328572508706, guid: 594774dcc185c824cbf396c738c41fcf, type: 3}
   deathParticle7: {fileID: 7565199352356911906, guid: df29b19ac3d6baa4e970a5d188461ade, type: 3}
-  shatteredHyena1: {fileID: 8543034923036692670}
-  shatteredHyena2: {fileID: 4115398147921026013, guid: cf7907f887df3b343a054912c34ad94b, type: 3}
+  shatteredHyena1: {fileID: 7859299251967649713, guid: f6bc245a1c976094cb3bd5c7ed0f65f3, type: 3}
+  shatteredHyena2: {fileID: 2247773978899518682, guid: d0dcfa035ac7fc348ac4ec8e6ce878f7, type: 3}
   AttackRange: 1
   attackTimer: 0
   attackInterval: 2
