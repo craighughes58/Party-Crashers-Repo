@@ -50,9 +50,9 @@ public class GameController : MonoBehaviour
         {
             //Tutorial Spawns
             case 1:
-                /*Vector3 spawnLocation = new Vector3(10, 0, -115);
+                Vector3 spawnLocation = new Vector3(10, 0, -115);
                 Instantiate(Hyena, spawnLocation, Quaternion.identity);
-                AddEnemy();*/
+                AddEnemy();
                 return;
             //First Area Spawns
             case 2:
@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour
                 print("spawn birds");
                 return;
             case 4:
-                Vector3 spawnLocationStop3 = new Vector3(38, 0,140);
+                /*Vector3 spawnLocationStop3 = new Vector3(38, 0,140);
                 Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
                 spawnLocationStop3.x = 30;
@@ -88,7 +88,7 @@ public class GameController : MonoBehaviour
                 spawnLocationStop3.x = 1;
                 spawnLocationStop3.z = 85;
                 Instantiate(Hyena, spawnLocationStop3, Quaternion.identity);
-                AddEnemy();
+                AddEnemy();*/
                 return;
             default:
                 print("SOMETHING IS TERRIBLY WRONG");
