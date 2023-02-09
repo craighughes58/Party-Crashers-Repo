@@ -25,10 +25,20 @@ public class BirdBehaviour : MonoBehaviour
     //the current projectile
     private GameObject CurrentProjectile;
 
+    [Header("PARTICLES")]
+    [Tooltip("the particles that spawn when the bird script starts")]
+    [SerializeField]
+    private GameObject IntroParticles;
+    [Tooltip("the particles that spawn when the bird script is destroyed")]
+    [SerializeField]
+    private GameObject OutroParticles;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        Destroy(Instantiate(IntroParticles,transform.position,Quaternion.identity),10f);
         player = FindObjectOfType<PlayerBehaviour>().transform;
         pb = FindObjectOfType<PlayerBehaviour>();
 
@@ -68,6 +78,7 @@ public class BirdBehaviour : MonoBehaviour
     public void BirdHit()
     {
         Destroy(gameObject);
+        Destroy(Instantiate(OutroParticles, transform.position, Quaternion.identity), 10f);
         Destroy(Instantiate(DestroyedBird, transform.position, transform.rotation),5f);
         pb.AddScore(25);
 

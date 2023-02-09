@@ -94,14 +94,8 @@ MonoBehaviour:
   moveSpeed: 1
   scoreDamage: 10
   victoryScore: 0
-  entranceParticles: {fileID: 5074345790374232827, guid: 6dc77d5c87ce018479933e1a27242036, type: 3}
-  deathParticle1: {fileID: 543330665106635849, guid: 52da3f49e54b87742ba5f25649181bf2, type: 3}
-  deathParticle2: {fileID: 7482457749623310666, guid: 0aa213e87b603f0429405c0e0938c3ee, type: 3}
-  deathParticle3: {fileID: 3658369566215705868, guid: 33e47254a3d8c88449c11ce526670ba2, type: 3}
-  deathParticle4: {fileID: 3174239208145536548, guid: 6f202c6aad733584c80ccf86c0f8d593, type: 3}
-  deathParticle5: {fileID: 1984742809932570101, guid: 6c253e79d36ceaf48bfb23fc6edbdf90, type: 3}
-  deathParticle6: {fileID: 2741224328572508706, guid: 594774dcc185c824cbf396c738c41fcf, type: 3}
-  deathParticle7: {fileID: 7565199352356911906, guid: df29b19ac3d6baa4e970a5d188461ade, type: 3}
+  entranceParticles: {fileID: 1093073474904058160, guid: 0d9aef3e231c5d9439a5b57bf34ac590, type: 3}
+  deathParticle1: {fileID: 1520341045109095004, guid: efd2b5679c035124d815786968aa6442, type: 3}
   shatteredHyena1: {fileID: 7859299251967649713, guid: f6bc245a1c976094cb3bd5c7ed0f65f3, type: 3}
   shatteredHyena2: {fileID: 2247773978899518682, guid: d0dcfa035ac7fc348ac4ec8e6ce878f7, type: 3}
   AttackRange: 1

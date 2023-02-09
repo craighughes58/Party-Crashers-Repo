@@ -213,3 +213,5 @@ MonoBehaviour:
   Projectile: {fileID: 2028297784536322604, guid: e5fdeb1dbf71774438d8bde01c356591, type: 3}
   ProjectileOffset: {x: 0, y: 0, z: 0}
   DestroyedBird: {fileID: 2969587629849225333, guid: 2ebb27b72d9a97d4d91cfec83133b262, type: 3}
+  IntroParticles: {fileID: 1093073474904058160, guid: 0d9aef3e231c5d9439a5b57bf34ac590, type: 3}
+  OutroParticles: {fileID: 1520341045109095004, guid: efd2b5679c035124d815786968aa6442, type: 3}
