@@ -18,7 +18,7 @@ public class StopAtPoints : MonoBehaviour
         {
             GC.MoveToNextPoint();
             isStopped = true;
-            StartCoroutine(PauseMoving());//THIS IS TEMPORARY
+            //StartCoroutine(PauseMoving());//THIS IS TEMPORARY
         }
     }
 
