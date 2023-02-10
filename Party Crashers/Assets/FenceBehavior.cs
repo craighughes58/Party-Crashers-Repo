@@ -18,9 +18,17 @@ public class FenceBehavior : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.TryGetComponent<HyenaBehaviour>(out HyenaBehaviour h))
+        if(collision.gameObject.TryGetComponent<HyenaBehaviour>(out HyenaBehaviour h) || collision.gameObject.name.Equals("Cube"))
         {
-            transform.parent.transform.Rotate(0, 2, 0);
+            print(transform.rotation.eulerAngles);
+            transform.Rotate(0, -20, 0);
+            print(transform.rotation.eulerAngles);
         }
+    }
+
+    IEnumerator Animation()
+    {
+        transform.Rotate(0, -20, 0);
+        yield return null;
     }
 }
