@@ -8,6 +8,8 @@ TagManager:
   - Shield
   - Missile
   - Boss
+  - Bird
+  - Stop
   layers:
   - Default
   - TransparentFX

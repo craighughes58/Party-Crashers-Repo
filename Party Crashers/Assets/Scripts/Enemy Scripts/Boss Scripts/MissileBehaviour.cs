@@ -29,12 +29,12 @@ public class MissileBehaviour : MonoBehaviour
     [Header("Spawning")]
     private GameObject[] _spawnPoints = new GameObject[3];
 
-    [Header("Script Dependencies")]
-    [SerializeField] private BossAttacks _bossAttacks;
+    private BossAttacks _bossAttacks;
 
     // Start is called before the first frame update
     void Start()
     {
+        _bossAttacks = GameObject.Find("Boss").GetComponent<BossAttacks>();
         for(int i = 0; i < _spawnPoints.Length; i++)
         {
             _spawnPoints[i] = GameObject.Find("Point " + i);
