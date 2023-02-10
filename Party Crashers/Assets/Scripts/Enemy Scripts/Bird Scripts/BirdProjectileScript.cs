@@ -45,29 +45,25 @@ public class BirdProjectileScript : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag.Equals("Player") && !isDeflected)
+        if (other.gameObject.tag.Equals("Player") && !isDeflected)
         {
             //LOSE SCORE
-            collision.gameObject.GetComponent<PlayerBehaviour>().LoseScore(scoreDamage);
+            other.gameObject.GetComponent<PlayerBehaviour>().LoseScore(scoreDamage);
             Destroy(gameObject);
         }
-        else if (collision.gameObject.tag.Equals("Bird") && isDeflected)
+        else if (other.gameObject.tag.Equals("Bird") && isDeflected)
         {
-            collision.gameObject.GetComponent<BirdBehaviour>().BirdHit();//add score
-            Destroy(collision.gameObject);
+            other.gameObject.GetComponent<BirdBehaviour>().BirdHit();//add score
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
-        else if(collision.gameObject.tag.Equals("Shield"))
+        else if (other.gameObject.tag.Equals("Shield"))
         {
             isDeflected = true;
         }
-
     }
 
     public void ConnectToBird(Transform BirdLocation)
