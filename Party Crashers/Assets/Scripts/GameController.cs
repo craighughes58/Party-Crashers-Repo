@@ -165,5 +165,13 @@ public class GameController : MonoBehaviour
             shield.transform.localPosition = localPos2;
 
         }
-    }    
+    }
+
+    private void Update()
+    {
+        if (currentEnemyNum <= 0)
+        {
+            SAP.StartPlayer();
+        }
+    }
 }
