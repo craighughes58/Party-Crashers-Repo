@@ -55,6 +55,8 @@ public class HyenaBehaviour : MonoBehaviour
 
     bool gotHit;
 
+    Animation anim;
+
     [SerializeField] private int scoreAmount;
     // Start is called before the first frame update
     void Start()
@@ -76,6 +78,8 @@ public class HyenaBehaviour : MonoBehaviour
         attackTimer = attackInterval;
 
         gotHit = false;
+        anim = GetComponent<Animation>();
+        
     }
 
     // Update is called once per frame
@@ -100,6 +104,10 @@ public class HyenaBehaviour : MonoBehaviour
         else
         {
             meshAgent.SetDestination(player.position - offset);
+            if(!anim.isPlaying)
+            {
+                anim.Play();
+            }
         }
     }
 
@@ -119,6 +127,7 @@ public class HyenaBehaviour : MonoBehaviour
     {
         // Freeze the hyena in place
         moveSpeed = 0;
+        anim.Stop();
 
         // If there's still time on the attack timer, continue the
         // countdown
