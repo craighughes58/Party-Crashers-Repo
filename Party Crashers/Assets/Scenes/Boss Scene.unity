@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &154098648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 154098649}
+  m_Layer: 0
+  m_Name: Missile Aim Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &154098649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154098648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.22766781, y: 1.993, z: 0.5126995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &214653392 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 347255806977339428, guid: 306a338f95e7a4147813f073042f2133, type: 3}
@@ -158,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543861841}
   m_LocalRotation: {x: 0.08247079, y: 0.6967923, z: -0.08374727, w: -0.7075772}
-  m_LocalPosition: {x: 0, y: 0.22, z: 3.5}
+  m_LocalPosition: {x: 0, y: 0.22, z: 2.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -322,7 +353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173399310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 0.8, z: 0}
+  m_LocalPosition: {x: -0.207, y: 0.8, z: -0.001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -404,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a811e130676963a45a3d46b554af24a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossAttacks: {fileID: 0}
+  _bossAttacks: {fileID: 1284414584}
 --- !u!95 &1253359097 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 347255808155292771, guid: 306a338f95e7a4147813f073042f2133, type: 3}
@@ -437,7 +468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284414581}
   m_LocalRotation: {x: 0, y: 0.70165586, z: -0, w: -0.71251607}
-  m_LocalPosition: {x: 0, y: 1.6, z: 9.92}
+  m_LocalPosition: {x: 0, y: -0.01, z: 9.92}
   m_LocalScale: {x: 1.97, y: 1.97, z: 1.97}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -568,7 +599,7 @@ Transform:
   - {fileID: 4134505309979563827}
   - {fileID: 1998632671}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1466369578
 GameObject:
@@ -854,7 +885,7 @@ Transform:
   - {fileID: 953992807}
   - {fileID: 543861842}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1723463789
 GameObject:
@@ -885,7 +916,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1826388925
 GameObject:
@@ -919,7 +950,7 @@ Transform:
   - {fileID: 1466369579}
   - {fileID: 1529006231}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1998632669
 PrefabInstance:
@@ -928,6 +959,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1418591599}
     m_Modifications:
+    - target: {fileID: 2506943037498719812, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_TagString
+      value: Bat
+      objectReference: {fileID: 0}
     - target: {fileID: 3827239427797239653, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: m_RootOrder
       value: 1

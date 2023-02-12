@@ -62,7 +62,6 @@ public class BossBehaviour : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        StartCoroutine(ActivateBoss());
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -82,11 +81,9 @@ public class BossBehaviour : MonoBehaviour
     /// <summary>
     /// This method will be called by the game controller to activate the attacks of the boss
     /// </summary>
-    private IEnumerator ActivateBoss()
+    public IEnumerator ActivateBoss()
     {
-        print("Boss is paused");
         yield return new WaitForSeconds(_bossActivationTime);
-        print("Boss is active");
         EnterAttack();
         // play starting animation
         // set initial attack state

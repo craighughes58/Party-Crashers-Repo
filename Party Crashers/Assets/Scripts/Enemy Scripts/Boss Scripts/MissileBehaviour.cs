@@ -10,7 +10,7 @@ public class MissileBehaviour : MonoBehaviour
     //reference to the gameobjects rigidbody
     private Rigidbody rb;
     //THE TRANSFORM OF THE TARGET
-    private Transform PlayerPos;
+    private Transform _aimPos;
     //private CharacterController CharCon;
 
     [Header("Speeds")]
@@ -42,7 +42,7 @@ public class MissileBehaviour : MonoBehaviour
 
         //EXPLAIN
         rb = GetComponent<Rigidbody>();
-        PlayerPos = GameObject.Find("XR Origin").GetComponent<Transform>();
+        _aimPos = GameObject.Find("Missile Aim Position").GetComponent<Transform>();
         //CharCon = GameObject.Find("Player").GetComponent<CharacterController>();
         StartCoroutine(Launch());
     }
@@ -72,9 +72,9 @@ public class MissileBehaviour : MonoBehaviour
     /// <returns>null</returns>
     public IEnumerator SeekPlayer()
     {
-        while (Vector3.Distance(PlayerPos.position, transform.position) > .3)
+        while (Vector3.Distance(_aimPos.position, transform.position) > .3)
         {
-            MoveToPos(PlayerPos.position, 1f);
+            MoveToPos(_aimPos.position, 1f);
             //WAY 2
             //transform.position += (PlayerPos.position - transform.position).normalized * speed * Time.deltaTime;
             /*            Vector3 direction = PlayerPos.position - transform.position;

@@ -33,6 +33,8 @@ public class GameController : MonoBehaviour
     private GameObject rightHand;
     public GameObject wrappingPapper;
     public GameObject shield;
+
+    [SerializeField] BossBehaviour _bossBehaviour;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,6 +91,9 @@ public class GameController : MonoBehaviour
                 spawnLocationStop3.z = 85;
                 Instantiate(Hyena, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();*/
+                return;
+            case 5:
+                StartCoroutine(_bossBehaviour.ActivateBoss());
                 return;
             default:
                 print("SOMETHING IS TERRIBLY WRONG");
