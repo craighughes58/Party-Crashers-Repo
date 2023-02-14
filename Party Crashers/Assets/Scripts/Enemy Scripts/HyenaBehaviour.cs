@@ -57,12 +57,15 @@ public class HyenaBehaviour : MonoBehaviour
 
     Animation anim;
 
+    private GameController gc;
+
     [SerializeField] private int scoreAmount;
     // Start is called before the first frame update
     void Start()
     {
         Destroy(Instantiate(entranceParticles,transform.position,Quaternion.identity),10f);
-
+        gc = GameObject.Find("GameController").GetComponent<GameController>();
+        //gc.AddEnemy();
         pb = FindObjectOfType<PlayerBehaviour>();
         rb = GetComponent<Rigidbody>();
         meshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -215,6 +218,7 @@ public class HyenaBehaviour : MonoBehaviour
                         Instantiate(deathParticle7);
                         break;
                 }*/
+        gc.LoseEnemy();
 
         if (name.Contains("Mat2"))
         {

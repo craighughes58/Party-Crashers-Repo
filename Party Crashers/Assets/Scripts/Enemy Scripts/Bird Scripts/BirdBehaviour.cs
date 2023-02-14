@@ -33,11 +33,14 @@ public class BirdBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject OutroParticles;
 
+    private GameController gc;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        gc = GameObject.Find("GameController").GetComponent<GameController>();
+        //gc.AddEnemy();
         Destroy(Instantiate(IntroParticles,transform.position,Quaternion.identity),10f);
         player = FindObjectOfType<PlayerBehaviour>().transform;
         pb = FindObjectOfType<PlayerBehaviour>();
@@ -77,6 +80,7 @@ public class BirdBehaviour : MonoBehaviour
     /// </summary>
     public void BirdHit()
     {
+        gc.LoseEnemy();
         Destroy(gameObject);
         Destroy(Instantiate(OutroParticles, transform.position, Quaternion.identity), 10f);
         Destroy(Instantiate(DestroyedBird, transform.position, transform.rotation),5f);
