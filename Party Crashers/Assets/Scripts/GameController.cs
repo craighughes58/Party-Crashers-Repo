@@ -132,9 +132,11 @@ public class GameController : MonoBehaviour
     //if none are less then you move to the next zone
     public void LoseEnemy()
     {
+        print(currentEnemyNum);
         currentEnemyNum--;
         if(currentEnemyNum <= 0)
         {
+            print("OSJGSD");
             SAP.StartPlayer();
         }
     }
@@ -142,6 +144,7 @@ public class GameController : MonoBehaviour
     //called when an enemy is instantiated
     public void AddEnemy()
     {
+        print("ADD");
         currentEnemyNum++;
     }
 
@@ -167,11 +170,11 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void Update()
+/*    private void Update()
     {
         if (currentEnemyNum <= 0)
         {
             SAP.StartPlayer();
         }
-    }
+    }*/
 }
