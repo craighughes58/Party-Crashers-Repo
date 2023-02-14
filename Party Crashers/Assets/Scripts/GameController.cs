@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -168,6 +169,35 @@ public class GameController : MonoBehaviour
             shield.transform.localPosition = localPos2;
 
         }
+    }
+
+    /// <summary>
+    /// Changes the scene to the named scene
+    /// </summary>
+    /// <param name="sceneName"> Name of scene you want to change to </param>
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void DeactivateUIMenu(GameObject uiMenu)
+    {
+        uiMenu.gameObject.SetActive(false);
+    }
+
+    public void ActivateUIMenu(GameObject uiMenu)
+    {
+        uiMenu.gameObject.SetActive(true);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 /*    private void Update()
