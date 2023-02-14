@@ -172,7 +172,6 @@ public class HyenaBehaviour : MonoBehaviour
     {
         if(collision.gameObject.tag.Equals("Bat"))
         {
-            print("HEEEE");
             HitReaction();
         }
     }
@@ -217,14 +216,14 @@ public class HyenaBehaviour : MonoBehaviour
                         break;
                 }*/
 
-        if (name.Contains("Material 2"))
+        if (name.Contains("Mat2"))
         {
             Destroy(Instantiate(shatteredHyena2, transform.position, transform.rotation),5f);
             pb.AddScore(victoryScore);
             Destroy(gameObject);
         }
 
-        if (name.Contains("Material 1"))
+        if (name.Contains("Mat1"))
         {
             Destroy(Instantiate(shatteredHyena1, transform.position, transform.rotation),5f);
             pb.AddScore(victoryScore);
