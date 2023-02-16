@@ -45,7 +45,6 @@ public class BossBehaviour : MonoBehaviour
 
     [Header("Movement Variables")]
     [SerializeField] private float _transitionTime;
-    private Rigidbody _rb;
     #endregion
 
     #endregion
@@ -62,7 +61,6 @@ public class BossBehaviour : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        _rb = GetComponent<Rigidbody>();
         StartCoroutine(ActivateBoss());
     }
 
