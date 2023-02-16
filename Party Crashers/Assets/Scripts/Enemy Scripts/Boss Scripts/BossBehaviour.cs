@@ -61,7 +61,7 @@ public class BossBehaviour : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        StartCoroutine(ActivateBoss());
+        //StartCoroutine(ActivateBoss());
     }
 
     #endregion
