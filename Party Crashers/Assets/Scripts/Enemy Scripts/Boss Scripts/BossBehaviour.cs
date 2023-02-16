@@ -63,6 +63,7 @@ public class BossBehaviour : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        StartCoroutine(ActivateBoss());
     }
 
     #endregion
