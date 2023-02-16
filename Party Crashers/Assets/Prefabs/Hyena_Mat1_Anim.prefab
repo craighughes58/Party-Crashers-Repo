@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   scoreDamage: 10
-  victoryScore: 0
+  victoryScore: 50
   entranceParticles: {fileID: 1093073474904058160, guid: 0d9aef3e231c5d9439a5b57bf34ac590, type: 3}
   deathParticle1: {fileID: 1520341045109095004, guid: efd2b5679c035124d815786968aa6442, type: 3}
   shatteredHyena1: {fileID: 7859299251967649713, guid: f6bc245a1c976094cb3bd5c7ed0f65f3, type: 3}
