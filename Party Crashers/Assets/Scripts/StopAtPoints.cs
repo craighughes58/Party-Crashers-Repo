@@ -18,7 +18,8 @@ public class StopAtPoints : MonoBehaviour
         {
             GC.MoveToNextPoint();
             isStopped = true;
-            StartCoroutine(PauseMoving());//THIS IS TEMPORARY
+            Destroy(other.gameObject);
+            //StartCoroutine(PauseMoving());//THIS IS TEMPORARY
         }
     }
 

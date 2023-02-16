@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private int Score; 
+    private int Score;
 
+    // Parker DeVenney
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
 
     // Start is called before the first frame update
     void Start()
     {
         Score = 0;
+        scoreText.text = "Score: " + Score; // Parker DeVenney
         UpdateUI();
     }
 
@@ -49,11 +54,12 @@ public class PlayerBehaviour : MonoBehaviour
         UpdateUI();
     }
 
+    /// PARKER DEVENNEY
     /// <summary>
-    /// 
+    /// Changes the textmeshpro UI to be the score at the point of the call
     /// </summary>
     private void UpdateUI()
     {
-
+        scoreText.text = ("Score: ") + Score;
     }
 }

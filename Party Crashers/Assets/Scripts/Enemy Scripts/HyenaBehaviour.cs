@@ -55,12 +55,17 @@ public class HyenaBehaviour : MonoBehaviour
 
     bool gotHit;
 
+    Animation anim;
+
+    private GameController gc;
+
     [SerializeField] private int scoreAmount;
     // Start is called before the first frame update
     void Start()
     {
         Destroy(Instantiate(entranceParticles,transform.position,Quaternion.identity),10f);
-
+        gc = GameObject.Find("GameController").GetComponent<GameController>();
+        //gc.AddEnemy();
         pb = FindObjectOfType<PlayerBehaviour>();
         rb = GetComponent<Rigidbody>();
         meshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -76,6 +81,8 @@ public class HyenaBehaviour : MonoBehaviour
         attackTimer = attackInterval;
 
         gotHit = false;
+        anim = GetComponent<Animation>();
+        
     }
 
     // Update is called once per frame
@@ -100,6 +107,10 @@ public class HyenaBehaviour : MonoBehaviour
         else
         {
             meshAgent.SetDestination(player.position - offset);
+            if(!anim.isPlaying)
+            {
+                anim.Play();
+            }
         }
     }
 
@@ -119,6 +130,7 @@ public class HyenaBehaviour : MonoBehaviour
     {
         // Freeze the hyena in place
         moveSpeed = 0;
+        anim.Stop();
 
         // If there's still time on the attack timer, continue the
         // countdown
@@ -163,7 +175,6 @@ public class HyenaBehaviour : MonoBehaviour
     {
         if(collision.gameObject.tag.Equals("Bat"))
         {
-            print("HEEEE");
             HitReaction();
         }
     }
@@ -207,15 +218,16 @@ public class HyenaBehaviour : MonoBehaviour
                         Instantiate(deathParticle7);
                         break;
                 }*/
+        gc.LoseEnemy();
 
-        if (name.Contains("Material 2"))
+        if (name.Contains("Mat2"))
         {
             Destroy(Instantiate(shatteredHyena2, transform.position, transform.rotation),5f);
             pb.AddScore(victoryScore);
             Destroy(gameObject);
         }
 
-        if (name.Contains("Material 1"))
+        if (name.Contains("Mat1"))
         {
             Destroy(Instantiate(shatteredHyena1, transform.position, transform.rotation),5f);
             pb.AddScore(victoryScore);
