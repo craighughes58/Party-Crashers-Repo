@@ -536,7 +536,7 @@ MonoBehaviour:
   leftHanded: 0
   wrappingPapper: {fileID: 0}
   shield: {fileID: 0}
-  _bossBehaviour: {fileID: 0}
+  _bossBehaviour: {fileID: 1021870058}
 --- !u!4 &25485830
 Transform:
   m_ObjectHideFlags: 0
@@ -17927,6 +17927,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d0ab619b0bd0e14aa30cde8be72a73d, type: 3}
+--- !u!114 &1021870058 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6435618245432520275, guid: 4d0ab619b0bd0e14aa30cde8be72a73d, type: 3}
+  m_PrefabInstance: {fileID: 1021870057}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb37010e18e69cf4a9ca544de012b922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1028173258
 GameObject:
   m_ObjectHideFlags: 0

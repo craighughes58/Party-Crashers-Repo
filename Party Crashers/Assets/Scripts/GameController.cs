@@ -131,8 +131,12 @@ public class GameController : MonoBehaviour
                 Instantiate(Bird, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
                 return;
-            default:
+            case 5:
+                StartCoroutine(_bossBehaviour.ActivateBoss());
+                return;
+            default:                
                 print("SOMETHING IS TERRIBLY WRONG");
+
                 return;
         }
 
