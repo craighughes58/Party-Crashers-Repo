@@ -96,22 +96,27 @@ public class HyenaBehaviour : MonoBehaviour
     {
         // An offset distance to ensure the hyenas don't get right up in the
         // player's face
-        Vector3 offset = new Vector3(6, 0, 0);
+        Vector3 offset = new Vector3(6, 0, 6);
 
         // If the hyena is close enough to the player, it gets ready to attack
-        if (enemy.position.x == (player.position.x - offset.x))
+        if (enemy.position.x >= (player.position.x - offset.x) && (enemy.position.z >= (player.position.z - offset.z)))
         {
             AttackWindUp();
         }
+
+
         // Otherwise, it keeps moving towards the player
         else
         {
+            meshAgent.isStopped = false;
             meshAgent.SetDestination(player.position - offset);
             if(!anim.isPlaying)
             {
                 anim.Play();
             }
+
         }
+        
     }
 
     /// <summary>
@@ -129,7 +134,8 @@ public class HyenaBehaviour : MonoBehaviour
     private void AttackWindUp()
     {
         // Freeze the hyena in place
-        moveSpeed = 0;
+        //meshAgent.isStopped = true;
+        meshAgent.isStopped = true;
         anim.Stop();
 
         // If there's still time on the attack timer, continue the
