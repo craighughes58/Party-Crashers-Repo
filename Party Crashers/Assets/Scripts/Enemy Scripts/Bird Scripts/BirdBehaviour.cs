@@ -35,6 +35,13 @@ public class BirdBehaviour : MonoBehaviour
 
     private GameController gc;
 
+    [Tooltip("the different colors the pelican can be")]
+    [SerializeField]
+    private List<Material> Colors;
+
+    [Tooltip("Reference to the beak")]
+    [SerializeField]
+    private MeshRenderer BeakRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +51,7 @@ public class BirdBehaviour : MonoBehaviour
         Destroy(Instantiate(IntroParticles,transform.position,Quaternion.identity),10f);
         player = FindObjectOfType<PlayerBehaviour>().transform;
         pb = FindObjectOfType<PlayerBehaviour>();
+        RandomizeColor();
 
     }
 
@@ -86,6 +94,12 @@ public class BirdBehaviour : MonoBehaviour
         Destroy(Instantiate(DestroyedBird, transform.position, transform.rotation),5f);
         pb.AddScore(25);
 
+    }
+
+    private void RandomizeColor()
+    {
+        GetComponent<MeshRenderer>().material = Colors[Random.Range(0, Colors.Count)];
+        BeakRenderer.material = Colors[Random.Range(0, Colors.Count)];
     }
 
 }
