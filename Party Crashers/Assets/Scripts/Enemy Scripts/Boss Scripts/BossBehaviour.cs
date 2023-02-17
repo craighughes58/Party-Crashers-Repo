@@ -3,46 +3,68 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class BossBehaviour : MonoBehaviour
 {
     #region Variables
+
+    [SerializeField] private Transition _transition;
+
+    #region Scipt Dependencies
+    [Header("Script Dependencies")]
+    [SerializeField] private BossAttacks _bossAttacks;
+
+    #endregion
+
+    #region Health 
     [Header("Health")]
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _currentHealth;
+    #endregion
 
+    #region Phases & Activation
     //the boss has two modes, attack and exhaustion. When the boss is attacking they can't take damage but when they're exhausted they can't attack and they're open to taking damage
     private enum BossState { ATTACK, EXHAUSTION }
     [Header("States")]
     [SerializeField] private BossState _currentBossState;
 
-    [Header("Attacks")]
-    [SerializeField] private int _maxAttacks; //the maximum amount of attacks the boss can make before entering exhaustion
-    [SerializeField] private int _currentAttacks; //this is the variable that keeps track of how many attacks the boss has
-
-    [Header("Timers")]
+    [Header("Boss Activation")]
     [Range(0f, 10f)]
-    [SerializeField] private float _exhaustionTimer;
-
-    [Range(0f, 10f)]
-    [SerializeField] private float _timeBetweenAttacks;
-
+    [SerializeField] private float _bossActivationTime;
     private bool _isActivated; //the boss will stay stationary until he is activated by an external source in the ActivateBoss method
+
+    [Header("Phase Positions")]
+    [SerializeField] private Transform _attackPos;
+    [SerializeField] private Transform _exhaustPos;
+
+    #endregion
+
+    #region Movement Variables
+    private Vector3 _moveVelocity;
+
+    [Header("Movement Variables")]
+    [SerializeField] private float _transitionTime;
+    #endregion
+
     #endregion
 
     #region Functions
+
+    #region Awake, Start, Update
+    private void Awake()
+    {
+        _currentHealth = _maxHealth;
+        _moveVelocity = new Vector3(0f, _transitionTime, 0f);
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
-        //_isActivated = false;
-        _currentAttacks = _maxAttacks;
-        _currentHealth = _maxHealth;
-        ActivateBoss();
+        //StartCoroutine(ActivateBoss());
     }
 
-    private void Update()
-    {
-    }
+    #endregion
 
     #region Getters
     /// <returns> _currentBossState as a string </returns>
@@ -54,12 +76,26 @@ public class BossBehaviour : MonoBehaviour
     #endregion
 
     #region Boss fight
+
+    /// <summary>
+    /// This method will be called by the game controller to activate the attacks of the boss
+    /// </summary>
+    public IEnumerator ActivateBoss()
+    {
+        yield return new WaitForSeconds(_bossActivationTime);
+        EnterAttack();
+        // play starting animation
+        // set initial attack state
+    }
+
+    #region State Control Functions
     /// <summary>
     /// Sets the boss state
     /// </summary>
     /// <param name="state"> string name of the state being set </param>
     private void SetBossState(BossState state)
     {
+        Debug.Log("Entering " + state);
         _currentBossState = state;
         switch (state)
         {
@@ -71,21 +107,11 @@ public class BossBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// This method will be called by the game controller to activate the attacks of the boss
-    /// </summary>
-    private void ActivateBoss()
-    {
-        // play starting animation
-        // set initial attack state
-        EnterAttack();
-    }
-
-    /// <summary>
     /// Sets the boss state to exhaustion
     /// </summary>
     public void EnterExhaustion()
     {
-        SetBossState(BossState.EXHAUSTION);
+        StartCoroutine(MoveToExhPos());
     }
 
     /// <summary>
@@ -93,9 +119,97 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void EnterAttack()
     {
-        SetBossState(BossState.ATTACK);
+        StartCoroutine(MoveToAtkPos());
     }
 
+    /// <summary>
+    /// Initiates vulnerability and sets boss state
+    /// </summary>
+    private void BeginExhaustion()
+    {
+        SetBossState(BossState.EXHAUSTION);
+        StartCoroutine(_bossAttacks.ExhaustionPhase());
+    }
+
+    /// <summary>
+    /// Initiates missile spawning & sets boss state
+    /// </summary>
+    private void BeginAttack()
+    {
+        SetBossState(BossState.ATTACK);
+        StartCoroutine(_bossAttacks.AttackPhase());
+    }
+    #endregion
+
+    #region Movement & State begin Functions
+    /// <summary>
+    /// Moves the boss to the attack position
+    /// </summary>
+    private IEnumerator MoveToAtkPos()
+    {
+        float pathPercentage = 0;
+        Vector3 startPos = transform.position;
+        Quaternion startQ = transform.rotation;
+
+        while (pathPercentage < _transitionTime)
+        {
+            RotateToVal(startQ, _attackPos.rotation, pathPercentage / _transitionTime);
+            MoveToLocation(startPos, _attackPos.position, pathPercentage / _transitionTime);
+
+            pathPercentage += Time.deltaTime;
+            yield return null;
+        }
+        BeginAttack();
+    }
+
+    /// <summary>
+    /// Moves the boss to the exh pos where the player can hit the eye
+    /// </summary>
+    private IEnumerator MoveToExhPos()
+    {
+        float pathPercentage = 0;
+        Vector3 startPos = transform.position;
+        Quaternion startQ = transform.rotation;
+
+        while(pathPercentage < _transitionTime)
+        {
+            RotateToVal(startQ, _exhaustPos.rotation, pathPercentage / _transitionTime);
+            MoveToLocation(startPos, _exhaustPos.position, pathPercentage / _transitionTime);
+
+            pathPercentage += Time.deltaTime;
+            yield return null;
+        }
+        BeginExhaustion();
+    }
+
+    #endregion
+
+    #region Helper Functions
+    /// <summary>
+    /// Moves the object from one point to another at a speed
+    /// </summary>
+    /// <param name="from"> original location </param>
+    /// <param name="to"> ending location </param>
+    /// <param name="moveSpeed"> speed of movement </param>
+    private void MoveToLocation(Vector3 from, Vector3 to, float transitionSpeed)
+    {
+        transform.position = Vector3.Lerp(from, to, transitionSpeed);
+    }
+
+    /// <summary>
+    /// Rotates the object at a specific speed
+    /// </summary>
+    /// <param name="from"> origal rotation </param>
+    /// <param name="to"> end rotation </param>
+    /// <param name="rotateSpeed"> speed of rotation </param>
+    private void RotateToVal(Quaternion from, Quaternion to, float transitionSpeed)
+    {
+        transform.rotation = Quaternion.Lerp(from, to, transitionSpeed);
+    }
+
+    #endregion
+
+    #region Boss life functions
     /// <summary>
     /// Decreases boss health by 1
     /// </summary>
@@ -106,70 +220,27 @@ public class BossBehaviour : MonoBehaviour
         if (_currentHealth == 0)
         {
             BossDeath();
+            
         }
-        else
+        else if(_currentHealth > 0)
         {
-            StartCoroutine(AttackPhase());
+            _bossAttacks.StopAllCoroutines();
+            EnterAttack();
         }
-    }
-
-    /// <summary>
-    /// Decreases boss attacks by 1
-    /// </summary>
-    private void DecreaseAttacks()
-    {
-        _currentAttacks--;
-    }
-
-    /// <summary>
-    /// Controls the exhaustion phase duration & events
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator ExhaustionPhase()
-    {
-        EnterExhaustion();
-
-        yield return new WaitForSeconds(_exhaustionTimer);
-
-        EnterAttack();
-    }
-
-    /// <summary>
-    /// Controls the attach phase events
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator AttackPhase()
-    {
-        EnterAttack();
-        while (_currentAttacks > 0)
-        {
-            AttackPlayer();
-        }
-        yield return new WaitForSeconds(_timeBetweenAttacks);
-
-        EnterExhaustion();
-    }
-
-    /// <summary>
-    /// Attacks the player
-    /// </summary>
-    private void AttackPlayer()
-    {
-        print("Boss attacks player");
-        DecreaseAttacks();
-        if(_currentAttacks == 0)
-        {
-            StartCoroutine(ExhaustionPhase());
-        }
-    }
+    }  
 
     /// <summary>
     /// Controls the boss's death events
     /// </summary>
     private void BossDeath()
     {
+        Debug.Log("boss dies");
         //do stuff when the boss dies
+        _transition.LoadLevel();
     }
+
+    #endregion
+
     #endregion
     #endregion
 }
