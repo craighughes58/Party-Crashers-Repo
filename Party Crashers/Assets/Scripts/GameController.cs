@@ -201,6 +201,7 @@ public class GameController : MonoBehaviour
     public void DeactivateUIMenu(GameObject uiMenu)
     {
         uiMenu.gameObject.SetActive(false);
+        //
     }
 
     public void ActivateUIMenu(GameObject uiMenu)
@@ -211,6 +212,15 @@ public class GameController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void StartGame()
+    {
+
+    }
+    public void PauseScene()
+    {
+
     }
 
 /*    private void Update()
