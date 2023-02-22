@@ -63,6 +63,11 @@ public class HyenaBehaviour : MonoBehaviour
     private GameController gc;
 
     [SerializeField] private int scoreAmount;
+
+    [Tooltip("how far away the enemy will stop from the player")]
+    [SerializeField] 
+    private float offset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +79,6 @@ public class HyenaBehaviour : MonoBehaviour
         meshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         //reference to the player transform
         player = FindObjectOfType<PlayerBehaviour>().transform;
-
         // Radomize the move speed of the hyenas
         moveSpeed = Random.Range(3, 5);
         meshAgent.speed = moveSpeed;
@@ -99,20 +103,19 @@ public class HyenaBehaviour : MonoBehaviour
     {
         // An offset distance to ensure the hyenas don't get right up in the
         // player's face
-        Vector3 offset = new Vector3(6, 0, 6);
-
+        //Vector3 offset = new Vector3(6, 0, 6);
+        //enemy.position.x >= (player.position.x - offset.x) && (enemy.position.z >= (player.position.z - offset.z))
         // If the hyena is close enough to the player, it gets ready to attack
-        if (enemy.position.x >= (player.position.x - offset.x) && (enemy.position.z >= (player.position.z - offset.z)))
+        if (Vector3.Distance(player.position,transform.position) <= offset)
         {
             AttackWindUp();
+            meshAgent.SetDestination(transform.position);
         }
-
-
-        // Otherwise, it keeps moving towards the player
+        
         else
         {
             meshAgent.isStopped = false;
-            meshAgent.SetDestination(player.position - offset);
+            meshAgent.SetDestination(player.position);
             if(!anim.isPlaying)
             {
                 anim.Play();
