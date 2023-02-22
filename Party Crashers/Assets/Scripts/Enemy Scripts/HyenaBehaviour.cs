@@ -21,6 +21,9 @@ public class HyenaBehaviour : MonoBehaviour
     [SerializeField]
     private int scoreDamage;
 
+    [Tooltip("How many hits the hyena can take before being destroyed")]
+    [SerializeField] int enemyLives;
+
     [Tooltip("The player's score")]
     [SerializeField] int victoryScore;
 
@@ -174,13 +177,15 @@ public class HyenaBehaviour : MonoBehaviour
     private void ScoreLoss()
     {
         pb.LoseScore(scoreDamage);
-        Debug.Log("Life lost!");
+        Debug.Log("Score lost!");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag.Equals("Bat"))
         {
+            Debug.Log("Life lost!");
+            enemyLives--;
             HitReaction();
         }
     }
@@ -191,53 +196,57 @@ public class HyenaBehaviour : MonoBehaviour
     /// </summary>
     private void HitReaction()
     {
-        Destroy(Instantiate(deathParticle1,transform.position,Quaternion.identity),15f);
-
-        /*        int particleChoice = Random.Range(1, 7);
-                switch (particleChoice)
-                {
-                    case 1:
-                        Instantiate(deathParticle1);
-                        break;
-
-                    case 2:
-                        Instantiate(deathParticle2);
-                        break;
-
-                    case 3:
-                        Instantiate(deathParticle3);
-                        break;
-
-                    case 4:
-                        Instantiate(deathParticle4);
-                        break;
-
-                    case 5:
-                        Instantiate(deathParticle5);
-                        break;
-
-                    case 6:
-                        Instantiate(deathParticle6);
-                        break;
-
-                    case 7:
-                        Instantiate(deathParticle7);
-                        break;
-                }*/
-        gc.LoseEnemy();
-
-        if (name.Contains("Mat2"))
+        if (enemyLives == 0)
         {
-            Destroy(Instantiate(shatteredHyena2, transform.position, transform.rotation),5f);
-            pb.AddScore(victoryScore);
-            Destroy(gameObject);
-        }
 
-        if (name.Contains("Mat1"))
-        {
-            Destroy(Instantiate(shatteredHyena1, transform.position, transform.rotation),5f);
-            pb.AddScore(victoryScore);
-            Destroy(gameObject);
+            Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
+
+            /*        int particleChoice = Random.Range(1, 7);
+                    switch (particleChoice)
+                    {
+                        case 1:
+                            Instantiate(deathParticle1);
+                            break;
+
+                        case 2:
+                            Instantiate(deathParticle2);
+                            break;
+
+                        case 3:
+                            Instantiate(deathParticle3);
+                            break;
+
+                        case 4:
+                            Instantiate(deathParticle4);
+                            break;
+
+                        case 5:
+                            Instantiate(deathParticle5);
+                            break;
+
+                        case 6:
+                            Instantiate(deathParticle6);
+                            break;
+
+                        case 7:
+                            Instantiate(deathParticle7);
+                            break;
+                    }*/
+            gc.LoseEnemy();
+
+            if (name.Contains("Mat2"))
+            {
+                Destroy(Instantiate(shatteredHyena2, transform.position, transform.rotation), 5f);
+                pb.AddScore(victoryScore);
+                Destroy(gameObject);
+            }
+
+            if (name.Contains("Mat1"))
+            {
+                Destroy(Instantiate(shatteredHyena1, transform.position, transform.rotation), 5f);
+                pb.AddScore(victoryScore);
+                Destroy(gameObject);
+            }
         }
     }
 
