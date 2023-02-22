@@ -29,11 +29,8 @@ public class GameController : MonoBehaviour
     //reference to the squid
     private GameObject Squid;
 
-    public bool leftHanded = false;
-    private GameObject leftHand;
-    private GameObject rightHand;
-    public GameObject wrappingPapper;
-    public GameObject shield;
+    private GameObject leftHand, rightHand, wrappingPapper, shield;
+
 
     [SerializeField] BossBehaviour _bossBehaviour;
     // Start is called before the first frame update
@@ -42,6 +39,8 @@ public class GameController : MonoBehaviour
         SAP = GameObject.Find("XR Origin").GetComponent<StopAtPoints>();
         leftHand = GameObject.Find("LeftHand (Smooth locomotion)");
         rightHand = GameObject.Find("RightHand (Teleport Locomotion)");
+        wrappingPapper = GameObject.FindGameObjectWithTag("Bat");
+        shield = GameObject.FindGameObjectWithTag("Shield");
 
     }
 
@@ -162,7 +161,7 @@ public class GameController : MonoBehaviour
         currentEnemyNum++;
     }
 
-    public void SwapHands()
+    public void SwapHands(bool leftHanded)
     {
         if (leftHand != null && rightHand != null && wrappingPapper != null && shield != null)
         {
@@ -182,6 +181,18 @@ public class GameController : MonoBehaviour
             shield.transform.localPosition = localPos2;
 
         }
+    }
+
+    /// <summary>
+    /// Sets the visibility of the ray hands when called based on input of param
+    /// </summary>
+    /// <param name="visible">Visibility of the ray. True when in menu false when in game</param>
+    public void SwapVisibiltyHands(bool visible)
+    {
+        leftHand.gameObject.transform.GetChild(3).gameObject.SetActive(visible);
+        rightHand.gameObject.transform.GetChild(3).gameObject.SetActive(visible);
+        wrappingPapper.gameObject.SetActive(!visible);
+        shield.gameObject.SetActive(!visible);
     }
 
     /// <summary>
