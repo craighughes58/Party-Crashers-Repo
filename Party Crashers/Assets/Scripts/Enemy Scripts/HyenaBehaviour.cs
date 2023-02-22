@@ -101,6 +101,7 @@ public class HyenaBehaviour : MonoBehaviour
         // If the hyena is close enough to the player, it gets ready to attack
         if (enemy.position.x >= (player.position.x - offset.x) && (enemy.position.z >= (player.position.z - offset.z)))
         {
+            print("QUNG");
             AttackWindUp();
         }
 

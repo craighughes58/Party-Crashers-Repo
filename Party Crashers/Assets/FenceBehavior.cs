@@ -10,7 +10,7 @@ public class FenceBehavior : MonoBehaviour
         while (transform.parent.rotation.eulerAngles.x != 90)
         {
             transform.parent.Rotate(1, 0, 0);
-            print(transform.rotation.eulerAngles.z);
+            //print(transform.rotation.eulerAngles.z);
             yield return null;
         }
     }
