@@ -1,0 +1,34 @@
+{
+    "name": "PartyCrashersInput",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "41d25802-0c66-4946-ba91-49dfb3d84bad",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "08f418da-8272-484d-83a3-d2077764e33f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5ea77997-854d-4b13-b7b7-77f558c305d4",
+                    "path": "<OpenVROculusTouchController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
