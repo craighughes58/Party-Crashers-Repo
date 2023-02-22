@@ -20,8 +20,7 @@ public class BirdProjectileScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        PlayerLocation = GameObject.Find("Missile Aim Position").GetComponent<Transform>();
+        PlayerLocation = GameObject.Find("XR Origin").GetComponent<Transform>();
     }
 
     // Update is called once per frame
