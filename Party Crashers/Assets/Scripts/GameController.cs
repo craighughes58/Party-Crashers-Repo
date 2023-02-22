@@ -74,8 +74,8 @@ public class GameController : MonoBehaviour
                 Instantiate(HyenaVariation, spawnLocationStop1, Quaternion.identity);
                 AddEnemy();
 
-                spawnLocationStop1.x = -5;
-                spawnLocationStop1.z = -75;
+                spawnLocationStop1.x = -9.5f;
+                spawnLocationStop1.z = -112;
                 Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
                 AddEnemy();
                 return;
