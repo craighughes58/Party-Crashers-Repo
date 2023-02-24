@@ -31,6 +31,10 @@ public class GameController : MonoBehaviour
 
     private GameObject leftHand, rightHand, wrappingPapper, shield;
 
+    //UI game object references so they can be turned on and off
+    [SerializeField]
+    private GameObject pauseMenu, settingsMenu;
+
 
     [SerializeField] BossBehaviour _bossBehaviour;
     // Start is called before the first frame update
@@ -41,6 +45,8 @@ public class GameController : MonoBehaviour
         rightHand = GameObject.Find("RightHand (Teleport Locomotion)");
         wrappingPapper = GameObject.FindGameObjectWithTag("Bat");
         shield = GameObject.FindGameObjectWithTag("Shield");
+        pauseMenu.SetActive(false);
+        settingsMenu.SetActive(false);
 
     }
 
@@ -225,13 +231,25 @@ public class GameController : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartGame()
+    public void OpenSettings()
     {
-
+        DeactivateUIMenu(pauseMenu);
+        ActivateUIMenu(settingsMenu);
+    }
+    public void CloseSettings()
+    {
+        ActivateUIMenu(pauseMenu);
+        DeactivateUIMenu(settingsMenu);
     }
     public void PauseScene()
     {
-
+        Time.timeScale = 0;
+        ActivateUIMenu(pauseMenu);
+    }
+    public void ResumeScene()
+    {
+        Time.timeScale = 1;
+        DeactivateUIMenu(pauseMenu);
     }
 
 /*    private void Update()
