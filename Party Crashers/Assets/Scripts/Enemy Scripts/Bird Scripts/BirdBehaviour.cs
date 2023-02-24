@@ -46,12 +46,16 @@ public class BirdBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // spawn sound
+
         gc = GameObject.Find("GameController").GetComponent<GameController>();
         //gc.AddEnemy();
         Destroy(Instantiate(IntroParticles,transform.position,Quaternion.identity),10f);
         player = FindObjectOfType<PlayerBehaviour>().transform;
         pb = FindObjectOfType<PlayerBehaviour>();
         RandomizeColor();
+
+        StartCoroutine(RandomSound());
 
     }
 
@@ -80,6 +84,8 @@ public class BirdBehaviour : MonoBehaviour
         {
             CurrentProjectile = Instantiate(Projectile, transform.position + (transform.forward * ProjectileOffset), transform.rotation);
             CurrentProjectile.GetComponent<BirdProjectileScript>().ConnectToBird(transform);
+
+            // do sound
         }
     }
 
@@ -90,10 +96,11 @@ public class BirdBehaviour : MonoBehaviour
     {
         gc.LoseEnemy();
         Destroy(gameObject);
+        // bird destroyed sound
+
         Destroy(Instantiate(OutroParticles, transform.position, Quaternion.identity), 10f);
         Destroy(Instantiate(DestroyedBird, transform.position, transform.rotation),5f);
         pb.AddScore(25);
-
     }
 
     private void RandomizeColor()
@@ -102,4 +109,10 @@ public class BirdBehaviour : MonoBehaviour
         BeakRenderer.material = Colors[Random.Range(0, Colors.Count)];
     }
 
+    private IEnumerator RandomSound()
+    {
+        yield return new WaitForSeconds(2.5f);
+        // do sound
+        StartCoroutine(RandomSound());
+    }
 }
