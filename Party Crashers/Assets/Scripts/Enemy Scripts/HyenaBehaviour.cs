@@ -89,7 +89,8 @@ public class HyenaBehaviour : MonoBehaviour
 
         gotHit = false;
         anim = GetComponent<Animation>();
-        
+
+        StartCoroutine(RandomSound());
     }
 
     // Update is called once per frame
@@ -168,6 +169,8 @@ public class HyenaBehaviour : MonoBehaviour
         // Print the proof of it attacking to the console (we'll replace this
         // with the actual attack stuff as we get that developed)
         Debug.Log("Attack!");
+        
+        // do attack sound
 
         // The player then loses one life
         ScoreLoss();
@@ -253,4 +256,11 @@ public class HyenaBehaviour : MonoBehaviour
         }
     }
 
+    private IEnumerator RandomSound()
+    {
+        yield return new WaitForSeconds(3f);
+        // make int of 1 or 2
+        // do sound based on int
+        StartCoroutine(RandomSound());
+    }
 }
