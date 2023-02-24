@@ -41,11 +41,21 @@ public class BirdBehaviour : MonoBehaviour
 
     [Tooltip("Reference to the beak")]
     [SerializeField]
-    private MeshRenderer BeakRenderer;
+    private GameObject Beak;
+
+    [SerializeField]
+    private SkinnedMeshRenderer BodyRenderer;
+
+    private Animator playerAnimator;
+    public int currentFrame = 0;
+    AnimatorClipInfo[] animationClip;
+    int amountTimeLooped=0;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        playerAnimator = GetComponent<Animator>();
         // spawn sound
 
         gc = GameObject.Find("GameController").GetComponent<GameController>();
@@ -56,14 +66,26 @@ public class BirdBehaviour : MonoBehaviour
         RandomizeColor();
 
         StartCoroutine(RandomSound());
+        animationClip = playerAnimator.GetCurrentAnimatorClipInfo(0);
 
     }
 
+    private void FixedUpdate()
+    {
+        if(playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped > 1)
+        {
+            amountTimeLooped++;
+        }
+        currentFrame = (int)((playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped) * (animationClip[0].clip.length * 24));
+    }
     // Update is called once per frame
     void Update()
-    {
+    {   
         Rotate();
-        CheckProjectile();
+        if (currentFrame == 123)
+        {
+            CheckProjectile();
+        }
     }
 
     /// <summary>
@@ -82,7 +104,7 @@ public class BirdBehaviour : MonoBehaviour
     {
         if(CurrentProjectile == null)
         {
-            CurrentProjectile = Instantiate(Projectile, transform.position + (transform.forward * ProjectileOffset), transform.rotation);
+            CurrentProjectile = Instantiate(Projectile, Beak.transform.position + (transform.forward * ProjectileOffset), transform.rotation);
             CurrentProjectile.GetComponent<BirdProjectileScript>().ConnectToBird(transform);
 
             // do sound
@@ -105,8 +127,8 @@ public class BirdBehaviour : MonoBehaviour
 
     private void RandomizeColor()
     {
-        GetComponent<MeshRenderer>().material = Colors[Random.Range(0, Colors.Count)];
-        BeakRenderer.material = Colors[Random.Range(0, Colors.Count)];
+        BodyRenderer.material = Colors[Random.Range(0, Colors.Count)];
+        Beak.GetComponent<MeshRenderer>().material = Colors[Random.Range(0, Colors.Count)];
     }
 
     private IEnumerator RandomSound()
