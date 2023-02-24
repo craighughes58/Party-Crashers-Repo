@@ -58,7 +58,9 @@ public class HyenaBehaviour : MonoBehaviour
 
     bool gotHit;
 
-    Animation anim;
+    private bool attacking = false;
+
+    private Animator anim;
 
     private GameController gc;
 
@@ -67,6 +69,7 @@ public class HyenaBehaviour : MonoBehaviour
     [Tooltip("how far away the enemy will stop from the player")]
     [SerializeField] 
     private float offset;
+
 
     // Start is called before the first frame update
     void Start()
@@ -88,7 +91,7 @@ public class HyenaBehaviour : MonoBehaviour
         attackTimer = attackInterval;
 
         gotHit = false;
-        anim = GetComponent<Animation>();
+        anim = GetComponent<Animator>();
 
         StartCoroutine(RandomSound());
     }
@@ -109,18 +112,25 @@ public class HyenaBehaviour : MonoBehaviour
         // If the hyena is close enough to the player, it gets ready to attack
         if (Vector3.Distance(player.position,transform.position) <= offset)
         {
+            if (!attacking)
+            {
+                attacking = true;
+                anim.SetBool("attacking", attacking);
+            }
+
             AttackWindUp();
             meshAgent.SetDestination(transform.position);
         }
         
         else
         {
+            if(attacking)
+            {
+                attacking = false;
+                anim.SetBool("attacking", attacking);
+            }
             meshAgent.isStopped = false;
             meshAgent.SetDestination(player.position);
-            if(!anim.isPlaying)
-            {
-                anim.Play();
-            }
 
         }
         
@@ -143,7 +153,7 @@ public class HyenaBehaviour : MonoBehaviour
         // Freeze the hyena in place
         //meshAgent.isStopped = true;
         meshAgent.isStopped = true;
-        anim.Stop();
+        
 
         // If there's still time on the attack timer, continue the
         // countdown

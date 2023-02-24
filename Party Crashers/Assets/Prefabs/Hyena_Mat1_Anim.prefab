@@ -41,11 +41,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8342875476054028656}
-  - component: {fileID: 8342875476054028659}
   - component: {fileID: 8342875476054028654}
   - component: {fileID: 8342875476054028657}
   - component: {fileID: 8342875476054028655}
   - component: {fileID: 8342875476054028652}
+  - component: {fileID: 9073461008008631837}
   m_Layer: 0
   m_Name: Hyena_Mat1_Anim
   m_TagString: Untagged
@@ -70,22 +70,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &8342875476054028659
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8342875476054028658}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 1827226128182048838, guid: 7284d15f376dedb4885a543b77a84611, type: 3}
-  m_Animations:
-  - {fileID: 1827226128182048838, guid: 7284d15f376dedb4885a543b77a84611, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
 --- !u!114 &8342875476054028654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +146,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!95 &9073461008008631837
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8342875476054028658}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82d56255a9d445446880a2d7bda10db6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8342875476084834302
 GameObject:
   m_ObjectHideFlags: 0
