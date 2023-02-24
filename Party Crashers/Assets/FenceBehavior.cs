@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class FenceBehavior : MonoBehaviour
 {
+    bool triggered;
     IEnumerator Animation()
     {
-        while (transform.rotation.eulerAngles.z != 270)
+        while (transform.parent.rotation.eulerAngles.x != 90)
         {
-            transform.Rotate(0, 0, - 1);
+            transform.parent.Rotate(1, 0, 0);
             print(transform.rotation.eulerAngles.z);
             yield return null;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name.Contains("Hyena") && !triggered)
+        {
+            triggered = true;
+            StartCoroutine("Animation");
         }
     }
 }

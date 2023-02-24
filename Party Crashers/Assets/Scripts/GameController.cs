@@ -29,17 +29,18 @@ public class GameController : MonoBehaviour
     //reference to the squid
     private GameObject Squid;
 
-    public bool leftHanded = false;
-    private GameObject leftHand;
-    private GameObject rightHand;
-    public GameObject wrappingPapper;
-    public GameObject shield;
+    private GameObject leftHand, rightHand, wrappingPapper, shield;
+
+
+    [SerializeField] BossBehaviour _bossBehaviour;
     // Start is called before the first frame update
     void Start()
     {
         SAP = GameObject.Find("XR Origin").GetComponent<StopAtPoints>();
         leftHand = GameObject.Find("LeftHand (Smooth locomotion)");
         rightHand = GameObject.Find("RightHand (Teleport Locomotion)");
+        wrappingPapper = GameObject.FindGameObjectWithTag("Bat");
+        shield = GameObject.FindGameObjectWithTag("Shield");
 
     }
 
@@ -63,7 +64,7 @@ public class GameController : MonoBehaviour
                 return;
             //First Area Spawns
             case 2:
-                Vector3 spawnLocationStop1 = new Vector3(-30,0,-95);
+                Vector3 spawnLocationStop1 = new Vector3(-30, 0, -95);
                 Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
                 AddEnemy();
 
@@ -72,41 +73,46 @@ public class GameController : MonoBehaviour
                 Instantiate(HyenaVariation, spawnLocationStop1, Quaternion.identity);
                 AddEnemy();
 
-                spawnLocationStop1.x = -5;
-                spawnLocationStop1.z = -75;
+                spawnLocationStop1.x = -9.5f;
+                spawnLocationStop1.z = -112;
                 Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
                 AddEnemy();
                 return;
             case 3:
-                Vector3 spawnLocationStop2 = new Vector3(7, 23, 6);
+                Vector3 spawnLocationStop2 = new Vector3(10.3f, 19.52f, 8.32f);
                 Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
                 AddEnemy();
-                spawnLocationStop2.x = -2;
-                spawnLocationStop2.y = 19;
-                spawnLocationStop2.z = 0;
+
+                spawnLocationStop2.x = 3.74f;
+                spawnLocationStop2.y = 16.23f;
+                spawnLocationStop2.z = 2.22f;
                 Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
                 AddEnemy();
-                spawnLocationStop2.x = 40;
-                spawnLocationStop2.y = 25;
-                spawnLocationStop2.z = -17;
+
+                spawnLocationStop2.x = 49.68f;
+                spawnLocationStop2.y = 16.16f;
+                spawnLocationStop2.z = -16.53f;
                 Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
                 AddEnemy();
-                print("spawn birds");
                 return;
             case 4:
-                Vector3 spawnLocationStop3 = new Vector3(38, 0,140);
+                Vector3 spawnLocationStop3 = new Vector3(38, 0, 140);
                 Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
+
                 spawnLocationStop3.x = 30;
                 Instantiate(Hyena, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
+
                 spawnLocationStop3.x = 22;
                 Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
+
                 spawnLocationStop3.x = 5;
                 spawnLocationStop3.z = 70;
                 Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
+
                 spawnLocationStop3.x = 1;
                 spawnLocationStop3.z = 85;
                 Instantiate(Hyena, spawnLocationStop3, Quaternion.identity);
@@ -117,21 +123,27 @@ public class GameController : MonoBehaviour
                 spawnLocationStop3.z = 83;
                 Instantiate(Bird, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
+
                 spawnLocationStop3.x = -22;
                 spawnLocationStop3.y = 48.17f;
                 spawnLocationStop3.z = 117;
                 Instantiate(Bird, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
                 return;
-            default:
+            case 5:
+                StartCoroutine(_bossBehaviour.ActivateBoss());
+                return;
+            default:                
                 print("SOMETHING IS TERRIBLY WRONG");
+
                 return;
         }
 
     }
-    //calls when an enemy is destroyed
-    //if none are less then you move to the next zone
-    public void LoseEnemy()
+
+        //calls when an enemy is destroyed
+        //if none are less then you move to the next zone
+        public void LoseEnemy()
     {
         print(currentEnemyNum);
         currentEnemyNum--;
@@ -149,7 +161,7 @@ public class GameController : MonoBehaviour
         currentEnemyNum++;
     }
 
-    public void SwapHands()
+    public void SwapHands(bool leftHanded)
     {
         if (leftHand != null && rightHand != null && wrappingPapper != null && shield != null)
         {
@@ -172,6 +184,18 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
+    /// Sets the visibility of the ray hands when called based on input of param
+    /// </summary>
+    /// <param name="visible">Visibility of the ray. True when in menu false when in game</param>
+    public void SwapVisibiltyHands(bool visible)
+    {
+        leftHand.gameObject.transform.GetChild(3).gameObject.SetActive(visible);
+        rightHand.gameObject.transform.GetChild(3).gameObject.SetActive(visible);
+        wrappingPapper.gameObject.SetActive(!visible);
+        shield.gameObject.SetActive(!visible);
+    }
+
+    /// <summary>
     /// Changes the scene to the named scene
     /// </summary>
     /// <param name="sceneName"> Name of scene you want to change to </param>
@@ -188,6 +212,7 @@ public class GameController : MonoBehaviour
     public void DeactivateUIMenu(GameObject uiMenu)
     {
         uiMenu.gameObject.SetActive(false);
+        //
     }
 
     public void ActivateUIMenu(GameObject uiMenu)
@@ -198,6 +223,15 @@ public class GameController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void StartGame()
+    {
+
+    }
+    public void PauseScene()
+    {
+
     }
 
 /*    private void Update()

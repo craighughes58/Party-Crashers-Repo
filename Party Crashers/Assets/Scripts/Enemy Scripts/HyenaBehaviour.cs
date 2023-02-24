@@ -21,6 +21,9 @@ public class HyenaBehaviour : MonoBehaviour
     [SerializeField]
     private int scoreDamage;
 
+    [Tooltip("How many hits the hyena can take before being destroyed")]
+    [SerializeField] int enemyLives;
+
     [Tooltip("The player's score")]
     [SerializeField] int victoryScore;
 
@@ -60,6 +63,11 @@ public class HyenaBehaviour : MonoBehaviour
     private GameController gc;
 
     [SerializeField] private int scoreAmount;
+
+    [Tooltip("how far away the enemy will stop from the player")]
+    [SerializeField] 
+    private float offset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +79,6 @@ public class HyenaBehaviour : MonoBehaviour
         meshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         //reference to the player transform
         player = FindObjectOfType<PlayerBehaviour>().transform;
-
         // Radomize the move speed of the hyenas
         moveSpeed = Random.Range(3, 5);
         meshAgent.speed = moveSpeed;
@@ -97,22 +104,26 @@ public class HyenaBehaviour : MonoBehaviour
     {
         // An offset distance to ensure the hyenas don't get right up in the
         // player's face
-        Vector3 offset = new Vector3(6, 0, 0);
-
+        //Vector3 offset = new Vector3(6, 0, 6);
+        //enemy.position.x >= (player.position.x - offset.x) && (enemy.position.z >= (player.position.z - offset.z))
         // If the hyena is close enough to the player, it gets ready to attack
-        if (enemy.position.x == (player.position.x - offset.x))
+        if (Vector3.Distance(player.position,transform.position) <= offset)
         {
             AttackWindUp();
+            meshAgent.SetDestination(transform.position);
         }
-        // Otherwise, it keeps moving towards the player
+        
         else
         {
-            meshAgent.SetDestination(player.position - offset);
+            meshAgent.isStopped = false;
+            meshAgent.SetDestination(player.position);
             if(!anim.isPlaying)
             {
                 anim.Play();
             }
+
         }
+        
     }
 
     /// <summary>
@@ -130,7 +141,8 @@ public class HyenaBehaviour : MonoBehaviour
     private void AttackWindUp()
     {
         // Freeze the hyena in place
-        moveSpeed = 0;
+        //meshAgent.isStopped = true;
+        meshAgent.isStopped = true;
         anim.Stop();
 
         // If there's still time on the attack timer, continue the
@@ -171,13 +183,15 @@ public class HyenaBehaviour : MonoBehaviour
     private void ScoreLoss()
     {
         pb.LoseScore(scoreDamage);
-        Debug.Log("Life lost!");
+        Debug.Log("Score lost!");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag.Equals("Bat"))
         {
+            Debug.Log("Life lost!");
+            enemyLives--;
             HitReaction();
         }
     }
@@ -188,53 +202,57 @@ public class HyenaBehaviour : MonoBehaviour
     /// </summary>
     private void HitReaction()
     {
-        Destroy(Instantiate(deathParticle1,transform.position,Quaternion.identity),15f);
-
-        /*        int particleChoice = Random.Range(1, 7);
-                switch (particleChoice)
-                {
-                    case 1:
-                        Instantiate(deathParticle1);
-                        break;
-
-                    case 2:
-                        Instantiate(deathParticle2);
-                        break;
-
-                    case 3:
-                        Instantiate(deathParticle3);
-                        break;
-
-                    case 4:
-                        Instantiate(deathParticle4);
-                        break;
-
-                    case 5:
-                        Instantiate(deathParticle5);
-                        break;
-
-                    case 6:
-                        Instantiate(deathParticle6);
-                        break;
-
-                    case 7:
-                        Instantiate(deathParticle7);
-                        break;
-                }*/
-        gc.LoseEnemy();
-
-        if (name.Contains("Mat2"))
+        if (enemyLives == 0)
         {
-            Destroy(Instantiate(shatteredHyena2, transform.position, transform.rotation),5f);
-            pb.AddScore(victoryScore);
-            Destroy(gameObject);
-        }
 
-        if (name.Contains("Mat1"))
-        {
-            Destroy(Instantiate(shatteredHyena1, transform.position, transform.rotation),5f);
-            pb.AddScore(victoryScore);
-            Destroy(gameObject);
+            Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
+
+            /*        int particleChoice = Random.Range(1, 7);
+                    switch (particleChoice)
+                    {
+                        case 1:
+                            Instantiate(deathParticle1);
+                            break;
+
+                        case 2:
+                            Instantiate(deathParticle2);
+                            break;
+
+                        case 3:
+                            Instantiate(deathParticle3);
+                            break;
+
+                        case 4:
+                            Instantiate(deathParticle4);
+                            break;
+
+                        case 5:
+                            Instantiate(deathParticle5);
+                            break;
+
+                        case 6:
+                            Instantiate(deathParticle6);
+                            break;
+
+                        case 7:
+                            Instantiate(deathParticle7);
+                            break;
+                    }*/
+            gc.LoseEnemy();
+
+            if (name.Contains("Mat2"))
+            {
+                Destroy(Instantiate(shatteredHyena2, transform.position, transform.rotation), 5f);
+                pb.AddScore(victoryScore);
+                Destroy(gameObject);
+            }
+
+            if (name.Contains("Mat1"))
+            {
+                Destroy(Instantiate(shatteredHyena1, transform.position, transform.rotation), 5f);
+                pb.AddScore(victoryScore);
+                Destroy(gameObject);
+            }
         }
     }
 

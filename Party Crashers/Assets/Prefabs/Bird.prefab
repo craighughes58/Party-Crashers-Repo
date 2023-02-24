@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: e9418287b8b20a44083a45de3157baae, type: 3}
+  - {fileID: 2100000, guid: 1be570530b5aff04ab15ffc785191298, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -162,7 +162,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: e9418287b8b20a44083a45de3157baae, type: 3}
+  - {fileID: 2100000, guid: 1be570530b5aff04ab15ffc785191298, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -215,3 +215,8 @@ MonoBehaviour:
   DestroyedBird: {fileID: 2969587629849225333, guid: 2ebb27b72d9a97d4d91cfec83133b262, type: 3}
   IntroParticles: {fileID: 1093073474904058160, guid: 0d9aef3e231c5d9439a5b57bf34ac590, type: 3}
   OutroParticles: {fileID: 1520341045109095004, guid: efd2b5679c035124d815786968aa6442, type: 3}
+  Colors:
+  - {fileID: 2100000, guid: 1be570530b5aff04ab15ffc785191298, type: 2}
+  - {fileID: 2100000, guid: f9fee675b158e254bb14550255078ddf, type: 2}
+  - {fileID: 2100000, guid: 2c10fd09ff681c04b8cb322beea1b50d, type: 2}
+  BeakRenderer: {fileID: 5396974480128148084}
