@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
         rightHand = GameObject.Find("RightHand (Teleport Locomotion)");
         wrappingPapper = GameObject.FindGameObjectWithTag("Bat");
         shield = GameObject.FindGameObjectWithTag("Shield");
-
+        DevBossTesting();
     }
 
     //This script will spawn the enemies after each trigger
@@ -241,4 +241,12 @@ public class GameController : MonoBehaviour
             SAP.StartPlayer();
         }
     }*/
+
+    private void DevBossTesting()
+    {
+        while(SectionNum < 5)
+        {
+            MoveToNextPoint();
+        }
+    }
 }
