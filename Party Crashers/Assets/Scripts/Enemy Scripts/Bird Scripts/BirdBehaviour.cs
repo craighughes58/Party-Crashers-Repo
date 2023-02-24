@@ -88,4 +88,10 @@ public class BirdBehaviour : MonoBehaviour
 
     }
 
+    private IEnumerator RandomSound()
+    {
+        yield return new WaitForSeconds(3f);
+
+    }
+
 }
