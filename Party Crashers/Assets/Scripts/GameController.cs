@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
         shield = GameObject.FindGameObjectWithTag("Shield");
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        SwapVisibiltyHands(false);
 
     }
 
