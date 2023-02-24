@@ -41,6 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Score -= amt;
         }
+        // lose score sfx
         UpdateUI();
     }
 
@@ -51,6 +52,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void AddScore(int amt)
     {
         Score += amt;
+        // add score sfx
         UpdateUI();
     }
 
