@@ -54,6 +54,7 @@ public class BirdProjectileScript : MonoBehaviour
             //LOSE SCORE
             other.gameObject.GetComponent<PlayerBehaviour>().LoseScore(scoreDamage);
             Destroy(gameObject);
+            // player hit by bird
         }
         else if (other.gameObject.tag.Equals("Bird") && isDeflected)
         {
@@ -64,6 +65,7 @@ public class BirdProjectileScript : MonoBehaviour
         else if (other.gameObject.tag.Equals("Shield"))
         {
             isDeflected = true;
+            // deflected bird sfx
         }
     }
 
