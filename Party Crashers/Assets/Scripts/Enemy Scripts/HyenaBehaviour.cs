@@ -74,6 +74,8 @@ public class HyenaBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // spawn sound 
+
         Destroy(Instantiate(entranceParticles,transform.position,Quaternion.identity),10f);
         gc = GameObject.Find("GameController").GetComponent<GameController>();
         //gc.AddEnemy();
@@ -214,6 +216,7 @@ public class HyenaBehaviour : MonoBehaviour
     {
         if (enemyLives == 0)
         {
+            // enemy death
 
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
 
