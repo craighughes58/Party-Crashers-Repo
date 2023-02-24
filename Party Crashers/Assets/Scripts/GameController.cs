@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class GameController : MonoBehaviour
 {
@@ -45,8 +46,8 @@ public class GameController : MonoBehaviour
         rightHand = GameObject.Find("RightHand (Teleport Locomotion)");
         wrappingPapper = GameObject.FindGameObjectWithTag("Bat");
         shield = GameObject.FindGameObjectWithTag("Shield");
-        pauseMenu.SetActive(false);
-        settingsMenu.SetActive(false);
+        //pauseMenu.SetActive(false);
+        //settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
 
     }
@@ -196,8 +197,8 @@ public class GameController : MonoBehaviour
     /// <param name="visible">Visibility of the ray. True when in menu false when in game</param>
     public void SwapVisibiltyHands(bool visible)
     {
-        leftHand.gameObject.transform.GetChild(3).gameObject.SetActive(visible);
-        rightHand.gameObject.transform.GetChild(3).gameObject.SetActive(visible);
+        leftHand.gameObject.transform.GetChild(3).gameObject.GetComponent<XRInteractorLineVisual>().enabled = visible;
+        rightHand.gameObject.transform.GetChild(3).gameObject.GetComponent<XRInteractorLineVisual>().enabled = visible;
         wrappingPapper.gameObject.SetActive(!visible);
         shield.gameObject.SetActive(!visible);
     }
