@@ -58,7 +58,9 @@ public class HyenaBehaviour : MonoBehaviour
 
     bool gotHit;
 
-    Animation anim;
+    private bool attacking = false;
+
+    private Animator anim;
 
     private GameController gc;
 
@@ -68,9 +70,12 @@ public class HyenaBehaviour : MonoBehaviour
     [SerializeField] 
     private float offset;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        // spawn sound 
+
         Destroy(Instantiate(entranceParticles,transform.position,Quaternion.identity),10f);
         gc = GameObject.Find("GameController").GetComponent<GameController>();
         //gc.AddEnemy();
@@ -88,8 +93,9 @@ public class HyenaBehaviour : MonoBehaviour
         attackTimer = attackInterval;
 
         gotHit = false;
-        anim = GetComponent<Animation>();
-        
+        anim = GetComponent<Animator>();
+
+        StartCoroutine(RandomSound());
     }
 
     // Update is called once per frame
@@ -108,18 +114,25 @@ public class HyenaBehaviour : MonoBehaviour
         // If the hyena is close enough to the player, it gets ready to attack
         if (Vector3.Distance(player.position,transform.position) <= offset)
         {
+            if (!attacking)
+            {
+                attacking = true;
+                anim.SetBool("attacking", attacking);
+            }
+
             AttackWindUp();
             meshAgent.SetDestination(transform.position);
         }
         
         else
         {
+            if(attacking)
+            {
+                attacking = false;
+                anim.SetBool("attacking", attacking);
+            }
             meshAgent.isStopped = false;
             meshAgent.SetDestination(player.position);
-            if(!anim.isPlaying)
-            {
-                anim.Play();
-            }
 
         }
         
@@ -142,7 +155,7 @@ public class HyenaBehaviour : MonoBehaviour
         // Freeze the hyena in place
         //meshAgent.isStopped = true;
         meshAgent.isStopped = true;
-        anim.Stop();
+        
 
         // If there's still time on the attack timer, continue the
         // countdown
@@ -168,6 +181,8 @@ public class HyenaBehaviour : MonoBehaviour
         // Print the proof of it attacking to the console (we'll replace this
         // with the actual attack stuff as we get that developed)
         Debug.Log("Attack!");
+        
+        // do attack sound
 
         // The player then loses one life
         ScoreLoss();
@@ -201,6 +216,7 @@ public class HyenaBehaviour : MonoBehaviour
     {
         if (enemyLives == 0)
         {
+            // enemy death
 
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
 
@@ -253,4 +269,11 @@ public class HyenaBehaviour : MonoBehaviour
         }
     }
 
+    private IEnumerator RandomSound()
+    {
+        yield return new WaitForSeconds(3f);
+        // make int of 1 or 2
+        // do sound based on int
+        StartCoroutine(RandomSound());
+    }
 }

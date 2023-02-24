@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7284d15f376dedb4885a543b77a84611
+guid: c2394818f21e6a04697b994f77174bb1
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
@@ -27,7 +27,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -40,12 +40,12 @@ ModelImporter:
       takeName: Take 001
       internalID: 0
       firstFrame: 1
-      lastFrame: 25
-      wrapMode: 2
+      lastFrame: 185
+      wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
-      loop: 1
+      loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
@@ -63,8 +63,8 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0.96
-    isReadable: 1
+      additiveReferencePoseFrame: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -123,7 +123,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
