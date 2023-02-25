@@ -119,6 +119,7 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void EnterAttack()
     {
+        Debug.Log("EnterAttack");
         StartCoroutine(MoveToAtkPos());
     }
 
