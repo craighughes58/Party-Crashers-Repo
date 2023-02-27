@@ -23,7 +23,7 @@ public class BirdBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject DestroyedBird;
     //the current projectile
-    private GameObject CurrentProjectile;
+    public List<GameObject> CurrentProjectiles = new List<GameObject>();
 
     [Header("PARTICLES")]
     [Tooltip("the particles that spawn when the bird script starts")]
@@ -50,7 +50,7 @@ public class BirdBehaviour : MonoBehaviour
     public int currentFrame = 0;
     AnimatorClipInfo[] animationClip;
     int amountTimeLooped=0;
-
+    bool spawnedOne;
 
     // Start is called before the first frame update
     void Start()
@@ -82,10 +82,12 @@ public class BirdBehaviour : MonoBehaviour
     void Update()
     {   
         Rotate();
-        if (currentFrame == 123)
+        if (currentFrame == 123 && !spawnedOne)
         {
             CheckProjectile();
         }
+        else if (currentFrame == 124)
+            spawnedOne = false;
     }
 
     /// <summary>
@@ -102,13 +104,17 @@ public class BirdBehaviour : MonoBehaviour
     /// </summary>
     private void CheckProjectile()
     {
-        if(CurrentProjectile == null)
+        //if(CurrentProjectiles == null)
+        //{
+        if (!spawnedOne)
         {
-            CurrentProjectile = Instantiate(Projectile, Beak.transform.position + (transform.forward * ProjectileOffset), transform.rotation);
-            CurrentProjectile.GetComponent<BirdProjectileScript>().ConnectToBird(transform);
+            CurrentProjectiles.Add(Instantiate(Projectile, Beak.transform.position + (transform.forward * ProjectileOffset), transform.rotation));
+            CurrentProjectiles[CurrentProjectiles.Count - 1].GetComponent<BirdProjectileScript>().ConnectToBird(this);
+            spawnedOne = !spawnedOne;
+        }
 
             // do sound
-        }
+        //}
     }
 
     /// <summary>
@@ -136,5 +142,13 @@ public class BirdBehaviour : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         // do sound
         StartCoroutine(RandomSound());
+    }
+
+    private void OnDestroy()
+    {
+        foreach(GameObject g in CurrentProjectiles)
+        {
+            Destroy(g);
+        }
     }
 }

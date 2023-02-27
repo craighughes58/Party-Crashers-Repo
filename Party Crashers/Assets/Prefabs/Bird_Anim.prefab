@@ -349,10 +349,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6826269963411890767}
-  - component: {fileID: 8858841744602297010}
   m_Layer: 0
   m_Name: pasted__hip
-  m_TagString: Untagged
+  m_TagString: Bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,19 +375,6 @@ Transform:
   m_Father: {fileID: 7105278423885419658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8858841744602297010
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1374920339010769623}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1487068034299019751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,6 +1567,7 @@ GameObject:
   - component: {fileID: 5502109505324987995}
   - component: {fileID: 848045681972047611}
   - component: {fileID: 5477169257927567408}
+  - component: {fileID: 2097380171973284498}
   m_Layer: 0
   m_Name: Bird_Anim
   m_TagString: Bird
@@ -1649,6 +1636,19 @@ MonoBehaviour:
   Beak: {fileID: 3785658722108483359}
   BodyRenderer: {fileID: 5071884605955301315}
   currentFrame: 0
+--- !u!65 &2097380171973284498
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5120799334425849057}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5370222962677266234
 GameObject:
   m_ObjectHideFlags: 0
