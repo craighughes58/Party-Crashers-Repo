@@ -50,6 +50,7 @@ public class GameController : MonoBehaviour
         //settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
 
+        //DevBossTest();
     }
 
     //This script will spawn the enemies after each trigger
@@ -261,4 +262,15 @@ public class GameController : MonoBehaviour
             SAP.StartPlayer();
         }
     }*/
+
+    /// <summary>
+    /// bypassing gameplay to test boss 
+    /// </summary>
+    private void DevBossTest()
+    {
+        while(SectionNum < 5)
+        {
+            MoveToNextPoint();
+        }
+    }
 }
