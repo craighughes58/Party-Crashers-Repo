@@ -12,6 +12,8 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI scoreText;
 
+    [SerializeField] private GameObject candyParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Score -= amt;
         }
+
+        Destroy(Instantiate(candyParticle, transform.position, Quaternion.identity), 10f);
         // lose score sfx
         UpdateUI();
     }

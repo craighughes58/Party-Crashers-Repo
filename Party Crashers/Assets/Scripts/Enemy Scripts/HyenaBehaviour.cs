@@ -54,6 +54,9 @@ public class HyenaBehaviour : MonoBehaviour
     [SerializeField] float attackTimer;
     [SerializeField] float attackInterval = 2;
 
+    [SerializeField] float flashTimer;
+    [SerializeField] float flashInterval = 1;
+
     private UnityEngine.AI.NavMeshAgent meshAgent;
 
     bool gotHit;
@@ -214,6 +217,8 @@ public class HyenaBehaviour : MonoBehaviour
     /// </summary>
     private void HitReaction()
     {
+        StartCoroutine(Flash());
+
         if (enemyLives == 0)
         {
             // enemy death
@@ -275,5 +280,24 @@ public class HyenaBehaviour : MonoBehaviour
         // make int of 1 or 2
         // do sound based on int
         StartCoroutine(RandomSound());
+    }
+
+    private IEnumerator Flash()
+    {
+        Color originalColor = GetComponent<Renderer>().material.color;
+
+        GetComponent<Renderer>().material.color = Color.white;
+
+        if (flashTimer >= 0)
+        {
+            flashTimer -= Time.deltaTime;
+        }
+        else
+        {
+            flashTimer = flashInterval;
+            GetComponent<Renderer>().material.color = originalColor;
+        }
+
+        yield return new WaitForSeconds(0.1f);
     }
 }
