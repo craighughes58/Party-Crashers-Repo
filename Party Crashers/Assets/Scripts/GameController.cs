@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
         //settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
 
-        DevBossTest();
+        //DevBossTest();
     }
 
     //This script will spawn the enemies after each trigger
