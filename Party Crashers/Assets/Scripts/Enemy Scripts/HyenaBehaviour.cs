@@ -73,6 +73,13 @@ public class HyenaBehaviour : MonoBehaviour
     [SerializeField] 
     private float offset;
 
+    public int currentFrame = 0;
+    AnimatorClipInfo[] animationClip;
+    int amountTimeLooped = 0;
+    bool hitPlayer = false;
+
+    [SerializeField]
+    private SkinnedMeshRenderer hyenaRenderer; 
 
     // Start is called before the first frame update
     void Start()
@@ -97,8 +104,9 @@ public class HyenaBehaviour : MonoBehaviour
 
         gotHit = false;
         anim = GetComponent<Animator>();
-
+        
         StartCoroutine(RandomSound());
+        hyenaRenderer = transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
     }
 
     // Update is called once per frame
@@ -106,6 +114,20 @@ public class HyenaBehaviour : MonoBehaviour
     {
         Movement();
         Rotation();
+    }
+
+    private void FixedUpdate()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            animationClip = anim.GetCurrentAnimatorClipInfo(0);
+
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped > 1)
+            {
+                amountTimeLooped++;
+            }
+            currentFrame = (int)((anim.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped) * (animationClip[0].clip.length * 24));
+        }
     }
 
     private void Movement()
@@ -158,21 +180,32 @@ public class HyenaBehaviour : MonoBehaviour
         // Freeze the hyena in place
         //meshAgent.isStopped = true;
         meshAgent.isStopped = true;
+
+
+            if(currentFrame == 40 && !hitPlayer)
+            {
+                Attack();
+                hitPlayer = true;
+            }
+            else if(currentFrame == 41 && hitPlayer)
+            {
+                hitPlayer = false;
+            }
+
+            // If there's still time on the attack timer, continue the
+            // countdown
+            /*if (attackTimer >= 0)
+            {
+                attackTimer -= Time.deltaTime;
+            }
+
+            // When the interval's up, attack and reset the timer
+            else
+            {
+                attackTimer = attackInterval;
+                Attack();
+            }*/
         
-
-        // If there's still time on the attack timer, continue the
-        // countdown
-        if (attackTimer >= 0)
-        {
-            attackTimer -= Time.deltaTime;
-        }
-
-        // When the interval's up, attack and reset the timer
-        else
-        {
-            attackTimer = attackInterval;
-            Attack();
-        }
 
     }
 
@@ -207,6 +240,7 @@ public class HyenaBehaviour : MonoBehaviour
         {
             Debug.Log("Life lost!");
             enemyLives--;
+            anim.SetTrigger("Hit");
             HitReaction();
         }
     }
@@ -284,9 +318,13 @@ public class HyenaBehaviour : MonoBehaviour
 
     private IEnumerator Flash()
     {
-        Color originalColor = GetComponent<Renderer>().material.color;
 
-        GetComponent<Renderer>().material.color = Color.white;
+        //Color originalColor = GetComponent<Renderer>().material.color;
+        Color originalColor = hyenaRenderer.material.color;
+
+        hyenaRenderer.material.color = Color.white;
+
+        //GetComponent<Renderer>().material.color = Color.white;
 
         if (flashTimer >= 0)
         {
@@ -295,7 +333,7 @@ public class HyenaBehaviour : MonoBehaviour
         else
         {
             flashTimer = flashInterval;
-            GetComponent<Renderer>().material.color = originalColor;
+            hyenaRenderer.material.color = originalColor;
         }
 
         yield return new WaitForSeconds(0.1f);
