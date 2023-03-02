@@ -19,7 +19,7 @@
                 {
                     "name": "",
                     "id": "5ea77997-854d-4b13-b7b7-77f558c305d4",
-                    "path": "<OpenVROculusTouchController>{LeftHand}/secondaryButton",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
 
 public class GameController : MonoBehaviour
 {
@@ -32,6 +33,10 @@ public class GameController : MonoBehaviour
 
     private GameObject leftHand, rightHand, wrappingPapper, shield;
 
+    [Tooltip("Is the game paused?")]
+    [SerializeField]
+    private bool isPaused = false;
+
     //UI game object references so they can be turned on and off
     [SerializeField]
     private GameObject pauseMenu, settingsMenu;
@@ -46,6 +51,7 @@ public class GameController : MonoBehaviour
         rightHand = GameObject.Find("RightHand (Teleport Locomotion)");
         wrappingPapper = GameObject.FindGameObjectWithTag("Bat");
         shield = GameObject.FindGameObjectWithTag("Shield");
+        isPaused = false;
         //pauseMenu.SetActive(false);
         //settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
@@ -244,11 +250,26 @@ public class GameController : MonoBehaviour
         ActivateUIMenu(pauseMenu);
         DeactivateUIMenu(settingsMenu);
     }
-    public void PauseScene()
+
+    private void OnPause(InputValue value)
     {
-        Time.timeScale = 0;
-        ActivateUIMenu(pauseMenu);
+        if (isPaused == false)
+        {
+            isPaused = true;
+            Time.timeScale = 0;
+            ActivateUIMenu(pauseMenu);
+        }
+        else if (isPaused == true)
+        {
+            isPaused = false;
+            ResumeScene();
+        }
+        
     }
+/*    public void PauseScene()
+    {
+
+    }*/
     public void ResumeScene()
     {
         Time.timeScale = 1;
