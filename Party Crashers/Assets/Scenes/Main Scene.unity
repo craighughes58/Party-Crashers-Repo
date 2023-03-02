@@ -534,8 +534,8 @@ MonoBehaviour:
   HyenaVariation: {fileID: 4568385713749688917, guid: bf92c7d917f3ace4689bdc068c2dcfe1, type: 3}
   Bird: {fileID: 5120799334425849057, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
   BirdVariation: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  settingsMenu: {fileID: 0}
+  pauseMenu: {fileID: 594089174}
+  settingsMenu: {fileID: 385936820}
   _bossBehaviour: {fileID: 1822133858204610208}
 --- !u!4 &25485830
 Transform:
