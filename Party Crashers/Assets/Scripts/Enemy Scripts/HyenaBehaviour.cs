@@ -225,7 +225,7 @@ public class HyenaBehaviour : MonoBehaviour
 
         // Go back to the movement function to determine whether the hyena can
         // keep attacking, or if it needs to start moving again
-        Movement();
+        //Movement();
     }
 
     private void ScoreLoss()
