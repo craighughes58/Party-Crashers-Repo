@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
 
 public class GameController : MonoBehaviour
 {
@@ -244,11 +245,16 @@ public class GameController : MonoBehaviour
         ActivateUIMenu(pauseMenu);
         DeactivateUIMenu(settingsMenu);
     }
-    public void PauseScene()
+
+    private void OnPause(InputValue value)
     {
         Time.timeScale = 0;
         ActivateUIMenu(pauseMenu);
     }
+/*    public void PauseScene()
+    {
+
+    }*/
     public void ResumeScene()
     {
         Time.timeScale = 1;
