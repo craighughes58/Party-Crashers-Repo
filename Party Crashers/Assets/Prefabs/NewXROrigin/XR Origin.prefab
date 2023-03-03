@@ -3532,6 +3532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: 0
   scoreText: {fileID: 5505221117259621378}
+  candyParticle: {fileID: 0}
 --- !u!1 &4175555940644323203
 GameObject:
   m_ObjectHideFlags: 0
