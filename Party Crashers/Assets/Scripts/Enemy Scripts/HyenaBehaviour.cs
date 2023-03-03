@@ -86,7 +86,7 @@ public class HyenaBehaviour : MonoBehaviour
     {
         // spawn sound 
 
-        Destroy(Instantiate(entranceParticles,transform.position,Quaternion.identity),10f);
+        Destroy(Instantiate(entranceParticles,new Vector3(transform.position.x,transform.position.y + 3f,transform.position.z),Quaternion.identity),10f);
         gc = GameObject.Find("GameController").GetComponent<GameController>();
         //gc.AddEnemy();
         pb = FindObjectOfType<PlayerBehaviour>();
