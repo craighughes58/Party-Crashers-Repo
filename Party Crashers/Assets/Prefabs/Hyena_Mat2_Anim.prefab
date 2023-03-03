@@ -1215,8 +1215,12 @@ MonoBehaviour:
   AttackRange: 1
   attackTimer: 0
   attackInterval: 2
+  flashTimer: 0
+  flashInterval: 1
   scoreAmount: 0
-  offset: 0
+  offset: 25
+  currentFrame: 0
+  hyenaRenderer: {fileID: 0}
 --- !u!65 &3277696902117133340
 BoxCollider:
   m_ObjectHideFlags: 0
