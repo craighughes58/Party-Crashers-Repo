@@ -27,6 +27,10 @@ public class HyenaBehaviour : MonoBehaviour
     [Tooltip("The player's score")]
     [SerializeField] int victoryScore;
 
+    [SerializeField] bool isTutorial;
+
+    [SerializeField] Material flash;
+
     Rigidbody rb;
 
     [SerializeField]
@@ -35,12 +39,12 @@ public class HyenaBehaviour : MonoBehaviour
     [Tooltip("The candy that appears after the hyena dies")]
     [SerializeField] 
     private GameObject deathParticle1;
-/*    [SerializeField] GameObject deathParticle2;
+ /* [SerializeField] GameObject deathParticle2;
     [SerializeField] GameObject deathParticle3;
     [SerializeField] GameObject deathParticle4;
     [SerializeField] GameObject deathParticle5;
     [SerializeField] GameObject deathParticle6;
-    [SerializeField] GameObject deathParticle7;*/
+    [SerializeField] GameObject deathParticle7; */
 
     [SerializeField] 
     GameObject shatteredHyena1;
@@ -79,7 +83,7 @@ public class HyenaBehaviour : MonoBehaviour
     bool hitPlayer = false;
 
     [SerializeField]
-    private SkinnedMeshRenderer hyenaRenderer; 
+    private SkinnedMeshRenderer hyenaRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -137,7 +141,7 @@ public class HyenaBehaviour : MonoBehaviour
         //Vector3 offset = new Vector3(6, 0, 6);
         //enemy.position.x >= (player.position.x - offset.x) && (enemy.position.z >= (player.position.z - offset.z))
         // If the hyena is close enough to the player, it gets ready to attack
-        if (Vector3.Distance(player.position,transform.position) <= offset)
+        if (Vector3.Distance(player.position,transform.position) <= offset && !isTutorial)
         {
             if (!attacking)
             {
@@ -251,7 +255,7 @@ public class HyenaBehaviour : MonoBehaviour
     /// </summary>
     private void HitReaction()
     {
-        StartCoroutine(Flash());
+        Flash();
 
         if (enemyLives <= 0)
         {
@@ -316,26 +320,28 @@ public class HyenaBehaviour : MonoBehaviour
         StartCoroutine(RandomSound());
     }
 
-    private IEnumerator Flash()
+    private void Flash()
     {
-
         //Color originalColor = GetComponent<Renderer>().material.color;
-        Color originalColor = hyenaRenderer.material.color;
+        Material originalMaterial = hyenaRenderer.material;
 
-        hyenaRenderer.material.color = Color.white;
+        hyenaRenderer.material = flash;
 
-        //GetComponent<Renderer>().material.color = Color.white;
+        EndFlash(originalMaterial);
+    }
 
-        if (flashTimer >= 0)
+    private void EndFlash(Material originalMaterial)
+    {
+        float flashCounter = 0;
+
+        if (flashCounter <= 1f)
         {
-            flashTimer -= Time.deltaTime;
-        }
-        else
-        {
-            flashTimer = flashInterval;
-            hyenaRenderer.material.color = originalColor;
+            flashCounter += Time.deltaTime;
         }
 
-        yield return new WaitForSeconds(0.1f);
+        if (flashCounter > 1f)
+        {
+            hyenaRenderer.material = originalMaterial;
+        }
     }
 }
