@@ -71,9 +71,9 @@ public class GameController : MonoBehaviour
                 Instantiate(Hyena, spawnLocation, Quaternion.identity);
                 AddEnemy();
 
-                spawnLocation.x = 31;
-                spawnLocation.y = 7.85f;
-                spawnLocation.z = -95;
+                spawnLocation.x = 31.11f;
+                spawnLocation.y = 6.9f;
+                spawnLocation.z = -94.7f;
                 Instantiate(Bird, spawnLocation, Quaternion.identity);
                 AddEnemy();
                 return;
@@ -133,15 +133,15 @@ public class GameController : MonoBehaviour
                 Instantiate(Hyena, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
 
-                spawnLocationStop3.x = -41;
-                spawnLocationStop3.y = 48.17f;
-                spawnLocationStop3.z = 83;
+                spawnLocationStop3.x = -43.24f;
+                spawnLocationStop3.y = 39.42f;
+                spawnLocationStop3.z = 93.62f;
                 Instantiate(Bird, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
 
-                spawnLocationStop3.x = -22;
-                spawnLocationStop3.y = 48.17f;
-                spawnLocationStop3.z = 117;
+                spawnLocationStop3.x = -34.39f;
+                spawnLocationStop3.y = 39.23f;
+                spawnLocationStop3.z = 111.7f;
                 Instantiate(Bird, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
                 return;
