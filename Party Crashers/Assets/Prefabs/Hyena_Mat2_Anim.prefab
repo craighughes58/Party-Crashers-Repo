@@ -1184,7 +1184,7 @@ Transform:
   m_GameObject: {fileID: 4568385713749688917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1934792749245632514}
@@ -1206,8 +1206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   scoreDamage: 10
-  enemyLives: 0
-  victoryScore: 0
+  enemyLives: 2
+  victoryScore: 50
   entranceParticles: {fileID: 1093073474904058160, guid: 0d9aef3e231c5d9439a5b57bf34ac590, type: 3}
   deathParticle1: {fileID: 1520341045109095004, guid: efd2b5679c035124d815786968aa6442, type: 3}
   shatteredHyena1: {fileID: 7859299251967649713, guid: f6bc245a1c976094cb3bd5c7ed0f65f3, type: 3}
@@ -1218,7 +1218,7 @@ MonoBehaviour:
   flashTimer: 0
   flashInterval: 1
   scoreAmount: 0
-  offset: 12
+  offset: 7
   currentFrame: 0
   hyenaRenderer: {fileID: 0}
 --- !u!65 &3277696902117133340
