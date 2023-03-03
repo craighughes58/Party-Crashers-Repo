@@ -253,7 +253,7 @@ public class HyenaBehaviour : MonoBehaviour
     {
         StartCoroutine(Flash());
 
-        if (enemyLives == 0)
+        if (enemyLives <= 0)
         {
             // enemy death
 
