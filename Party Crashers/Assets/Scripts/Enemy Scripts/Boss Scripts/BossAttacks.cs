@@ -66,7 +66,7 @@ public class BossAttacks : MonoBehaviour
             AttackPlayer();
             yield return new WaitForSeconds(_timeBetweenAttacks);
         }
-        _bossBehaviour.EnterExhaustion();
+        StartCoroutine(_bossBehaviour.EnterExhaustion());
     }
 
     /// <summary>

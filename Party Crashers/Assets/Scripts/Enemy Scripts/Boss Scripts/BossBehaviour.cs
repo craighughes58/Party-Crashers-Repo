@@ -109,8 +109,9 @@ public class BossBehaviour : MonoBehaviour
     /// <summary>
     /// Sets the boss state to exhaustion
     /// </summary>
-    public void EnterExhaustion()
+    public IEnumerator EnterExhaustion()
     {
+        yield return new WaitForSeconds(4f);
         StartCoroutine(MoveToExhPos());
     }
 
