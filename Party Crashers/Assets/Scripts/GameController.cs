@@ -226,12 +226,14 @@ public class GameController : MonoBehaviour
 
     public void DeactivateUIMenu(GameObject uiMenu)
     {
+        SwapVisibiltyHands(false);
         uiMenu.gameObject.SetActive(false);
         //
     }
 
     public void ActivateUIMenu(GameObject uiMenu)
     {
+        SwapVisibiltyHands(true);
         uiMenu.gameObject.SetActive(true);
     }
 
