@@ -1584,7 +1584,7 @@ Transform:
   m_GameObject: {fileID: 5120799334425849057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.9966197, y: -0.0000009536743, z: -125.33394}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5356856901379845734}
@@ -1627,6 +1627,7 @@ MonoBehaviour:
   Projectile: {fileID: 1211539211851700829, guid: 3377de110b316b04c843164084beb3b0, type: 3}
   ProjectileOffset: 0
   DestroyedBird: {fileID: 2969587629849225333, guid: 2ebb27b72d9a97d4d91cfec83133b262, type: 3}
+  CurrentProjectiles: []
   IntroParticles: {fileID: 1093073474904058160, guid: 0d9aef3e231c5d9439a5b57bf34ac590, type: 3}
   OutroParticles: {fileID: 1520341045109095004, guid: efd2b5679c035124d815786968aa6442, type: 3}
   Colors:
