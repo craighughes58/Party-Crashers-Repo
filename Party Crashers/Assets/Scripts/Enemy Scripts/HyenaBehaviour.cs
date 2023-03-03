@@ -322,7 +322,6 @@ public class HyenaBehaviour : MonoBehaviour
 
     private void Flash()
     {
-        //Color originalColor = GetComponent<Renderer>().material.color;
         Material originalMaterial = hyenaRenderer.material;
 
         hyenaRenderer.material = flash;
