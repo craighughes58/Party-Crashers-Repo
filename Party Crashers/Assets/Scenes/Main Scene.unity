@@ -35709,7 +35709,6 @@ GameObject:
   - component: {fileID: 8625230637767839701}
   - component: {fileID: 1234424738742261412}
   - component: {fileID: 717039592877253067}
-  - component: {fileID: 8625230637767839702}
   m_Layer: 7
   m_Name: body
   m_TagString: Boss
@@ -36763,6 +36762,8 @@ GameObject:
   - component: {fileID: 1822133858204610208}
   - component: {fileID: 1822133858204610207}
   - component: {fileID: 1822133858204610209}
+  - component: {fileID: 1822133858204610211}
+  - component: {fileID: 1822133858204610210}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Boss
@@ -37768,7 +37769,7 @@ MonoBehaviour:
   _bossActivationTime: 1.5
   _attackPos: {fileID: 6435618244504914858}
   _exhaustPos: {fileID: 6435618244627489183}
-  _transitionTime: 1.5
+  _transitionTime: 2
 --- !u!54 &1822133858204610209
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37785,6 +37786,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1822133858204610210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297693906930971684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a811e130676963a45a3d46b554af24a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bossAttacks: {fileID: 1822133858204610207}
+--- !u!136 &1822133858204610211
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297693906930971684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 7.1
+  m_Height: 51.2
+  m_Direction: 1
+  m_Center: {x: -0.0018532632, y: -0.0019071702, z: -0.06395301}
 --- !u!33 &1847528741803144454
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -44907,7 +44935,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6435618244627489180}
   m_LocalRotation: {x: -0, y: -0.8503524, z: 0, w: -0.5262137}
-  m_LocalPosition: {x: -33.2, y: -0.7, z: 100.3}
+  m_LocalPosition: {x: -52.7, y: -0.7, z: 112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -48972,20 +49000,6 @@ Transform:
   m_Father: {fileID: 1822133858204610206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8625230637767839702
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722472191363246834}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.14622399
-  m_Height: 0.89469755
-  m_Direction: 1
-  m_Center: {x: -0.0018532632, y: -0.0019071702, z: -0.06395301}
 --- !u!23 &8629904415118503657
 MeshRenderer:
   m_ObjectHideFlags: 0
