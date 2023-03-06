@@ -3,7 +3,13 @@ guid: ef3540464fa7de34697d847db6ef4ab0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - flash: {instanceID: 0}
+  - entranceParticles: {instanceID: 0}
+  - deathParticle1: {instanceID: 0}
+  - shatteredHyena1: {instanceID: 0}
+  - shatteredHyena2: {instanceID: 0}
+  - hyenaRenderer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
