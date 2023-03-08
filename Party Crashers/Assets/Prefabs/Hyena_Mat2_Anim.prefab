@@ -1206,7 +1206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   scoreDamage: 10
-  enemyLives: 2
+  enemyLives: 5
   victoryScore: 50
   isTutorial: 0
   flash: {fileID: 2100000, guid: 95f1fe765fc99d047a90feb8e90c7118, type: 2}

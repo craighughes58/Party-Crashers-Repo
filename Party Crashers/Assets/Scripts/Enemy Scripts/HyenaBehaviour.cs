@@ -99,7 +99,7 @@ public class HyenaBehaviour : MonoBehaviour
         //reference to the player transform
         player = FindObjectOfType<PlayerBehaviour>().transform;
         // Radomize the move speed of the hyenas
-        moveSpeed = Random.Range(3, 5);
+        moveSpeed = Random.Range(7, 12);
         meshAgent.speed = moveSpeed;
 
         enemy = transform;
@@ -110,7 +110,7 @@ public class HyenaBehaviour : MonoBehaviour
         anim = GetComponent<Animator>();
         
         StartCoroutine(RandomSound());
-        hyenaRenderer = transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
+        hyenaRenderer = gameObject.GetComponent<SkinnedMeshRenderer>();
     }
 
     // Update is called once per frame
@@ -302,12 +302,12 @@ public class HyenaBehaviour : MonoBehaviour
     {
         float flashCounter = 0;
 
-        if (flashCounter <= 1f)
+        if (flashCounter <= 0.2f)
         {
             flashCounter += Time.deltaTime;
         }
 
-        if (flashCounter > 1f)
+        if (flashCounter > 0.2f)
         {
             hyenaRenderer.material = originalMaterial;
         }
