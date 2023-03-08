@@ -71,11 +71,11 @@ public class GameController : MonoBehaviour
                 //Instantiate(Hyena, spawnLocation, Quaternion.identity);
                 //AddEnemy();
 
-                spawnLocation.x = 31.11f;
+/*                spawnLocation.x = 31.11f;
                 spawnLocation.y = 6.9f;
                 spawnLocation.z = -94.7f;
-                Instantiate(Bird, spawnLocation, Quaternion.identity);
-                AddEnemy();
+                Instantiate(Bird, spawnLocation, Quaternion.identity);*/
+                AddEnemy();//this is for the tutorial bird
                 return;
             //First Area Spawns
             case 2:
