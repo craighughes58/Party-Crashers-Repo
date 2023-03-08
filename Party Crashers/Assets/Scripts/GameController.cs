@@ -68,8 +68,8 @@ public class GameController : MonoBehaviour
             //Tutorial Spawns
             case 1:
                 Vector3 spawnLocation = new Vector3(-20, 0, -115);
-                Instantiate(Hyena, spawnLocation, Quaternion.identity);
-                AddEnemy();
+                //Instantiate(Hyena, spawnLocation, Quaternion.identity);
+                //AddEnemy();
 
                 spawnLocation.x = 31.11f;
                 spawnLocation.y = 6.9f;

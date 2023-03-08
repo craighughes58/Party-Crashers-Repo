@@ -263,37 +263,6 @@ public class HyenaBehaviour : MonoBehaviour
 
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
 
-            /*        int particleChoice = Random.Range(1, 7);
-                    switch (particleChoice)
-                    {
-                        case 1:
-                            Instantiate(deathParticle1);
-                            break;
-
-                        case 2:
-                            Instantiate(deathParticle2);
-                            break;
-
-                        case 3:
-                            Instantiate(deathParticle3);
-                            break;
-
-                        case 4:
-                            Instantiate(deathParticle4);
-                            break;
-
-                        case 5:
-                            Instantiate(deathParticle5);
-                            break;
-
-                        case 6:
-                            Instantiate(deathParticle6);
-                            break;
-
-                        case 7:
-                            Instantiate(deathParticle7);
-                            break;
-                    }*/
             gc.LoseEnemy();
 
             if (name.Contains("Mat2"))
