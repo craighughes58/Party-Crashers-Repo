@@ -46,6 +46,14 @@ public class BirdBehaviour : MonoBehaviour
     [SerializeField]
     private SkinnedMeshRenderer BodyRenderer;
 
+    [Tooltip("This will shut off some functions of the full bird")]
+    [SerializeField]
+    private bool isTutorial;
+
+    [Tooltip("represents what the tutorial bird is trying to do ")]
+    [SerializeField]
+    private GameObject TutorialWaiter;
+
     private Animator playerAnimator;
     public int currentFrame = 0;
     AnimatorClipInfo[] animationClip;
@@ -60,7 +68,10 @@ public class BirdBehaviour : MonoBehaviour
 
         gc = GameObject.Find("GameController").GetComponent<GameController>();
         //gc.AddEnemy();
-        Destroy(Instantiate(IntroParticles,transform.position,Quaternion.identity),10f);
+        if(!isTutorial)
+        {
+            Destroy(Instantiate(IntroParticles, transform.position, Quaternion.identity), 10f);
+        }
         player = FindObjectOfType<PlayerBehaviour>().transform;
         pb = FindObjectOfType<PlayerBehaviour>();
         RandomizeColor();
@@ -82,7 +93,7 @@ public class BirdBehaviour : MonoBehaviour
     void Update()
     {   
         Rotate();
-        if (currentFrame == 123 && !spawnedOne)
+        if (currentFrame == 123 && !spawnedOne && CheckTutorialStatus())
         {
             CheckProjectile();
         }
@@ -150,5 +161,14 @@ public class BirdBehaviour : MonoBehaviour
         {
             Destroy(g);
         }
+    }
+
+    private bool CheckTutorialStatus()
+    {
+        if(TutorialWaiter == null)
+        {
+            return true;
+        }
+        return false;
     }
 }
