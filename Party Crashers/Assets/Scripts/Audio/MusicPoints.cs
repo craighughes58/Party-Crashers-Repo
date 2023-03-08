@@ -11,6 +11,7 @@ public class MusicPoints : MonoBehaviour
         if (other.gameObject.CompareTag("MusicPoint"))
         {
             songNumber++;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 }
