@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46fbce86157a88449bff1be80d953618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 0.2
+  maxDistance: 0.5
   scoreDamage: 20
 --- !u!54 &7647874018932644787
 Rigidbody:
