@@ -37,16 +37,16 @@ public class HyenaBehaviour : MonoBehaviour
     GameObject entranceParticles;
 
     [Tooltip("The candy that appears after the hyena dies")]
-    [SerializeField] 
+    [SerializeField]
     private GameObject deathParticle1;
- /* [SerializeField] GameObject deathParticle2;
-    [SerializeField] GameObject deathParticle3;
-    [SerializeField] GameObject deathParticle4;
-    [SerializeField] GameObject deathParticle5;
-    [SerializeField] GameObject deathParticle6;
-    [SerializeField] GameObject deathParticle7; */
+    /* [SerializeField] GameObject deathParticle2;
+       [SerializeField] GameObject deathParticle3;
+       [SerializeField] GameObject deathParticle4;
+       [SerializeField] GameObject deathParticle5;
+       [SerializeField] GameObject deathParticle6;
+       [SerializeField] GameObject deathParticle7; */
 
-    [SerializeField] 
+    [SerializeField]
     GameObject shatteredHyena1;
 
     [SerializeField]
@@ -74,7 +74,7 @@ public class HyenaBehaviour : MonoBehaviour
     [SerializeField] private int scoreAmount;
 
     [Tooltip("how far away the enemy will stop from the player")]
-    [SerializeField] 
+    [SerializeField]
     private float offset;
 
     public int currentFrame = 0;
@@ -95,12 +95,15 @@ public class HyenaBehaviour : MonoBehaviour
     [SerializeField]
     private SkinnedMeshRenderer hyenaRenderer6;
 
+    [SerializeField]
+    private Material originalMaterial;
+
     // Start is called before the first frame update
     void Start()
     {
         // spawn sound 
 
-        Destroy(Instantiate(entranceParticles,new Vector3(transform.position.x,transform.position.y + 3f,transform.position.z),Quaternion.identity),10f);
+        Destroy(Instantiate(entranceParticles, new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z), Quaternion.identity), 10f);
         gc = GameObject.Find("GameController").GetComponent<GameController>();
         //gc.AddEnemy();
         pb = FindObjectOfType<PlayerBehaviour>();
@@ -118,7 +121,7 @@ public class HyenaBehaviour : MonoBehaviour
 
         gotHit = false;
         anim = GetComponent<Animator>();
-        
+
         StartCoroutine(RandomSound());
         hyenaRenderer1 = transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
         hyenaRenderer2 = transform.GetChild(0).transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
@@ -126,6 +129,8 @@ public class HyenaBehaviour : MonoBehaviour
         hyenaRenderer4 = transform.GetChild(0).transform.GetChild(3).GetComponent<SkinnedMeshRenderer>();
         hyenaRenderer5 = transform.GetChild(0).transform.GetChild(4).GetComponent<SkinnedMeshRenderer>();
         hyenaRenderer6 = transform.GetChild(0).transform.GetChild(5).GetComponent<SkinnedMeshRenderer>();
+
+        originalMaterial = hyenaRenderer1.material;
     }
 
     // Update is called once per frame
@@ -156,7 +161,7 @@ public class HyenaBehaviour : MonoBehaviour
         //Vector3 offset = new Vector3(6, 0, 6);
         //enemy.position.x >= (player.position.x - offset.x) && (enemy.position.z >= (player.position.z - offset.z))
         // If the hyena is close enough to the player, it gets ready to attack
-        if (Vector3.Distance(player.position,transform.position) <= offset && !isTutorial)
+        if (Vector3.Distance(player.position, transform.position) <= offset && !isTutorial)
         {
             if (!attacking)
             {
@@ -167,10 +172,10 @@ public class HyenaBehaviour : MonoBehaviour
             AttackWindUp();
             meshAgent.SetDestination(transform.position);
         }
-        
+
         else
         {
-            if(attacking)
+            if (attacking)
             {
                 attacking = false;
                 anim.SetBool("attacking", attacking);
@@ -179,7 +184,7 @@ public class HyenaBehaviour : MonoBehaviour
             meshAgent.SetDestination(player.position);
 
         }
-        
+
     }
 
     /// <summary>
@@ -201,30 +206,30 @@ public class HyenaBehaviour : MonoBehaviour
         meshAgent.isStopped = true;
 
 
-            if(currentFrame == 40 && !hitPlayer)
-            {
-                Attack();
-                hitPlayer = true;
-            }
-            else if(currentFrame == 41 && hitPlayer)
-            {
-                hitPlayer = false;
-            }
+        if (currentFrame == 40 && !hitPlayer)
+        {
+            Attack();
+            hitPlayer = true;
+        }
+        else if (currentFrame == 41 && hitPlayer)
+        {
+            hitPlayer = false;
+        }
 
-            // If there's still time on the attack timer, continue the
-            // countdown
-            /*if (attackTimer >= 0)
-            {
-                attackTimer -= Time.deltaTime;
-            }
+        // If there's still time on the attack timer, continue the
+        // countdown
+        /*if (attackTimer >= 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
 
-            // When the interval's up, attack and reset the timer
-            else
-            {
-                attackTimer = attackInterval;
-                Attack();
-            }*/
-        
+        // When the interval's up, attack and reset the timer
+        else
+        {
+            attackTimer = attackInterval;
+            Attack();
+        }*/
+
 
     }
 
@@ -236,7 +241,7 @@ public class HyenaBehaviour : MonoBehaviour
         // Print the proof of it attacking to the console (we'll replace this
         // with the actual attack stuff as we get that developed)
         Debug.Log("Attack!");
-        
+
         // do attack sound
 
         // The player then loses one life
@@ -255,7 +260,7 @@ public class HyenaBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag.Equals("Bat"))
+        if (collision.gameObject.tag.Equals("Bat"))
         {
             Debug.Log("Life lost!");
             enemyLives--;
@@ -306,9 +311,6 @@ public class HyenaBehaviour : MonoBehaviour
 
     private void Flash()
     {
-        
-        Material originalMaterial = hyenaRenderer1.material;
-
         hyenaRenderer1.material = flash;
         hyenaRenderer2.material = flash;
         hyenaRenderer3.material = flash;
@@ -316,26 +318,20 @@ public class HyenaBehaviour : MonoBehaviour
         hyenaRenderer5.material = flash;
         hyenaRenderer6.material = flash;
 
-        EndFlash(originalMaterial);
+        StartCoroutine(EndFlash());
     }
 
-    private void EndFlash(Material originalMaterial)
+    private IEnumerator EndFlash()
     {
-        float flashCounter = 0;
+        yield return new WaitForSeconds(.25f);
 
-        if (flashCounter <= 0.5f)
-        {
-            flashCounter += Time.deltaTime;
-        }
+        hyenaRenderer1.material = originalMaterial;
+        hyenaRenderer2.material = originalMaterial;
+        hyenaRenderer3.material = originalMaterial;
+        hyenaRenderer4.material = originalMaterial;
+        hyenaRenderer5.material = originalMaterial;
+        hyenaRenderer6.material = originalMaterial;
 
-        else if (flashCounter > 0.5f)
-        {
-            hyenaRenderer1.material = originalMaterial;
-            hyenaRenderer2.material = originalMaterial;
-            hyenaRenderer3.material = originalMaterial;
-            hyenaRenderer4.material = originalMaterial;
-            hyenaRenderer5.material = originalMaterial;
-            hyenaRenderer6.material = originalMaterial;
-        }
+        yield return null;
     }
 }
