@@ -83,7 +83,17 @@ public class HyenaBehaviour : MonoBehaviour
     bool hitPlayer = false;
 
     [SerializeField]
-    private SkinnedMeshRenderer hyenaRenderer;
+    private SkinnedMeshRenderer hyenaRenderer1;
+    [SerializeField]
+    private SkinnedMeshRenderer hyenaRenderer2;
+    [SerializeField]
+    private SkinnedMeshRenderer hyenaRenderer3;
+    [SerializeField]
+    private SkinnedMeshRenderer hyenaRenderer4;
+    [SerializeField]
+    private SkinnedMeshRenderer hyenaRenderer5;
+    [SerializeField]
+    private SkinnedMeshRenderer hyenaRenderer6;
 
     // Start is called before the first frame update
     void Start()
@@ -110,7 +120,12 @@ public class HyenaBehaviour : MonoBehaviour
         anim = GetComponent<Animator>();
         
         StartCoroutine(RandomSound());
-        hyenaRenderer = gameObject.GetComponent<SkinnedMeshRenderer>();
+        hyenaRenderer1 = transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
+        hyenaRenderer2 = transform.GetChild(0).transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        hyenaRenderer3 = transform.GetChild(0).transform.GetChild(2).GetComponent<SkinnedMeshRenderer>();
+        hyenaRenderer4 = transform.GetChild(0).transform.GetChild(3).GetComponent<SkinnedMeshRenderer>();
+        hyenaRenderer5 = transform.GetChild(0).transform.GetChild(4).GetComponent<SkinnedMeshRenderer>();
+        hyenaRenderer6 = transform.GetChild(0).transform.GetChild(5).GetComponent<SkinnedMeshRenderer>();
     }
 
     // Update is called once per frame
@@ -291,9 +306,14 @@ public class HyenaBehaviour : MonoBehaviour
 
     private void Flash()
     {
-        Material originalMaterial = hyenaRenderer.material;
+        Material originalMaterial = hyenaRenderer1.material;
 
-        hyenaRenderer.material = flash;
+        hyenaRenderer1.material = flash;
+        hyenaRenderer2.material = flash;
+        hyenaRenderer3.material = flash;
+        hyenaRenderer4.material = flash;
+        hyenaRenderer5.material = flash;
+        hyenaRenderer6.material = flash;
 
         EndFlash(originalMaterial);
     }
@@ -302,14 +322,19 @@ public class HyenaBehaviour : MonoBehaviour
     {
         float flashCounter = 0;
 
-        if (flashCounter <= 0.2f)
+        if (flashCounter <= 1f)
         {
             flashCounter += Time.deltaTime;
         }
 
-        if (flashCounter > 0.2f)
+        if (flashCounter > 1f)
         {
-            hyenaRenderer.material = originalMaterial;
+            hyenaRenderer1.material = originalMaterial;
+            hyenaRenderer2.material = originalMaterial;
+            hyenaRenderer3.material = originalMaterial;
+            hyenaRenderer4.material = originalMaterial;
+            hyenaRenderer5.material = originalMaterial;
+            hyenaRenderer6.material = originalMaterial;
         }
     }
 }
