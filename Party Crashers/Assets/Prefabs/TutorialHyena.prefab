@@ -940,6 +940,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4850408901286429451}
   - component: {fileID: 4961458598815163622}
+  - component: {fileID: 31316195600917123}
+  - component: {fileID: 6271413598153088165}
   m_Layer: 0
   m_Name: TutorialHyena
   m_TagString: Untagged
@@ -985,6 +987,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &31316195600917123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195972677384427953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f888e3f68f22b54ea09d9759d819c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 2
+  points: 50
+  deathParticle1: {fileID: 2247773978899518682, guid: d0dcfa035ac7fc348ac4ec8e6ce878f7, type: 3}
+  shatteredHyena1: {fileID: 1520341045109095004, guid: efd2b5679c035124d815786968aa6442, type: 3}
+--- !u!65 &6271413598153088165
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195972677384427953}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9764347, y: 6.7333107, z: 4.2002344}
+  m_Center: {x: 0.1788615, y: 2.8666553, z: 1.6001174}
 --- !u!1 &5219955338658180566
 GameObject:
   m_ObjectHideFlags: 0
