@@ -1221,7 +1221,7 @@ MonoBehaviour:
   flashTimer: 0
   flashInterval: 1
   scoreAmount: 0
-  offset: 15
+  offset: 12
   currentFrame: 0
   hyenaRenderer: {fileID: 0}
 --- !u!65 &3277696902117133340
@@ -1235,8 +1235,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 6, z: 7.7}
-  m_Center: {x: 0.04, y: 2.6, z: -0.06}
+  m_Size: {x: 3, y: 4.652963, z: 9.553441}
+  m_Center: {x: 0.03999996, y: 1.9264802, z: 0.8667164}
 --- !u!195 &3277696902117133347
 NavMeshAgent:
   m_ObjectHideFlags: 0
