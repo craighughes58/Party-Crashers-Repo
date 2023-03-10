@@ -12,7 +12,7 @@ public class TextColorChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreText = gameObject.GetComponent<TextMeshPro>();
+        scoreText = gameObject.transform.GetChild(0).GetComponent<TextMeshPro>();
         aimColor = Color.green;
     }
 

@@ -306,6 +306,7 @@ public class HyenaBehaviour : MonoBehaviour
 
     private void Flash()
     {
+        
         Material originalMaterial = hyenaRenderer1.material;
 
         hyenaRenderer1.material = flash;

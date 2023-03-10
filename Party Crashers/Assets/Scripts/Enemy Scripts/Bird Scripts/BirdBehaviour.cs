@@ -77,7 +77,7 @@ public class BirdBehaviour : MonoBehaviour
         RandomizeColor();
 
         StartCoroutine(RandomSound());
-        animationClip = playerAnimator.GetCurrentAnimatorClipInfo(0);
+        //animationClip = playerAnimator.GetCurrentAnimatorClipInfo(0);
         playerAnimator.logWarnings = false;
 
     }
@@ -86,6 +86,7 @@ public class BirdBehaviour : MonoBehaviour
     {
         if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
+            animationClip = playerAnimator.GetCurrentAnimatorClipInfo(0);
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped > 1)
             {
                 amountTimeLooped++;
