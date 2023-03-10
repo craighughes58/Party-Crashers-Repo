@@ -83,17 +83,24 @@ public class BirdBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped > 1)
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            amountTimeLooped++;
+            if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped > 1)
+            {
+                amountTimeLooped++;
+            }
+            currentFrame = (int)((playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped) * (animationClip[0].clip.length * 24));
         }
-        currentFrame = (int)((playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped) * (animationClip[0].clip.length * 24));
     }
     // Update is called once per frame
     void Update()
     {   
         Rotate();
-        if (currentFrame == 123 && !spawnedOne && CheckTutorialStatus())
+        if(!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && TutorialWaiter == null && !playerAnimator.GetBool("Attack"))
+        {
+            playerAnimator.SetBool("Attack", true);
+        }
+        else if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && currentFrame == 123 && !spawnedOne)
         {
             CheckProjectile();
         }
@@ -161,14 +168,5 @@ public class BirdBehaviour : MonoBehaviour
         {
             Destroy(g);
         }
-    }
-
-    private bool CheckTutorialStatus()
-    {
-        if(TutorialWaiter == null)
-        {
-            return true;
-        }
-        return false;
     }
 }
