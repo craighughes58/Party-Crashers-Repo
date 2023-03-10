@@ -1185,7 +1185,7 @@ Transform:
   m_GameObject: {fileID: 4568385713749688917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1934792749245632514}
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   flashTimer: 0
   flashInterval: 1
   scoreAmount: 0
-  offset: 12
+  offset: 12.75
   currentFrame: 0
   hyenaRenderer: {fileID: 0}
 --- !u!65 &3277696902117133340
@@ -1235,8 +1235,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 4.652963, z: 9.553441}
-  m_Center: {x: 0.03999996, y: 1.9264802, z: 0.8667164}
+  m_Size: {x: 1.9038743, y: 4.15769, z: 10.471244}
+  m_Center: {x: -0.006021261, y: 1.6788437, z: 1.3256159}
 --- !u!195 &3277696902117133347
 NavMeshAgent:
   m_ObjectHideFlags: 0
