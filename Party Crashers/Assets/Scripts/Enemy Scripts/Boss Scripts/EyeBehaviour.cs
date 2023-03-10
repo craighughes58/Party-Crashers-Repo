@@ -18,6 +18,7 @@ public class EyeBehaviour : MonoBehaviour
         //when the boss is hit by a bat, if they're not in attack mode and are activated they will lose a life
         if (_bossAttacks.BH.GetBossState() == "EXHAUSTION" && collision.gameObject.tag.Equals("Bat"))
         {
+            print("BOSS HIT");
             _bossAttacks.BH.LoseHealth();
             _bossAttacks.PB.AddScore(_bossAttacks.ScoreGainedAttack);
         }
