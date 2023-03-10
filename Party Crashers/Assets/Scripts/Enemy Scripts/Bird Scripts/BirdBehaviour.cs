@@ -78,6 +78,7 @@ public class BirdBehaviour : MonoBehaviour
 
         StartCoroutine(RandomSound());
         animationClip = playerAnimator.GetCurrentAnimatorClipInfo(0);
+        playerAnimator.logWarnings = false;
 
     }
 
