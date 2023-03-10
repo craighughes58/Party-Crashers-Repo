@@ -322,12 +322,12 @@ public class HyenaBehaviour : MonoBehaviour
     {
         float flashCounter = 0;
 
-        if (flashCounter <= 1f)
+        if (flashCounter <= 0.5f)
         {
             flashCounter += Time.deltaTime;
         }
 
-        if (flashCounter > 1f)
+        else if (flashCounter > 0.5f)
         {
             hyenaRenderer1.material = originalMaterial;
             hyenaRenderer2.material = originalMaterial;
