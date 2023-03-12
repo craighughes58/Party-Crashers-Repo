@@ -147,7 +147,7 @@ public class BirdBehaviour : MonoBehaviour
         // bird destroyed sound
 
         Destroy(Instantiate(OutroParticles, transform.position, Quaternion.identity), 10f);
-        Destroy(Instantiate(DestroyedBird, transform.position, transform.rotation),5f);
+        Instantiate(DestroyedBird, transform.position, transform.rotation).gameObject.GetComponent<BirdBroken>().setColor(Beak.GetComponent<MeshRenderer>().material, BodyRenderer.material);
         pb.AddScore(25);
     }
 
