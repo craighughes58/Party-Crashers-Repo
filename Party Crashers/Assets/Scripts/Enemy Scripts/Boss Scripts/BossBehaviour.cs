@@ -56,6 +56,10 @@ public class BossBehaviour : MonoBehaviour
     {
         _currentHealth = _maxHealth;
         _moveVelocity = new Vector3(0f, _transitionTime, 0f);
+        GameObject g = GameObject.Find("Boss Movement Points");
+        _attackPos = g.transform.GetChild(0).transform;
+        _exhaustPos = g.transform.GetChild(1).transform;
+        
     }
 
     // Start is called before the first frame update
@@ -130,7 +134,9 @@ public class BossBehaviour : MonoBehaviour
     private void BeginExhaustion()
     {
         SetBossState(BossState.EXHAUSTION);
+        gameObject.GetComponent<EyeBehaviour>().beenHit = false;
         StartCoroutine(_bossAttacks.ExhaustionPhase());
+
     }
 
     /// <summary>

@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
         //settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
 
-        //DevBossTest();
+        DevBossTest();
     }
 
     //This script will spawn the enemies after each trigger
@@ -71,10 +71,10 @@ public class GameController : MonoBehaviour
                 //Instantiate(Hyena, spawnLocation, Quaternion.identity);
                 //AddEnemy();
 
-/*                spawnLocation.x = 31.11f;
-                spawnLocation.y = 6.9f;
-                spawnLocation.z = -94.7f;
-                Instantiate(Bird, spawnLocation, Quaternion.identity);*/
+                /*                spawnLocation.x = 31.11f;
+                                spawnLocation.y = 6.9f;
+                                spawnLocation.z = -94.7f;
+                                Instantiate(Bird, spawnLocation, Quaternion.identity);*/
                 AddEnemy();//this is for the tutorial bird
                 return;
             //First Area Spawns
@@ -148,7 +148,7 @@ public class GameController : MonoBehaviour
             case 5:
                 StartCoroutine(_bossBehaviour.ActivateBoss());
                 return;
-            default:                
+            default:
                 print("SOMETHING IS TERRIBLY WRONG");
 
                 return;
@@ -156,13 +156,13 @@ public class GameController : MonoBehaviour
 
     }
 
-        //calls when an enemy is destroyed
-        //if none are less then you move to the next zone
-        public void LoseEnemy()
+    //calls when an enemy is destroyed
+    //if none are less then you move to the next zone
+    public void LoseEnemy()
     {
         print(currentEnemyNum);
         currentEnemyNum--;
-        if(currentEnemyNum <= 0)
+        if (currentEnemyNum <= 0)
         {
             print("OSJGSD");
             SAP.StartPlayer();
@@ -266,34 +266,33 @@ public class GameController : MonoBehaviour
             isPaused = false;
             ResumeScene();
         }
-        
-    }
-/*    public void PauseScene()
-    {
 
-    }*/
+    }
+    /*    public void PauseScene()
+        {
+
+        }*/
     public void ResumeScene()
     {
         Time.timeScale = 1;
         DeactivateUIMenu(pauseMenu);
     }
 
-/*    private void Update()
-    {
-        if (currentEnemyNum <= 0)
+    /*    private void Update()
         {
-            SAP.StartPlayer();
-        }
-    }*/
+            if (currentEnemyNum <= 0)
+            {
+                SAP.StartPlayer();
+            }
+        }*/
 
     /// <summary>
     /// bypassing gameplay to test boss 
     /// </summary>
     private void DevBossTest()
     {
-        while(SectionNum < 5)
-        {
-            MoveToNextPoint();
-        }
+        GameObject.Find("XR Origin").GetComponent<BezierFollow>().enabled = false;
+        SAP.gameObject.transform.position = new Vector3(-33.42f, 13.55f, 97.933f);
+        StartCoroutine(_bossBehaviour.ActivateBoss());
     }
 }

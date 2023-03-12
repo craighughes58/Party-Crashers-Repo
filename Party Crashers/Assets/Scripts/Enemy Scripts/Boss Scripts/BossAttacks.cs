@@ -49,6 +49,7 @@ public class BossAttacks : MonoBehaviour
     {
         _currentAttacks = _maxAttacks;
         _missileSpawnPos = _missileSpawnPoint.position;
+        _playerBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
     }
     #endregion
 
@@ -95,9 +96,10 @@ public class BossAttacks : MonoBehaviour
     /// <returns></returns>
     public IEnumerator ExhaustionPhase()
     {
-        yield return new WaitForSeconds(_exhaustionTimer);
-
-        _bossBehaviour.EnterAttack();
+        //yield return new WaitForSeconds(_exhaustionTimer);
+        _bossBehaviour.Invoke("EnterAttack", _exhaustionTimer);
+        yield return null;
+        //_bossBehaviour.EnterAttack();
     }
     #endregion
 

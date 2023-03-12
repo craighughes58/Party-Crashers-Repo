@@ -61,6 +61,10 @@ public class MissileBehaviour : MonoBehaviour
         {
             _bossAttacks.PB.LoseScore(_bossAttacks.ScoreLost);
         }
+        else
+        {
+            return;
+        }
         Destroy(gameObject);
     }
 
