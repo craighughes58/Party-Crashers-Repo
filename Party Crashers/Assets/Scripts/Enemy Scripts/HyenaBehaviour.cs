@@ -161,28 +161,40 @@ public class HyenaBehaviour : MonoBehaviour
         //Vector3 offset = new Vector3(6, 0, 6);
         //enemy.position.x >= (player.position.x - offset.x) && (enemy.position.z >= (player.position.z - offset.z))
         // If the hyena is close enough to the player, it gets ready to attack
-        if (Vector3.Distance(player.position, transform.position) <= offset && !isTutorial)
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Flinch"))
         {
-            if (!attacking)
+            if (Vector3.Distance(player.position, transform.position) <= offset && !isTutorial)
             {
-                attacking = true;
-                anim.SetBool("attacking", attacking);
+                if (!attacking)
+                {
+                    attacking = true;
+                    anim.SetBool("attacking", attacking);
+                }
+
+                AttackWindUp();
+                meshAgent.SetDestination(transform.position);
             }
 
-            AttackWindUp();
-            meshAgent.SetDestination(transform.position);
+            else
+            {
+                if (attacking)
+                {
+                    attacking = false;
+                    anim.SetBool("attacking", attacking);
+                }
+                //ONLY MOVES WHEN WALKING?
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+                {
+                    meshAgent.isStopped = false;
+                    meshAgent.SetDestination(player.position);
+                }
+            }
         }
-
+        //Stops momentarily when hit
         else
         {
-            if (attacking)
-            {
-                attacking = false;
-                anim.SetBool("attacking", attacking);
-            }
-            meshAgent.isStopped = false;
-            meshAgent.SetDestination(player.position);
-
+            meshAgent.isStopped = true;
+            meshAgent.SetDestination(transform.position);
         }
 
     }
