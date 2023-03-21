@@ -226,14 +226,14 @@ public class GameController : MonoBehaviour
 
     public void DeactivateUIMenu(GameObject uiMenu)
     {
-        SwapVisibiltyHands(false);
+        
         uiMenu.gameObject.SetActive(false);
         //
     }
 
     public void ActivateUIMenu(GameObject uiMenu)
     {
-        SwapVisibiltyHands(true);
+        
         uiMenu.gameObject.SetActive(true);
     }
 
@@ -259,11 +259,15 @@ public class GameController : MonoBehaviour
         {
             isPaused = true;
             Time.timeScale = 0;
+            SwapVisibiltyHands(true);
+            Debug.Log("Menu hands, activate");
             ActivateUIMenu(pauseMenu);
         }
         else if (isPaused == true)
         {
             isPaused = false;
+            SwapVisibiltyHands(false);
+            Debug.Log("Menu hands, deactivate");
             ResumeScene();
         }
 
@@ -275,7 +279,10 @@ public class GameController : MonoBehaviour
     public void ResumeScene()
     {
         Time.timeScale = 1;
+        SwapVisibiltyHands(false);
+        Debug.Log("Menu hands, deactivate");
         DeactivateUIMenu(pauseMenu);
+        DeactivateUIMenu(settingsMenu);
     }
 
     /*    private void Update()
