@@ -46,6 +46,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DeactivateUIMenu(settingsMenu);
+        DeactivateUIMenu(pauseMenu);
         SAP = GameObject.Find("XR Origin").GetComponent<StopAtPoints>();
         leftHand = GameObject.Find("LeftHand (Smooth locomotion)");
         rightHand = GameObject.Find("RightHand (Teleport Locomotion)");
@@ -279,6 +281,7 @@ public class GameController : MonoBehaviour
     public void ResumeScene()
     {
         Time.timeScale = 1;
+        isPaused = false;
         SwapVisibiltyHands(false);
         Debug.Log("Menu hands, deactivate");
         DeactivateUIMenu(pauseMenu);
