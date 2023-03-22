@@ -52,8 +52,8 @@ public class GameController : MonoBehaviour
         wrappingPapper = GameObject.FindGameObjectWithTag("Bat");
         shield = GameObject.FindGameObjectWithTag("Shield");
         isPaused = false;
-        //pauseMenu.SetActive(false);
-        //settingsMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
 
         //DevBossTest();
@@ -268,13 +268,11 @@ public class GameController : MonoBehaviour
         }
 
     }
-    /*    public void PauseScene()
-        {
 
-        }*/
     public void ResumeScene()
     {
         Time.timeScale = 1;
+        isPaused = false;
         DeactivateUIMenu(pauseMenu);
     }
 
