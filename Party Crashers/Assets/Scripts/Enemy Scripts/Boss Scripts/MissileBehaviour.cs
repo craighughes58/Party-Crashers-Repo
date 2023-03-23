@@ -48,7 +48,7 @@ public class MissileBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         _aimPos = GameObject.Find("Missile Aim Position").GetComponent<Transform>();
         //CharCon = GameObject.Find("Player").GetComponent<CharacterController>();
-        StartCoroutine(Launch());
+        StartCoroutine(SeekPlayer());
     }
 
     /// <summary>
@@ -100,20 +100,10 @@ public class MissileBehaviour : MonoBehaviour
     /// <returns></returns>
     public IEnumerator Launch()
     {
-        int pointNum = UnityEngine.Random.Range(0, 3);
-        Vector3 endPos = _spawnPoints[pointNum].transform.position;
+        int attackPoint = _bossAttacks.attackPoint;
+        Vector3 endPos = _spawnPoints[attackPoint].transform.position;
 
-        //Boss plays attack anim
-        if(pointNum == 0)
-        {
-            _bossBehaviour.animator.SetTrigger("Left");
-        }
-        else
-        {
-            _bossBehaviour.animator.SetTrigger("Right");
-        }
-
-        if (pointNum == 1)
+        if (attackPoint == 1)
         {
             rb.AddForce(launchSpeed, ForceMode.Impulse);
             yield return new WaitWhile(() => transform.position.y <= endPos.y);

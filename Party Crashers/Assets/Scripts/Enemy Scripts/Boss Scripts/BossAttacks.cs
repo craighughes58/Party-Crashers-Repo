@@ -12,6 +12,7 @@ public class BossAttacks : MonoBehaviour
     [Header("Attacks")]
     [SerializeField] private int _maxAttacks; //the maximum amount of attacks the boss can make before entering exhaustion
     [SerializeField] private int _currentAttacks; //this is the variable that keeps track of how many attacks the boss has
+    public int attackPoint;
 
     [Header("Timers")]
     [Range(0f, 10f)]
@@ -22,8 +23,10 @@ public class BossAttacks : MonoBehaviour
 
     [Header("Attack Missiles")]
     [SerializeField] private GameObject _missileObject;
-    [SerializeField] private Transform _missileSpawnPoint;
+    [SerializeField] private Transform[] _missileSpawnPoint;
     private Vector3 _missileSpawnPos;
+    [SerializeField] private GameObject _missileAnimObject;
+    public bool isAttacking;
 
     [Header("Scores")]
     [Tooltip("Amount score decreases if player is hit, increases if deflected, and scored if eye attack")]
@@ -48,8 +51,23 @@ public class BossAttacks : MonoBehaviour
     private void Awake()
     {
         _currentAttacks = _maxAttacks;
-        _missileSpawnPos = _missileSpawnPoint.position;
         _playerBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+    }
+
+    private void Update()
+    {
+        if (_bossBehaviour.currentFrame == 43 && isAttacking)
+        {
+            GameObject g = Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity);
+            g.GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
+            _missileAnimObject.SetActive(false);
+        }
+        if(_bossBehaviour.currentFrame >= 83 && isAttacking)
+        {
+            isAttacking = false;
+            _bossBehaviour.ResetTriggers();
+            _bossBehaviour.animator.SetTrigger("StopAnims");
+        }
     }
     #endregion
 
@@ -83,18 +101,27 @@ public class BossAttacks : MonoBehaviour
     /// </summary>
     private void AttackPlayer()
     {
-        GameObject g = Instantiate(_missileObject, _missileSpawnPos, Quaternion.identity);
-        g.GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
-        DecreaseAttacks();
-    }
+        attackPoint = UnityEngine.Random.Range(0, 2);   // Chooses either right or left attack
 
-    /// <summary>
-    /// Plays an animation
-    /// </summary>
-    /// <param name="anim">name of anim being played</param>
-    public void PlayAnimation(string anim)
-    {
-        _bossBehaviour.animator.Play(anim);
+        // Boss plays attack anim
+        if (attackPoint == 0)
+        {
+            _bossBehaviour.ResetTriggers();
+            _bossBehaviour.animator.SetTrigger("Right");
+            _missileAnimObject.SetActive(true);
+            isAttacking = true;
+        }
+        else
+        {
+            _bossBehaviour.ResetTriggers();
+            _bossBehaviour.animator.SetTrigger("Left");
+            _missileAnimObject.SetActive(true);
+            isAttacking = true;
+        }
+
+        //GameObject g = Instantiate(_missileObject, _missileSpawnPos, Quaternion.identity);
+        //g.GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
+        DecreaseAttacks();
     }
     #endregion
 
