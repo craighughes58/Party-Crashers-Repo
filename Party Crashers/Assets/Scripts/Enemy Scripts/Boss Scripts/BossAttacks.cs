@@ -83,10 +83,19 @@ public class BossAttacks : MonoBehaviour
     /// </summary>
     private void AttackPlayer()
     {
-        Instantiate(_missileObject, _missileSpawnPos, Quaternion.identity);
+        GameObject g = Instantiate(_missileObject, _missileSpawnPos, Quaternion.identity);
+        g.GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
         DecreaseAttacks();
     }
 
+    /// <summary>
+    /// Plays an animation
+    /// </summary>
+    /// <param name="anim">name of anim being played</param>
+    public void PlayAnimation(string anim)
+    {
+        _bossBehaviour.animator.Play(anim);
+    }
     #endregion
 
     #region Exhaustion

@@ -10634,7 +10634,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8359801486811590752, guid: 805bc429888317b4594385d50808bb01, type: 3}
   m_PrefabInstance: {fileID: 1883205840}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1883205841}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb37010e18e69cf4a9ca544de012b922, type: 3}
@@ -36246,12 +36246,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8359801486811590751, guid: 805bc429888317b4594385d50808bb01, type: 3}
+      propertyPath: _missileObject
+      value: 
+      objectReference: {fileID: 3321153821630753450, guid: e9835c37e760e35428681729bdfaf851, type: 3}
+    - target: {fileID: 8359801486811590752, guid: 805bc429888317b4594385d50808bb01, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1883205842}
+    - target: {fileID: 8359801486811590752, guid: 805bc429888317b4594385d50808bb01, type: 3}
+      propertyPath: _transition
+      value: 
+      objectReference: {fileID: 6435618244168160285}
     - target: {fileID: 9171628488763878116, guid: 805bc429888317b4594385d50808bb01, type: 3}
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 805bc429888317b4594385d50808bb01, type: 3}
+--- !u!1 &1883205841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9171628488763878116, guid: 805bc429888317b4594385d50808bb01, type: 3}
+  m_PrefabInstance: {fileID: 1883205840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1883205842
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883205841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce9e5b67b293b9142ab612cd28d1313c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1886708607
 GameObject:
   m_ObjectHideFlags: 0

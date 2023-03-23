@@ -7,6 +7,10 @@ using UnityEngine.UIElements;
 
 public class MissileBehaviour : MonoBehaviour
 {
+
+    [Header("Script/Object Dependencies")]
+    public BossBehaviour _bossBehaviour;
+
     //reference to the gameobjects rigidbody
     private Rigidbody rb;
     //THE TRANSFORM OF THE TARGET
@@ -98,6 +102,16 @@ public class MissileBehaviour : MonoBehaviour
     {
         int pointNum = UnityEngine.Random.Range(0, 3);
         Vector3 endPos = _spawnPoints[pointNum].transform.position;
+
+        //Boss plays attack anim
+        if(pointNum == 0)
+        {
+            _bossBehaviour.animator.SetTrigger("Left");
+        }
+        else
+        {
+            _bossBehaviour.animator.SetTrigger("Right");
+        }
 
         if (pointNum == 1)
         {

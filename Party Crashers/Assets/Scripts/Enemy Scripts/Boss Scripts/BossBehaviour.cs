@@ -10,6 +10,7 @@ public class BossBehaviour : MonoBehaviour
     #region Variables
 
     [SerializeField] private Transition _transition;
+    public Animator animator;
 
     #region Scipt Dependencies
     [Header("Script Dependencies")]
