@@ -43,6 +43,8 @@ public class GameController : MonoBehaviour
 
 
     [SerializeField] BossBehaviour _bossBehaviour;
+
+    public List<BirdBehaviour> birds = new List<BirdBehaviour>();
     // Start is called before the first frame update
     void Start()
     {
@@ -97,22 +99,23 @@ public class GameController : MonoBehaviour
                 return;
             case 3:
                 Vector3 spawnLocationStop2 = new Vector3(14.24f, 12.13f, 5.77f);
-                Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
+                birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
                 spawnLocationStop2.x = 7.35f;
                 spawnLocationStop2.y = 14.93f;
                 spawnLocationStop2.z = 4.64f;
-                Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
+                birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
                 spawnLocationStop2.x = 42.84f;
                 spawnLocationStop2.y = 12.09f;
                 spawnLocationStop2.z = -19.19f;
-                Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
+                birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
                 return;
             case 4:
+                birds.Clear();
                 Vector3 spawnLocationStop3 = new Vector3(38, 0, 140);
                 Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
@@ -138,13 +141,13 @@ public class GameController : MonoBehaviour
                 spawnLocationStop3.x = -43.24f;
                 spawnLocationStop3.y = 39.42f;
                 spawnLocationStop3.z = 93.62f;
-                Instantiate(Bird, spawnLocationStop3, Quaternion.identity);
+                birds.Add(Instantiate(Bird, spawnLocationStop3, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
                 spawnLocationStop3.x = -34.39f;
                 spawnLocationStop3.y = 39.23f;
                 spawnLocationStop3.z = 111.7f;
-                Instantiate(Bird, spawnLocationStop3, Quaternion.identity);
+                birds.Add(Instantiate(Bird, spawnLocationStop3, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
                 return;
             case 5:

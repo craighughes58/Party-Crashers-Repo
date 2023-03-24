@@ -164,6 +164,11 @@ public class BirdBehaviour : MonoBehaviour
         StartCoroutine(RandomSound());
     }
 
+    public void Attack()
+    {
+        playerAnimator.SetTrigger("Attack");
+    }
+
     private void OnDestroy()
     {
         foreach(GameObject g in CurrentProjectiles)
