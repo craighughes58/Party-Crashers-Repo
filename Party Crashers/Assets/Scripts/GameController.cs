@@ -96,19 +96,19 @@ public class GameController : MonoBehaviour
                 AddEnemy();
                 return;
             case 3:
-                Vector3 spawnLocationStop2 = new Vector3(10.3f, 19.52f, 8.32f);
+                Vector3 spawnLocationStop2 = new Vector3(14.24f, 12.13f, 5.77f);
                 Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
                 AddEnemy();
 
-                spawnLocationStop2.x = 3.74f;
-                spawnLocationStop2.y = 16.23f;
-                spawnLocationStop2.z = 2.22f;
+                spawnLocationStop2.x = 7.35f;
+                spawnLocationStop2.y = 14.93f;
+                spawnLocationStop2.z = 4.64f;
                 Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
                 AddEnemy();
 
-                spawnLocationStop2.x = 49.68f;
-                spawnLocationStop2.y = 16.16f;
-                spawnLocationStop2.z = -16.53f;
+                spawnLocationStop2.x = 42.84f;
+                spawnLocationStop2.y = 12.09f;
+                spawnLocationStop2.z = -19.19f;
                 Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
                 AddEnemy();
                 return;
