@@ -18,9 +18,6 @@ public class BossAttacks : MonoBehaviour
     [Range(0f, 10f)]
     [SerializeField] private float _exhaustionTimer;
 
-    [Range(0f, 10f)]
-    [SerializeField] private float _timeBetweenAttacks;
-
     [Header("Attack Missiles")]
     [SerializeField] private GameObject _missileObject;
     [SerializeField] private Transform[] _missileSpawnPoint;
@@ -35,6 +32,7 @@ public class BossAttacks : MonoBehaviour
     [SerializeField] private int _scoreGainedAttack;
 
     public bool spawnedOne = false;
+    [SerializeField] private bool decreasedAttack;
 
     #region Getters
     [HideInInspector] public int ScoreLost => _scoreLost;
@@ -58,23 +56,26 @@ public class BossAttacks : MonoBehaviour
 
     private void Update()
     {
-        if (_bossBehaviour.currentFrame == 43 && isAttacking && !spawnedOne)
+        if (_bossBehaviour.currentFrame == 163 && !decreasedAttack)
         {
-            GameObject g = Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity);
-            g.GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
-            _missileAnimObject.SetActive(false);
-            spawnedOne = true;
-        }
-        else if(_bossBehaviour.currentFrame != 43 && spawnedOne)
-        {
-            spawnedOne = false;
-        }
-        /*if(_bossBehaviour.currentFrame >= 83 && isAttacking)
-        {
-            isAttacking = false;
+            DecreaseAttacks();
             _bossBehaviour.ResetTriggers();
-            _bossBehaviour.animator.SetTrigger("StopAnims");
-        }*/
+        }
+        else if (_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("LeftAttack") || _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("RightAttack"))
+        {
+            if (_bossBehaviour.currentFrame == 43 && isAttacking && !spawnedOne)
+            {
+                GameObject g = Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity);
+                g.GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
+                _missileAnimObject.SetActive(false);
+                spawnedOne = true;
+                decreasedAttack = false;
+            }
+            else if (_bossBehaviour.currentFrame != 43 && spawnedOne)
+            {
+                spawnedOne = false;
+            }
+        }
     }
     #endregion
 
@@ -90,8 +91,11 @@ public class BossAttacks : MonoBehaviour
         while (_currentAttacks > 0)
         {
             AttackPlayer();
-            yield return new WaitForSeconds(_timeBetweenAttacks);
+            yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
         }
+
+        yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
+
         StartCoroutine(_bossBehaviour.EnterExhaustion());
     }
 
@@ -101,6 +105,7 @@ public class BossAttacks : MonoBehaviour
     private void DecreaseAttacks()
     {
         _currentAttacks--;
+        decreasedAttack = true;
     }
 
     /// <summary>
@@ -125,10 +130,6 @@ public class BossAttacks : MonoBehaviour
             _missileAnimObject.SetActive(true);
             isAttacking = true;
         }
-
-        //GameObject g = Instantiate(_missileObject, _missileSpawnPos, Quaternion.identity);
-        //g.GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
-        DecreaseAttacks();
     }
     #endregion
 
