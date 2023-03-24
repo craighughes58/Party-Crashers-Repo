@@ -10,6 +10,7 @@ public class BossBehaviour : MonoBehaviour
     #region Variables
 
     [SerializeField] private Transition _transition;
+    public Animator animator;
 
     #region Scipt Dependencies
     [Header("Script Dependencies")]
@@ -47,6 +48,14 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField] private float _transitionTime;
     #endregion
 
+    #region Animation
+
+    public int currentFrame = 0;
+    AnimatorClipInfo[] animationClip;
+    int amountTimeLooped = 0;
+
+    #endregion
+
     #endregion
 
     #region Functions
@@ -68,6 +77,19 @@ public class BossBehaviour : MonoBehaviour
         //StartCoroutine(ActivateBoss());
     }
 
+    private void FixedUpdate()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("LeftAttack") || animator.GetCurrentAnimatorStateInfo(0).IsName("RightAttack"))
+        {
+            animationClip = animator.GetCurrentAnimatorClipInfo(0);
+
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped > 1)
+            {
+                amountTimeLooped++;
+            }
+            currentFrame = (int)((animator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped) * (animationClip[0].clip.length * 24));
+        }
+    }
     #endregion
 
     #region Getters
@@ -133,10 +155,10 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     private void BeginExhaustion()
     {
+        animator.SetTrigger("StopAnims");
         SetBossState(BossState.EXHAUSTION);
         gameObject.GetComponent<EyeBehaviour>().beenHit = false;
         StartCoroutine(_bossAttacks.ExhaustionPhase());
-
     }
 
     /// <summary>
@@ -146,6 +168,13 @@ public class BossBehaviour : MonoBehaviour
     {
         SetBossState(BossState.ATTACK);
         StartCoroutine(_bossAttacks.AttackPhase());
+    }
+
+    public void ResetTriggers()
+    {
+        animator.ResetTrigger("Left");
+        animator.ResetTrigger("Right");
+        animator.ResetTrigger("StopAnims");
     }
     #endregion
 
