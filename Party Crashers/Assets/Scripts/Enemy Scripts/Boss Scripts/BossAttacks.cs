@@ -88,10 +88,13 @@ public class BossAttacks : MonoBehaviour
     public IEnumerator AttackPhase()
     {
         _currentAttacks = _maxAttacks;
+        int xAttack = _currentAttacks;
         while (_currentAttacks > 0)
         {
             AttackPlayer();
-            yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
+            yield return new WaitWhile(() => _currentAttacks == xAttack);
+            xAttack--;
+            print(xAttack + " " + _currentAttacks);
         }
 
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
@@ -119,14 +122,14 @@ public class BossAttacks : MonoBehaviour
         if (attackPoint == 0)
         {
             _bossBehaviour.ResetTriggers();
-            _bossBehaviour.animator.SetTrigger("Right");
+            _bossBehaviour.animator.SetTrigger("Left");
             _missileAnimObject.SetActive(true);
             isAttacking = true;
         }
         else
         {
             _bossBehaviour.ResetTriggers();
-            _bossBehaviour.animator.SetTrigger("Left");
+            _bossBehaviour.animator.SetTrigger("Right");
             _missileAnimObject.SetActive(true);
             isAttacking = true;
         }
