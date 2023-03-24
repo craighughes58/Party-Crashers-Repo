@@ -57494,6 +57494,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 25485829}
+    - target: {fileID: 2980332081918148949, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_Size.x
+      value: 0.03579161
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980332081918148949, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 3827239427797239653, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: m_RootOrder
       value: 7
