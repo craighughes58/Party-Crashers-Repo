@@ -34,6 +34,8 @@ public class BossAttacks : MonoBehaviour
     [SerializeField] private int _scoreGainedDeflect;
     [SerializeField] private int _scoreGainedAttack;
 
+    public bool spawnedOne = false;
+
     #region Getters
     [HideInInspector] public int ScoreLost => _scoreLost;
     [HideInInspector] public int ScoreGainedDeflect => _scoreGainedDeflect;
@@ -56,18 +58,23 @@ public class BossAttacks : MonoBehaviour
 
     private void Update()
     {
-        if (_bossBehaviour.currentFrame == 43 && isAttacking)
+        if (_bossBehaviour.currentFrame == 43 && isAttacking && !spawnedOne)
         {
             GameObject g = Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity);
             g.GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
             _missileAnimObject.SetActive(false);
+            spawnedOne = true;
         }
-        if(_bossBehaviour.currentFrame >= 83 && isAttacking)
+        else if(_bossBehaviour.currentFrame != 43 && spawnedOne)
+        {
+            spawnedOne = false;
+        }
+        /*if(_bossBehaviour.currentFrame >= 83 && isAttacking)
         {
             isAttacking = false;
             _bossBehaviour.ResetTriggers();
             _bossBehaviour.animator.SetTrigger("StopAnims");
-        }
+        }*/
     }
     #endregion
 
