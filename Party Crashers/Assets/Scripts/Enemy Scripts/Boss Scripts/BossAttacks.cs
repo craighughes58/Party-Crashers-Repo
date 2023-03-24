@@ -92,6 +92,7 @@ public class BossAttacks : MonoBehaviour
         while (_currentAttacks > 0)
         {
             AttackPlayer();
+            //Will wait until _CurrentAttacks != xAttack
             yield return new WaitWhile(() => _currentAttacks == xAttack);
             xAttack--;
             print(xAttack + " " + _currentAttacks);
