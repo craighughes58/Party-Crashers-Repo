@@ -580,7 +580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8813185804420958354}
   m_Layer: 0
-  m_Name: Breakable Cup
+  m_Name: ShatteredCup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

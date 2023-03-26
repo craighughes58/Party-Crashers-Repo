@@ -383,7 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8304403528769166568}
   m_Layer: 0
-  m_Name: Breakable Cake
+  m_Name: ShatteredCake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
