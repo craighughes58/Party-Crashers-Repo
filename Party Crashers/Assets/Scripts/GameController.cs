@@ -44,6 +44,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] BossBehaviour _bossBehaviour;
 
+    [SerializeField] bool devBossTesting;
+
     public List<BirdBehaviour> birds = new List<BirdBehaviour>();
     // Start is called before the first frame update
     void Start()
@@ -60,7 +62,8 @@ public class GameController : MonoBehaviour
         //settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
 
-        //DevBossTest();
+        if(devBossTesting)
+            DevBossTest();
     }
 
     //This script will spawn the enemies after each trigger
