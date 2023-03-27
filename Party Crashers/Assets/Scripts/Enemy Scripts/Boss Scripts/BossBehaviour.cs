@@ -146,6 +146,7 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void EnterAttack()
     {
+        animator.SetTrigger("StopAnims");
         Debug.Log("EnterAttack");
         StartCoroutine(MoveToAtkPos());
     }
@@ -155,7 +156,6 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     private void BeginExhaustion()
     {
-        animator.SetTrigger("StopAnims");
         SetBossState(BossState.EXHAUSTION);
         gameObject.GetComponent<EyeBehaviour>().beenHit = false;
         StartCoroutine(_bossAttacks.ExhaustionPhase());
@@ -204,6 +204,7 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     private IEnumerator MoveToExhPos()
     {
+        animator.SetTrigger("Exhausted");
         float pathPercentage = 0;
         Vector3 startPos = transform.position;
         Quaternion startQ = transform.rotation;
@@ -271,9 +272,10 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     private void BossDeath()
     {
-        Debug.Log("boss dies");
+        animator.SetTrigger("Lost");
+        _transition.Invoke("LoadLevel", 3.5f);
         //do stuff when the boss dies
-        _transition.LoadLevel();
+        //_transition.LoadLevel();
     }
 
     #endregion
