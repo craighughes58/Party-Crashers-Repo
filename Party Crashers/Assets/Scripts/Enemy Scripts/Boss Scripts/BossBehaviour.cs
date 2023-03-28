@@ -108,7 +108,10 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public IEnumerator ActivateBoss()
     {
+        animator.SetTrigger("Intro");
         yield return new WaitForSeconds(_bossActivationTime);
+        ResetTriggers();
+        animator.SetTrigger("StopAnims");
         EnterAttack();
         // play starting animation
         // set initial attack state
@@ -175,6 +178,7 @@ public class BossBehaviour : MonoBehaviour
         animator.ResetTrigger("Left");
         animator.ResetTrigger("Right");
         animator.ResetTrigger("StopAnims");
+        animator.ResetTrigger("Intro");
     }
     #endregion
 
