@@ -8,6 +8,7 @@ public class BirdBehaviour : MonoBehaviour
     //Refrence to the PlayerBehavior script to use the necessary functions from it
     private PlayerBehaviour pb;
 
+    public BirdBehaviour bb;
     //Refrence to the player's transform
     private Transform player;
 

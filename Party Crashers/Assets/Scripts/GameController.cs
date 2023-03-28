@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu, settingsMenu;
 
+    public BirdBehaviour bb;
+    private GameObject tempBird;
 
     [SerializeField] BossBehaviour _bossBehaviour;
 
@@ -104,18 +106,31 @@ public class GameController : MonoBehaviour
                 Vector3 spawnLocationStop2 = new Vector3(14.24f, 12.13f, 5.77f);
                 birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
+                //Automatically set the bird to attack
+
+
 
                 spawnLocationStop2.x = 7.35f;
                 spawnLocationStop2.y = 14.93f;
                 spawnLocationStop2.z = 4.64f;
                 birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
+                bb = GameObject.Find("Bird(Clone)").GetComponent<BirdBehaviour>();
 
                 spawnLocationStop2.x = 42.84f;
                 spawnLocationStop2.y = 12.09f;
                 spawnLocationStop2.z = -19.19f;
                 birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
+
+                for ( int i=1; i < birds.Count; i++)
+                {
+                    birds[i].bb = birds[i - 1];
+                }
+                birds[0].bb = birds[birds.Count];
+
+                birds[0].Attack();
+
                 return;
             case 4:
                 birds.Clear();
