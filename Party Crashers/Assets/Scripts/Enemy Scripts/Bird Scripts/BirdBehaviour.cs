@@ -61,6 +61,8 @@ public class BirdBehaviour : MonoBehaviour
     int amountTimeLooped=0;
     bool spawnedOne;
 
+    bool previousAttacked;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,9 +101,20 @@ public class BirdBehaviour : MonoBehaviour
     void Update()
     {   
         Rotate();
-        if(!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && TutorialWaiter == null && !playerAnimator.GetBool("Attack"))
+        if (bb != null && bb.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            playerAnimator.SetBool("Attack", true);
+            previousAttacked = true;
+        }
+        else if (bb != null && !bb.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && previousAttacked)
+        {
+            StartCoroutine(Attack());
+            previousAttacked = false;
+        }
+
+
+        if(!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && TutorialWaiter == null && isTutorial)
+        {
+            playerAnimator.SetTrigger("AttackTrigger");
         }
         else if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && currentFrame == 123 && !spawnedOne)
         {
@@ -165,9 +178,15 @@ public class BirdBehaviour : MonoBehaviour
         StartCoroutine(RandomSound());
     }
 
-    public void Attack()
+    //public void Attack()
+    //{
+        //StartCoroutine(attack());
+    //}
+
+    public IEnumerator Attack()
     {
-        playerAnimator.SetTrigger("Attack");
+        yield return new WaitForSeconds(2);
+        playerAnimator.SetTrigger("AttackTrigger");
     }
 
     private void OnDestroy()

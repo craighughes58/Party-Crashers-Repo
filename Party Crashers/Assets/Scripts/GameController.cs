@@ -115,7 +115,7 @@ public class GameController : MonoBehaviour
                 spawnLocationStop2.z = 4.64f;
                 birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
-                bb = GameObject.Find("Bird(Clone)").GetComponent<BirdBehaviour>();
+                //bb = GameObject.Find("Bird(Clone)").GetComponent<BirdBehaviour>();
 
                 spawnLocationStop2.x = 42.84f;
                 spawnLocationStop2.y = 12.09f;
@@ -127,10 +127,9 @@ public class GameController : MonoBehaviour
                 {
                     birds[i].bb = birds[i - 1];
                 }
-                birds[0].bb = birds[birds.Count];
+                birds[0].bb = birds[birds.Count-1];
 
-                birds[0].Attack();
-
+                birds[0].StartCoroutine(birds[0].Attack());
                 return;
             case 4:
                 birds.Clear();
