@@ -56,7 +56,7 @@ public class BossAttacks : MonoBehaviour
 
     private void Update()
     {
-        if (_bossBehaviour.currentFrame == 163 && !decreasedAttack)
+        if (_bossBehaviour.currentFrame == 83 && !decreasedAttack)
         {
             DecreaseAttacks();
             _bossBehaviour.ResetTriggers();
@@ -87,15 +87,17 @@ public class BossAttacks : MonoBehaviour
     /// <returns></returns>
     public IEnumerator AttackPhase()
     {
-        _currentAttacks = _maxAttacks;
-        int xAttack = _currentAttacks;
+        //_currentAttacks = _maxAttacks;
+        //int xAttack = _currentAttacks;
         while (_currentAttacks > 0)
         {
+            yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
             AttackPlayer();
+            yield return new WaitWhile(() => _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
             //Will wait until _CurrentAttacks != xAttack
-            yield return new WaitWhile(() => _currentAttacks == xAttack);
-            xAttack--;
-            print(xAttack + " " + _currentAttacks);
+            //yield return new WaitWhile(() => _currentAttacks == xAttack);
+            //xAttack--;
+            //print(xAttack + " " + _currentAttacks);
         }
 
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
