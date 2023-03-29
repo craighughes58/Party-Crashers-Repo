@@ -156,8 +156,11 @@ public class BirdBehaviour : MonoBehaviour
     /// </summary>
     public void BirdHit()
     {
+        BirdBehaviour currentBehavior = GetComponent<BirdBehaviour>();
         gc.LoseEnemy();
+        gc.LoseBird(currentBehavior);
         Destroy(gameObject);
+
         // bird destroyed sound
 
         Destroy(Instantiate(OutroParticles, transform.position, Quaternion.identity), 10f);
