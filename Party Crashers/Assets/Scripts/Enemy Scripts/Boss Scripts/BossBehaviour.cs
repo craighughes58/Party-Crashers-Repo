@@ -151,13 +151,14 @@ public class BossBehaviour : MonoBehaviour
     {
         animator.SetTrigger("StopAnims");
         Debug.Log("EnterAttack");
+        _bossAttacks.DeactivateHitSignal();
         StartCoroutine(MoveToAtkPos());
     }
 
     /// <summary>
     /// Initiates vulnerability and sets boss state
     /// </summary>
-    private void BeginExhaustion()
+    public void BeginExhaustion()
     {
         SetBossState(BossState.EXHAUSTION);
         gameObject.GetComponent<EyeBehaviour>().beenHit = false;
@@ -206,7 +207,7 @@ public class BossBehaviour : MonoBehaviour
     /// <summary>
     /// Moves the boss to the exh pos where the player can hit the eye
     /// </summary>
-    private IEnumerator MoveToExhPos()
+    public IEnumerator MoveToExhPos()
     {
         animator.SetTrigger("Exhausted");
         float pathPercentage = 0;

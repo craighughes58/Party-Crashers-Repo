@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu, settingsMenu;
 
+    public BirdBehaviour bb;
+    private GameObject tempBird;
 
     [SerializeField] BossBehaviour _bossBehaviour;
 
@@ -75,13 +77,6 @@ public class GameController : MonoBehaviour
             //Tutorial Spawns
             case 1:
                 Vector3 spawnLocation = new Vector3(-20, 0, -115);
-                //Instantiate(Hyena, spawnLocation, Quaternion.identity);
-                //AddEnemy();
-
-                /*                spawnLocation.x = 31.11f;
-                                spawnLocation.y = 6.9f;
-                                spawnLocation.z = -94.7f;
-                                Instantiate(Bird, spawnLocation, Quaternion.identity);*/
                 AddEnemy();//this is for the tutorial bird
                 return;
             //First Area Spawns
@@ -116,6 +111,14 @@ public class GameController : MonoBehaviour
                 spawnLocationStop2.z = -19.19f;
                 birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
+
+                for ( int i=1; i < birds.Count; i++)
+                {
+                    birds[i].bb = birds[i - 1];
+                }
+                birds[0].bb = birds[birds.Count-1];
+
+                birds[0].StartCoroutine(birds[0].Attack());
                 return;
             case 4:
                 birds.Clear();
@@ -152,6 +155,14 @@ public class GameController : MonoBehaviour
                 spawnLocationStop3.z = 111.7f;
                 birds.Add(Instantiate(Bird, spawnLocationStop3, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
+
+                for (int i = 1; i < birds.Count; i++)
+                {
+                    birds[i].bb = birds[i - 1];
+                }
+                birds[0].bb = birds[birds.Count - 1];
+
+                birds[0].StartCoroutine(birds[0].Attack());
                 return;
             case 5:
                 StartCoroutine(_bossBehaviour.ActivateBoss());
@@ -174,6 +185,21 @@ public class GameController : MonoBehaviour
         {
             print("OSJGSD");
             SAP.StartPlayer();
+        }
+    }
+
+    public void LoseBird(BirdBehaviour removeMe)
+    {
+        birds.Remove(removeMe);
+        print(birds.Count);
+        if (birds.Count == 2)
+        {
+            birds[0].bb = birds[1];
+            birds[1].bb = birds[0];
+        }
+        else if (birds.Count==1)
+        {
+            birds[0].bb = birds[0];
         }
     }
 

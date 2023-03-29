@@ -8,6 +8,7 @@ public class BirdBehaviour : MonoBehaviour
     //Refrence to the PlayerBehavior script to use the necessary functions from it
     private PlayerBehaviour pb;
 
+    public BirdBehaviour bb;
     //Refrence to the player's transform
     private Transform player;
 
@@ -60,6 +61,8 @@ public class BirdBehaviour : MonoBehaviour
     int amountTimeLooped=0;
     bool spawnedOne;
 
+    bool previousAttacked;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,9 +101,20 @@ public class BirdBehaviour : MonoBehaviour
     void Update()
     {   
         Rotate();
-        if(!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && TutorialWaiter == null && !playerAnimator.GetBool("Attack"))
+        if (bb != null && bb.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            playerAnimator.SetBool("Attack", true);
+            previousAttacked = true;
+        }
+        else if (bb != null && !bb.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && previousAttacked)
+        {
+            StartCoroutine(Attack());
+            previousAttacked = false;
+        }
+
+
+        if(!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && TutorialWaiter == null && isTutorial)
+        {
+            playerAnimator.SetTrigger("AttackTrigger");
         }
         else if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && currentFrame == 123 && !spawnedOne)
         {
@@ -142,8 +156,11 @@ public class BirdBehaviour : MonoBehaviour
     /// </summary>
     public void BirdHit()
     {
+        BirdBehaviour currentBehavior = GetComponent<BirdBehaviour>();
         gc.LoseEnemy();
+        gc.LoseBird(currentBehavior);
         Destroy(gameObject);
+
         // bird destroyed sound
 
         Destroy(Instantiate(OutroParticles, transform.position, Quaternion.identity), 10f);
@@ -164,9 +181,15 @@ public class BirdBehaviour : MonoBehaviour
         StartCoroutine(RandomSound());
     }
 
-    public void Attack()
+    //public void Attack()
+    //{
+        //StartCoroutine(attack());
+    //}
+
+    public IEnumerator Attack()
     {
-        playerAnimator.SetTrigger("Attack");
+        yield return new WaitForSeconds(2);
+        playerAnimator.SetTrigger("AttackTrigger");
     }
 
     private void OnDestroy()
