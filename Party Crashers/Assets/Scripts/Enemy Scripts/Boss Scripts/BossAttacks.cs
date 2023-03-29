@@ -65,8 +65,7 @@ public class BossAttacks : MonoBehaviour
         {
             if (_bossBehaviour.currentFrame == 43 && isAttacking && !spawnedOne)
             {
-                GameObject g = Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity);
-                g.GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
+                Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity).GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
                 _missileAnimObject.SetActive(false);
                 spawnedOne = true;
                 decreasedAttack = false;
@@ -85,19 +84,25 @@ public class BossAttacks : MonoBehaviour
     /// Controls the attach phase events
     /// </summary>
     /// <returns></returns>
+    /// 
+
     public IEnumerator AttackPhase()
     {
-        //_currentAttacks = _maxAttacks;
-        //int xAttack = _currentAttacks;
+        _currentAttacks = _maxAttacks;
+        int xAttack = _currentAttacks;
+
         while (_currentAttacks > 0)
         {
             yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
             AttackPlayer();
             yield return new WaitWhile(() => _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
-            //Will wait until _CurrentAttacks != xAttack
+
+            //yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
             //yield return new WaitWhile(() => _currentAttacks == xAttack);
+            //print(xAttack + " " + _currentAttacks); 
             //xAttack--;
-            //print(xAttack + " " + _currentAttacks);
+
+            print(xAttack + " " + _currentAttacks);
         }
 
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));

@@ -38,7 +38,8 @@ public class MissileBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _bossAttacks = GameObject.Find("Boss").GetComponent<BossAttacks>();
+        _bossAttacks = _bossBehaviour.gameObject.GetComponent<BossAttacks>();
+        print(_bossAttacks);
         for(int i = 0; i < _spawnPoints.Length; i++)
         {
             _spawnPoints[i] = GameObject.Find("Point " + i);

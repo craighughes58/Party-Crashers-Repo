@@ -43,9 +43,15 @@ public class GameController : MonoBehaviour
 
 
     [SerializeField] BossBehaviour _bossBehaviour;
+
+    [SerializeField] bool devBossTesting;
+
+    public List<BirdBehaviour> birds = new List<BirdBehaviour>();
     // Start is called before the first frame update
     void Start()
     {
+        DeactivateUIMenu(settingsMenu);
+        DeactivateUIMenu(pauseMenu);
         SAP = GameObject.Find("XR Origin").GetComponent<StopAtPoints>();
         leftHand = GameObject.Find("LeftHand (Smooth locomotion)");
         rightHand = GameObject.Find("RightHand (Teleport Locomotion)");
@@ -56,7 +62,8 @@ public class GameController : MonoBehaviour
         //settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
 
-        DevBossTest();
+        if(devBossTesting)
+            DevBossTest();
     }
 
     //This script will spawn the enemies after each trigger
@@ -94,23 +101,24 @@ public class GameController : MonoBehaviour
                 AddEnemy();
                 return;
             case 3:
-                Vector3 spawnLocationStop2 = new Vector3(10.3f, 19.52f, 8.32f);
-                Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
+                Vector3 spawnLocationStop2 = new Vector3(14.24f, 12.13f, 5.77f);
+                birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
-                spawnLocationStop2.x = 3.74f;
-                spawnLocationStop2.y = 16.23f;
-                spawnLocationStop2.z = 2.22f;
-                Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
+                spawnLocationStop2.x = 7.35f;
+                spawnLocationStop2.y = 14.93f;
+                spawnLocationStop2.z = 4.64f;
+                birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
-                spawnLocationStop2.x = 49.68f;
-                spawnLocationStop2.y = 16.16f;
-                spawnLocationStop2.z = -16.53f;
-                Instantiate(Bird, spawnLocationStop2, Quaternion.identity);
+                spawnLocationStop2.x = 42.84f;
+                spawnLocationStop2.y = 12.09f;
+                spawnLocationStop2.z = -19.19f;
+                birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
                 return;
             case 4:
+                birds.Clear();
                 Vector3 spawnLocationStop3 = new Vector3(38, 0, 140);
                 Instantiate(HyenaVariation, spawnLocationStop3, Quaternion.identity);
                 AddEnemy();
@@ -136,13 +144,13 @@ public class GameController : MonoBehaviour
                 spawnLocationStop3.x = -43.24f;
                 spawnLocationStop3.y = 39.42f;
                 spawnLocationStop3.z = 93.62f;
-                Instantiate(Bird, spawnLocationStop3, Quaternion.identity);
+                birds.Add(Instantiate(Bird, spawnLocationStop3, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
                 spawnLocationStop3.x = -34.39f;
                 spawnLocationStop3.y = 39.23f;
                 spawnLocationStop3.z = 111.7f;
-                Instantiate(Bird, spawnLocationStop3, Quaternion.identity);
+                birds.Add(Instantiate(Bird, spawnLocationStop3, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
                 return;
             case 5:
@@ -279,6 +287,7 @@ public class GameController : MonoBehaviour
     public void ResumeScene()
     {
         Time.timeScale = 1;
+        isPaused = false;
         SwapVisibiltyHands(false);
         Debug.Log("Menu hands, deactivate");
         DeactivateUIMenu(pauseMenu);

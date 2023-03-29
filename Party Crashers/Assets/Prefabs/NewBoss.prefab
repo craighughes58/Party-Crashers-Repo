@@ -1005,6 +1005,7 @@ MonoBehaviour:
   _attackPos: {fileID: 0}
   _exhaustPos: {fileID: 0}
   _transitionTime: 2
+  currentFrame: 0
 --- !u!114 &2763426885067843090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,13 +1022,18 @@ MonoBehaviour:
   _playerBehaviour: {fileID: 0}
   _maxAttacks: 3
   _currentAttacks: 0
+  attackPoint: 0
   _exhaustionTimer: 3
-  _timeBetweenAttacks: 2.75
   _missileObject: {fileID: 3321153821630753450, guid: e9835c37e760e35428681729bdfaf851, type: 3}
-  _missileSpawnPoint: {fileID: 2192243709288297479}
+  _missileSpawnPoint:
+  - {fileID: 0}
+  _missileAnimObject: {fileID: 0}
+  isAttacking: 0
   _scoreLost: 15
   _scoreGainedDeflect: 5
   _scoreGainedAttack: 50
+  spawnedOne: 0
+  decreasedAttack: 0
 --- !u!114 &2763426885067843089
 MonoBehaviour:
   m_ObjectHideFlags: 0
