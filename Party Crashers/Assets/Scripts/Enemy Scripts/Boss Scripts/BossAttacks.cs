@@ -93,7 +93,7 @@ public class BossAttacks : MonoBehaviour
         _currentAttacks = _maxAttacks;
         int xAttack = _currentAttacks;
 
-        while (!hitSignal)//_currentAttacks > 0
+        while (!hitSignal)//_currentAttacks > 0 WHILE THE BOSS ISNT'T HIT
         {
             yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
             AttackPlayer();
@@ -106,10 +106,11 @@ public class BossAttacks : MonoBehaviour
 
             print(xAttack + " " + _currentAttacks);
         }
-        hitSignal = false;
+        
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
 
-        StartCoroutine(_bossBehaviour.EnterExhaustion());
+        //StartCoroutine(_bossBehaviour.EnterExhaustion());
+        _bossBehaviour.BeginExhaustion(); //ONCE THE BOSS IS HIT ENTER EXHAUSTION
     }
 
     /// <summary>
@@ -174,6 +175,10 @@ public class BossAttacks : MonoBehaviour
     public void ActivateHitSignal()
     {
         hitSignal = true;
+    }
+    public void DeactivateHitSignal()
+    {
+        hitSignal = false;
     }
     #endregion
 

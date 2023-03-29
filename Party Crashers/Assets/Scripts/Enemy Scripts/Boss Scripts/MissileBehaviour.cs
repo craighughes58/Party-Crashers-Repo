@@ -71,12 +71,18 @@ public class MissileBehaviour : MonoBehaviour
         else if (collision.gameObject.tag.Equals("Player"))
         {
             _bossAttacks.PB.LoseScore(_bossAttacks.ScoreLost);
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.tag.Equals("Boss"))
+        {
+            Destroy(gameObject);
         }
         else
         {
+            Destroy(gameObject);
             return;
         }
-        Destroy(gameObject);
+       //
     }
 
     /// <summary>

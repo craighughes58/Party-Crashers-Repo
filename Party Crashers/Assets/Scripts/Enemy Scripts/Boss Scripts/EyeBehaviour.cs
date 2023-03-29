@@ -30,6 +30,7 @@ public class EyeBehaviour : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        print("Stay");
         if (_bossAttacks.BH.GetBossState() == "EXHAUSTION" && collision.gameObject.tag.Equals("Bat") && !beenHit)
         {
             print("BOSS HIT");
@@ -38,7 +39,10 @@ public class EyeBehaviour : MonoBehaviour
             _bossAttacks.RemoveAllMissiles();
             beenHit = true;
         }
-        else if(_bossAttacks.BH.GetBossState() == "ATTACK" && collision.gameObject.tag.Equals("Missile"))
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (_bossAttacks.BH.GetBossState() == "ATTACK" && collision.gameObject.tag.Equals("Missile"))
         {
             _bossAttacks.RemoveAllMissiles();
             //change state to exhausted

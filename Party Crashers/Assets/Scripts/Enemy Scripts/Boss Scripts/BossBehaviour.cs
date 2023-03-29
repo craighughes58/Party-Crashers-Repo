@@ -147,6 +147,7 @@ public class BossBehaviour : MonoBehaviour
     public void EnterAttack()
     {
         Debug.Log("EnterAttack");
+        _bossAttacks.DeactivateHitSignal();
         StartCoroutine(MoveToAtkPos());
     }
 
