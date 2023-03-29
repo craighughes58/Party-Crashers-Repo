@@ -782,7 +782,7 @@ MonoBehaviour:
   settingsMenu: {fileID: 825443163}
   bb: {fileID: 0}
   _bossBehaviour: {fileID: 632771191}
-  devBossTesting: 1
+  devBossTesting: 0
   birds: []
 --- !u!4 &25485830
 Transform:
