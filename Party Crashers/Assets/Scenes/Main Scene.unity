@@ -780,7 +780,9 @@ MonoBehaviour:
   isPaused: 0
   pauseMenu: {fileID: 594089174}
   settingsMenu: {fileID: 825443163}
+  bb: {fileID: 0}
   _bossBehaviour: {fileID: 632771191}
+  devBossTesting: 1
   birds: []
 --- !u!4 &25485830
 Transform:
@@ -58705,6 +58707,10 @@ PrefabInstance:
     - target: {fileID: 3827239427797239654, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: m_Name
       value: XR Origin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547977384516682834, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6904783458617783610, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: Routes.Array.data[0]
