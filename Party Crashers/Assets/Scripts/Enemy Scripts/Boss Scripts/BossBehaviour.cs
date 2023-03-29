@@ -153,7 +153,7 @@ public class BossBehaviour : MonoBehaviour
     /// <summary>
     /// Initiates vulnerability and sets boss state
     /// </summary>
-    private void BeginExhaustion()
+    public void BeginExhaustion()
     {
         animator.SetTrigger("StopAnims");
         SetBossState(BossState.EXHAUSTION);
@@ -202,7 +202,7 @@ public class BossBehaviour : MonoBehaviour
     /// <summary>
     /// Moves the boss to the exh pos where the player can hit the eye
     /// </summary>
-    private IEnumerator MoveToExhPos()
+    public IEnumerator MoveToExhPos()
     {
         float pathPercentage = 0;
         Vector3 startPos = transform.position;

@@ -35,10 +35,15 @@ public class MissileBehaviour : MonoBehaviour
 
     private BossAttacks _bossAttacks;
 
+    private Transform BossPositionReference;
+
+
     // Start is called before the first frame update
     void Start()
     {
         _bossAttacks = _bossBehaviour.gameObject.GetComponent<BossAttacks>();
+        BossPositionReference = _bossBehaviour.transform;
+        _bossAttacks.AddProjectile(gameObject);
         print(_bossAttacks);
         for(int i = 0; i < _spawnPoints.Length; i++)
         {
@@ -60,6 +65,7 @@ public class MissileBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Shield"))
         {
+            _aimPos = BossPositionReference;
             _bossAttacks.PB.AddScore(_bossAttacks.ScoreGainedDeflect);
         }
         else if (collision.gameObject.tag.Equals("Player"))
@@ -81,17 +87,18 @@ public class MissileBehaviour : MonoBehaviour
     /// <returns>null</returns>
     public IEnumerator SeekPlayer()
     {
-        while (Vector3.Distance(_aimPos.position, transform.position) > .3)
-        {
-            MoveToPos(_aimPos.position, 1f);
-            //WAY 2
-            //transform.position += (PlayerPos.position - transform.position).normalized * speed * Time.deltaTime;
-            /*            Vector3 direction = PlayerPos.position - transform.position;
-                        Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
-                        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, speed * Time.time);*/
-            //transform.LookAt(PlayerPos);//THIS MAY NEED TO BE CHANGED WITH SOMETHING THAT IS LESS PINPOINT
-            yield return new WaitForSeconds(.01f);
-        }
+            while (Vector3.Distance(_aimPos.position, transform.position) > .3)
+            {
+                MoveToPos(_aimPos.position, 1f);
+                //WAY 2
+                //transform.position += (PlayerPos.position - transform.position).normalized * speed * Time.deltaTime;
+                /*            Vector3 direction = PlayerPos.position - transform.position;
+                            Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
+                            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, speed * Time.time);*/
+                //transform.LookAt(PlayerPos);//THIS MAY NEED TO BE CHANGED WITH SOMETHING THAT IS LESS PINPOINT
+                yield return new WaitForSeconds(.01f);
+            }
+        
     }
 
     /// <summary>
@@ -132,5 +139,10 @@ public class MissileBehaviour : MonoBehaviour
 
         Quaternion TargetRotation = Quaternion.LookRotation(endPos - transform.position);
         rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, TargetRotation, rotateSpeed));
+    }
+
+    public void SetBossReference(Transform BossPos)
+    {
+        BossPositionReference = BossPos;
     }
 }

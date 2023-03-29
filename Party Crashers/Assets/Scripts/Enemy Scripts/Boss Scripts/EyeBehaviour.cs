@@ -35,7 +35,16 @@ public class EyeBehaviour : MonoBehaviour
             print("BOSS HIT");
             _bossAttacks.BH.LoseHealth();
             _bossAttacks.PB.AddScore(_bossAttacks.ScoreGainedAttack);
+            _bossAttacks.RemoveAllMissiles();
             beenHit = true;
+        }
+        else if(_bossAttacks.BH.GetBossState() == "ATTACK" && collision.gameObject.tag.Equals("Missile"))
+        {
+            _bossAttacks.RemoveAllMissiles();
+            //change state to exhausted
+            StartCoroutine(_bossAttacks.BH.MoveToExhPos());
+            //stop firing missiles
+            _bossAttacks.ActivateHitSignal();
         }
     }
 }

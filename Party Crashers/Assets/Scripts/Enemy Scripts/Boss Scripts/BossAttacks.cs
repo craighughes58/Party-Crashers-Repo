@@ -13,6 +13,7 @@ public class BossAttacks : MonoBehaviour
     [SerializeField] private int _maxAttacks; //the maximum amount of attacks the boss can make before entering exhaustion
     [SerializeField] private int _currentAttacks; //this is the variable that keeps track of how many attacks the boss has
     public int attackPoint;
+    private List<GameObject> RecentMissiles = new List<GameObject>();
 
     [Header("Timers")]
     [Range(0f, 10f)]
@@ -24,6 +25,7 @@ public class BossAttacks : MonoBehaviour
     private Vector3 _missileSpawnPos;
     [SerializeField] private GameObject _missileAnimObject;
     public bool isAttacking;
+    private bool hitSignal = false;
 
     [Header("Scores")]
     [Tooltip("Amount score decreases if player is hit, increases if deflected, and scored if eye attack")]
@@ -91,7 +93,7 @@ public class BossAttacks : MonoBehaviour
         _currentAttacks = _maxAttacks;
         int xAttack = _currentAttacks;
 
-        while (_currentAttacks > 0)
+        while (!hitSignal)//_currentAttacks > 0
         {
             yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
             AttackPlayer();
@@ -104,7 +106,7 @@ public class BossAttacks : MonoBehaviour
 
             print(xAttack + " " + _currentAttacks);
         }
-
+        hitSignal = false;
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
 
         StartCoroutine(_bossBehaviour.EnterExhaustion());
@@ -155,6 +157,23 @@ public class BossAttacks : MonoBehaviour
         _bossBehaviour.Invoke("EnterAttack", _exhaustionTimer);
         yield return null;
         //_bossBehaviour.EnterAttack();
+    }
+
+    public void AddProjectile(GameObject RM)
+    {
+        RecentMissiles.Add(RM);
+    }
+
+    public void RemoveAllMissiles()
+    {
+        foreach(GameObject m in RecentMissiles)
+        {
+            Destroy(m);
+        }
+    }
+    public void ActivateHitSignal()
+    {
+        hitSignal = true;
     }
     #endregion
 
