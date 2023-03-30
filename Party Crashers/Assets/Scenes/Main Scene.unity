@@ -58761,6 +58761,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 4031755630251014521, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031755630251014521, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031755630251014521, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6022257025881172881, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -58977,6 +58989,14 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.1981132
       objectReference: {fileID: 0}
+    - target: {fileID: 8523282296544705386, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523282296544705386, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e7e04b84fcd2ea7458d4e3e87a695f24, type: 3}
     - target: {fileID: 8523282296544705387, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: m_Transition
       value: 2
@@ -59073,6 +59093,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 825443163}
+    - target: {fileID: 8523282297387474291, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
 --- !u!20 &6904783458391337813 stripped
