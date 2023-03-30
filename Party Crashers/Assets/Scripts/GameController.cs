@@ -64,6 +64,7 @@ public class GameController : MonoBehaviour
         //settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
 
+
         if(devBossTesting)
             DevBossTest();
     }
@@ -216,6 +217,7 @@ public class GameController : MonoBehaviour
         {
             Vector3 localPos = wrappingPapper.transform.localPosition;
             Vector3 localPos2 = shield.transform.localPosition;
+
             if (!leftHanded)
             {
                 wrappingPapper.transform.parent = rightHand.transform;
@@ -226,8 +228,12 @@ public class GameController : MonoBehaviour
                 wrappingPapper.transform.parent = leftHand.transform;
                 shield.transform.parent = rightHand.transform;
             }
+
             wrappingPapper.transform.localPosition = localPos;
             shield.transform.localPosition = localPos2;
+            wrappingPapper.transform.localRotation = Quaternion.Euler(90f, 0, 180f);
+            shield.transform.localRotation = Quaternion.Euler(0f,-90f,90f);
+
 
         }
     }
@@ -238,8 +244,8 @@ public class GameController : MonoBehaviour
     /// <param name="visible">Visibility of the ray. True when in menu false when in game</param>
     public void SwapVisibiltyHands(bool visible)
     {
-        leftHand.gameObject.transform.GetChild(3).gameObject.GetComponent<XRInteractorLineVisual>().enabled = visible;
-        rightHand.gameObject.transform.GetChild(3).gameObject.GetComponent<XRInteractorLineVisual>().enabled = visible;
+        leftHand.gameObject.transform.GetChild(2).gameObject.GetComponent<XRInteractorLineVisual>().enabled = visible;
+        rightHand.gameObject.transform.GetChild(2).gameObject.GetComponent<XRInteractorLineVisual>().enabled = visible;
         wrappingPapper.gameObject.SetActive(!visible);
         shield.gameObject.SetActive(!visible);
     }
