@@ -1223,7 +1223,13 @@ MonoBehaviour:
   scoreAmount: 0
   offset: 12.75
   currentFrame: 0
-  hyenaRenderer: {fileID: 0}
+  hyenaRenderer1: {fileID: 0}
+  hyenaRenderer2: {fileID: 0}
+  hyenaRenderer3: {fileID: 0}
+  hyenaRenderer4: {fileID: 0}
+  hyenaRenderer5: {fileID: 0}
+  hyenaRenderer6: {fileID: 0}
+  originalMaterial: {fileID: 0}
 --- !u!65 &3277696902117133340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1248,7 +1254,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 3.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0

@@ -112,7 +112,7 @@ public class HyenaBehaviour : MonoBehaviour
         //reference to the player transform
         player = FindObjectOfType<PlayerBehaviour>().transform;
         // Radomize the move speed of the hyenas
-        moveSpeed = Random.Range(7, 12);
+        moveSpeed = Random.Range(7, 11);
         meshAgent.speed = moveSpeed;
 
         enemy = transform;

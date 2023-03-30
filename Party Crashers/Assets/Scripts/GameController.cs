@@ -67,6 +67,7 @@ public class GameController : MonoBehaviour
 
         if(devBossTesting)
             DevBossTest();
+
     }
 
     //This script will spawn the enemies after each trigger
@@ -231,8 +232,8 @@ public class GameController : MonoBehaviour
 
             wrappingPapper.transform.localPosition = localPos;
             shield.transform.localPosition = localPos2;
-            wrappingPapper.transform.localRotation = Quaternion.Euler(90f, 0, 180f);
-            shield.transform.localRotation = Quaternion.Euler(0f,-90f,90f);
+            wrappingPapper.transform.localRotation = Quaternion.Euler(110f, 0f, 0f);
+            shield.transform.localRotation = Quaternion.Euler(0f,90f,90f);
 
 
         }
