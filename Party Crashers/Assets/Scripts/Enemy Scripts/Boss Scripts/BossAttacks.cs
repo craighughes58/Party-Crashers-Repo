@@ -104,7 +104,7 @@ public class BossAttacks : MonoBehaviour
             //print(xAttack + " " + _currentAttacks); 
             //xAttack--;
 
-            print(xAttack + " " + _currentAttacks);
+            //print(xAttack + " " + _currentAttacks);
         }
         
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
