@@ -33,25 +33,43 @@ public class ShatteringObjectsScript : MonoBehaviour
 
             if (name.Contains("Fork"))
             {
-                Destroy(Instantiate(shatteredFork, transform.position, transform.rotation), 5f);
+                Destroy(Instantiate(shatteredFork, transform.position, transform.rotation), 1f);
                 Destroy(gameObject);
             }
 
             if (name.Contains("Cup"))
             {
-                Destroy(Instantiate(shatteredCup, transform.position, transform.rotation), 5f);
+                Destroy(Instantiate(shatteredCup, transform.position, transform.rotation), 1f);
                 Destroy(gameObject);
             }
 
             if (name.Contains("Cake"))
             {
-                Destroy(Instantiate(shatteredCake, transform.position, transform.rotation), 5f);
+                Destroy(Instantiate(shatteredCake, transform.position, transform.rotation), 1f);
                 Destroy(gameObject);
             }
 
             if (name.Contains("Plate"))
             {
-                Destroy(Instantiate(shatteredPlate, transform.position, transform.rotation), 5f);
+                Destroy(Instantiate(shatteredPlate, transform.position, transform.rotation), 1f);
+                Destroy(gameObject);
+            }
+
+            if (name.Contains("MedRock"))
+            {
+                Destroy(Instantiate(shatteredRockMed, transform.position, transform.rotation), 1f);
+                Destroy(gameObject);
+            }
+
+            if (name.Contains("SmallRock"))
+            {
+                Destroy(Instantiate(shatteredRockSmall, transform.position, transform.rotation), 1f);
+                Destroy(gameObject);
+            }
+
+            if (name.Contains("LargeRock"))
+            {
+                Destroy(Instantiate(shatteredRockLarge, transform.position, transform.rotation), 1f);
                 Destroy(gameObject);
             }
         }
