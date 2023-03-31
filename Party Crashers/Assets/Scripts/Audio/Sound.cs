@@ -17,12 +17,6 @@ public class Sound
 
     public string name;
 
-    [Range(0, 59.999f)]
-    public float startTime;    
-    
-    [Range(0, 59.999f)]
-    public float endTime;
-
     [Range(0, 1)]
     public float volume;
     [Range(0.1f, 3)]

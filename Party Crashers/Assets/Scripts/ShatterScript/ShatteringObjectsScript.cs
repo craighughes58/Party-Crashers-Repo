@@ -28,6 +28,7 @@ public class ShatteringObjectsScript : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Bat"))
         {
+            // play bonk sound / drum cymbals
             Debug.Log("Object Shattered");
 
 

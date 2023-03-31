@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] Sounds;
     public AudioMixerGroup masterMixer;
+    private int movePoint = 0;
 
     public static AudioManager instance;
     
@@ -76,4 +77,48 @@ public class AudioManager : MonoBehaviour
     //    s1.source.SetScheduledEndTime(AudioSettings.dspTime + (s1.endTime - s1.source.time));
     //    s2.source.SetScheduledStartTime(AudioSettings.dspTime + ()
     //}
+    public void SwitchMovingMusic()
+    {
+
+    }
+
+    public void SwitchMusic(int musicTrack)
+    {
+        switch (musicTrack)
+        {
+            // TUTORIAL
+            case 1:
+                print("TURORIAL");
+                //Play( int "musicTrack")
+                break;
+            case 2:
+                print(" music 2");
+                break;
+            case 3:
+                print(" music 3");
+                break;
+            case 4:
+                print(" music 4");
+                break;
+            case 5:
+                print(" music 5");
+                break;
+            case 6:
+                print(" music 6");
+                break;
+            case 7:
+                print(" music 7");
+                break;
+            case 8:
+                print(" music 8");
+                break;
+            // PAUSED
+            case 9:
+                print("pause music");
+                // 
+                break;
+            default:
+                break;
+        }
+    }
 }

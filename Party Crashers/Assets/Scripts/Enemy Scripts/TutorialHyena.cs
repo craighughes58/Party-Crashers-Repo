@@ -26,6 +26,7 @@ public class TutorialHyena : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Bat"))
         {
+            // PLAYER HIT WITH BAT
             lives--;
             HitReaction();
         }
@@ -34,6 +35,7 @@ public class TutorialHyena : MonoBehaviour
     {
         if (lives <= 0)
         {
+            // ENEMY DEATH
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
             gc.LoseEnemy();
             Destroy(Instantiate(shatteredHyena1, transform.position, transform.rotation), 5f);
@@ -48,11 +50,5 @@ public class TutorialHyena : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent<GameController>();
         gc.AddEnemy();
         pb = FindObjectOfType<PlayerBehaviour>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
