@@ -80,6 +80,7 @@ public class GameController : MonoBehaviour
     public void MoveToNextPoint()
     {
         musicTrack++;
+        print("Playing music track number " + musicTrack);
         SectionNum++;
         switch (SectionNum)
         {
@@ -179,7 +180,7 @@ public class GameController : MonoBehaviour
                 return;
             case 5:
                 StartCoroutine(_bossBehaviour.ActivateBoss());
-                // boss music
+                
                 return;
             default:
                 print("SOMETHING IS TERRIBLY WRONG");
@@ -310,14 +311,15 @@ public class GameController : MonoBehaviour
         if (isPaused == false)
         {
             // stop footsteps
-            // stop music
+            // remember which song was playing when paused
             currentMusic = musicTrack;
-            // play paused audio
-            // start paused music
+            am.SwitchMusic(10);
+
             isPaused = true;
             Time.timeScale = 0;
             SwapVisibiltyHands(true);
             Debug.Log("Menu hands, activate");
+            // play paused audio
             ActivateUIMenu(pauseMenu);
         }
         else if (isPaused == true)
@@ -328,17 +330,15 @@ public class GameController : MonoBehaviour
             Debug.Log("Menu hands, deactivate");
             ResumeScene();
         }
-
     }
-    /*    public void PauseScene()
-        {
 
-        }*/
     public void ResumeScene()
     {
         // unpaused audio (same as back button)
-        // restart footsteps
+        am.Stop("Pause_Music");
         am.SwitchMusic(currentMusic);
+        // restart footsteps
+
         Time.timeScale = 1;
         isPaused = false;
         SwapVisibiltyHands(false);
