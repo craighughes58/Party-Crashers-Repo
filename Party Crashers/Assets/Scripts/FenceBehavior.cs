@@ -19,6 +19,8 @@ public class FenceBehavior : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Hyena") && !triggered)
         {
+            // fence crash
+            // stop fence scratching (disable the audio source component)
             triggered = true;
             StartCoroutine("Animation");
         }

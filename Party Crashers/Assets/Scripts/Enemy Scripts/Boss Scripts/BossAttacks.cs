@@ -134,6 +134,7 @@ public class BossAttacks : MonoBehaviour
         {
             _bossBehaviour.ResetTriggers();
             _bossBehaviour.animator.SetTrigger("Left");
+            // attack anim
             _missileAnimObject.SetActive(true);
             isAttacking = true;
         }
@@ -141,6 +142,7 @@ public class BossAttacks : MonoBehaviour
         {
             _bossBehaviour.ResetTriggers();
             _bossBehaviour.animator.SetTrigger("Right");
+            // attack anim
             _missileAnimObject.SetActive(true);
             isAttacking = true;
         }

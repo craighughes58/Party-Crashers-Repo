@@ -1111,6 +1111,7 @@ GameObject:
   - component: {fileID: 2997849170617105344}
   - component: {fileID: 2997849170617105347}
   - component: {fileID: 8361611775603751954}
+  - component: {fileID: 8788634837840145297}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -1187,7 +1188,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2997849170617105347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,6 +1225,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &8788634837840145297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997849170617105346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616b4ee02bd1069439ac1be7582fee86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2997849170677209485
 GameObject:
   m_ObjectHideFlags: 0

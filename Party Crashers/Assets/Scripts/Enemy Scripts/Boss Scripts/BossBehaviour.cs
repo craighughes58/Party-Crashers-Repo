@@ -109,6 +109,7 @@ public class BossBehaviour : MonoBehaviour
     public IEnumerator ActivateBoss()
     {
         animator.SetTrigger("Intro");
+        // play roar sfx 
         yield return new WaitForSeconds(_bossActivationTime);
         ResetTriggers();
         animator.SetTrigger("StopAnims");
@@ -210,6 +211,7 @@ public class BossBehaviour : MonoBehaviour
     public IEnumerator MoveToExhPos()
     {
         animator.SetTrigger("Exhausted");
+        // play exhaust sfx
         float pathPercentage = 0;
         Vector3 startPos = transform.position;
         Quaternion startQ = transform.rotation;

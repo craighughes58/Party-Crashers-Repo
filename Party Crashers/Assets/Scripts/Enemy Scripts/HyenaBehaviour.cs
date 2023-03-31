@@ -169,6 +169,7 @@ public class HyenaBehaviour : MonoBehaviour
                 {
                     attacking = true;
                     anim.SetBool("attacking", attacking);
+                    // stop footsteps, attack!
                 }
 
                 AttackWindUp();
@@ -187,6 +188,7 @@ public class HyenaBehaviour : MonoBehaviour
                 {
                     meshAgent.isStopped = false;
                     meshAgent.SetDestination(player.position);
+                    // footsteps sounds!
                 }
             }
         }
@@ -253,9 +255,6 @@ public class HyenaBehaviour : MonoBehaviour
         // Print the proof of it attacking to the console (we'll replace this
         // with the actual attack stuff as we get that developed)
         Debug.Log("Attack!");
-
-        // do attack sound
-
         // The player then loses one life
         ScoreLoss();
 
@@ -274,9 +273,11 @@ public class HyenaBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Bat"))
         {
+            // player hits enemy with bat
             Debug.Log("Life lost!");
             enemyLives--;
             anim.SetTrigger("Hit");
+            // hyena flinch sound
             HitReaction();
         }
     }
@@ -316,8 +317,8 @@ public class HyenaBehaviour : MonoBehaviour
     private IEnumerator RandomSound()
     {
         yield return new WaitForSeconds(3f);
-        // make int of 1 or 2
-        // do sound based on int
+        int randomSound = Random.Range(1, 2);
+        // do sound based on int, name the effects with numbers, and do randomSound.tostring with the names
         StartCoroutine(RandomSound());
     }
 

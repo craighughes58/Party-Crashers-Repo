@@ -48,6 +48,11 @@ public class GameController : MonoBehaviour
 
     [SerializeField] bool devBossTesting;
 
+    [Header("Audio")]
+    public AudioManager am;
+    public int musicTrack = 0;
+    private int currentMusic;
+
     public List<BirdBehaviour> birds = new List<BirdBehaviour>();
     // Start is called before the first frame update
     void Start()
@@ -59,6 +64,7 @@ public class GameController : MonoBehaviour
         rightHand = GameObject.Find("RightHand (Teleport Locomotion)");
         wrappingPapper = GameObject.FindGameObjectWithTag("Bat");
         shield = GameObject.FindGameObjectWithTag("Shield");
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         isPaused = false;
         //pauseMenu.SetActive(false);
         //settingsMenu.SetActive(false);
@@ -73,6 +79,7 @@ public class GameController : MonoBehaviour
     //This script will spawn the enemies after each trigger
     public void MoveToNextPoint()
     {
+        musicTrack++;
         SectionNum++;
         switch (SectionNum)
         {
@@ -80,6 +87,7 @@ public class GameController : MonoBehaviour
             case 1:
                 Vector3 spawnLocation = new Vector3(-20, 0, -115);
                 AddEnemy();//this is for the tutorial bird
+                am.SwitchMusic(musicTrack);
                 return;
             //First Area Spawns
             case 2:
@@ -96,6 +104,7 @@ public class GameController : MonoBehaviour
                 spawnLocationStop1.z = -112;
                 Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
                 AddEnemy();
+                // first fight music!
                 return;
             case 3:
                 Vector3 spawnLocationStop2 = new Vector3(14.24f, 12.13f, 5.77f);
@@ -121,6 +130,7 @@ public class GameController : MonoBehaviour
                 birds[0].bb = birds[birds.Count-1];
 
                 birds[0].StartCoroutine(birds[0].Attack());
+                // fight 2 music
                 return;
             case 4:
                 birds.Clear();
@@ -165,9 +175,11 @@ public class GameController : MonoBehaviour
                 birds[0].bb = birds[birds.Count - 1];
 
                 birds[0].StartCoroutine(birds[0].Attack());
+                // fight 3 music
                 return;
             case 5:
                 StartCoroutine(_bossBehaviour.ActivateBoss());
+                // boss music
                 return;
             default:
                 print("SOMETHING IS TERRIBLY WRONG");
@@ -267,14 +279,13 @@ public class GameController : MonoBehaviour
 
     public void DeactivateUIMenu(GameObject uiMenu)
     {
-        
         uiMenu.gameObject.SetActive(false);
-        //
+        // back audio
     }
 
     public void ActivateUIMenu(GameObject uiMenu)
     {
-        
+        // select audio
         uiMenu.gameObject.SetActive(true);
     }
 
@@ -298,6 +309,11 @@ public class GameController : MonoBehaviour
     {
         if (isPaused == false)
         {
+            // stop footsteps
+            // stop music
+            currentMusic = musicTrack;
+            // play paused audio
+            // start paused music
             isPaused = true;
             Time.timeScale = 0;
             SwapVisibiltyHands(true);
@@ -306,6 +322,7 @@ public class GameController : MonoBehaviour
         }
         else if (isPaused == true)
         {
+            // stop paused music
             isPaused = false;
             SwapVisibiltyHands(false);
             Debug.Log("Menu hands, deactivate");
@@ -319,6 +336,9 @@ public class GameController : MonoBehaviour
         }*/
     public void ResumeScene()
     {
+        // unpaused audio (same as back button)
+        // restart footsteps
+        am.SwitchMusic(currentMusic);
         Time.timeScale = 1;
         isPaused = false;
         SwapVisibiltyHands(false);
