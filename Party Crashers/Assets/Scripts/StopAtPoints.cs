@@ -6,10 +6,12 @@ public class StopAtPoints : MonoBehaviour
 {
     private bool isStopped = false;
     private GameController gc;
+    private AudioManager am;
 
     private void Start()
     {
         gc = GameObject.Find("GameController").GetComponent<GameController>();
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,8 +44,11 @@ public class StopAtPoints : MonoBehaviour
     public void StartPlayer()
     {
         isStopped = false;
+        
+        am.Play("Path_Footsteps");
+        
         gc.musicTrack++;
         print("Playing music track number " + gc.musicTrack);
-        GameObject.Find("AudioManager").GetComponent<AudioManager>().SwitchMusic(gc.musicTrack);
+        am.SwitchMusic(gc.musicTrack);
     }
 }

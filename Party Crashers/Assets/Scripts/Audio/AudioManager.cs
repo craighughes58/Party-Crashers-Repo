@@ -51,6 +51,8 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    #region Sound Controls
+
     public void Play(string name)
     {
         Sound s = Array.Find(Sounds, sound => sound.name == name);
@@ -120,6 +122,10 @@ public class AudioManager : MonoBehaviour
         s.source.volume = musicVolume;
     }
 
+    #endregion
+
+    #region Song Functions
+
     public void SwitchMusic(int musicTrack)
     {
         switch (musicTrack)
@@ -175,6 +181,7 @@ public class AudioManager : MonoBehaviour
                 break;
             case 12:
                 print("End Game music");
+                MuteAllInstruments();
                 Play("End_Music");
                 // 
                 break;
@@ -183,7 +190,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    #region Song Functions
     /// <summary>
     /// Play the components of EVERY SONG, with only the components for move 1 audible
     /// </summary>
@@ -295,6 +301,21 @@ public class AudioManager : MonoBehaviour
         Stop("Ukulele");
         // unmute the drums in case of pause
         Unmute("Drum_Set");
+    }
+
+    /// <summary>
+    /// Mute all instruments when the game is paused
+    /// </summary>
+    public void MuteAllInstruments()
+    {
+        Mute("Toy_Piano");
+        Mute("Lead_Guitar");
+        Mute("Drum_Set");
+        Mute("Bass_Guitar");
+        Mute("Harm_Guitar");
+        Mute("Hand_Clap");
+        Mute("Foot_Stomp");
+        Mute("Ukulele");
     }
     #endregion
 }

@@ -79,6 +79,7 @@ public class GameController : MonoBehaviour
     //This script will spawn the enemies after each trigger
     public void MoveToNextPoint()
     {
+        am.Stop("Path_Footsteps");
         musicTrack++;
         print("Playing music track number " + musicTrack);
         SectionNum++;
@@ -281,13 +282,13 @@ public class GameController : MonoBehaviour
     public void DeactivateUIMenu(GameObject uiMenu)
     {
         uiMenu.gameObject.SetActive(false);
-        // back audio
+        am.Play("Menu_Back");
     }
 
     public void ActivateUIMenu(GameObject uiMenu)
     {
-        // select audio
         uiMenu.gameObject.SetActive(true);
+        am.Play("Menu_Confirm");
     }
 
     public void QuitGame()
@@ -310,21 +311,19 @@ public class GameController : MonoBehaviour
     {
         if (isPaused == false)
         {
-            // stop footsteps
-            // remember which song was playing when paused
+            am.Stop("Path_Footsteps");
             currentMusic = musicTrack;
             am.SwitchMusic(10);
+            am.Play("Pause_Game");
 
             isPaused = true;
             Time.timeScale = 0;
             SwapVisibiltyHands(true);
             Debug.Log("Menu hands, activate");
-            // play paused audio
             ActivateUIMenu(pauseMenu);
         }
         else if (isPaused == true)
         {
-            // stop paused music
             isPaused = false;
             SwapVisibiltyHands(false);
             Debug.Log("Menu hands, deactivate");
@@ -334,10 +333,10 @@ public class GameController : MonoBehaviour
 
     public void ResumeScene()
     {
-        // unpaused audio (same as back button)
+        am.Play("Menu_Back");
         am.Stop("Pause_Music");
         am.SwitchMusic(currentMusic);
-        // restart footsteps
+        am.Play("Path_Footsteps");
 
         Time.timeScale = 1;
         isPaused = false;
