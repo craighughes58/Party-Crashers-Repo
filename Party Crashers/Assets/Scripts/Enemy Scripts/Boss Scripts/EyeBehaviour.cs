@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class EyeBehaviour : MonoBehaviour
     [Header("Script Dependencies")]
     [SerializeField] private BossAttacks _bossAttacks;
     public bool beenHit;
+    [SerializeField] private Material flash;
+    Material startMat;
     #endregion
 
     /*
@@ -30,14 +33,18 @@ public class EyeBehaviour : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        print("Stay");
+        //print("Stay");
         if (_bossAttacks.BH.GetBossState() == "EXHAUSTION" && collision.gameObject.tag.Equals("Bat") && !beenHit)
         {
             FindObjectOfType<AudioManager>().Play("Hit_Enemy");
-            print("BOSS HIT");
+            //print("BOSS HIT");
             _bossAttacks.BH.LoseHealth();
             _bossAttacks.PB.AddScore(_bossAttacks.ScoreGainedAttack);
             _bossAttacks.RemoveAllMissiles();
+            if (!beenHit)
+            {
+                HitReaction();
+            }
             beenHit = true;
         }
     }
@@ -52,5 +59,27 @@ public class EyeBehaviour : MonoBehaviour
             //stop firing missiles
             _bossAttacks.ActivateHitSignal();
         }
+    }
+
+    private void HitReaction()
+    {
+        startMat = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
+        Flash();
+    }
+
+    private void Flash()
+    {
+        gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material = flash;
+        gameObject.transform.GetChild(0).transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = flash;
+
+        StartCoroutine(EndFlash());
+    }
+
+    private IEnumerator EndFlash()
+    {
+        yield return new WaitForSeconds(.1f);
+        gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material = startMat;
+        gameObject.transform.GetChild(0).transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = startMat;
+        yield return null;
     }
 }

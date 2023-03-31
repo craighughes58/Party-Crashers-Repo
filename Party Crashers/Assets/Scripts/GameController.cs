@@ -57,6 +57,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         DeactivateUIMenu(settingsMenu);
         DeactivateUIMenu(pauseMenu);
         SAP = GameObject.Find("XR Origin").GetComponent<StopAtPoints>();
@@ -69,8 +70,7 @@ public class GameController : MonoBehaviour
         //pauseMenu.SetActive(false);
         //settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
-
-
+        SwapHands(true);
         if(devBossTesting)
             DevBossTest();
 
@@ -104,20 +104,20 @@ public class GameController : MonoBehaviour
                 Instantiate(HyenaVariation, spawnLocationStop1, Quaternion.identity);
                 AddEnemy();
 
-                spawnLocationStop1.x = -9.5f;
-                spawnLocationStop1.z = -112;
+                spawnLocationStop1.x = -15f;
+                spawnLocationStop1.z = -70f;
                 Instantiate(Hyena, spawnLocationStop1, Quaternion.identity);
                 AddEnemy();
-                // first fight music!
+                am.SwitchMusic(musicTrack);
                 return;
             case 3:
-                Vector3 spawnLocationStop2 = new Vector3(14.24f, 12.13f, 5.77f);
+                Vector3 spawnLocationStop2 = new Vector3(71.57f, 18.86f, 20.84f);
                 birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
-                spawnLocationStop2.x = 7.35f;
-                spawnLocationStop2.y = 14.93f;
-                spawnLocationStop2.z = 4.64f;
+                spawnLocationStop2.x = 14.24f;
+                spawnLocationStop2.y = 12.13f;
+                spawnLocationStop2.z = 5.77f;
                 birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
@@ -134,7 +134,7 @@ public class GameController : MonoBehaviour
                 birds[0].bb = birds[birds.Count-1];
 
                 birds[0].StartCoroutine(birds[0].Attack());
-                // fight 2 music
+                am.SwitchMusic(musicTrack);
                 return;
             case 4:
                 birds.Clear();
@@ -179,7 +179,7 @@ public class GameController : MonoBehaviour
                 birds[0].bb = birds[birds.Count - 1];
 
                 birds[0].StartCoroutine(birds[0].Attack());
-                // fight 3 music
+                am.SwitchMusic(musicTrack);
                 return;
             case 5:
                 StartCoroutine(_bossBehaviour.ActivateBoss());
@@ -224,7 +224,7 @@ public class GameController : MonoBehaviour
     //called when an enemy is instantiated
     public void AddEnemy()
     {
-        print("ADD");
+       // print("ADD");
         currentEnemyNum++;
     }
 

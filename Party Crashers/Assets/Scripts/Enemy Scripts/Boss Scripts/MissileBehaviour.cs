@@ -44,7 +44,7 @@ public class MissileBehaviour : MonoBehaviour
         _bossAttacks = _bossBehaviour.gameObject.GetComponent<BossAttacks>();
         BossPositionReference = _bossBehaviour.transform;
         _bossAttacks.AddProjectile(gameObject);
-        print(_bossAttacks);
+        //print(_bossAttacks);
         for(int i = 0; i < _spawnPoints.Length; i++)
         {
             _spawnPoints[i] = GameObject.Find("Point " + i);
@@ -71,6 +71,7 @@ public class MissileBehaviour : MonoBehaviour
         }
         else if (collision.gameObject.tag.Equals("Player"))
         {
+            print("AAAA");
             FindObjectOfType<AudioManager>().Play("Hit_By_Projectile");
             _bossAttacks.PB.LoseScore(_bossAttacks.ScoreLost);
             Destroy(gameObject);

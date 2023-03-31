@@ -9,6 +9,9 @@ public class BossBehaviour : MonoBehaviour
 {
     #region Variables
 
+    [SerializeField]
+    private PlayerBehaviour PlayerRef;
+
     [SerializeField] private Transition _transition;
     public Animator animator;
 
@@ -138,7 +141,7 @@ public class BossBehaviour : MonoBehaviour
     /// <param name="state"> string name of the state being set </param>
     private void SetBossState(BossState state)
     {
-        Debug.Log("Entering " + state);
+        //Debug.Log("Entering " + state);
         _currentBossState = state;
         switch (state)
         {
@@ -164,7 +167,7 @@ public class BossBehaviour : MonoBehaviour
     public void EnterAttack()
     {
         animator.SetTrigger("StopAnims");
-        Debug.Log("EnterAttack");
+        //.Log("EnterAttack");
         _bossAttacks.DeactivateHitSignal();
         StartCoroutine(MoveToAtkPos());
     }
@@ -278,7 +281,8 @@ public class BossBehaviour : MonoBehaviour
         if (_currentHealth == 0)
         {
             BossDeath();
-            
+            PlayerRef.ShowEnd();
+
         }
         else if(_currentHealth > 0)
         {
