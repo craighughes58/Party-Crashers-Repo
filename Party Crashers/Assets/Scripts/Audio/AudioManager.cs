@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] Sounds;
     public AudioMixerGroup masterMixer;
-    private int movePoint = 0;
+    public float musicVolume;
 
     public static AudioManager instance;
     
@@ -51,11 +51,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        Play("Music_Tutorial");
-    }
-
     public void Play(string name)
     {
         Sound s = Array.Find(Sounds, sound => sound.name == name);
@@ -67,19 +62,62 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
-    // DO NOT DELETE
-    //public void SwitchMusic(string currentSong, string nextSong)
-    //{
-    //    Sound s1 = Array.Find(Sounds, sound => sound.name == currentSong);
-    //    Sound s2 = Array.Find(Sounds, sound => sound.name == nextSong);
-    //    s1.source.time = s1.startTime;
-    //    s2.source.time = s1.endTime;
-    //    s1.source.SetScheduledEndTime(AudioSettings.dspTime + (s1.endTime - s1.source.time));
-    //    s2.source.SetScheduledStartTime(AudioSettings.dspTime + ()
-    //}
-    public void SwitchMovingMusic()
+    public void Stop(string name)
     {
+        Sound s = Array.Find(Sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning(name + ": audio not found");
+            return;
+        }
+        s.source.Stop();
+    }
 
+    /// <summary>
+    /// Specifically for music, this function disables the volume of a clip 
+    /// as soon as it plays
+    /// </summary>
+    /// <param name="name"></param>
+    public void PlayMuted(string name)
+    {
+        Sound s = Array.Find(Sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning(name + ": audio not found");
+            return;
+        }
+        s.source.Play();
+        s.source.volume = 0.0f;
+    }
+
+        /// <summary>
+        /// Specifically for music, this function disables the volume of a clip
+        /// </summary>
+        /// <param name="name"></param>
+        public void Mute(string name)
+    {
+        Sound s = Array.Find(Sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning(name + ": audio not found");
+            return;
+        }
+        s.source.volume = 0.0f;
+    }
+
+    /// <summary>
+    /// Specifically for music, this function enables the volume of a clip
+    /// </summary>
+    /// <param name="name"></param>
+    public void Unmute(string name)
+    {
+        Sound s = Array.Find(Sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning(name + ": audio not found");
+            return;
+        }
+        s.source.volume = musicVolume;
     }
 
     public void SwitchMusic(int musicTrack)
@@ -88,37 +126,175 @@ public class AudioManager : MonoBehaviour
         {
             // TUTORIAL
             case 1:
-                print("TURORIAL");
-                //Play( int "musicTrack")
+                print("Tutorial music");
+                Play("Tutorial_Music");
+                PlayMuted("Drum_Set");
                 break;
             case 2:
-                print(" music 2");
+                print("Move 1 music");
+                MusicMoveOne();
                 break;
             case 3:
-                print(" music 3");
+                print("fight 1 music");
+                MusicFightOne();
                 break;
             case 4:
-                print(" music 4");
+                print("move 2 music");
+                MusicMoveTwo();
                 break;
             case 5:
-                print(" music 5");
+                print("fight 2 music");
+                MusicFightTwo();
                 break;
             case 6:
-                print(" music 6");
+                print("move 3 music");
+                MusicMoveThree();
                 break;
             case 7:
-                print(" music 7");
+                print("fight 3 music");
+                MusicFightThree();
                 break;
             case 8:
-                print(" music 8");
+                print("move 4 music");
+                MusicMoveFour();
+                break;
+            case 9:
+                print("boss music");
+                Play("Boss_Music");
                 break;
             // PAUSED
-            case 9:
+            case 10:
                 print("pause music");
+                Play("Pause_Music");
+                // 
+                break;
+            case 11:
+                print("Victory music");
+                //Play("Victory_Music");
+                // 
+                break;
+            case 12:
+                print("End Game music");
+                Play("End_Music");
                 // 
                 break;
             default:
                 break;
         }
     }
+
+    #region Song Functions
+    /// <summary>
+    /// Play the components of EVERY SONG, with only the components for move 1 audible
+    /// </summary>
+    public void MusicMoveOne()
+    {
+        // Play the components of move song 1
+        Stop("Tutorial_Song");
+        Play("Toy_Piano");
+        Play("Hand_Clap");
+        Play("Foot_Stomp");
+        Play("Ukulele");
+        // Play and mute the rest of the components immediately
+        PlayMuted("Harm_Guitar");
+        PlayMuted("Bass_Guitar");
+        PlayMuted("Lead_Guitar");
+        PlayMuted("Drum_Set");
+        // unmute other instruments in case of pause
+        Unmute("Toy_Piano");
+        Unmute("Hand_Clap");
+        Unmute("Foot_Stomp");
+        Unmute("Ukulele");
+    }
+
+    /// <summary>
+    /// Play the components of the first fight song
+    /// </summary>
+    public void MusicFightOne()
+    {
+        // unmute the missing instruments
+        Unmute("Bass_Guitar");
+        Unmute("Harm_Guitar");
+        // unmute other instruments in case of pause
+        Unmute("Toy_Piano");
+        Unmute("Hand_Clap");
+        Unmute("Foot_Stomp");
+        Unmute("Ukulele");
+    }
+
+    /// <summary>
+    /// Play the components of the second move song
+    /// </summary>
+    public void MusicMoveTwo()
+    {
+        // mute unecessary intrument
+        Mute("Toy_Piano");
+        // unmute other instruments in case of pause
+        Unmute("Bass_Guitar");
+        Unmute("Harm_Guitar");
+        Unmute("Hand_Clap");
+        Unmute("Foot_Stomp");
+        Unmute("Ukulele");
+    }
+
+    /// <summary>
+    /// Play the components of the second fight song
+    /// </summary>
+    public void MusicFightTwo()
+    {
+        // unmute the missing instruments
+        Unmute("Drum_Set");
+        // mute unecessary intruments
+        Stop("Hand_Clap");
+        Stop("Foot_Stomp");
+        // unmute other instruments in case of pause
+        Unmute("Toy_Piano");
+        Unmute("Ukulele");
+        Unmute("Bass_Guitar");
+        Unmute("Harm_Guitar");
+    }
+
+    /// <summary>
+    /// Play the components of the third move song
+    /// </summary>
+    public void MusicMoveThree()
+    {
+        // mute unecessary intruments
+        Stop("Toy_Piano");
+        // unmute other instruments in case of pause
+        Unmute("Ukulele");
+        Unmute("Bass_Guitar");
+        Unmute("Harm_Guitar");
+        Unmute("Drum_Set");
+
+    }
+
+    /// <summary>
+    /// Play the components of the third fight song
+    /// </summary>
+    public void MusicFightThree()
+    {
+        // unmute the missing instrument
+        Unmute("Lead_Guitar");
+        // unmute other instruments in case of pause
+        Unmute("Ukulele");
+        Unmute("Bass_Guitar");
+        Unmute("Harm_Guitar");
+        Unmute("Drum_Set");
+    }
+
+    /// <summary>
+    /// Play the components of the fourth move song
+    /// </summary>
+    public void MusicMoveFour()
+    {
+        // Stop other instruments since the boss song is next
+        Stop("Lead_Guitar");
+        Stop("Harm_Guitar");
+        Stop("Bass_Guitar");
+        Stop("Ukulele");
+        // unmute the drums in case of pause
+        Unmute("Drum_Set");
+    }
+    #endregion
 }

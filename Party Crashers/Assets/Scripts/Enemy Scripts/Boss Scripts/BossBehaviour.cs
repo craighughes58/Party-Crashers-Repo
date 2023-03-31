@@ -109,13 +109,25 @@ public class BossBehaviour : MonoBehaviour
     public IEnumerator ActivateBoss()
     {
         animator.SetTrigger("Intro");
-        // play roar sfx 
+        // roar sfx
+        StartCoroutine(StartBossMusic());
         yield return new WaitForSeconds(_bossActivationTime);
         ResetTriggers();
         animator.SetTrigger("StopAnims");
         EnterAttack();
         // play starting animation
         // set initial attack state
+    }
+
+    /// <summary>
+    /// Sync the beginnning of the boss music with the release of the roar
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator StartBossMusic()
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject.Find("GameController").GetComponent<GameController>().musicTrack++;
+        print("Playing music track number " + GameObject.Find("GameController").GetComponent<GameController>().musicTrack);
     }
 
     #region State Control Functions

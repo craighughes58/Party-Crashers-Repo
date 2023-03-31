@@ -43,7 +43,7 @@ public class StopAtPoints : MonoBehaviour
     {
         isStopped = false;
         gc.musicTrack++;
-        print(gc.musicTrack);
+        print("Playing music track number " + gc.musicTrack);
         GameObject.Find("AudioManager").GetComponent<AudioManager>().SwitchMusic(gc.musicTrack);
     }
 }
