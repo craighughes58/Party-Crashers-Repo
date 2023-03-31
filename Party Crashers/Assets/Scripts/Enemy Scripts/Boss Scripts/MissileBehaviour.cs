@@ -71,6 +71,7 @@ public class MissileBehaviour : MonoBehaviour
         }
         else if (collision.gameObject.tag.Equals("Player"))
         {
+            print("AAAA");
             FindObjectOfType<AudioManager>().Play("Hit_By_Projectile");
             _bossAttacks.PB.LoseScore(_bossAttacks.ScoreLost);
             Destroy(gameObject);
