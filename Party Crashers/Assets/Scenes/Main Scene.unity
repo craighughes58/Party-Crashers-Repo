@@ -7490,6 +7490,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 563725548}
     - target: {fileID: 2763426885067843091, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
+      propertyPath: PlayerRef
+      value: 
+      objectReference: {fileID: 6904783458391337814}
+    - target: {fileID: 2763426885067843091, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
       propertyPath: _attackPos
       value: 
       objectReference: {fileID: 6435618244504914858}
@@ -18125,7 +18129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SCORE: '
+  m_text: 'SCORE:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d7690bb15cf26bb4c8d89049b175c1bd, type: 2}
   m_sharedMaterial: {fileID: 3311206263625020042, guid: d7690bb15cf26bb4c8d89049b175c1bd, type: 2}
@@ -59424,6 +59428,18 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 3643865085148202720, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: GameCon
+      value: 
+      objectReference: {fileID: 25485829}
+    - target: {fileID: 3643865085148202720, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: EndCanvas
+      value: 
+      objectReference: {fileID: 8285285332946132307}
+    - target: {fileID: 3643865085148202720, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
+      propertyPath: EndCanvasScore
+      value: 
+      objectReference: {fileID: 769023770}
     - target: {fileID: 3827239427797239653, guid: 6583d4d127d0f5646afdc1971ffe99ec, type: 3}
       propertyPath: m_RootOrder
       value: 7

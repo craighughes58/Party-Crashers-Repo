@@ -33,11 +33,11 @@ public class EyeBehaviour : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        print("Stay");
+        //print("Stay");
         if (_bossAttacks.BH.GetBossState() == "EXHAUSTION" && collision.gameObject.tag.Equals("Bat") && !beenHit)
         {
             FindObjectOfType<AudioManager>().Play("Hit_Enemy");
-            print("BOSS HIT");
+            //print("BOSS HIT");
             _bossAttacks.BH.LoseHealth();
             _bossAttacks.PB.AddScore(_bossAttacks.ScoreGainedAttack);
             _bossAttacks.RemoveAllMissiles();

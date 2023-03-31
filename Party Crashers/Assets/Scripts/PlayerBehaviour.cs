@@ -12,11 +12,21 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI scoreText;
 
+    [SerializeField]
+    private Canvas EndCanvas;
+
+    [SerializeField]
+    private TextMeshProUGUI EndCanvasScore;
+
+    [SerializeField]
+    private GameController GameCon;
+
     [SerializeField] private GameObject candyParticle;
 
     // Start is called before the first frame update
     void Start()
     {
+        EndCanvas.enabled = false;
         Score = 0;
         scoreText.text = "Score: " + Score; // Parker DeVenney
         UpdateUI();
@@ -68,4 +78,20 @@ public class PlayerBehaviour : MonoBehaviour
     {
         scoreText.text = ("Score: ") + Score;
     }
+
+    public void ShowEnd()
+    {
+        EndCanvas.enabled = true;
+        EndCanvasScore.text = "SCORE: " + Score;
+        Invoke("RestartScenePlayerBehaviour", 15f);
+    }
+
+    private void RestartScenePlayerBehaviour()
+    {
+        GameCon.RestartScene();
+    }
+
+
+
+
 }

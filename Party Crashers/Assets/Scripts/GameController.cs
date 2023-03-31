@@ -224,7 +224,7 @@ public class GameController : MonoBehaviour
     //called when an enemy is instantiated
     public void AddEnemy()
     {
-        print("ADD");
+       // print("ADD");
         currentEnemyNum++;
     }
 
