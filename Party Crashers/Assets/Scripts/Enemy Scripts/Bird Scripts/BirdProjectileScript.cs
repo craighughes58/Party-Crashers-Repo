@@ -54,7 +54,7 @@ public class BirdProjectileScript : MonoBehaviour
             other.gameObject.GetComponent<PlayerBehaviour>().LoseScore(scoreDamage);
             SpawnBird.CurrentProjectiles.Remove(gameObject);
             Destroy(gameObject);
-            // player hit by bird
+            FindObjectOfType<AudioManager>().Play("Hit_By_Projectile");
         }
         else if (other.gameObject.tag.Equals("Bird") && isDeflected)
         {
@@ -67,7 +67,7 @@ public class BirdProjectileScript : MonoBehaviour
         {
 
             isDeflected = true;
-            // deflected bird sfx
+            FindObjectOfType<AudioManager>().Play("Projectile_Deflect");
         }
     }
 

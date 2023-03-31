@@ -7674,6 +7674,10 @@ PrefabInstance:
       value: 4.4070473
       objectReference: {fileID: 0}
     - target: {fileID: 2763426885067843090, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1621658253}
+    - target: {fileID: 2763426885067843090, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
       propertyPath: _playerBehaviour
       value: 
       objectReference: {fileID: 6904783458391337814}
@@ -7705,6 +7709,10 @@ PrefabInstance:
       propertyPath: _transition
       value: 
       objectReference: {fileID: 6435618244168160285}
+    - target: {fileID: 2763426885067843091, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1621658253}
     - target: {fileID: 2763426885067843095, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -38509,7 +38517,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     panStereo: 0
-    spacialBlend: 0
+    spacialBlend: 1
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: aaa55114318c1294f85b4327d242600b, type: 3}
     name: Pause_Game
@@ -38534,6 +38542,222 @@ MonoBehaviour:
     loop: 0
     panStereo: 0
     spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 506f32c783d6aad4291638035c840e82, type: 3}
+    name: Octo_Atk_L
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: -0.1
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5bb7dc9064dbe6548b89a5969b55c95e, type: 3}
+    name: Octo_Atk_R
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0.1
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: f8dfcf337943d7a458b9ec61f64d1a17, type: 3}
+    name: Octo_Exhausted
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: d7cd3a55ab724f84db0722ba368a46da, type: 3}
+    name: Octo_Roar
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c2866ab1f14502940acaaa74bcfde9ec, type: 3}
+    name: Enemy_Spawn
+    volume: 0.225
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 9795d1cba2c21374ba55b9c9c1a08809, type: 3}
+    name: Bonk_0
+    volume: 0.175
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 9795d1cba2c21374ba55b9c9c1a08809, type: 3}
+    name: Bonk_1
+    volume: 0.175
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 9795d1cba2c21374ba55b9c9c1a08809, type: 3}
+    name: Bonk_2
+    volume: 0.175
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 9795d1cba2c21374ba55b9c9c1a08809, type: 3}
+    name: Bonk_3
+    volume: 0.175
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 21e08b964907e7b44955d719cb4276c9, type: 3}
+    name: Candy_Lost
+    volume: 0.225
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ddcc0f1245a943f43a90437e551046e6, type: 3}
+    name: Candy_Gained
+    volume: 0.225
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: d813a053fbcfe0b43aafe1e3f34879fe, type: 3}
+    name: Projectile_Deflect
+    volume: 0.175
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 4f36c18818987e449bd3e08b241c9e1f, type: 3}
+    name: Hit_By_Projectile
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 1944629ab770a614495092a255d62c67, type: 3}
+    name: Hit_Enemy
+    volume: 0.175
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3643710e23b8e614f87aba4d17bda41f, type: 3}
+    name: Enemy_Death
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: f3764573ac501104cbcbb154ecf6339f, type: 3}
+    name: Bird_Fire
+    volume: 0.225
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c0292baf5254ae24bbb197f7fbc81be0, type: 3}
+    name: Bird_Caw_0
+    volume: 0.225
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: bf3654cdd7355f24496d34601f6f8fe8, type: 3}
+    name: Bird_Caw_1
+    volume: 0.225
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 6705dbfe544b8fb4d987b8f6dfe57e60, type: 3}
+    name: Bird_Caw_2
+    volume: 0.225
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 624f2b2e21c2cf049a36112fcea29b61, type: 3}
+    name: Hyena_Alert_0
+    volume: 0.23
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7a974b6965c7535478386ab5fab81b7d, type: 3}
+    name: Hyena_Alert_1
+    volume: 0.23
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 98b198275bc440b4f8bb1e16cea82183, type: 3}
+    name: Hyena_Flinch_0
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fe8e44ab008130d449143fdd9f779935, type: 3}
+    name: Hyena_Flinch_1
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 204a20951e0764e4fb0458acaa90ab8f, type: 3}
+    name: Hyena_Flinch_2
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 53c3bce016701214aa28b9f5ca457ab7, type: 3}
+    name: Hyena_Flinch_3
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: a48643a11da99e14c8ef6bceaef07f31, type: 3}
+    name: Hyena_Footsteps
+    volume: 0.175
+    pitch: 1
+    loop: 1
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5168fc1c3f5d691459df4bc3abd653fc, type: 3}
+    name: Hyena_Attack
+    volume: 0.215
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
     source: {fileID: 0}
   masterMixer: {fileID: 24300002, guid: 16beec5b3293f7d439226b7676c5ef33, type: 2}
   musicVolume: 0.15

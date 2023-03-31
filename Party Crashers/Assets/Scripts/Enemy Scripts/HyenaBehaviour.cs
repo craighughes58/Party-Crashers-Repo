@@ -169,7 +169,8 @@ public class HyenaBehaviour : MonoBehaviour
                 {
                     attacking = true;
                     anim.SetBool("attacking", attacking);
-                    // stop footsteps, attack!
+                    FindObjectOfType<AudioManager>().Stop("Hyena_Footsteps");
+                    FindObjectOfType<AudioManager>().Play("Hyena_Attack");
                 }
 
                 AttackWindUp();
@@ -188,7 +189,7 @@ public class HyenaBehaviour : MonoBehaviour
                 {
                     meshAgent.isStopped = false;
                     meshAgent.SetDestination(player.position);
-                    // footsteps sounds!
+                    FindObjectOfType<AudioManager>().Play("Hyena_Footsteps");
                 }
             }
         }
@@ -273,11 +274,11 @@ public class HyenaBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Bat"))
         {
-            // player hits enemy with bat
+            FindObjectOfType<AudioManager>().Play("Hit_Enemy");
             Debug.Log("Life lost!");
             enemyLives--;
             anim.SetTrigger("Hit");
-            // hyena flinch sound
+            FindObjectOfType<AudioManager>().Play("Hyena_Flinch_" + Random.Range(0, 4).ToString());
             HitReaction();
         }
     }
@@ -292,7 +293,7 @@ public class HyenaBehaviour : MonoBehaviour
 
         if (enemyLives <= 0)
         {
-            // enemy death
+            FindObjectOfType<AudioManager>().Play("Enemy_Death");
 
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
 
@@ -317,8 +318,7 @@ public class HyenaBehaviour : MonoBehaviour
     private IEnumerator RandomSound()
     {
         yield return new WaitForSeconds(3f);
-        int randomSound = Random.Range(1, 2);
-        // do sound based on int, name the effects with numbers, and do randomSound.tostring with the names
+        FindObjectOfType<AudioManager>().Play("Hyena_Alert_" + Random.Range(0, 2).ToString());
         StartCoroutine(RandomSound());
     }
 

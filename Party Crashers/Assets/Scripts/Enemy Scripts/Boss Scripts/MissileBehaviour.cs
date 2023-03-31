@@ -65,11 +65,13 @@ public class MissileBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Shield"))
         {
+            FindObjectOfType<AudioManager>().Play("Projectile_Deflect");
             _aimPos = BossPositionReference;
             _bossAttacks.PB.AddScore(_bossAttacks.ScoreGainedDeflect);
         }
         else if (collision.gameObject.tag.Equals("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("Hit_By_Projectile");
             _bossAttacks.PB.LoseScore(_bossAttacks.ScoreLost);
             Destroy(gameObject);
         }

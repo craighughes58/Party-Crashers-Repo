@@ -80,8 +80,10 @@ public class GameController : MonoBehaviour
     public void MoveToNextPoint()
     {
         am.Stop("Path_Footsteps");
+        am.Play("Enemy_Spawn");
         musicTrack++;
         print("Playing music track number " + musicTrack);
+
         SectionNum++;
         switch (SectionNum)
         {
