@@ -26,7 +26,7 @@ public class TutorialHyena : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Bat"))
         {
-            // PLAYER HIT WITH BAT
+            FindObjectOfType<AudioManager>().Play("Hit_Enemy");
             lives--;
             HitReaction();
         }
@@ -35,7 +35,7 @@ public class TutorialHyena : MonoBehaviour
     {
         if (lives <= 0)
         {
-            // ENEMY DEATH
+            FindObjectOfType<AudioManager>().Play("Hit_Enemy");
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
             gc.LoseEnemy();
             Destroy(Instantiate(shatteredHyena1, transform.position, transform.rotation), 5f);

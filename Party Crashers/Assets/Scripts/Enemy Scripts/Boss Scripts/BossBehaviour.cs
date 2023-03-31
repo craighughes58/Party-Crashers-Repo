@@ -15,6 +15,7 @@ public class BossBehaviour : MonoBehaviour
     #region Scipt Dependencies
     [Header("Script Dependencies")]
     [SerializeField] private BossAttacks _bossAttacks;
+    [SerializeField] private AudioManager _audioManager;
 
     #endregion
 
@@ -109,7 +110,7 @@ public class BossBehaviour : MonoBehaviour
     public IEnumerator ActivateBoss()
     {
         animator.SetTrigger("Intro");
-        // roar sfx
+        _audioManager.Play("Octo_Roar");
         StartCoroutine(StartBossMusic());
         yield return new WaitForSeconds(_bossActivationTime);
         ResetTriggers();
@@ -223,7 +224,7 @@ public class BossBehaviour : MonoBehaviour
     public IEnumerator MoveToExhPos()
     {
         animator.SetTrigger("Exhausted");
-        // play exhaust sfx
+        _audioManager.Play("Octo_Exhausted");
         float pathPercentage = 0;
         Vector3 startPos = transform.position;
         Quaternion startQ = transform.rotation;

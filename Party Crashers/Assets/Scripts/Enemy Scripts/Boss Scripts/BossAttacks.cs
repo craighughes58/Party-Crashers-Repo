@@ -8,6 +8,7 @@ public class BossAttacks : MonoBehaviour
     [Header("Script/Object Dependencies")]
     [SerializeField] private BossBehaviour _bossBehaviour;
     [SerializeField] private PlayerBehaviour _playerBehaviour;
+    [SerializeField] private AudioManager _audioManager;
 
     [Header("Attacks")]
     [SerializeField] private int _maxAttacks; //the maximum amount of attacks the boss can make before entering exhaustion
@@ -134,7 +135,7 @@ public class BossAttacks : MonoBehaviour
         {
             _bossBehaviour.ResetTriggers();
             _bossBehaviour.animator.SetTrigger("Left");
-            // attack anim
+            _audioManager.Play("Octo_Atk_L");
             _missileAnimObject.SetActive(true);
             isAttacking = true;
         }
@@ -142,7 +143,7 @@ public class BossAttacks : MonoBehaviour
         {
             _bossBehaviour.ResetTriggers();
             _bossBehaviour.animator.SetTrigger("Right");
-            // attack anim
+            _audioManager.Play("Octo_Atk_R");
             _missileAnimObject.SetActive(true);
             isAttacking = true;
         }

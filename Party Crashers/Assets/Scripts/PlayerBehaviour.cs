@@ -45,7 +45,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         Destroy(Instantiate(candyParticle, transform.position, Quaternion.identity), 10f);
-        // lose score sfx
+        FindObjectOfType<AudioManager>().Play("Candy_Lost");
         UpdateUI();
     }
 
@@ -56,7 +56,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void AddScore(int amt)
     {
         Score += amt;
-        // add score sfx
+        FindObjectOfType<AudioManager>().Play("Candy_Gained");
         UpdateUI();
     }
 

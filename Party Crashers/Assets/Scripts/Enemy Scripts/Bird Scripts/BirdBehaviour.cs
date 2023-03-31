@@ -146,8 +146,6 @@ public class BirdBehaviour : MonoBehaviour
             CurrentProjectiles[CurrentProjectiles.Count - 1].GetComponent<BirdProjectileScript>().ConnectToBird(this);
             spawnedOne = !spawnedOne;
         }
-
-            // do sound
         //}
     }
 
@@ -161,7 +159,7 @@ public class BirdBehaviour : MonoBehaviour
         gc.LoseBird(currentBehavior);
         Destroy(gameObject);
 
-        // bird destroyed sound
+        FindObjectOfType<AudioManager>().Play("Enemy_Death");
 
         Destroy(Instantiate(OutroParticles, transform.position, Quaternion.identity), 10f);
         Instantiate(DestroyedBird, transform.position, transform.rotation).gameObject.GetComponent<BirdBroken>().setColor(Beak.GetComponent<MeshRenderer>().material, BodyRenderer.material);
@@ -177,7 +175,7 @@ public class BirdBehaviour : MonoBehaviour
     private IEnumerator RandomSound()
     {
         yield return new WaitForSeconds(2.5f);
-        // do sound
+        FindObjectOfType<AudioManager>().Play("Bird_Caw_" + Random.Range(0, 3).ToString());
         StartCoroutine(RandomSound());
     }
 
@@ -190,6 +188,7 @@ public class BirdBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         playerAnimator.SetTrigger("AttackTrigger");
+        FindObjectOfType<AudioManager>().Play("Bird_Fire");
     }
 
     private void OnDestroy()
