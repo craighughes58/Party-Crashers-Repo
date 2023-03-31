@@ -18,6 +18,7 @@ public class StopAtPoints : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Stop"))
         {
+            print("HERE");
             gc.MoveToNextPoint();
             isStopped = true;
             Destroy(other.gameObject);
