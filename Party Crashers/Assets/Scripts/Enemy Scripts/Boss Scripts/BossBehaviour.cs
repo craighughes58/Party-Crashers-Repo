@@ -166,8 +166,9 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void EnterAttack()
     {
-        animator.SetTrigger("StopAnims");
+        //animator.SetTrigger("StopAnims");
         //.Log("EnterAttack");
+        //StopAllCoroutines();
         _bossAttacks.DeactivateHitSignal();
         StartCoroutine(MoveToAtkPos());
     }
@@ -189,6 +190,14 @@ public class BossBehaviour : MonoBehaviour
     {
         SetBossState(BossState.ATTACK);
         StartCoroutine(_bossAttacks.AttackPhase());
+    }
+
+    public bool isAtAttack()
+    {
+        if(transform.position == _attackPos.position)
+            return true;
+
+        return false;
     }
 
     public void ResetTriggers()

@@ -64,6 +64,7 @@ public class EyeBehaviour : MonoBehaviour
     private void HitReaction()
     {
         startMat = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material;
+        GetComponent<BossBehaviour>().animator.SetTrigger("Flinch");
         Flash();
     }
 
