@@ -815,7 +815,7 @@ MonoBehaviour:
   settingsMenu: {fileID: 825443163}
   bb: {fileID: 0}
   _bossBehaviour: {fileID: 632771191}
-  devBossTesting: 1
+  devBossTesting: 0
   am: {fileID: 1621658253}
   musicTrack: 0
   birds: []
