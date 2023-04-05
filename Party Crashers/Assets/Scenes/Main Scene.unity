@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35782954, g: 0.8219314, b: 0.96994036, a: 1}
+  m_IndirectSpecularColor: {r: 0.35785142, g: 0.82084364, b: 0.97291726, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11530,91 +11530,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539774222}
   m_Mesh: {fileID: -81128434984046665, guid: 6bf4a7da077319444976ae7b2346ab4f, type: 3}
---- !u!1 &539988719
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 539988720}
-  - component: {fileID: 539988722}
-  - component: {fileID: 539988721}
-  m_Layer: 0
-  m_Name: Grill (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &539988720
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539988719}
-  m_LocalRotation: {x: -0, y: 0.6087043, z: -0, w: -0.7933972}
-  m_LocalPosition: {x: -0.71285886, y: 0.16412108, z: 4.0587506}
-  m_LocalScale: {x: 28.571438, y: 28.571426, z: 28.571438}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1413624793228128300}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: -128.021, z: 0}
---- !u!23 &539988721
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539988719}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 5561349426305759274, guid: 7e881c0f74f4b484b84ec5fe19400a19, type: 3}
-  - {fileID: 8748892135801146194, guid: 7e881c0f74f4b484b84ec5fe19400a19, type: 3}
-  - {fileID: 8368722655750445499, guid: 7e881c0f74f4b484b84ec5fe19400a19, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &539988722
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539988719}
-  m_Mesh: {fileID: 2540817853737639666, guid: 7e881c0f74f4b484b84ec5fe19400a19, type: 3}
 --- !u!1 &541547169
 GameObject:
   m_ObjectHideFlags: 0
@@ -25860,7 +25775,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61abfa33041eab041beaf524a7e07ff8, type: 2}
+  - {fileID: 2100000, guid: 95f1fe765fc99d047a90feb8e90c7118, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38516,7 +38431,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61abfa33041eab041beaf524a7e07ff8, type: 2}
+  - {fileID: 2100000, guid: 95f1fe765fc99d047a90feb8e90c7118, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -49519,7 +49434,6 @@ Transform:
   - {fileID: 2843386874477658394}
   - {fileID: 6629287728896008830}
   - {fileID: 6509233453710794464}
-  - {fileID: 539988720}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -50.776, z: 0}

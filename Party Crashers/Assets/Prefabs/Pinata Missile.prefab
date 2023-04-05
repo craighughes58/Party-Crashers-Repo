@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossBehaviour: {fileID: 0}
-  speed: 10
+  speed: 20
   launchSpeed: {x: 0, y: 20, z: 0}
   rotateSpeed: 25
 --- !u!82 &45398998366211714
