@@ -82,13 +82,15 @@ public class PlayerBehaviour : MonoBehaviour
     public void ShowEnd()
     {
         EndCanvas.enabled = true;
+        // victory sfx 
+        // victory music
         EndCanvasScore.text = "SCORE: " + Score;
         Invoke("RestartScenePlayerBehaviour", 15f);
     }
 
     private void RestartScenePlayerBehaviour()
     {
-        GameCon.RestartScene();
+        GameCon.QuitGame();
     }
 
 
