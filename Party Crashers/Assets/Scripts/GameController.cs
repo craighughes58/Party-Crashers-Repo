@@ -57,7 +57,6 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         DeactivateUIMenu(settingsMenu);
         DeactivateUIMenu(pauseMenu);
         SAP = GameObject.Find("XR Origin").GetComponent<StopAtPoints>();
@@ -67,6 +66,7 @@ public class GameController : MonoBehaviour
         shield = GameObject.FindGameObjectWithTag("Shield");
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         isPaused = false;
+        musicTrack = 0;
         //pauseMenu.SetActive(false);
         //settingsMenu.SetActive(false);
         SwapVisibiltyHands(false);
@@ -187,10 +187,8 @@ public class GameController : MonoBehaviour
                 return;
             default:
                 print("SOMETHING IS TERRIBLY WRONG");
-
                 return;
         }
-
     }
 
     //calls when an enemy is destroyed
@@ -284,13 +282,13 @@ public class GameController : MonoBehaviour
     public void DeactivateUIMenu(GameObject uiMenu)
     {
         uiMenu.gameObject.SetActive(false);
-        am.Play("Menu_Back");
+        //am.Play("Menu_Back");
     }
 
     public void ActivateUIMenu(GameObject uiMenu)
     {
         uiMenu.gameObject.SetActive(true);
-        am.Play("Menu_Confirm");
+        //am.Play("Menu_Confirm");
     }
 
     public void QuitGame()
@@ -302,22 +300,23 @@ public class GameController : MonoBehaviour
     {
         DeactivateUIMenu(pauseMenu);
         ActivateUIMenu(settingsMenu);
+        am.Play("Menu_Confirm");
     }
     public void CloseSettings()
     {
         ActivateUIMenu(pauseMenu);
         DeactivateUIMenu(settingsMenu);
+        am.Play("Menu_Back");
     }
 
     private void OnPause(InputValue value)
     {
+        am.Stop("Path_Footsteps");
+        am.Play("Pause_Game");
+        currentMusic = musicTrack;
+        am.SwitchMusic(10);
         if (isPaused == false)
         {
-            am.Stop("Path_Footsteps");
-            currentMusic = musicTrack;
-            am.SwitchMusic(10);
-            am.Play("Pause_Game");
-
             isPaused = true;
             Time.timeScale = 0;
             SwapVisibiltyHands(true);
