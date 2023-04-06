@@ -72,6 +72,7 @@ public class BossBehaviour : MonoBehaviour
         GameObject g = GameObject.Find("Boss Movement Points");
         _attackPos = g.transform.GetChild(0).transform;
         _exhaustPos = g.transform.GetChild(1).transform;
+        transform.position = _attackPos.position;
         
     }
 
@@ -166,8 +167,9 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void EnterAttack()
     {
-        animator.SetTrigger("StopAnims");
+        //animator.SetTrigger("StopAnims");
         //.Log("EnterAttack");
+        StopAllCoroutines();
         _bossAttacks.DeactivateHitSignal();
         StartCoroutine(MoveToAtkPos());
     }
@@ -287,6 +289,7 @@ public class BossBehaviour : MonoBehaviour
         else if(_currentHealth > 0)
         {
             _bossAttacks.StopAllCoroutines();
+            CancelInvoke();
             EnterAttack();
         }
     }  

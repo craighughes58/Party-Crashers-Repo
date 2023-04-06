@@ -26,7 +26,7 @@ public class BossAttacks : MonoBehaviour
     private Vector3 _missileSpawnPos;
     [SerializeField] private GameObject _missileAnimObject;
     public bool isAttacking;
-    private bool hitSignal = false;
+    [SerializeField]private bool hitSignal = false;
 
     [Header("Scores")]
     [Tooltip("Amount score decreases if player is hit, increases if deflected, and scored if eye attack")]
@@ -92,26 +92,19 @@ public class BossAttacks : MonoBehaviour
     public IEnumerator AttackPhase()
     {
         _currentAttacks = _maxAttacks;
-        int xAttack = _currentAttacks;
 
+        yield return new WaitWhile(() => !_bossBehaviour.GetBossState().Equals("ATTACK"));
         while (!hitSignal)//_currentAttacks > 0 WHILE THE BOSS ISNT'T HIT
         {
             yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
+            if (hitSignal)
+                break;
             AttackPlayer();
             yield return new WaitWhile(() => _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
-
-            //yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
-            //yield return new WaitWhile(() => _currentAttacks == xAttack);
-            //print(xAttack + " " + _currentAttacks); 
-            //xAttack--;
-
-            //print(xAttack + " " + _currentAttacks);
         }
-        
-        yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
 
         //StartCoroutine(_bossBehaviour.EnterExhaustion());
-        _bossBehaviour.BeginExhaustion(); //ONCE THE BOSS IS HIT ENTER EXHAUSTION
+        //_bossBehaviour.BeginExhaustion(); //ONCE THE BOSS IS HIT ENTER EXHAUSTION
     }
 
     /// <summary>
@@ -158,7 +151,9 @@ public class BossAttacks : MonoBehaviour
     public IEnumerator ExhaustionPhase()
     {
         //yield return new WaitForSeconds(_exhaustionTimer);
-        _bossBehaviour.Invoke("EnterAttack", _exhaustionTimer);
+        yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
+        _bossBehaviour.EnterAttack();
+        //_bossBehaviour.Invoke("EnterAttack", _exhaustionTimer);
         yield return null;
         //_bossBehaviour.EnterAttack();
     }
