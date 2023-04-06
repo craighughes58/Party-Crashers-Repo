@@ -1584,7 +1584,7 @@ Transform:
   m_GameObject: {fileID: 5120799334425849057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.9966197, y: -0.0000009536743, z: -125.33394}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5356856901379845734}
@@ -1624,6 +1624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48e03ec803c74a43b198b3a64e5f0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bb: {fileID: 0}
   Projectile: {fileID: 1211539211851700829, guid: 3377de110b316b04c843164084beb3b0, type: 3}
   ProjectileOffset: 0
   DestroyedBird: {fileID: 2969587629849225333, guid: 2ebb27b72d9a97d4d91cfec83133b262, type: 3}
@@ -1636,6 +1637,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2c10fd09ff681c04b8cb322beea1b50d, type: 2}
   Beak: {fileID: 3785658722108483359}
   BodyRenderer: {fileID: 5071884605955301315}
+  isTutorial: 0
+  TutorialWaiter: {fileID: 0}
   currentFrame: 0
 --- !u!65 &2097380171973284498
 BoxCollider:
