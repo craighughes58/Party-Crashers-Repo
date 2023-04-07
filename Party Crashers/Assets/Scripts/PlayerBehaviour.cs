@@ -82,13 +82,16 @@ public class PlayerBehaviour : MonoBehaviour
     public void ShowEnd()
     {
         EndCanvas.enabled = true;
+        FindObjectOfType<AudioManager>().Play("Applause");
+        FindObjectOfType<AudioManager>().Play("Victory");
+        FindObjectOfType<AudioManager>().Play("End_Music");
         EndCanvasScore.text = "SCORE: " + Score;
-        Invoke("RestartScenePlayerBehaviour", 15f);
+        Invoke("RestartScenePlayerBehaviour", FindObjectOfType<AudioManager>().ClipLength("End_Music") + 2f);
     }
 
     private void RestartScenePlayerBehaviour()
     {
-        GameCon.RestartScene();
+        GameCon.QuitGame();
     }
 
 

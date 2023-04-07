@@ -288,6 +288,13 @@ public class GameController : MonoBehaviour
     public void ActivateUIMenu(GameObject uiMenu)
     {
         uiMenu.gameObject.SetActive(true);
+        if (uiMenu.gameObject.name == "pauseMenu")
+        {
+            am.Stop("Path_Footsteps");
+            am.Play("Pause_Game");
+            currentMusic = musicTrack;
+            am.SwitchMusic(10);
+        }
         //am.Play("Menu_Confirm");
     }
 
@@ -311,10 +318,6 @@ public class GameController : MonoBehaviour
 
     private void OnPause(InputValue value)
     {
-        am.Stop("Path_Footsteps");
-        am.Play("Pause_Game");
-        currentMusic = musicTrack;
-        am.SwitchMusic(10);
         if (isPaused == false)
         {
             isPaused = true;

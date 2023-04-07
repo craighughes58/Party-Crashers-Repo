@@ -75,6 +75,18 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
+    public float ClipLength(string name)
+    {
+        Sound s = Array.Find(Sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning(name + ": audio not found");
+            return 0;
+        }
+        print(s.source.clip.length);
+        return s.source.clip.length;
+    }
+
     /// <summary>
     /// Specifically for music, this function disables the volume of a clip 
     /// as soon as it plays

@@ -288,6 +288,7 @@ public class BossBehaviour : MonoBehaviour
         }
         else if(_currentHealth > 0)
         {
+            FindObjectOfType<AudioManager>().Play("Octopus_Hurt");
             _bossAttacks.StopAllCoroutines();
             CancelInvoke();
             EnterAttack();
@@ -300,6 +301,7 @@ public class BossBehaviour : MonoBehaviour
     private void BossDeath()
     {
         animator.SetTrigger("Lost");
+        FindObjectOfType<AudioManager>().Play("Octopus_Death");
         _transition.Invoke("LoadLevel", 3.5f);
         //do stuff when the boss dies
         //_transition.LoadLevel();
