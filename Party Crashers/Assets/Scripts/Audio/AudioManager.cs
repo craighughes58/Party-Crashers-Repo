@@ -140,6 +140,8 @@ public class AudioManager : MonoBehaviour
 
     public void SwitchMusic(int musicTrack)
     {
+        MuteAllInstruments();
+        Stop("Tutorial_Music");
         switch (musicTrack)
         {
             // TUTORIAL

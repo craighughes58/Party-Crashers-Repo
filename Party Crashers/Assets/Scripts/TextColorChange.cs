@@ -13,7 +13,7 @@ public class TextColorChange : MonoBehaviour
     void Start()
     {
         scoreText = gameObject.transform.GetChild(0).GetComponent<TextMeshPro>();
-        aimColor = Color.green;
+        aimColor = Color.magenta;
     }
 
     // Update is called once per frame
@@ -23,12 +23,12 @@ public class TextColorChange : MonoBehaviour
         {
             hitGreen = true;
             aimColor = Color.white;
-            scoreText.color = Color.green;
+            scoreText.color = Color.magenta;
         }
         else if(scoreText.color.r > .9f && scoreText.color.b > .9f && hitGreen)
         {
             hitGreen = false;
-            aimColor = Color.green;
+            aimColor = Color.magenta;
             scoreText.color = Color.white;
         }
         scoreText.color = Color.LerpUnclamped(scoreText.color, aimColor, Time.deltaTime*4);

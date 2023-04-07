@@ -183,7 +183,7 @@ public class GameController : MonoBehaviour
                 return;
             case 5:
                 StartCoroutine(_bossBehaviour.ActivateBoss());
-                
+                am.SwitchMusic(musicTrack);
                 return;
             default:
                 print("SOMETHING IS TERRIBLY WRONG");
