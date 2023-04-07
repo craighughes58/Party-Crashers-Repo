@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     private int currentMusic;
 
     public List<BirdBehaviour> birds = new List<BirdBehaviour>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -288,13 +289,6 @@ public class GameController : MonoBehaviour
     public void ActivateUIMenu(GameObject uiMenu)
     {
         uiMenu.gameObject.SetActive(true);
-        if (uiMenu.gameObject.name == "pauseMenu")
-        {
-            am.Stop("Path_Footsteps");
-            am.Play("Pause_Game");
-            currentMusic = musicTrack;
-            am.SwitchMusic(10);
-        }
         //am.Play("Menu_Confirm");
     }
 
@@ -307,19 +301,21 @@ public class GameController : MonoBehaviour
     {
         DeactivateUIMenu(pauseMenu);
         ActivateUIMenu(settingsMenu);
-        am.Play("Menu_Confirm");
     }
     public void CloseSettings()
     {
         ActivateUIMenu(pauseMenu);
         DeactivateUIMenu(settingsMenu);
-        am.Play("Menu_Back");
     }
 
     private void OnPause(InputValue value)
     {
         if (isPaused == false)
         {
+            am.Play("Menu_Confirm");
+            am.Stop("Path_Footsteps");
+            currentMusic = musicTrack;
+            am.SwitchMusic(10);
             isPaused = true;
             Time.timeScale = 0;
             SwapVisibiltyHands(true);

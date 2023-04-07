@@ -142,6 +142,7 @@ public class AudioManager : MonoBehaviour
     {
         MuteAllInstruments();
         Stop("Tutorial_Music");
+        Stop("Pause_Music");
         switch (musicTrack)
         {
             // TUTORIAL
@@ -184,6 +185,7 @@ public class AudioManager : MonoBehaviour
                 break;
             // PAUSED
             case 10:
+                MuteAllInstruments();
                 print("pause music");
                 Play("Pause_Music");
                 // 
