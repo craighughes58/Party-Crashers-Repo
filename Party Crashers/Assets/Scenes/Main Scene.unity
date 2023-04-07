@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35785142, g: 0.82084364, b: 0.97291726, a: 1}
+  m_IndirectSpecularColor: {r: 0.35782954, g: 0.8219314, b: 0.96994036, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -36106,7 +36106,7 @@ MonoBehaviour:
     panStereo: 0
     spacialBlend: 1
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 9795d1cba2c21374ba55b9c9c1a08809, type: 3}
+  - clip: {fileID: 8300000, guid: 5ec0a29b46c52c44396445e1180e8aec, type: 3}
     name: Bonk_1
     volume: 0.175
     pitch: 1
@@ -36114,7 +36114,7 @@ MonoBehaviour:
     panStereo: 0
     spacialBlend: 1
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 9795d1cba2c21374ba55b9c9c1a08809, type: 3}
+  - clip: {fileID: 8300000, guid: 2d694ff33b39a9a4e82379d827d99e6e, type: 3}
     name: Bonk_2
     volume: 0.175
     pitch: 1
@@ -36122,7 +36122,7 @@ MonoBehaviour:
     panStereo: 0
     spacialBlend: 1
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 9795d1cba2c21374ba55b9c9c1a08809, type: 3}
+  - clip: {fileID: 8300000, guid: cf673feaf4b5d8241a988ed2f4f2c8c4, type: 3}
     name: Bonk_3
     volume: 0.175
     pitch: 1
@@ -36269,6 +36269,46 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 5168fc1c3f5d691459df4bc3abd653fc, type: 3}
     name: Hyena_Attack
     volume: 0.215
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 21193a3a9d78fcc489c13eea0fa53adb, type: 3}
+    name: Octopus_Hurt
+    volume: 0.215
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: a35cb5afc2f4a90489366bf7b90691d1, type: 3}
+    name: Octopus_Death
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 738c8d5b6343df5468dd0136905f1db0, type: 3}
+    name: Applause
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 518dda0713c5b7242a7f1e18bcc8201c, type: 3}
+    name: Victory
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: d64c93b198585114e8df742f7e175cae, type: 3}
+    name: End_Music
+    volume: 0.15
     pitch: 1
     loop: 0
     panStereo: 0
