@@ -86,7 +86,7 @@ public class PlayerBehaviour : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Victory");
         FindObjectOfType<AudioManager>().Play("End_Music");
         EndCanvasScore.text = "SCORE: " + Score;
-        Invoke("RestartScenePlayerBehaviour", FindObjectOfType<AudioManager>().ClipLength("End_Music") + 2f);
+        Invoke("RestartScenePlayerBehaviour", FindObjectOfType<AudioManager>().ClipLength("End_Music") + 20f);
     }
 
     private void RestartScenePlayerBehaviour()
