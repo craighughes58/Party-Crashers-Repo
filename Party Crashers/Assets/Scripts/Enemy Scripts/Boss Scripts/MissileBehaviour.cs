@@ -37,6 +37,10 @@ public class MissileBehaviour : MonoBehaviour
 
     private Transform BossPositionReference;
 
+    [Tooltip("The candy that appears after the missile dies")]
+    [SerializeField]
+    private GameObject deathParticle1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -74,14 +78,17 @@ public class MissileBehaviour : MonoBehaviour
             print("AAAA");
             FindObjectOfType<AudioManager>().Play("Hit_By_Projectile");
             _bossAttacks.PB.LoseScore(_bossAttacks.ScoreLost);
+            Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
             Destroy(gameObject);
         }
         else if(collision.gameObject.tag.Equals("Boss"))
         {
+            Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
             Destroy(gameObject);
         }
         else
         {
+            Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
             Destroy(gameObject);
             return;
         }

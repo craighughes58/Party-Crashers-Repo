@@ -21,7 +21,7 @@ GameObject:
   m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5198368276950935158
 Transform:
@@ -107,6 +107,7 @@ MonoBehaviour:
   speed: 20
   launchSpeed: {x: 0, y: 20, z: 0}
   rotateSpeed: 25
+  deathParticle1: {fileID: 1520341045109095004, guid: efd2b5679c035124d815786968aa6442, type: 3}
 --- !u!135 &5741782875539014043
 SphereCollider:
   m_ObjectHideFlags: 0
