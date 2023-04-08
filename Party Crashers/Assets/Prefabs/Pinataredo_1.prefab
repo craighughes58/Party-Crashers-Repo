@@ -108,6 +108,7 @@ MonoBehaviour:
   launchSpeed: {x: 0, y: 20, z: 0}
   rotateSpeed: 25
   deathParticle1: {fileID: 1520341045109095004, guid: efd2b5679c035124d815786968aa6442, type: 3}
+  BrokenProjectile: {fileID: 8612374993430981222, guid: 9f4aaa646799a7b4d86c21d7fc96d493, type: 3}
 --- !u!135 &5741782875539014043
 SphereCollider:
   m_ObjectHideFlags: 0

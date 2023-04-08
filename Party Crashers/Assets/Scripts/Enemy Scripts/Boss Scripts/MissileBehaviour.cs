@@ -41,6 +41,9 @@ public class MissileBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject deathParticle1;
 
+    [SerializeField]
+    private GameObject BrokenProjectile;
+
 
     // Start is called before the first frame update
     void Start()
@@ -78,16 +81,19 @@ public class MissileBehaviour : MonoBehaviour
             print("AAAA");
             FindObjectOfType<AudioManager>().Play("Hit_By_Projectile");
             _bossAttacks.PB.LoseScore(_bossAttacks.ScoreLost);
+            Destroy(Instantiate(BrokenProjectile, transform.position, transform.rotation), 5f);
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
             Destroy(gameObject);
         }
         else if(collision.gameObject.tag.Equals("Boss"))
         {
+            Destroy(Instantiate(BrokenProjectile, transform.position, transform.rotation), 5f);
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
             Destroy(gameObject);
         }
         else
         {
+            Destroy(Instantiate(BrokenProjectile, transform.position, transform.rotation), 5f);
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
             Destroy(gameObject);
             return;
