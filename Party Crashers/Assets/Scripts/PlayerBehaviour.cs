@@ -23,6 +23,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject candyParticle;
 
+    [SerializeField]
+    private GameObject EndConfetti;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +84,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void ShowEnd()
     {
+        Instantiate(EndConfetti,new Vector3(-86.29f,49.79f,101.86f), Quaternion.identity);
+        Instantiate(EndConfetti,new Vector3(-68.107f, 49.79f, 140.148f), Quaternion.identity);
         EndCanvas.enabled = true;
         FindObjectOfType<AudioManager>().Play("Applause");
         FindObjectOfType<AudioManager>().Play("Victory");
