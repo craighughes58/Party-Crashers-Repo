@@ -7,7 +7,7 @@ public class Transition : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _transitionCanvas;
-    private float _transitionDelayTime = 1.0f;
+    private float _transitionDelayTime = 5.0f;
 
     /// <summary>
     /// Begins the delayed load coroutine

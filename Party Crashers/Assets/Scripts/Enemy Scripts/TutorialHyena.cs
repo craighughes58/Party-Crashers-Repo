@@ -22,6 +22,12 @@ public class TutorialHyena : MonoBehaviour
     [SerializeField]
     private GameObject shatteredHyena1;
 
+    [SerializeField]
+    private SkinnedMeshRenderer[] Body;
+    [SerializeField]
+    private Material flash;
+    [SerializeField]
+    private Material originalMaterial;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Bat"))
@@ -29,6 +35,8 @@ public class TutorialHyena : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("Hit_Enemy");
             lives--;
             HitReaction();
+            Flash();
+           
         }
     }
     private void HitReaction()
@@ -51,4 +59,27 @@ public class TutorialHyena : MonoBehaviour
         gc.AddEnemy();
         pb = FindObjectOfType<PlayerBehaviour>();
     }
+
+    private void Flash()
+    {
+        foreach(SkinnedMeshRenderer g in Body)
+        {
+            g.material = flash;
+        }
+
+        StartCoroutine(EndFlash());
+    }
+
+    private IEnumerator EndFlash()
+    {
+        yield return new WaitForSeconds(.25f);
+
+        foreach (SkinnedMeshRenderer g in Body)
+        {
+            g.material = originalMaterial;
+        }
+
+        yield return null;
+    }
+
 }
