@@ -112,18 +112,18 @@ public class GameController : MonoBehaviour
                 am.SwitchMusic(musicTrack);
                 return;
             case 3:
-                Vector3 spawnLocationStop2 = new Vector3(71.57f, 18.86f, 20.84f);
+                Vector3 spawnLocationStop2 = new Vector3(70.83f, 18.26f, 22.31f);
                 birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
-                spawnLocationStop2.x = 14.24f;
+                spawnLocationStop2.x = 20.19f;
                 spawnLocationStop2.y = 12.13f;
-                spawnLocationStop2.z = 5.77f;
+                spawnLocationStop2.z = 8.64f;
                 birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
                 spawnLocationStop2.x = 42.84f;
-                spawnLocationStop2.y = 12.09f;
+                spawnLocationStop2.y = 11.74f;
                 spawnLocationStop2.z = -19.19f;
                 birds.Add(Instantiate(Bird, spawnLocationStop2, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
@@ -162,13 +162,13 @@ public class GameController : MonoBehaviour
                 AddEnemy();
 
                 spawnLocationStop3.x = -43.24f;
-                spawnLocationStop3.y = 39.42f;
+                spawnLocationStop3.y = 38.55f;
                 spawnLocationStop3.z = 93.62f;
                 birds.Add(Instantiate(Bird, spawnLocationStop3, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();
 
                 spawnLocationStop3.x = -34.39f;
-                spawnLocationStop3.y = 39.23f;
+                spawnLocationStop3.y = 38.37f;
                 spawnLocationStop3.z = 111.7f;
                 birds.Add(Instantiate(Bird, spawnLocationStop3, Quaternion.identity).GetComponent<BirdBehaviour>());
                 AddEnemy();

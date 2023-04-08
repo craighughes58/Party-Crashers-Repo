@@ -186,7 +186,7 @@ public class BirdBehaviour : MonoBehaviour
 
     public IEnumerator Attack()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(.1f);
         playerAnimator.SetTrigger("AttackTrigger");
         FindObjectOfType<AudioManager>().Play("Bird_Fire");
     }
