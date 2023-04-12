@@ -15,12 +15,12 @@ public class InteractableObjectScript : MonoBehaviour
 
             if (name.Contains("group"))
             {
-                floatForce.y += 100;
+                floatForce.y += 10;
                 rb.AddForce(floatForce);
             }
             else
             {
-                if (name.Contains("baloon"))
+                if (name.Contains("baloon")||name.Contains("balloon"))
                 {
                     //Balloon popping sound
                     Destroy(gameObject);

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2247773977656440257}
   - component: {fileID: 2247773977656440256}
   - component: {fileID: 2247773977656440263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ear_shard3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 2247773977668375259}
   - component: {fileID: 2247773977668375258}
   - component: {fileID: 2247773977668375257}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ear_shard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 2247773977715994512}
   - component: {fileID: 2247773977715994519}
   - component: {fileID: 2247773977715994518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 2247773977730255388}
   - component: {fileID: 2247773977730255379}
   - component: {fileID: 2247773977730255378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 2247773977876489952}
   - component: {fileID: 2247773977876489959}
   - component: {fileID: 2247773977876489958}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head1_shard3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 2247773977934483157}
   - component: {fileID: 2247773977934483156}
   - component: {fileID: 2247773977934483115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 2247773978011066414}
   - component: {fileID: 2247773978011066413}
   - component: {fileID: 2247773978011066412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jaws_shard9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 2247773978041921512}
   - component: {fileID: 2247773978041921519}
   - component: {fileID: 2247773978041921518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spines_shard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 2247773978098061749}
   - component: {fileID: 2247773978098061748}
   - component: {fileID: 2247773978098061707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ear_shard7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 2247773978163027482}
   - component: {fileID: 2247773978163027481}
   - component: {fileID: 2247773978163027480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jaws_shard10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1153,7 +1153,7 @@ GameObject:
   - component: {fileID: 2247773978209520910}
   - component: {fileID: 2247773978209520909}
   - component: {fileID: 2247773978209520908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1267,7 +1267,7 @@ GameObject:
   - component: {fileID: 2247773978241795864}
   - component: {fileID: 2247773978241795871}
   - component: {fileID: 2247773978241795870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,7 +1377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2247773978293818652}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bodyShatterGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1424,7 +1424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2247773978293913112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spinesShatterGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1467,7 +1467,7 @@ GameObject:
   - component: {fileID: 2247773978295993599}
   - component: {fileID: 2247773978295993598}
   - component: {fileID: 2247773978295993597}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1581,7 +1581,7 @@ GameObject:
   - component: {fileID: 2247773978301326982}
   - component: {fileID: 2247773978301326981}
   - component: {fileID: 2247773978301326980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head1_shard5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1695,7 +1695,7 @@ GameObject:
   - component: {fileID: 2247773978347580917}
   - component: {fileID: 2247773978347580916}
   - component: {fileID: 2247773978347580875}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1809,7 +1809,7 @@ GameObject:
   - component: {fileID: 2247773978400735759}
   - component: {fileID: 2247773978400735758}
   - component: {fileID: 2247773978400735757}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1923,7 +1923,7 @@ GameObject:
   - component: {fileID: 2247773978415885522}
   - component: {fileID: 2247773978415885521}
   - component: {fileID: 2247773978415885520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ear_shard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2037,7 +2037,7 @@ GameObject:
   - component: {fileID: 2247773978451410434}
   - component: {fileID: 2247773978451410433}
   - component: {fileID: 2247773978451410432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head1_shard4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2151,7 +2151,7 @@ GameObject:
   - component: {fileID: 2247773978503007076}
   - component: {fileID: 2247773978503007099}
   - component: {fileID: 2247773978503007098}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ear_shard4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2261,7 +2261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2247773978567845946}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tounge_broken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2301,7 +2301,7 @@ GameObject:
   - component: {fileID: 2247773978678123910}
   - component: {fileID: 2247773978678123909}
   - component: {fileID: 2247773978678123908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shard5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2411,7 +2411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2247773978724441244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head1ShatterGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2454,7 +2454,7 @@ GameObject:
   - component: {fileID: 2247773978727328668}
   - component: {fileID: 2247773978727328659}
   - component: {fileID: 2247773978727328658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jaws_shard4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2568,7 +2568,7 @@ GameObject:
   - component: {fileID: 2247773978765545773}
   - component: {fileID: 2247773978765545772}
   - component: {fileID: 2247773978765545763}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shard4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2682,7 +2682,7 @@ GameObject:
   - component: {fileID: 2247773978798594638}
   - component: {fileID: 2247773978798594637}
   - component: {fileID: 2247773978798594636}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jaws_shard6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2796,7 +2796,7 @@ GameObject:
   - component: {fileID: 2247773978833585146}
   - component: {fileID: 2247773978833585145}
   - component: {fileID: 2247773978833585144}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ear_shard6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2910,7 +2910,7 @@ GameObject:
   - component: {fileID: 2247773978863222919}
   - component: {fileID: 2247773978863222918}
   - component: {fileID: 2247773978863222917}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head1_shard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3024,7 +3024,7 @@ GameObject:
   - component: {fileID: 2247773978869534283}
   - component: {fileID: 2247773978869534282}
   - component: {fileID: 2247773978869534281}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shard3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3138,7 +3138,7 @@ GameObject:
   - component: {fileID: 2247773978877459504}
   - component: {fileID: 2247773978877459511}
   - component: {fileID: 2247773978877459510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3248,7 +3248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2247773978899518683}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Breakable Hyena (Material 1) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3290,7 +3290,7 @@ GameObject:
   - component: {fileID: 2247773978905107758}
   - component: {fileID: 2247773978905107757}
   - component: {fileID: 2247773978905107756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3404,7 +3404,7 @@ GameObject:
   - component: {fileID: 2247773978907275915}
   - component: {fileID: 2247773978907275914}
   - component: {fileID: 2247773978907275913}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head1_shard6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3518,7 +3518,7 @@ GameObject:
   - component: {fileID: 2247773978940658667}
   - component: {fileID: 2247773978940658666}
   - component: {fileID: 2247773978940658665}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jaws_shard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3632,7 +3632,7 @@ GameObject:
   - component: {fileID: 2247773979008716851}
   - component: {fileID: 2247773979008716850}
   - component: {fileID: 2247773979008716849}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spines_shard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3742,7 +3742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2247773979021794980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jawsShatterGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3787,7 +3787,7 @@ GameObject:
   - component: {fileID: 2247773979078162758}
   - component: {fileID: 2247773979078162757}
   - component: {fileID: 2247773979078162756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3901,7 +3901,7 @@ GameObject:
   - component: {fileID: 2247773979101088727}
   - component: {fileID: 2247773979101088726}
   - component: {fileID: 2247773979101088725}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jaws_shard8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4015,7 +4015,7 @@ GameObject:
   - component: {fileID: 2247773979121147814}
   - component: {fileID: 2247773979121147813}
   - component: {fileID: 2247773979121147812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ear_shard8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4127,7 +4127,7 @@ GameObject:
   - component: {fileID: 2247773979122610235}
   - component: {fileID: 2247773979122610213}
   - component: {fileID: 2247773979122610212}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bodypdiTRSVoro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4191,7 +4191,7 @@ GameObject:
   - component: {fileID: 2247773979141019429}
   - component: {fileID: 2247773979141019428}
   - component: {fileID: 2247773979141019451}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spines_shard5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4305,7 +4305,7 @@ GameObject:
   - component: {fileID: 2247773979154830551}
   - component: {fileID: 2247773979154830550}
   - component: {fileID: 2247773979154830549}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head1_shard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4419,7 +4419,7 @@ GameObject:
   - component: {fileID: 2247773979179340467}
   - component: {fileID: 2247773979179340466}
   - component: {fileID: 2247773979179340465}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4533,7 +4533,7 @@ GameObject:
   - component: {fileID: 2247773979196742633}
   - component: {fileID: 2247773979196742632}
   - component: {fileID: 2247773979196742639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4643,7 +4643,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2247773979244232906}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: earShatterGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4684,7 +4684,7 @@ GameObject:
   - component: {fileID: 2247773979280166543}
   - component: {fileID: 2247773979280166537}
   - component: {fileID: 2247773979280166536}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head1pdiTRSVoro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4748,7 +4748,7 @@ GameObject:
   - component: {fileID: 2247773979303831925}
   - component: {fileID: 2247773979303831924}
   - component: {fileID: 2247773979303831883}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4862,7 +4862,7 @@ GameObject:
   - component: {fileID: 2247773979320802938}
   - component: {fileID: 2247773979320802937}
   - component: {fileID: 2247773979320802936}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head1_shard7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4976,7 +4976,7 @@ GameObject:
   - component: {fileID: 2247773979327015648}
   - component: {fileID: 2247773979327015655}
   - component: {fileID: 2247773979327015654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5090,7 +5090,7 @@ GameObject:
   - component: {fileID: 2247773979353600612}
   - component: {fileID: 2247773979353600635}
   - component: {fileID: 2247773979353600634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spines_shard4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5204,7 +5204,7 @@ GameObject:
   - component: {fileID: 2247773979382040540}
   - component: {fileID: 2247773979382040531}
   - component: {fileID: 2247773979382040530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jaws_shard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5318,7 +5318,7 @@ GameObject:
   - component: {fileID: 2247773979515936693}
   - component: {fileID: 2247773979515936692}
   - component: {fileID: 2247773979515936651}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jaws_shard5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5432,7 +5432,7 @@ GameObject:
   - component: {fileID: 2247773979522532166}
   - component: {fileID: 2247773979522532165}
   - component: {fileID: 2247773979522532164}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spines_shard3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5546,7 +5546,7 @@ GameObject:
   - component: {fileID: 2247773979542095988}
   - component: {fileID: 2247773979542095947}
   - component: {fileID: 2247773979542095946}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5660,7 +5660,7 @@ GameObject:
   - component: {fileID: 2247773979549616095}
   - component: {fileID: 2247773979549616094}
   - component: {fileID: 2247773979549616093}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jaws_shard7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5774,7 +5774,7 @@ GameObject:
   - component: {fileID: 2247773979552392720}
   - component: {fileID: 2247773979552392727}
   - component: {fileID: 2247773979552392726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5888,7 +5888,7 @@ GameObject:
   - component: {fileID: 2247773979558302556}
   - component: {fileID: 2247773979558302547}
   - component: {fileID: 2247773979558302546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spines_shard6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6002,7 +6002,7 @@ GameObject:
   - component: {fileID: 2247773979597845017}
   - component: {fileID: 2247773979597845016}
   - component: {fileID: 2247773979597845023}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lower_jaws_shard3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6116,7 +6116,7 @@ GameObject:
   - component: {fileID: 2247773979652818163}
   - component: {fileID: 2247773979652818162}
   - component: {fileID: 2247773979652818161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body_shard9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6230,7 +6230,7 @@ GameObject:
   - component: {fileID: 2247773979686818381}
   - component: {fileID: 2247773979686818380}
   - component: {fileID: 2247773979686818371}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6344,7 +6344,7 @@ GameObject:
   - component: {fileID: 2247773979686853822}
   - component: {fileID: 2247773979686853821}
   - component: {fileID: 2247773979686853820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ear_shard5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6456,7 +6456,7 @@ GameObject:
   - component: {fileID: 8196750877044370159}
   - component: {fileID: 6098199534682021957}
   - component: {fileID: 4482092337641610368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6629,7 +6629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3725654397218562245}
   - component: {fileID: 187351051689419291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6713,7 +6713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875880954097436173}
   - component: {fileID: 747710418010569538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
