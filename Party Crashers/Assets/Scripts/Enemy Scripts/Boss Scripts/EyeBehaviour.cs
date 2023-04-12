@@ -41,6 +41,7 @@ public class EyeBehaviour : MonoBehaviour
             _bossAttacks.BH.LoseHealth();
             _bossAttacks.PB.AddScore(_bossAttacks.ScoreGainedAttack);
             _bossAttacks.RemoveAllMissiles();
+
             if (!beenHit)
             {
                 HitReaction();
@@ -81,6 +82,7 @@ public class EyeBehaviour : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material = startMat;
         gameObject.transform.GetChild(0).transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = startMat;
+        beenHit = false;
         yield return null;
     }
 }

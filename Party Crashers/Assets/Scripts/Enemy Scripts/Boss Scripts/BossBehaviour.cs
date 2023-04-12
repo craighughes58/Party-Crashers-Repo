@@ -289,8 +289,8 @@ public class BossBehaviour : MonoBehaviour
         else if(_currentHealth > 0)
         {
             FindObjectOfType<AudioManager>().Play("Octopus_Hurt");
-            _bossAttacks.StopAllCoroutines();
-            CancelInvoke();
+            //_bossAttacks.StopAllCoroutines();
+            //CancelInvoke();
             //EnterAttack();
         }
     }  
