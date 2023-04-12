@@ -291,7 +291,7 @@ public class BossBehaviour : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("Octopus_Hurt");
             _bossAttacks.StopAllCoroutines();
             CancelInvoke();
-            EnterAttack();
+            //EnterAttack();
         }
     }  
 
