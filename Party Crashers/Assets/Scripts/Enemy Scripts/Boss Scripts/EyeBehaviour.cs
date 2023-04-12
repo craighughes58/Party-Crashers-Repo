@@ -34,7 +34,7 @@ public class EyeBehaviour : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         //print("Stay");
-        if (_bossAttacks.BH.GetBossState() == "EXHAUSTION" && collision.gameObject.tag.Equals("Bat") && !beenHit)
+/*        if (_bossAttacks.BH.GetBossState() == "EXHAUSTION" && collision.gameObject.tag.Equals("Bat") && !beenHit)
         {
             FindObjectOfType<AudioManager>().Play("Hit_Enemy");
             //print("BOSS HIT");
@@ -47,7 +47,7 @@ public class EyeBehaviour : MonoBehaviour
                 HitReaction();
             }
             beenHit = true;
-        }
+        }*/
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -59,6 +59,20 @@ public class EyeBehaviour : MonoBehaviour
             StartCoroutine(_bossAttacks.BH.MoveToExhPos());
             //stop firing missiles
             _bossAttacks.ActivateHitSignal();
+        }
+        else if (_bossAttacks.BH.GetBossState() == "EXHAUSTION" && collision.gameObject.tag.Equals("Bat") && !beenHit)
+        {
+            FindObjectOfType<AudioManager>().Play("Hit_Enemy");
+            //print("BOSS HIT");
+            _bossAttacks.BH.LoseHealth();
+            _bossAttacks.PB.AddScore(_bossAttacks.ScoreGainedAttack);
+            _bossAttacks.RemoveAllMissiles();
+
+            if (!beenHit)
+            {
+                HitReaction();
+            }
+            beenHit = true;
         }
     }
 
