@@ -20,7 +20,9 @@ public class BossAttacks : MonoBehaviour
 
     [Header("Timers")]
     [Range(0f, 10f)]
-    [SerializeField] private float _exhaustionTimer;
+    [SerializeField] private float _exhaustionTimer;    
+    [Range(0f, 2f)]
+    [SerializeField] private float _attackAudioTimer;
 
     [Header("Attack Missiles")]
     [SerializeField] private GameObject _missileObject;
@@ -131,7 +133,7 @@ public class BossAttacks : MonoBehaviour
         {
             _bossBehaviour.ResetTriggers();
             _bossBehaviour.animator.SetTrigger("Left");
-            _audioManager.Play("Octo_Atk_L");
+            StartCoroutine(AttackAudio(attackPoint));
             _missileAnimObject.SetActive(true);
             isAttacking = true;
         }
@@ -139,9 +141,24 @@ public class BossAttacks : MonoBehaviour
         {
             _bossBehaviour.ResetTriggers();
             _bossBehaviour.animator.SetTrigger("Right");
-            _audioManager.Play("Octo_Atk_R");
+            StartCoroutine(AttackAudio(attackPoint));
             _missileAnimObject.SetActive(true);
             isAttacking = true;
+        }
+    }
+
+    IEnumerator AttackAudio(int side)
+    {
+        yield return new WaitForSeconds(_attackAudioTimer);
+        if (side == 0)
+        {
+            _audioManager.Play("Octo_Atk_L");
+            print("attack left");
+        }
+        else
+        {
+            _audioManager.Play("Octo_Atk_R");
+            print("attack right");
         }
     }
     #endregion
@@ -207,6 +224,8 @@ public class BossAttacks : MonoBehaviour
     public void ActivateHitSignal()
     {
         hitSignal = true;
+        _audioManager.Stop("Octo_Atk_L");
+        _audioManager.Stop("Octo_Atk_R");
     }
     public void DeactivateHitSignal()
     {

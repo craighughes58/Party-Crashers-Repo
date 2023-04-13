@@ -53,7 +53,7 @@ public class EyeBehaviour : MonoBehaviour
     {
         if (_bossAttacks.BH.GetBossState() == "ATTACK" && collision.gameObject.tag.Equals("Missile"))
         {
-            FindObjectOfType<AudioManager>().Play("Hit_By_Projectile");
+            FindObjectOfType<AudioManager>().Play("Bonk_" + Random.Range(0, 4).ToString());
             _bossAttacks.RemoveAllMissiles();
             //change state to exhausted
             StartCoroutine(_bossAttacks.BH.MoveToExhPos());
@@ -62,7 +62,9 @@ public class EyeBehaviour : MonoBehaviour
         }
         else if (_bossAttacks.BH.GetBossState() == "EXHAUSTION" && collision.gameObject.tag.Equals("Bat") && !beenHit)
         {
-            FindObjectOfType<AudioManager>().Play("Hit_Enemy");
+            FindObjectOfType<AudioManager>().Stop("Octo_Exhausted");
+            FindObjectOfType<AudioManager>().Play("Hit_Octo");
+            FindObjectOfType<AudioManager>().Play("Octo_Hurt");
             //print("BOSS HIT");
             _bossAttacks.BH.LoseHealth();
             _bossAttacks.PB.AddScore(_bossAttacks.ScoreGainedAttack);

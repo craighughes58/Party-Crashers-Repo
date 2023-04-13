@@ -43,7 +43,7 @@ public class TutorialHyena : MonoBehaviour
     {
         if (lives <= 0)
         {
-            FindObjectOfType<AudioManager>().Play("Hit_Enemy");
+            FindObjectOfType<AudioManager>().Play("Enemy_Death" + Random.Range(0, 4).ToString());
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
             gc.LoseEnemy();
             Destroy(Instantiate(shatteredHyena1, transform.position, transform.rotation), 5f);

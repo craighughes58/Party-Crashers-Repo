@@ -188,6 +188,8 @@ public class AudioManager : MonoBehaviour
                 MuteAllInstruments();
                 print("pause music");
                 Play("Pause_Music");
+                Stop("Tutorial_Music");
+                Stop("Boss_Music");
                 // 
                 break;
             case 11:
