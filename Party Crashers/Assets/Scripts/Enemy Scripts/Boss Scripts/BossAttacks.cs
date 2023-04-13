@@ -143,6 +143,24 @@ public class BossAttacks : MonoBehaviour
     }
     #endregion
 
+    /// <summary>
+    /// AT HALF Or Lower
+    /// </summary>
+    /*private void Roar()
+    {
+        _audioManager.Play("Octo_Roar");
+        _bossBehaviour.animator.SetTrigger("Intro");
+
+    }*/
+
+    public IEnumerator Roar()
+    {
+        _bossBehaviour.animator.SetTrigger("Intro");
+        yield return new WaitForSeconds(.3f);
+        yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
+        _bossBehaviour.EnterAttack();
+    }
+
     #region Exhaustion
     /// <summary>
     /// Controls the exhaustion phase duration & events
@@ -152,8 +170,16 @@ public class BossAttacks : MonoBehaviour
     {
         //yield return new WaitForSeconds(_exhaustionTimer);
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
-        _bossBehaviour.EnterAttack();
-        //_bossBehaviour.Invoke("EnterAttack", _exhaustionTimer);
+
+        if (_bossBehaviour._currentHealth <= _bossBehaviour._maxHealth / 2)
+        {
+            _bossBehaviour.ResetTriggers();
+            _bossBehaviour.StartCoroutine(_bossBehaviour.MoveToAtkPos(false));
+        }
+        else
+        {
+            _bossBehaviour.EnterAttack();
+        }
         yield return null;
         //_bossBehaviour.EnterAttack();
     }

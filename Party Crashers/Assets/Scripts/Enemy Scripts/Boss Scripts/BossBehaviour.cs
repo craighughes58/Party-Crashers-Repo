@@ -24,13 +24,13 @@ public class BossBehaviour : MonoBehaviour
 
     #region Health 
     [Header("Health")]
-    [SerializeField] private int _maxHealth;
-    [SerializeField] private int _currentHealth;
+    public int _maxHealth;
+    public int _currentHealth;
     #endregion
 
     #region Phases & Activation
     //the boss has two modes, attack and exhaustion. When the boss is attacking they can't take damage but when they're exhausted they can't attack and they're open to taking damage
-    private enum BossState { ATTACK, EXHAUSTION }
+    private enum BossState { ATTACK, EXHAUSTION}
     [Header("States")]
     [SerializeField] private BossState _currentBossState;
 
@@ -171,7 +171,7 @@ public class BossBehaviour : MonoBehaviour
         //.Log("EnterAttack");
         StopAllCoroutines();
         _bossAttacks.DeactivateHitSignal();
-        StartCoroutine(MoveToAtkPos());
+        StartCoroutine(MoveToAtkPos(true));
     }
 
     /// <summary>
@@ -206,7 +206,7 @@ public class BossBehaviour : MonoBehaviour
     /// <summary>
     /// Moves the boss to the attack position
     /// </summary>
-    private IEnumerator MoveToAtkPos()
+    public IEnumerator MoveToAtkPos(bool beginAttack)
     {
         float pathPercentage = 0;
         Vector3 startPos = transform.position;
@@ -220,7 +220,13 @@ public class BossBehaviour : MonoBehaviour
             pathPercentage += Time.deltaTime;
             yield return null;
         }
-        BeginAttack();
+
+        if (beginAttack)
+            BeginAttack();
+        else
+            _bossAttacks.StartCoroutine(_bossAttacks.Roar());
+        yield return null;
+
     }
 
     /// <summary>
