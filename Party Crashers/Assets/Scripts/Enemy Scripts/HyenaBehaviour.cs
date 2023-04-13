@@ -119,11 +119,12 @@ public class HyenaBehaviour : MonoBehaviour
 
         attackTimer = attackInterval;
 
+        FindObjectOfType<AudioManager>().Play("Hyena_Alert_" + Random.Range(0, 2).ToString());
+        // add necessary audio to each hyena prefab
+        FindObjectOfType<AudioManager>().AddSound("Hyena_Attack", gameObject);
+
         gotHit = false;
         anim = GetComponent<Animator>();
-
-        // Random hyena sfx
-        StartCoroutine(RandomSound());
 
         hyenaRenderer1 = transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
         hyenaRenderer2 = transform.GetChild(0).transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
@@ -171,8 +172,7 @@ public class HyenaBehaviour : MonoBehaviour
                 {
                     attacking = true;
                     anim.SetBool("attacking", attacking);
-                    FindObjectOfType<AudioManager>().Stop("Hyena_Footsteps");
-                    FindObjectOfType<AudioManager>().Play("Hyena_Attack");
+                    FindObjectOfType<AudioManager>().PlayAddedSound("Hyena_Attack", gameObject);
                 }
 
                 AttackWindUp();
@@ -181,17 +181,18 @@ public class HyenaBehaviour : MonoBehaviour
 
             else
             {
+                //StartCoroutine(RandomSound());
                 if (attacking)
                 {
                     attacking = false;
                     anim.SetBool("attacking", attacking);
+                    //FindObjectOfType<AudioManager>().Stop("Hyena_Attack");
                 }
                 //ONLY MOVES WHEN WALKING?
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
                 {
                     meshAgent.isStopped = false;
                     meshAgent.SetDestination(player.position);
-                    FindObjectOfType<AudioManager>().Play("Hyena_Footsteps");
                 }
             }
         }
@@ -221,7 +222,7 @@ public class HyenaBehaviour : MonoBehaviour
         // Freeze the hyena in place
         //meshAgent.isStopped = true;
         meshAgent.isStopped = true;
-
+        print("prepping attack");
 
         if (currentFrame == 40 && !hitPlayer)
         {
@@ -320,7 +321,7 @@ public class HyenaBehaviour : MonoBehaviour
 
     private IEnumerator RandomSound()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         FindObjectOfType<AudioManager>().Play("Hyena_Alert_" + Random.Range(0, 2).ToString());
         StartCoroutine(RandomSound());
     }
