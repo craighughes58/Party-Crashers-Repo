@@ -282,7 +282,7 @@ public class HyenaBehaviour : MonoBehaviour
             enemyLives--;
             anim.SetTrigger("Hit");
             FindObjectOfType<AudioManager>().Play("Hyena_Flinch_" + Random.Range(0, 4).ToString());
-            FindObjectOfType<AudioManager>().Stop("Hyena_Attack");
+            FindObjectOfType<AudioManager>().StopAddedSound("Hyena_Attack", gameObject);
             HitReaction();
         }
     }

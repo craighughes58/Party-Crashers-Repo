@@ -103,16 +103,31 @@ public class AudioManager : MonoBehaviour
     public void PlayAddedSound(string soundName, GameObject obj)
     {
         Sound s = Array.Find(Sounds, sound => sound.name == soundName);
-        if (s == null)
+        if (s == null || obj == null)
         {
             Debug.LogWarning(soundName + ": audio not found");
             return;
         }
         s.source = obj.GetComponent<AudioSource>();
-        if (!s.source.isPlaying)
-        {
+        //if (!s.source.isPlaying)
+        //{
             s.source.Play();
+        //}
+    }
+
+    public void StopAddedSound(string soundName, GameObject obj)
+    {
+        Sound s = Array.Find(Sounds, sound => sound.name == soundName);
+        if (s == null || obj == null)
+        {
+            Debug.LogWarning(soundName + ": audio not found");
+            return;
         }
+        s.source = obj.GetComponent<AudioSource>();
+       
+        
+        s.source.Stop();
+        
     }
 
     public void Stop(string name)
