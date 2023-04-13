@@ -61,21 +61,21 @@ public class BossAttacks : MonoBehaviour
 
     private void Update()
     {
-        if (_bossBehaviour.currentFrame == 83 && !decreasedAttack)
+        /*if (_bossBehaviour.currentFrame == 83)
         {
-            DecreaseAttacks();
+            //DecreaseAttacks();
             _bossBehaviour.ResetTriggers();
-        }
-        else if (_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("LeftAttack") || _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("RightAttack"))
+        }*/
+        if (_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("LeftAttack") || _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("RightAttack"))
         {
-            if (_bossBehaviour.currentFrame == 43 && isAttacking && !spawnedOne)
+            if (_bossBehaviour.currentFrame >= 42 && _bossBehaviour.currentFrame <= 44 && isAttacking && !spawnedOne)
             {
                 Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity).GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
                 _missileAnimObject.SetActive(false);
                 spawnedOne = true;
-                decreasedAttack = false;
+                //decreasedAttack = false;
             }
-            else if (_bossBehaviour.currentFrame != 43 && spawnedOne)
+            else if (_bossBehaviour.currentFrame < 42 && spawnedOne || _bossBehaviour.currentFrame > 44 && spawnedOne)
             {
                 spawnedOne = false;
             }
