@@ -9358,6 +9358,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 95f1fe765fc99d047a90feb8e90c7118, type: 2}
     - target: {fileID: 2763426885067843090, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
+      propertyPath: Bird
+      value: 
+      objectReference: {fileID: 5120799334425849057, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+    - target: {fileID: 2763426885067843090, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
       propertyPath: _audioManager
       value: 
       objectReference: {fileID: 1621658253}

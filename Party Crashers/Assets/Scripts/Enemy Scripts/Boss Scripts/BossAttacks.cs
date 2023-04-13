@@ -15,6 +15,8 @@ public class BossAttacks : MonoBehaviour
     [SerializeField] private int _currentAttacks; //this is the variable that keeps track of how many attacks the boss has
     public int attackPoint;
     private List<GameObject> RecentMissiles = new List<GameObject>();
+    [SerializeField]
+    private GameObject Bird;
 
     [Header("Timers")]
     [Range(0f, 10f)]
@@ -157,6 +159,8 @@ public class BossAttacks : MonoBehaviour
     {
         _bossBehaviour.animator.SetTrigger("Intro");
         yield return new WaitForSeconds(.3f);
+        Instantiate(Bird,new Vector3(-52,15.5f, 148.5345f),Quaternion.identity);
+        Instantiate(Bird,new Vector3(-83.9f,16.5f, 87.8672f), Quaternion.identity);
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
         _bossBehaviour.EnterAttack();
     }
