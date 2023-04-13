@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossBehaviour: {fileID: 0}
-  speed: 20
+  speed: 30
   launchSpeed: {x: 0, y: 20, z: 0}
   rotateSpeed: 25
   deathParticle1: {fileID: 1520341045109095004, guid: efd2b5679c035124d815786968aa6442, type: 3}

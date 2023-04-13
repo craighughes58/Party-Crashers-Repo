@@ -15,6 +15,8 @@ public class BossAttacks : MonoBehaviour
     [SerializeField] private int _currentAttacks; //this is the variable that keeps track of how many attacks the boss has
     public int attackPoint;
     private List<GameObject> RecentMissiles = new List<GameObject>();
+    [SerializeField]
+    private GameObject Bird;
 
     [Header("Timers")]
     [Range(0f, 10f)]
@@ -59,21 +61,22 @@ public class BossAttacks : MonoBehaviour
 
     private void Update()
     {
-        if (_bossBehaviour.currentFrame == 83 && !decreasedAttack)
+        /*if (_bossBehaviour.currentFrame == 83)
         {
-            DecreaseAttacks();
+            //DecreaseAttacks();
             _bossBehaviour.ResetTriggers();
-        }
-        else if (_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("LeftAttack") || _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("RightAttack"))
+        }*/
+        int normalizedBossFrame = Mathf.Abs(_bossBehaviour.currentFrame);
+        if (_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("LeftAttack") || _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("RightAttack"))
         {
-            if (_bossBehaviour.currentFrame == 43 && isAttacking && !spawnedOne)
+            if (normalizedBossFrame == 43 && isAttacking && !spawnedOne)
             {
                 Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity).GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
                 _missileAnimObject.SetActive(false);
                 spawnedOne = true;
-                decreasedAttack = false;
+                //decreasedAttack = false;
             }
-            else if (_bossBehaviour.currentFrame != 43 && spawnedOne)
+            else if (normalizedBossFrame != 43 && spawnedOne)
             {
                 spawnedOne = false;
             }
@@ -143,6 +146,29 @@ public class BossAttacks : MonoBehaviour
     }
     #endregion
 
+    /// <summary>
+    /// AT HALF Or Lower
+    /// </summary>
+    /*private void Roar()
+    {
+        _audioManager.Play("Octo_Roar");
+        _bossBehaviour.animator.SetTrigger("Intro");
+
+    }*/
+
+    public IEnumerator Roar()
+    {
+        _bossBehaviour.animator.SetTrigger("Intro");
+        yield return new WaitForSeconds(.3f);
+        if(_bossBehaviour._currentHealth > 0)
+        {
+            Instantiate(Bird, new Vector3(-52, 15.5f, 148.5345f), Quaternion.identity);
+            Instantiate(Bird, new Vector3(-83.9f, 16.5f, 87.8672f), Quaternion.identity);
+        }
+        yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
+        _bossBehaviour.EnterAttack();
+    }
+
     #region Exhaustion
     /// <summary>
     /// Controls the exhaustion phase duration & events
@@ -152,8 +178,16 @@ public class BossAttacks : MonoBehaviour
     {
         //yield return new WaitForSeconds(_exhaustionTimer);
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
-        _bossBehaviour.EnterAttack();
-        //_bossBehaviour.Invoke("EnterAttack", _exhaustionTimer);
+
+        if (_bossBehaviour._currentHealth <= _bossBehaviour._maxHealth / 2)
+        {
+            _bossBehaviour.ResetTriggers();
+            _bossBehaviour.StartCoroutine(_bossBehaviour.MoveToAtkPos(false));
+        }
+        else
+        {
+            _bossBehaviour.EnterAttack();
+        }
         yield return null;
         //_bossBehaviour.EnterAttack();
     }
