@@ -17,6 +17,7 @@ public class BossAttacks : MonoBehaviour
     private List<GameObject> RecentMissiles = new List<GameObject>();
     [SerializeField]
     private GameObject Bird;
+    private int birdsNum;
 
     [Header("Timers")]
     [Range(0f, 10f)]
@@ -179,8 +180,19 @@ public class BossAttacks : MonoBehaviour
         yield return new WaitForSeconds(.3f);
         if(_bossBehaviour._currentHealth > 0)
         {
-            Instantiate(Bird, new Vector3(-52, 15.5f, 148.5345f), Quaternion.identity);
-            Instantiate(Bird, new Vector3(-83.9f, 16.5f, 87.8672f), Quaternion.identity);
+            GameController gc = GameObject.Find("GameController").GetComponent<GameController>();
+            if (gc.birds.Count == 0)
+            {
+                gc.birds.Add(Instantiate(Bird, new Vector3(-52, 15.5f, 148.5345f), Quaternion.identity).GetComponent<BirdBehaviour>());
+                gc.birds.Add(Instantiate(Bird, new Vector3(-83.9f, 16.5f, 87.8672f), Quaternion.identity).GetComponent<BirdBehaviour>());
+                for (int i = 1; i < gc.birds.Count; i++)
+                {
+                    gc.birds[i].bb = gc.birds[i - 1];
+                }
+                gc.birds[0].bb = gc.birds[gc.birds.Count - 1];
+
+                gc.birds[0].StartCoroutine(gc.birds[0].Attack());
+            }
         }
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
         _bossBehaviour.EnterAttack();
