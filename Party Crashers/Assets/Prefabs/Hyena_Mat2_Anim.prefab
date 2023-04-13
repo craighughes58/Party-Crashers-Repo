@@ -1171,7 +1171,7 @@ GameObject:
   - component: {fileID: -1351826590910888540}
   m_Layer: 8
   m_Name: Hyena_Mat2_Anim
-  m_TagString: Untagged
+  m_TagString: Hyena
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

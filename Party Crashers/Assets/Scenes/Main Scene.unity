@@ -927,7 +927,7 @@ MonoBehaviour:
   settingsMenu: {fileID: 825443163}
   bb: {fileID: 0}
   _bossBehaviour: {fileID: 632771191}
-  devBossTesting: 1
+  devBossTesting: 0
   am: {fileID: 1621658253}
   musicTrack: 0
   birds: []
@@ -45416,7 +45416,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: e3cbf17787ad42147997b1c249c716d0, type: 3}
     name: Path_Footsteps
-    volume: 0.25
+    volume: 0.5
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45472,7 +45472,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: c2866ab1f14502940acaaa74bcfde9ec, type: 3}
     name: Enemy_Spawn
-    volume: 0.225
+    volume: 0.2
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45559,7 +45559,7 @@ MonoBehaviour:
     spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 1505ced683e49cf43ad9b781c2fad4d8, type: 3}
-    name: Enemy_Death1
+    name: Enemy_Death0
     volume: 0.2
     pitch: 1
     loop: 0
@@ -45567,7 +45567,7 @@ MonoBehaviour:
     spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: ecc9924ff902e714bba9c468ba7c0b6b, type: 3}
-    name: Enemy_Death2
+    name: Enemy_Death1
     volume: 0.2
     pitch: 1
     loop: 0
@@ -45575,7 +45575,7 @@ MonoBehaviour:
     spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: c302942b2068d5d419872c39bd7a064b, type: 3}
-    name: Enemy_Death3
+    name: Enemy_Death2
     volume: 0.2
     pitch: 1
     loop: 0
@@ -45583,7 +45583,7 @@ MonoBehaviour:
     spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: d88eb7c67a7a58348b2d077473853a7c, type: 3}
-    name: Enemy_Death4
+    name: Enemy_Death3
     volume: 0.2
     pitch: 1
     loop: 0
@@ -45592,7 +45592,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: f3764573ac501104cbcbb154ecf6339f, type: 3}
     name: Bird_Fire
-    volume: 0.25
+    volume: 1
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45638,51 +45638,43 @@ MonoBehaviour:
     panStereo: 0
     spacialBlend: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 98b198275bc440b4f8bb1e16cea82183, type: 3}
+  - clip: {fileID: 8300000, guid: 13e7a27968771c446b68514e00f219c7, type: 3}
     name: Hyena_Flinch_0
-    volume: 0.2
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
     spacialBlend: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: fe8e44ab008130d449143fdd9f779935, type: 3}
+  - clip: {fileID: 8300000, guid: dfa41f696dd76294bbfa15477a0764b3, type: 3}
     name: Hyena_Flinch_1
-    volume: 0.2
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
     spacialBlend: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 204a20951e0764e4fb0458acaa90ab8f, type: 3}
+  - clip: {fileID: 8300000, guid: 37bb67b3c2c1fdb4493c6ca8fabea0d4, type: 3}
     name: Hyena_Flinch_2
-    volume: 0.2
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
     spacialBlend: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 53c3bce016701214aa28b9f5ca457ab7, type: 3}
+  - clip: {fileID: 8300000, guid: ae7a094e48325fa4e8cfaed5a86dc4bd, type: 3}
     name: Hyena_Flinch_3
-    volume: 0.2
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
     spacialBlend: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: a48643a11da99e14c8ef6bceaef07f31, type: 3}
-    name: Hyena_Footsteps
-    volume: 0.175
+  - clip: {fileID: 8300000, guid: ea7695ecb00582148a203a7d8b829d12, type: 3}
+    name: Hyena_Attack
+    volume: 0.2
     pitch: 1
     loop: 1
-    panStereo: 0
-    spacialBlend: 0
-    source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 5168fc1c3f5d691459df4bc3abd653fc, type: 3}
-    name: Hyena_Attack
-    volume: 0.215
-    pitch: 1
-    loop: 0
     panStereo: 0
     spacialBlend: 0
     source: {fileID: 0}

@@ -55,6 +55,10 @@ public class BirdBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject TutorialWaiter;
 
+    //[Header("Sound")]
+    //[Range(0f, 1f)]
+    //[SerializeField] private float cawDelay;
+
     private Animator playerAnimator;
     public int currentFrame = 0;
     AnimatorClipInfo[] animationClip;
@@ -79,6 +83,7 @@ public class BirdBehaviour : MonoBehaviour
         pb = FindObjectOfType<PlayerBehaviour>();
         RandomizeColor();
 
+        FindObjectOfType<AudioManager>().AddSound("Bird_Fire", gameObject);
         if (gameObject.name != "Tutorial_Bird")
         {
             StartCoroutine(RandomSound());
@@ -118,6 +123,8 @@ public class BirdBehaviour : MonoBehaviour
         if(!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && TutorialWaiter == null && isTutorial)
         {
             playerAnimator.SetTrigger("AttackTrigger");
+            StartCoroutine(AttackSound());
+
         }
         else if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && currentFrame == 123 && !spawnedOne)
         {
@@ -162,7 +169,7 @@ public class BirdBehaviour : MonoBehaviour
         gc.LoseBird(currentBehavior);
         Destroy(gameObject);
 
-        FindObjectOfType<AudioManager>().Play("Enemy_Death");
+        FindObjectOfType<AudioManager>().Play("Enemy_Death" + Random.Range(0, 4).ToString());
 
         Destroy(Instantiate(OutroParticles, transform.position, Quaternion.identity), 10f);
         Instantiate(DestroyedBird, transform.position, transform.rotation).gameObject.GetComponent<BirdBroken>().setColor(Beak.GetComponent<MeshRenderer>().material, BodyRenderer.material);
@@ -178,7 +185,10 @@ public class BirdBehaviour : MonoBehaviour
     private IEnumerator RandomSound()
     {
         yield return new WaitForSeconds(2.5f);
-        FindObjectOfType<AudioManager>().Play("Bird_Caw_" + Random.Range(0, 3).ToString());
+        if (!FindObjectOfType<AudioManager>().SoundSourceOnObject("Bird_Fire", gameObject).isPlaying)
+        {
+            FindObjectOfType<AudioManager>().Play("Bird_Caw_" + Random.Range(0, 3).ToString());
+        }
         StartCoroutine(RandomSound());
     }
 
@@ -191,7 +201,17 @@ public class BirdBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(.1f);
         playerAnimator.SetTrigger("AttackTrigger");
-        FindObjectOfType<AudioManager>().Play("Bird_Fire");
+        StartCoroutine(AttackSound());
+    }
+
+    /// <summary>
+    /// Delays the bird firing audio to sync better
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator AttackSound()
+    {
+        yield return new WaitForSeconds(0.05f);
+        FindObjectOfType<AudioManager>().PlayAddedSound("Bird_Fire", gameObject);
     }
 
     private void OnDestroy()
