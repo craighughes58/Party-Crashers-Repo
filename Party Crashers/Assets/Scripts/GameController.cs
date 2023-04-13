@@ -81,11 +81,13 @@ public class GameController : MonoBehaviour
     public void MoveToNextPoint()
     {
         am.Stop("Path_Footsteps");
-        am.Play("Enemy_Spawn");
+        
         musicTrack++;
-        print("Playing music track number " + musicTrack);
-
         SectionNum++;
+        if (SectionNum != 1)
+        {
+            am.Play("Enemy_Spawn");
+        }
         switch (SectionNum)
         {
             //Tutorial Spawns

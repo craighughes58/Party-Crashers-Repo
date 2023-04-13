@@ -43,6 +43,9 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField] private Transform _attackPos;
     [SerializeField] private Transform _exhaustPos;
 
+    [Header("Audio Delays")]
+    [Range(0f, 1f)]
+    [SerializeField] private float _roarDelayTimer;
     #endregion
 
     #region Movement Variables
@@ -114,8 +117,8 @@ public class BossBehaviour : MonoBehaviour
     public IEnumerator ActivateBoss()
     {
         animator.SetTrigger("Intro");
-        _audioManager.Play("Octo_Roar");
-        StartCoroutine(StartBossMusic());
+        //_audioManager.Play("Octo_Roar");
+        StartCoroutine(OctoRoar());
         yield return new WaitForSeconds(_bossActivationTime);
         ResetTriggers();
         animator.SetTrigger("StopAnims");
@@ -128,11 +131,10 @@ public class BossBehaviour : MonoBehaviour
     /// Sync the beginnning of the boss music with the release of the roar
     /// </summary>
     /// <returns></returns>
-    IEnumerator StartBossMusic()
+    IEnumerator OctoRoar()
     {
-        yield return new WaitForSeconds(2f);
-        GameObject.Find("GameController").GetComponent<GameController>().musicTrack++;
-        print("Playing music track number " + GameObject.Find("GameController").GetComponent<GameController>().musicTrack);
+        yield return new WaitForSeconds(_roarDelayTimer);
+        _audioManager.Play("Octo_Roar");
     }
 
     #region State Control Functions
@@ -294,7 +296,6 @@ public class BossBehaviour : MonoBehaviour
         }
         else if(_currentHealth > 0)
         {
-            FindObjectOfType<AudioManager>().Play("Octopus_Hurt");
             //_bossAttacks.StopAllCoroutines();
             //CancelInvoke();
             //EnterAttack();
@@ -307,7 +308,7 @@ public class BossBehaviour : MonoBehaviour
     private void BossDeath()
     {
         animator.SetTrigger("Lost");
-        FindObjectOfType<AudioManager>().Play("Octopus_Death");
+        _audioManager.Play("Octo_Death");
         _transition.Invoke("LoadLevel", 3.5f);
         //do stuff when the boss dies
         //_transition.LoadLevel();

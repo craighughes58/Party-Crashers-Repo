@@ -122,7 +122,9 @@ public class HyenaBehaviour : MonoBehaviour
         gotHit = false;
         anim = GetComponent<Animator>();
 
+        // Random hyena sfx
         StartCoroutine(RandomSound());
+
         hyenaRenderer1 = transform.GetChild(0).transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
         hyenaRenderer2 = transform.GetChild(0).transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
         hyenaRenderer3 = transform.GetChild(0).transform.GetChild(2).GetComponent<SkinnedMeshRenderer>();
@@ -279,6 +281,7 @@ public class HyenaBehaviour : MonoBehaviour
             enemyLives--;
             anim.SetTrigger("Hit");
             FindObjectOfType<AudioManager>().Play("Hyena_Flinch_" + Random.Range(0, 4).ToString());
+            FindObjectOfType<AudioManager>().Stop("Hyena_Attack");
             HitReaction();
         }
     }
@@ -293,7 +296,7 @@ public class HyenaBehaviour : MonoBehaviour
 
         if (enemyLives <= 0)
         {
-            FindObjectOfType<AudioManager>().Play("Enemy_Death");
+            FindObjectOfType<AudioManager>().Play("Enemy_Death" + Random.Range(0, 4).ToString());
 
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
 

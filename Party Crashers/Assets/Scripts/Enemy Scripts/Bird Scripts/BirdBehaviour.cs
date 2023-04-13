@@ -79,7 +79,10 @@ public class BirdBehaviour : MonoBehaviour
         pb = FindObjectOfType<PlayerBehaviour>();
         RandomizeColor();
 
-        StartCoroutine(RandomSound());
+        if (gameObject.name != "Tutorial_Bird")
+        {
+            StartCoroutine(RandomSound());
+        }
         //animationClip = playerAnimator.GetCurrentAnimatorClipInfo(0);
         playerAnimator.logWarnings = false;
 

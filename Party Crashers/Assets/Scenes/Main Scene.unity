@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35785142, g: 0.82084364, b: 0.97291726, a: 1}
+  m_IndirectSpecularColor: {r: 0.35782954, g: 0.8219314, b: 0.96994036, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9378,6 +9378,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6904783458391337814}
     - target: {fileID: 2763426885067843090, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
+      propertyPath: _attackAudioTimer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763426885067843090, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
       propertyPath: _missileSpawnPoint.Array.data[0]
       value: 
       objectReference: {fileID: 6435618245681100195}
@@ -9409,6 +9413,10 @@ PrefabInstance:
       propertyPath: _audioManager
       value: 
       objectReference: {fileID: 1621658253}
+    - target: {fileID: 2763426885067843091, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
+      propertyPath: _roarDelayTimer
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 2763426885067843093, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
       propertyPath: m_Radius
       value: 20
@@ -45312,7 +45320,7 @@ MonoBehaviour:
   Sounds:
   - clip: {fileID: 8300000, guid: e2a6a5ec1b9055148af9c9ffbb5fa823, type: 3}
     name: Tutorial_Music
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45320,7 +45328,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 7ca2022f1b61ddd488558435547cbec6, type: 3}
     name: Toy_Piano
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45328,7 +45336,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 238d361c7e3e1434c9162abd11969219, type: 3}
     name: Hand_Clap
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45336,7 +45344,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 43c1597021a95a047a015394b414a8ea, type: 3}
     name: Foot_Stomp
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45344,7 +45352,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 7a1a40e1ba90d7943b973c40f3b53f0d, type: 3}
     name: Ukulele
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45352,7 +45360,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: e98e83910f26e6f40b6aa2efb56b5efd, type: 3}
     name: Harm_Guitar
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45360,7 +45368,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 19b2b2eec95e1d14992b3213d5d9fa07, type: 3}
     name: Bass_Guitar
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45368,7 +45376,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 4fde9908090ffba48be88a31472113f8, type: 3}
     name: Drum_Set
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45376,7 +45384,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: e36743de1b9658f478c3bb9ec0acaff3, type: 3}
     name: Lead_Guitar
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45384,27 +45392,35 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: cd34af355a105764988f488b7d8f9a61, type: 3}
     name: Boss_Music
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
     spacialBlend: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: aaa55114318c1294f85b4327d242600b, type: 3}
+  - clip: {fileID: 8300000, guid: 42ddecbce78162a4d9f04dd07429b029, type: 3}
     name: Pause_Music
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 1
+    panStereo: 0
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: d64c93b198585114e8df742f7e175cae, type: 3}
+    name: End_Music
+    volume: 0.25
+    pitch: 1
+    loop: 0
     panStereo: 0
     spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: e3cbf17787ad42147997b1c249c716d0, type: 3}
     name: Path_Footsteps
-    volume: 0.1
+    volume: 0.25
     pitch: 1
     loop: 1
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: b54254590db4c3f49ba54e76c5b4072c, type: 3}
     name: Menu_Confirm
@@ -45427,16 +45443,16 @@ MonoBehaviour:
     volume: 0.2
     pitch: 1
     loop: 0
-    panStereo: -0.1
-    spacialBlend: 1
+    panStereo: -0.25
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 5bb7dc9064dbe6548b89a5969b55c95e, type: 3}
     name: Octo_Atk_R
     volume: 0.2
     pitch: 1
     loop: 0
-    panStereo: 0.1
-    spacialBlend: 1
+    panStereo: 0.25
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: f8dfcf337943d7a458b9ec61f64d1a17, type: 3}
     name: Octo_Exhausted
@@ -45444,15 +45460,15 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: d7cd3a55ab724f84db0722ba368a46da, type: 3}
     name: Octo_Roar
-    volume: 0.2
+    volume: 0.3
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: c2866ab1f14502940acaaa74bcfde9ec, type: 3}
     name: Enemy_Spawn
@@ -45468,7 +45484,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 5ec0a29b46c52c44396445e1180e8aec, type: 3}
     name: Bonk_1
@@ -45476,7 +45492,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 2d694ff33b39a9a4e82379d827d99e6e, type: 3}
     name: Bonk_2
@@ -45484,7 +45500,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: cf673feaf4b5d8241a988ed2f4f2c8c4, type: 3}
     name: Bonk_3
@@ -45492,11 +45508,11 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 21e08b964907e7b44955d719cb4276c9, type: 3}
     name: Candy_Lost
-    volume: 0.225
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45504,55 +45520,87 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: ddcc0f1245a943f43a90437e551046e6, type: 3}
     name: Candy_Gained
-    volume: 0.225
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
     spacialBlend: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: d813a053fbcfe0b43aafe1e3f34879fe, type: 3}
+  - clip: {fileID: 8300000, guid: 7f7f9f7af07fb6f4bb3f1be87357d39f, type: 3}
     name: Projectile_Deflect
-    volume: 0.175
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 4f36c18818987e449bd3e08b241c9e1f, type: 3}
     name: Hit_By_Projectile
-    volume: 0.2
+    volume: 0.15
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 1944629ab770a614495092a255d62c67, type: 3}
     name: Hit_Enemy
-    volume: 0.175
-    pitch: 1
-    loop: 0
-    panStereo: 0
-    spacialBlend: 1
-    source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 3643710e23b8e614f87aba4d17bda41f, type: 3}
-    name: Enemy_Death
     volume: 0.2
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: f3764573ac501104cbcbb154ecf6339f, type: 3}
-    name: Bird_Fire
-    volume: 0.225
+  - clip: {fileID: 8300000, guid: 7d52542f151929f43985e5f969f8681d, type: 3}
+    name: Hit_Octo
+    volume: 0.2
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 1505ced683e49cf43ad9b781c2fad4d8, type: 3}
+    name: Enemy_Death1
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ecc9924ff902e714bba9c468ba7c0b6b, type: 3}
+    name: Enemy_Death2
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c302942b2068d5d419872c39bd7a064b, type: 3}
+    name: Enemy_Death3
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: d88eb7c67a7a58348b2d077473853a7c, type: 3}
+    name: Enemy_Death4
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: f3764573ac501104cbcbb154ecf6339f, type: 3}
+    name: Bird_Fire
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    panStereo: 0
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: c0292baf5254ae24bbb197f7fbc81be0, type: 3}
     name: Bird_Caw_0
-    volume: 0.225
+    volume: 0.15
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45560,7 +45608,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: bf3654cdd7355f24496d34601f6f8fe8, type: 3}
     name: Bird_Caw_1
-    volume: 0.225
+    volume: 0.15
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45568,7 +45616,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 6705dbfe544b8fb4d987b8f6dfe57e60, type: 3}
     name: Bird_Caw_2
-    volume: 0.225
+    volume: 0.15
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45576,19 +45624,19 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 624f2b2e21c2cf049a36112fcea29b61, type: 3}
     name: Hyena_Alert_0
-    volume: 0.23
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 7a974b6965c7535478386ab5fab81b7d, type: 3}
     name: Hyena_Alert_1
-    volume: 0.23
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 98b198275bc440b4f8bb1e16cea82183, type: 3}
     name: Hyena_Flinch_0
@@ -45596,7 +45644,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: fe8e44ab008130d449143fdd9f779935, type: 3}
     name: Hyena_Flinch_1
@@ -45604,7 +45652,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 204a20951e0764e4fb0458acaa90ab8f, type: 3}
     name: Hyena_Flinch_2
@@ -45612,7 +45660,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 53c3bce016701214aa28b9f5ca457ab7, type: 3}
     name: Hyena_Flinch_3
@@ -45620,7 +45668,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: a48643a11da99e14c8ef6bceaef07f31, type: 3}
     name: Hyena_Footsteps
@@ -45628,7 +45676,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 5168fc1c3f5d691459df4bc3abd653fc, type: 3}
     name: Hyena_Attack
@@ -45636,23 +45684,23 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 21193a3a9d78fcc489c13eea0fa53adb, type: 3}
-    name: Octopus_Hurt
-    volume: 0.215
+    name: Octo_Hurt
+    volume: 0.5
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: a35cb5afc2f4a90489366bf7b90691d1, type: 3}
-    name: Octopus_Death
-    volume: 0.25
+    name: Octo_Death
+    volume: 0.5
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 1
+    spacialBlend: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 738c8d5b6343df5468dd0136905f1db0, type: 3}
     name: Applause
@@ -45670,16 +45718,8 @@ MonoBehaviour:
     panStereo: 0
     spacialBlend: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: d64c93b198585114e8df742f7e175cae, type: 3}
-    name: End_Music
-    volume: 0.15
-    pitch: 1
-    loop: 0
-    panStereo: 0
-    spacialBlend: 0
-    source: {fileID: 0}
   masterMixer: {fileID: 24300002, guid: 16beec5b3293f7d439226b7676c5ef33, type: 2}
-  musicVolume: 0.15
+  musicVolume: 0.25
 --- !u!1 &1623148689
 GameObject:
   m_ObjectHideFlags: 0
@@ -72841,14 +72881,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5900347914138064390}
-  m_LocalRotation: {x: -0.604861, y: 0.36625558, z: 0.3662557, w: 0.60486096}
-  m_LocalPosition: {x: -17.5, y: -0, z: 82.7}
+  m_LocalRotation: {x: -0.60924953, y: 0.3589081, z: 0.3589082, w: 0.60924953}
+  m_LocalPosition: {x: -27.85, y: 0, z: 73.67}
   m_LocalScale: {x: 100, y: 99.999985, z: 99.99998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3013313597815241776}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 62.392}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 61.005}
 --- !u!1 &4848531423387020778
 GameObject:
   m_ObjectHideFlags: 0
@@ -77472,14 +77512,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2218532122740299612}
-  m_LocalRotation: {x: -0.5391751, y: 0.45748252, z: 0.4574826, w: 0.53917503}
-  m_LocalPosition: {x: -13.171938, y: 0, z: 87.14003}
+  m_LocalRotation: {x: -0.5446731, y: 0.45092276, z: 0.45092356, w: 0.5446723}
+  m_LocalPosition: {x: -24.101938, y: 0, z: 79.160034}
   m_LocalScale: {x: 156.68956, y: 156.68954, z: 144.89998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3013313597815241776}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 79.241}
 --- !u!4 &6629287728896008830
 Transform:
   m_ObjectHideFlags: 0
