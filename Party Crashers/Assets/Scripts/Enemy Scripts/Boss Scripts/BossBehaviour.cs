@@ -30,7 +30,7 @@ public class BossBehaviour : MonoBehaviour
 
     #region Phases & Activation
     //the boss has two modes, attack and exhaustion. When the boss is attacking they can't take damage but when they're exhausted they can't attack and they're open to taking damage
-    private enum BossState { ATTACK, EXHAUSTION}
+    private enum BossState { ATTACK, EXHAUSTION, MOVING}
     [Header("States")]
     [SerializeField] private BossState _currentBossState;
 
@@ -144,13 +144,14 @@ public class BossBehaviour : MonoBehaviour
     /// <param name="state"> string name of the state being set </param>
     private void SetBossState(BossState state)
     {
-        //Debug.Log("Entering " + state);
         _currentBossState = state;
         switch (state)
         {
             case BossState.ATTACK:
                 break;
             case BossState.EXHAUSTION:
+                break;
+            case BossState.MOVING:
                 break;
         }
     }
@@ -169,8 +170,6 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void EnterAttack()
     {
-        //animator.SetTrigger("StopAnims");
-        //.Log("EnterAttack");
         StopAllCoroutines();
         _bossAttacks.DeactivateHitSignal();
         StartCoroutine(MoveToAtkPos(true));
@@ -181,7 +180,7 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public void BeginExhaustion()
     {
-        SetBossState(BossState.EXHAUSTION);
+        _currentBossState = BossState.EXHAUSTION;
         gameObject.GetComponent<EyeBehaviour>().beenHit = false;
         StartCoroutine(_bossAttacks.ExhaustionPhase());
     }
@@ -191,7 +190,7 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     private void BeginAttack()
     {
-        SetBossState(BossState.ATTACK);
+        _currentBossState = BossState.ATTACK;
         StartCoroutine(_bossAttacks.AttackPhase());
     }
 
@@ -210,6 +209,8 @@ public class BossBehaviour : MonoBehaviour
     /// </summary>
     public IEnumerator MoveToAtkPos(bool beginAttack)
     {
+        _currentBossState = BossState.MOVING;
+
         float pathPercentage = 0;
         Vector3 startPos = transform.position;
         Quaternion startQ = transform.rotation;
@@ -237,6 +238,8 @@ public class BossBehaviour : MonoBehaviour
     public IEnumerator MoveToExhPos()
     {
         animator.SetTrigger("Exhausted");
+        _currentBossState = BossState.MOVING;
+        //SetBossState(BossState.MOVING);
         _audioManager.Play("Octo_Exhausted");
         float pathPercentage = 0;
         Vector3 startPos = transform.position;

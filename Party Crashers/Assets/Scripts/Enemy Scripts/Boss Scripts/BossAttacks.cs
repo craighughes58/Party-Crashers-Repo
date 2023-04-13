@@ -42,6 +42,8 @@ public class BossAttacks : MonoBehaviour
     public bool spawnedOne = false;
     [SerializeField] private bool decreasedAttack;
 
+    public GameObject Missile;
+
     #region Getters
     [HideInInspector] public int ScoreLost => _scoreLost;
     [HideInInspector] public int ScoreGainedDeflect => _scoreGainedDeflect;
@@ -74,7 +76,8 @@ public class BossAttacks : MonoBehaviour
         {
             if (normalizedBossFrame == 43 && isAttacking && !spawnedOne)
             {
-                Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity).GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
+                Missile = Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity);
+                Missile.GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
                 _missileAnimObject.SetActive(false);
                 spawnedOne = true;
                 //decreasedAttack = false;
@@ -90,27 +93,25 @@ public class BossAttacks : MonoBehaviour
     #region Attacks
 
     /// <summary>
-    /// Controls the attach phase events
+    /// Controls the attack phase events
     /// </summary>
     /// <returns></returns>
-    /// 
-
     public IEnumerator AttackPhase()
     {
         _currentAttacks = _maxAttacks;
-
+        print("Enter AttackPhase");
         yield return new WaitWhile(() => !_bossBehaviour.GetBossState().Equals("ATTACK"));
         while (!hitSignal)//_currentAttacks > 0 WHILE THE BOSS ISNT'T HIT
         {
-            yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
-            if (hitSignal)
-                break;
-            AttackPlayer();
-            yield return new WaitWhile(() => _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
-        }
+            yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing") && !hitSignal || Missile != null);
 
-        //StartCoroutine(_bossBehaviour.EnterExhaustion());
-        //_bossBehaviour.BeginExhaustion(); //ONCE THE BOSS IS HIT ENTER EXHAUSTION
+            if(!hitSignal)
+                AttackPlayer();
+
+            yield return new WaitWhile(() => _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing") && !hitSignal);
+        }
+        print("EXIT ATTACK PHASE");
+        yield return null;
     }
 
     /// <summary>
@@ -163,16 +164,6 @@ public class BossAttacks : MonoBehaviour
         }
     }
     #endregion
-
-    /// <summary>
-    /// AT HALF Or Lower
-    /// </summary>
-    /*private void Roar()
-    {
-        _audioManager.Play("Octo_Roar");
-        _bossBehaviour.animator.SetTrigger("Intro");
-
-    }*/
 
     public IEnumerator Roar()
     {
