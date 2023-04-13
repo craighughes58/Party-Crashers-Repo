@@ -66,16 +66,17 @@ public class BossAttacks : MonoBehaviour
             //DecreaseAttacks();
             _bossBehaviour.ResetTriggers();
         }*/
+        int normalizedBossFrame = Mathf.Abs(_bossBehaviour.currentFrame);
         if (_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("LeftAttack") || _bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("RightAttack"))
         {
-            if (_bossBehaviour.currentFrame >= 42 && _bossBehaviour.currentFrame <= 44 && isAttacking && !spawnedOne)
+            if (normalizedBossFrame == 43 && isAttacking && !spawnedOne)
             {
                 Instantiate(_missileObject, _missileSpawnPoint[attackPoint].position, Quaternion.identity).GetComponent<MissileBehaviour>()._bossBehaviour = _bossBehaviour;
                 _missileAnimObject.SetActive(false);
                 spawnedOne = true;
                 //decreasedAttack = false;
             }
-            else if (_bossBehaviour.currentFrame < 42 && spawnedOne || _bossBehaviour.currentFrame > 44 && spawnedOne)
+            else if (normalizedBossFrame != 43 && spawnedOne)
             {
                 spawnedOne = false;
             }
@@ -159,8 +160,11 @@ public class BossAttacks : MonoBehaviour
     {
         _bossBehaviour.animator.SetTrigger("Intro");
         yield return new WaitForSeconds(.3f);
-        Instantiate(Bird,new Vector3(-52,15.5f, 148.5345f),Quaternion.identity);
-        Instantiate(Bird,new Vector3(-83.9f,16.5f, 87.8672f), Quaternion.identity);
+        if(_bossBehaviour._currentHealth > 0)
+        {
+            Instantiate(Bird, new Vector3(-52, 15.5f, 148.5345f), Quaternion.identity);
+            Instantiate(Bird, new Vector3(-83.9f, 16.5f, 87.8672f), Quaternion.identity);
+        }
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
         _bossBehaviour.EnterAttack();
     }
