@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35782954, g: 0.8219314, b: 0.96994036, a: 1}
+  m_IndirectSpecularColor: {r: 0.35785142, g: 0.82084364, b: 0.97291726, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4101,7 +4101,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8719596715199370631, guid: b4f9555e803d38e4683516113ca35df1, type: 3}
 --- !u!23 &147775352
@@ -8324,7 +8324,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8719596715199370631, guid: b4f9555e803d38e4683516113ca35df1, type: 3}
 --- !u!23 &307149593
@@ -9399,7 +9399,7 @@ PrefabInstance:
       objectReference: {fileID: 6435618244504914858}
     - target: {fileID: 2763426885067843091, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
       propertyPath: _maxHealth
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2763426885067843091, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
       propertyPath: _exhaustPos
@@ -17980,7 +17980,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8719596715199370631, guid: b4f9555e803d38e4683516113ca35df1, type: 3}
 --- !u!23 &651338120
@@ -20703,7 +20703,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6729071064400132174, guid: 4e22f4661ebd3844fb81e1d108bc0e91, type: 3}
 --- !u!54 &728973598
@@ -21565,7 +21565,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8719596715199370631, guid: b4f9555e803d38e4683516113ca35df1, type: 3}
 --- !u!23 &752024380
@@ -22368,7 +22368,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8719596715199370631, guid: b4f9555e803d38e4683516113ca35df1, type: 3}
 --- !u!23 &764823294
@@ -30571,7 +30571,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8719596715199370631, guid: b4f9555e803d38e4683516113ca35df1, type: 3}
 --- !u!23 &1091669065
@@ -42760,7 +42760,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530453041}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -49203,7 +49203,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8719596715199370631, guid: b4f9555e803d38e4683516113ca35df1, type: 3}
 --- !u!23 &1751746235
@@ -54529,7 +54529,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8719596715199370631, guid: b4f9555e803d38e4683516113ca35df1, type: 3}
 --- !u!23 &1872817797
@@ -57096,7 +57096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7247399236908805881, guid: fbe355a68d28216498dc05b8f8e4a3a5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.66
+      value: 7.43
       objectReference: {fileID: 0}
     - target: {fileID: 7247399236908805881, guid: fbe355a68d28216498dc05b8f8e4a3a5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -69614,7 +69614,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8719596715199370631, guid: b4f9555e803d38e4683516113ca35df1, type: 3}
 --- !u!114 &3469287837357234929
@@ -76622,7 +76622,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6435618244627489180}
   m_LocalRotation: {x: -0, y: -0.8503524, z: -0, w: -0.5262137}
-  m_LocalPosition: {x: -43.5, y: 24.74, z: 105.1}
+  m_LocalPosition: {x: -40.2, y: 24.74, z: 103.4}
   m_LocalScale: {x: 61.9, y: 61.9, z: 61.9}
   m_ConstrainProportionsScale: 1
   m_Children: []

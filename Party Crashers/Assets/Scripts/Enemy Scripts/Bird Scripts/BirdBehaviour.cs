@@ -66,6 +66,7 @@ public class BirdBehaviour : MonoBehaviour
     bool spawnedOne;
 
     bool previousAttacked;
+    public bool isBoss = false;
 
     // Start is called before the first frame update
     void Start()

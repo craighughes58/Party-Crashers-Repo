@@ -202,15 +202,18 @@ public class GameController : MonoBehaviour
         currentEnemyNum--;
         if (currentEnemyNum <= 0)
         {
-            print("OSJGSD");
-            SAP.StartPlayer();
+            //print("OSJGSD");
+            if(SectionNum != 5)
+            {
+                SAP.StartPlayer();
+            }
         }
     }
 
     public void LoseBird(BirdBehaviour removeMe)
     {
         birds.Remove(removeMe);
-        print(birds.Count);
+        //print(birds.Count);
         if (birds.Count == 2)
         {
             birds[0].bb = birds[1];
