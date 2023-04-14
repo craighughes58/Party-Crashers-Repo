@@ -78,7 +78,6 @@ public class MissileBehaviour : MonoBehaviour
         }
         else if (collision.gameObject.tag.Equals("Player"))
         {
-            print("AAAA");
             FindObjectOfType<AudioManager>().Play("Hit_By_Projectile");
             _bossAttacks.PB.LoseScore(_bossAttacks.ScoreLost);
             Destroy(Instantiate(BrokenProjectile, transform.position, transform.rotation), 5f);
@@ -91,7 +90,7 @@ public class MissileBehaviour : MonoBehaviour
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);
             Destroy(gameObject);
         }
-        else
+        else if(collision.gameObject.tag.Equals("Sword"))
         {
             Destroy(Instantiate(BrokenProjectile, transform.position, transform.rotation), 5f);
             Destroy(Instantiate(deathParticle1, transform.position, Quaternion.identity), 15f);

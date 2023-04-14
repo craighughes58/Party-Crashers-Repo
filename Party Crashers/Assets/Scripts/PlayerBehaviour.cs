@@ -80,6 +80,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void UpdateUI()
     {
         scoreText.text = ("Score: ") + Score;
+        EndCanvasScore.text = "SCORE: " + Score;
     }
 
     public void ShowEnd()

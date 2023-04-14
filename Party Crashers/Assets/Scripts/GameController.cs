@@ -74,6 +74,17 @@ public class GameController : MonoBehaviour
         SwapHands(true);
         if(devBossTesting)
             DevBossTest();
+        ActivateUIMenu(pauseMenu);
+        am.Play("Menu_Confirm");
+        am.Stop("Path_Footsteps");
+        currentMusic = musicTrack;
+        am.SwitchMusic(10);
+        isPaused = true;
+        Time.timeScale = 0;
+        SwapVisibiltyHands(true);
+        Debug.Log("Menu hands, activate");
+        ActivateUIMenu(pauseMenu);
+
 
     }
 
