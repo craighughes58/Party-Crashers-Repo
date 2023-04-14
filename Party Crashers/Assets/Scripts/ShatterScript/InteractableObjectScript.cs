@@ -27,7 +27,8 @@ public class InteractableObjectScript : MonoBehaviour
                 }
                 if (name.Contains("tire"))
                 {
-                    rb.mass = .5f;
+                    rb.useGravity = true;
+                    //rb.mass = .5f;
                 }
             }
         }
