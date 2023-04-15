@@ -148,13 +148,20 @@ public class HyenaBehaviour : MonoBehaviour
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             animationClip = anim.GetCurrentAnimatorClipInfo(0);
+            print(animationClip);
 
             if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped > 1)
             {
                 amountTimeLooped++;
             }
             currentFrame = (int)((anim.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped) * (animationClip[0].clip.length * 24));
+            print(anim.GetCurrentAnimatorStateInfo(0).normalizedTime + " " + animationClip[0].clip.length);
         }
+        else
+        {
+            amountTimeLooped = 0;
+        }
+        
     }
 
     private void Movement()
@@ -199,6 +206,8 @@ public class HyenaBehaviour : MonoBehaviour
         //Stops momentarily when hit
         else
         {
+            attacking = false;
+            anim.SetBool("attacking", attacking);
             meshAgent.isStopped = true;
             meshAgent.SetDestination(transform.position);
         }
@@ -222,7 +231,7 @@ public class HyenaBehaviour : MonoBehaviour
         // Freeze the hyena in place
         //meshAgent.isStopped = true;
         meshAgent.isStopped = true;
-        print("prepping attack");
+        //print("prepping attack");
 
         if (currentFrame == 40 && !hitPlayer)
         {
@@ -316,6 +325,8 @@ public class HyenaBehaviour : MonoBehaviour
                 pb.AddScore(victoryScore);
                 Destroy(gameObject);
             }
+
+            currentFrame = 0;
         }
     }
 
