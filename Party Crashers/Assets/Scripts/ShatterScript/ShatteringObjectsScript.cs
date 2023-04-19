@@ -29,7 +29,7 @@ public class ShatteringObjectsScript : MonoBehaviour
         if (collision.gameObject.tag.Equals("Bat"))
         {
             FindObjectOfType<AudioManager>().Play("Bonk_" + Random.Range(0, 4).ToString());
-            Debug.Log("Object Shattered");
+            //Debug.Log("Object Shattered");
 
 
             if (name.Contains("Fork"))

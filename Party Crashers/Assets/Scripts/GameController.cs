@@ -208,7 +208,7 @@ public class GameController : MonoBehaviour
     //if none are less then you move to the next zone
     public void LoseEnemy()
     {
-        print(currentEnemyNum);
+        //print(currentEnemyNum);
         currentEnemyNum--;
         if (currentEnemyNum <= 0)
         {
@@ -275,6 +275,12 @@ public class GameController : MonoBehaviour
     /// <param name="visible">Visibility of the ray. True when in menu false when in game</param>
     public void SwapVisibiltyHands(bool visible)
     {
+        GameObject lh = leftHand.gameObject.transform.GetChild(0).gameObject;
+        lh.transform.GetChild(2).GetComponent<MeshRenderer>().enabled = visible;
+        lh.transform.GetChild(4).GetComponent<MeshRenderer>().enabled = visible;
+        lh = rightHand.gameObject.transform.GetChild(0).gameObject;
+        lh.transform.GetChild(2).GetComponent<MeshRenderer>().enabled = visible;
+        lh.transform.GetChild(4).GetComponent<MeshRenderer>().enabled = visible;
         leftHand.gameObject.transform.GetChild(2).gameObject.GetComponent<XRInteractorLineVisual>().enabled = visible;
         rightHand.gameObject.transform.GetChild(2).gameObject.GetComponent<XRInteractorLineVisual>().enabled = visible;
         wrappingPapper.gameObject.SetActive(!visible);
@@ -361,7 +367,7 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         isPaused = false;
         SwapVisibiltyHands(false);
-        Debug.Log("Menu hands, deactivate");
+        //Debug.Log("Menu hands, deactivate");
         DeactivateUIMenu(pauseMenu);
         DeactivateUIMenu(settingsMenu);
     }
