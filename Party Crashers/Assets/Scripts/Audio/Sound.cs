@@ -7,6 +7,8 @@
     Description: Creates the settings for the audio sources added to each sound
     within the AudioManager.
 ******************************************************************************/
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -27,6 +29,8 @@ public class Sound
     public float panStereo;
     [Range(0, 1)]
     public float spacialBlend;
+    public int minDistance;
+    public int maxDistance;
 
     [HideInInspector]
     public AudioSource source;

@@ -68,6 +68,7 @@ public class HyenaBehaviour : MonoBehaviour
     private bool attacking = false;
 
     private Animator anim;
+    private AudioManager am;
 
     private GameController gc;
 
@@ -105,6 +106,7 @@ public class HyenaBehaviour : MonoBehaviour
 
         Destroy(Instantiate(entranceParticles, new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z), Quaternion.identity), 10f);
         gc = GameObject.Find("GameController").GetComponent<GameController>();
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         //gc.AddEnemy();
         pb = FindObjectOfType<PlayerBehaviour>();
         rb = GetComponent<Rigidbody>();
@@ -119,9 +121,8 @@ public class HyenaBehaviour : MonoBehaviour
 
         attackTimer = attackInterval;
 
-        FindObjectOfType<AudioManager>().Play("Hyena_Alert_" + Random.Range(0, 2).ToString());
         // add necessary audio to each hyena prefab
-        FindObjectOfType<AudioManager>().AddSound("Hyena_Attack", gameObject);
+        StartCoroutine(RandomSound());
 
         gotHit = false;
         anim = GetComponent<Animator>();
@@ -155,7 +156,7 @@ public class HyenaBehaviour : MonoBehaviour
                 amountTimeLooped++;
             }
             currentFrame = (int)((anim.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped) * (animationClip[0].clip.length * 24));
-            print(anim.GetCurrentAnimatorStateInfo(0).normalizedTime + " " + animationClip[0].clip.length);
+            //print(anim.GetCurrentAnimatorStateInfo(0).normalizedTime + " " + animationClip[0].clip.length);
         }
         else
         {
@@ -179,6 +180,7 @@ public class HyenaBehaviour : MonoBehaviour
                 {
                     attacking = true;
                     anim.SetBool("attacking", attacking);
+                    am.AddSound("Hyena_Attack", gameObject);
                     FindObjectOfType<AudioManager>().PlayAddedSound("Hyena_Attack", gameObject);
                 }
 
@@ -188,7 +190,6 @@ public class HyenaBehaviour : MonoBehaviour
 
             else
             {
-                //StartCoroutine(RandomSound());
                 if (attacking)
                 {
                     attacking = false;
@@ -282,6 +283,17 @@ public class HyenaBehaviour : MonoBehaviour
         Debug.Log("Score lost!");
     }
 
+    private IEnumerator RandomSound()
+    {
+        string clip = "Hyena_Alert_" + Random.Range(0, 2).ToString();
+        am.AddSound(clip, gameObject);
+        FindObjectOfType<AudioManager>().Play(clip);
+        yield return new WaitForSeconds(am.ClipLength(clip));
+        am.RemoveSound(clip, gameObject);
+        //yield return new WaitForSeconds(Random.Range(2f, 4f));
+        //StartCoroutine(RandomSound());
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Bat"))
@@ -328,13 +340,6 @@ public class HyenaBehaviour : MonoBehaviour
 
             currentFrame = 0;
         }
-    }
-
-    private IEnumerator RandomSound()
-    {
-        yield return new WaitForSeconds(5f);
-        FindObjectOfType<AudioManager>().Play("Hyena_Alert_" + Random.Range(0, 2).ToString());
-        StartCoroutine(RandomSound());
     }
 
     private void Flash()

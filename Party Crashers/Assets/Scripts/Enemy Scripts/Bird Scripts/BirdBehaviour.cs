@@ -71,6 +71,7 @@ public class BirdBehaviour : MonoBehaviour
     private bool startingAttack;
 
     public AudioManager managerRef;
+    public int attackNum = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +94,10 @@ public class BirdBehaviour : MonoBehaviour
 
         if (gameObject.name != "Tutorial_Bird")
         {
+            for (int i = 0; i < 3; i++)
+            {
+                managerRef.AddSound("Bird_Caw_" + i.ToString(), gameObject);
+            }
             StartCoroutine(RandomSound());
         }
         //animationClip = playerAnimator.GetCurrentAnimatorClipInfo(0);
@@ -219,7 +224,8 @@ public class BirdBehaviour : MonoBehaviour
 
     public IEnumerator Attack()
     {
-        managerRef.PlayAddedSound("Bird_Fire", gameObject);
+        attackNum++;
+        StartCoroutine(AttackSound(attackNum));
         yield return new WaitForSeconds(.4f);
         playerAnimator.SetTrigger("AttackTrigger");
     }
@@ -228,9 +234,16 @@ public class BirdBehaviour : MonoBehaviour
     /// Delays the bird firing audio to sync better
     /// </summary>
     /// <returns></returns>
-    private IEnumerator AttackSound()
+    private IEnumerator AttackSound(int attackCount)
     {
-        yield return new WaitForSeconds(0.05f);
+        if (attackCount == 1)
+        {
+            yield return new WaitForSeconds(0.25f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
         managerRef.PlayAddedSound("Bird_Fire", gameObject);
     }
 
