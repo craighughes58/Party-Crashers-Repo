@@ -126,13 +126,14 @@ public class BirdBehaviour : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {   
+    {
+
         Rotate();
         if (bb != null && bb.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             previousAttacked = true;
         }
-        else if (bb != null && !bb.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && previousAttacked && startingAttack)
+        else if (bb != null && !bb.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && previousAttacked && !startingAttack)
         {
             startingAttack = true;
             previousAttacked = false;
@@ -238,7 +239,7 @@ public class BirdBehaviour : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
         }
-        managerRef.PlayAddedSound("Bird_Fire", gameObject);
+        //managerRef.PlayAddedSound("Bird_Fire", gameObject);
     }
 
     private void OnDestroy()

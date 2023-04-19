@@ -208,7 +208,7 @@ public class GameController : MonoBehaviour
     //if none are less then you move to the next zone
     public void LoseEnemy()
     {
-        print(currentEnemyNum);
+        //print(currentEnemyNum);
         currentEnemyNum--;
         if (currentEnemyNum <= 0)
         {
@@ -361,7 +361,7 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         isPaused = false;
         SwapVisibiltyHands(false);
-        Debug.Log("Menu hands, deactivate");
+        //Debug.Log("Menu hands, deactivate");
         DeactivateUIMenu(pauseMenu);
         DeactivateUIMenu(settingsMenu);
     }
