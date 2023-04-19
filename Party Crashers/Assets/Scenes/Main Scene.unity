@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35785142, g: 0.82084364, b: 0.97291726, a: 1}
+  m_IndirectSpecularColor: {r: 0.35782954, g: 0.8219314, b: 0.96994036, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -45553,7 +45553,7 @@ MonoBehaviour:
     maxDistance: 0
     source: {fileID: 0}
   masterMixer: {fileID: 24300002, guid: 16beec5b3293f7d439226b7676c5ef33, type: 2}
-  musicVolume: 0.3
+  musicVolume: 0.4
 --- !u!1 &1623148689
 GameObject:
   m_ObjectHideFlags: 0
