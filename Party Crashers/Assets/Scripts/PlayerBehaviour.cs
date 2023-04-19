@@ -88,8 +88,8 @@ public class PlayerBehaviour : MonoBehaviour
         Instantiate(EndConfetti,new Vector3(-86.29f,49.79f,101.86f), Quaternion.identity);
         Instantiate(EndConfetti,new Vector3(-68.107f, 49.79f, 140.148f), Quaternion.identity);
         EndCanvas.enabled = true;
-        FindObjectOfType<AudioManager>().Play("Applause");
         FindObjectOfType<AudioManager>().Play("Victory");
+        FindObjectOfType<AudioManager>().Stop("Boss_Music");
         FindObjectOfType<AudioManager>().Play("End_Music");
         EndCanvasScore.text = "SCORE: " + Score;
         Invoke("RestartScenePlayerBehaviour", FindObjectOfType<AudioManager>().ClipLength("End_Music") + 20f);

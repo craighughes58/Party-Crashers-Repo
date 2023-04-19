@@ -19,6 +19,7 @@ public class FenceBehavior : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Hyena") && !triggered)
         {
+            print("fence!");
             FindObjectOfType<AudioManager>().Play("Bonk_" + Random.Range(0, 4).ToString());
             triggered = true;
             StartCoroutine("Animation");

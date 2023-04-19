@@ -168,12 +168,14 @@ public class BossAttacks : MonoBehaviour
     public IEnumerator Roar()
     {
         _bossBehaviour.animator.SetTrigger("Intro");
+        StartCoroutine(OctoRoar());
         yield return new WaitForSeconds(.3f);
         if(_bossBehaviour._currentHealth > 0)
         {
             GameController gc = GameObject.Find("GameController").GetComponent<GameController>();
             if (gc.birds.Count == 0)
             {
+                _audioManager.Play("Enemy_Spawn");
                 gc.birds.Add(Instantiate(Bird, new Vector3(-52, 15.5f, 148.5345f), Quaternion.identity).GetComponent<BirdBehaviour>());
                 gc.birds.Add(Instantiate(Bird, new Vector3(-83.9f, 16.5f, 87.8672f), Quaternion.identity).GetComponent<BirdBehaviour>());
                 for (int i = 1; i < gc.birds.Count; i++)
@@ -187,6 +189,16 @@ public class BossAttacks : MonoBehaviour
         }
         yield return new WaitWhile(() => !_bossBehaviour.animator.GetCurrentAnimatorStateInfo(0).IsName("Nothing"));
         _bossBehaviour.EnterAttack();
+    }
+
+    /// <summary>
+    /// Sync the beginnning of the boss music with the release of the roar
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator OctoRoar()
+    {
+        yield return new WaitForSeconds(0.7f);
+        _audioManager.Play("Octo_Roar");
     }
 
     #region Exhaustion

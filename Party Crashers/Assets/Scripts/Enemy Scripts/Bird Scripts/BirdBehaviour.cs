@@ -206,9 +206,10 @@ public class BirdBehaviour : MonoBehaviour
 
     private IEnumerator RandomSound()
     {
-        yield return new WaitForSeconds(2.5f);
-        if (!FindObjectOfType<AudioManager>().SoundSourceOnObject("Bird_Fire", gameObject).isPlaying)
+        yield return new WaitForSeconds(Random.Range(3.5f, 6f));
+        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
+            print("bird noizzz");
             FindObjectOfType<AudioManager>().Play("Bird_Caw_" + Random.Range(0, 3).ToString());
         }
         StartCoroutine(RandomSound());
@@ -233,11 +234,7 @@ public class BirdBehaviour : MonoBehaviour
     /// <returns></returns>
     private IEnumerator AttackSound(int attackCount)
     {
-        if (attackCount == 1)
-        {
-            yield return new WaitForSeconds(0.25f);
-        }
-        else
+        if (attackCount != 1)
         {
             yield return new WaitForSeconds(0.5f);
         }
