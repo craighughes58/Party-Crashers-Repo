@@ -102,9 +102,6 @@ public class BirdBehaviour : MonoBehaviour
         }
         //animationClip = playerAnimator.GetCurrentAnimatorClipInfo(0);
         playerAnimator.logWarnings = false;
-
-        
-
     }
 
     private void FixedUpdate()
