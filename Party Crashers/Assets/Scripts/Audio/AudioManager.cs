@@ -51,6 +51,9 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
             s.source.panStereo = s.panStereo;
             s.source.spatialBlend = s.spacialBlend;
+            s.source.minDistance = s.minDistance;
+            s.source.maxDistance = s.maxDistance;
+            s.source.rolloffMode = AudioRolloffMode.Linear;
         }
     }
 
@@ -66,6 +69,19 @@ public class AudioManager : MonoBehaviour
         }
         s.source = obj.GetComponent<AudioSource>();
         return s.source;
+    }
+
+    public void RemoveSound(string name, GameObject obj)
+    {
+        Sound s = Array.Find(Sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning(name + ": source not found");
+            return;
+        }
+        s.source = obj.GetComponent<AudioSource>();
+        Destroy(s.source);
+        print("Removed" + name + "sound from " + obj.name);
     }
 
     public void Play(string name)
@@ -96,7 +112,10 @@ public class AudioManager : MonoBehaviour
         s.source.loop = s.loop;
         s.source.panStereo = s.panStereo;
         s.source.spatialBlend = s.spacialBlend;
-        
+        s.source.minDistance = s.minDistance;
+        s.source.maxDistance = s.maxDistance;
+        s.source.rolloffMode = AudioRolloffMode.Linear;
+
         print("sound '" + soundName + "' added to " + obj.name);
     }
 

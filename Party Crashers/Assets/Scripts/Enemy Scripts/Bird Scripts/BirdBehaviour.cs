@@ -63,10 +63,15 @@ public class BirdBehaviour : MonoBehaviour
     public int currentFrame = 0;
     AnimatorClipInfo[] animationClip;
     int amountTimeLooped=0;
-    bool spawnedOne;
+    [SerializeField] private bool spawnedOne;
 
     bool previousAttacked;
     public bool isBoss = false;
+
+    private bool startingAttack;
+
+    public AudioManager managerRef;
+    public int attackNum = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -84,13 +89,21 @@ public class BirdBehaviour : MonoBehaviour
         pb = FindObjectOfType<PlayerBehaviour>();
         RandomizeColor();
 
-        FindObjectOfType<AudioManager>().AddSound("Bird_Fire", gameObject);
+        managerRef = FindObjectOfType<AudioManager>();
+        managerRef.AddSound("Bird_Fire", gameObject);
+
         if (gameObject.name != "Tutorial_Bird")
         {
+            for (int i = 0; i < 3; i++)
+            {
+                managerRef.AddSound("Bird_Caw_" + i.ToString(), gameObject);
+            }
             StartCoroutine(RandomSound());
         }
         //animationClip = playerAnimator.GetCurrentAnimatorClipInfo(0);
         playerAnimator.logWarnings = false;
+
+        
 
     }
 
@@ -99,12 +112,20 @@ public class BirdBehaviour : MonoBehaviour
         if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             animationClip = playerAnimator.GetCurrentAnimatorClipInfo(0);
+
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped > 1)
             {
                 amountTimeLooped++;
             }
             currentFrame = (int)((playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime - amountTimeLooped) * (animationClip[0].clip.length * 24));
+            //print(playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
         }
+        else if(amountTimeLooped != 0)
+        {
+            amountTimeLooped = 0;
+        }
+
+        
     }
     // Update is called once per frame
     void Update()
@@ -114,25 +135,28 @@ public class BirdBehaviour : MonoBehaviour
         {
             previousAttacked = true;
         }
-        else if (bb != null && !bb.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && previousAttacked)
+        else if (bb != null && !bb.playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && previousAttacked && startingAttack)
         {
-            StartCoroutine(Attack());
+            startingAttack = true;
             previousAttacked = false;
+            StartCoroutine(Attack());
         }
 
 
-        if(!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && TutorialWaiter == null && isTutorial)
+        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && TutorialWaiter == null && isTutorial && !startingAttack)
         {
-            playerAnimator.SetTrigger("AttackTrigger");
-            StartCoroutine(AttackSound());
-
+            startingAttack = true;
+            StartCoroutine(Attack());
         }
         else if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && currentFrame == 123 && !spawnedOne)
         {
             CheckProjectile();
         }
-        else if (currentFrame == 124)
+        else if (currentFrame >= 124)
+        {
             spawnedOne = false;
+            startingAttack = false;
+        }
     }
 
     /// <summary>
@@ -200,19 +224,27 @@ public class BirdBehaviour : MonoBehaviour
 
     public IEnumerator Attack()
     {
-        yield return new WaitForSeconds(.1f);
+        attackNum++;
+        StartCoroutine(AttackSound(attackNum));
+        yield return new WaitForSeconds(.4f);
         playerAnimator.SetTrigger("AttackTrigger");
-        StartCoroutine(AttackSound());
     }
 
     /// <summary>
     /// Delays the bird firing audio to sync better
     /// </summary>
     /// <returns></returns>
-    private IEnumerator AttackSound()
+    private IEnumerator AttackSound(int attackCount)
     {
-        yield return new WaitForSeconds(0.05f);
-        FindObjectOfType<AudioManager>().PlayAddedSound("Bird_Fire", gameObject);
+        if (attackCount == 1)
+        {
+            yield return new WaitForSeconds(0.25f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        managerRef.PlayAddedSound("Bird_Fire", gameObject);
     }
 
     private void OnDestroy()
