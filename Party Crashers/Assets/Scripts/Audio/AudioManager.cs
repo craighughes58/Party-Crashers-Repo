@@ -21,23 +21,9 @@ public class AudioManager : MonoBehaviour
     public Sound[] Sounds;
     public AudioMixerGroup masterMixer;
     public float musicVolume;
-
-    public static AudioManager instance;
     
     void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        
-        DontDestroyOnLoad(gameObject);
-        
+    {   
         foreach (Sound s in Sounds)
         {
             if (s.name != "Hyena_Attack" || s.name != "Bird_Fire")

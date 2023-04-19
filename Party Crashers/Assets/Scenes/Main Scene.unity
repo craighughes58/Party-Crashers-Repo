@@ -885,7 +885,7 @@ Transform:
   - {fileID: 630429028}
   - {fileID: 1931347690}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 28.953, z: 0}
 --- !u!1 &25485828
 GameObject:
@@ -944,7 +944,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &25485831
 MonoBehaviour:
@@ -5136,7 +5136,7 @@ Transform:
   - {fileID: 776548722}
   - {fileID: 1123082538}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &195780770
 GameObject:
@@ -5878,7 +5878,7 @@ Transform:
   - {fileID: 1249279130}
   - {fileID: 852180025}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &230838868
 GameObject:
@@ -7872,7 +7872,7 @@ Transform:
   - {fileID: 539774223}
   - {fileID: 2096777464}
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &293873488
 GameObject:
@@ -9283,7 +9283,15 @@ PrefabInstance:
       objectReference: {fileID: 1621658253}
     - target: {fileID: 2763426885067843091, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
       propertyPath: _roarDelayTimer
-      value: 0.025
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763426885067843091, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
+      propertyPath: _deathDelayTimer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763426885067843091, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
+      propertyPath: _exhaustDelayTimer
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2763426885067843093, guid: 08eef276bad3f3142aeae3ca6b138270, type: 3}
       propertyPath: m_Radius
@@ -13991,7 +13999,7 @@ Transform:
   - {fileID: 1125994003}
   - {fileID: 606179007}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &523529637
 GameObject:
@@ -14993,7 +15001,7 @@ Transform:
   - {fileID: 225797426}
   - {fileID: 884063580}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &575787440
 GameObject:
@@ -19540,7 +19548,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &697605321
 GameObject:
@@ -20558,7 +20566,7 @@ Transform:
   - {fileID: 242329991}
   - {fileID: 1137671704}
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 282.207, z: 0}
 --- !u!64 &728973597
 MeshCollider:
@@ -22861,7 +22869,7 @@ Transform:
   - {fileID: 1471959312}
   - {fileID: 1660234251}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &786546381
 PrefabInstance:
@@ -25117,7 +25125,7 @@ Transform:
   - {fileID: 651338115}
   - {fileID: 764823289}
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &861290976
 GameObject:
@@ -33497,7 +33505,7 @@ Transform:
   - {fileID: 8297704303601447834}
   - {fileID: 122836585}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1249279129
 GameObject:
@@ -35170,7 +35178,7 @@ Transform:
   - {fileID: 1253524727}
   - {fileID: 1575405861}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
 --- !u!1 &1301415649
 GameObject:
@@ -38447,7 +38455,7 @@ Transform:
   - {fileID: 1810536082}
   - {fileID: 632036632}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1404922853
 GameObject:
@@ -40966,7 +40974,7 @@ Transform:
   - {fileID: 6435618245681100195}
   - {fileID: 563725548}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1501434006
 GameObject:
@@ -43300,7 +43308,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1553544403
 GameObject:
@@ -44894,6 +44902,63 @@ Transform:
   m_Father: {fileID: 458568101}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1619807418
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5120799334425849057, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_Name
+      value: Bird_Anim
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -34.711044
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -130.16484
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502109505324987995, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db56698433011bf409a68e3591fbf4ca, type: 3}
 --- !u!1 &1620851142
 GameObject:
   m_ObjectHideFlags: 0
@@ -45039,7 +45104,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1621658253
 MonoBehaviour:
@@ -45056,7 +45121,7 @@ MonoBehaviour:
   Sounds:
   - clip: {fileID: 8300000, guid: e2a6a5ec1b9055148af9c9ffbb5fa823, type: 3}
     name: Tutorial_Music
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45066,7 +45131,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 7ca2022f1b61ddd488558435547cbec6, type: 3}
     name: Toy_Piano
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45076,7 +45141,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 238d361c7e3e1434c9162abd11969219, type: 3}
     name: Hand_Clap
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45086,7 +45151,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 43c1597021a95a047a015394b414a8ea, type: 3}
     name: Foot_Stomp
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45096,7 +45161,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 7a1a40e1ba90d7943b973c40f3b53f0d, type: 3}
     name: Ukulele
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45106,7 +45171,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: e98e83910f26e6f40b6aa2efb56b5efd, type: 3}
     name: Harm_Guitar
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45116,7 +45181,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 19b2b2eec95e1d14992b3213d5d9fa07, type: 3}
     name: Bass_Guitar
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45126,7 +45191,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 4fde9908090ffba48be88a31472113f8, type: 3}
     name: Drum_Set
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45136,7 +45201,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: e36743de1b9658f478c3bb9ec0acaff3, type: 3}
     name: Lead_Guitar
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45146,7 +45211,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: cd34af355a105764988f488b7d8f9a61, type: 3}
     name: Boss_Music
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45156,7 +45221,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 42ddecbce78162a4d9f04dd07429b029, type: 3}
     name: Pause_Music
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45166,7 +45231,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: d64c93b198585114e8df742f7e175cae, type: 3}
     name: End_Music
-    volume: 0.25
+    volume: 0.75
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45174,9 +45239,9 @@ MonoBehaviour:
     minDistance: 0
     maxDistance: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: e3cbf17787ad42147997b1c249c716d0, type: 3}
+  - clip: {fileID: 8300000, guid: 8b4c18e65504df14ab12cb7d0820b96c, type: 3}
     name: Path_Footsteps
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 1
     panStereo: 0
@@ -45206,7 +45271,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 506f32c783d6aad4291638035c840e82, type: 3}
     name: Octo_Atk_L
-    volume: 0.2
+    volume: 0.4
     pitch: 1
     loop: 0
     panStereo: -0.25
@@ -45216,7 +45281,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 5bb7dc9064dbe6548b89a5969b55c95e, type: 3}
     name: Octo_Atk_R
-    volume: 0.2
+    volume: 0.4
     pitch: 1
     loop: 0
     panStereo: 0.25
@@ -45226,7 +45291,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: f8dfcf337943d7a458b9ec61f64d1a17, type: 3}
     name: Octo_Exhausted
-    volume: 0.2
+    volume: 0.4
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45236,7 +45301,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: d7cd3a55ab724f84db0722ba368a46da, type: 3}
     name: Octo_Roar
-    volume: 0.3
+    volume: 0.5
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45246,7 +45311,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: c2866ab1f14502940acaaa74bcfde9ec, type: 3}
     name: Enemy_Spawn
-    volume: 0.2
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45296,7 +45361,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 21e08b964907e7b44955d719cb4276c9, type: 3}
     name: Candy_Lost
-    volume: 0.25
+    volume: 0.75
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45306,7 +45371,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: ddcc0f1245a943f43a90437e551046e6, type: 3}
     name: Candy_Gained
-    volume: 0.25
+    volume: 1
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45316,7 +45381,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 7f7f9f7af07fb6f4bb3f1be87357d39f, type: 3}
     name: Projectile_Deflect
-    volume: 0.25
+    volume: 0.375
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45326,7 +45391,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 4f36c18818987e449bd3e08b241c9e1f, type: 3}
     name: Hit_By_Projectile
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45346,7 +45411,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 7d52542f151929f43985e5f969f8681d, type: 3}
     name: Hit_Octo
-    volume: 0.2
+    volume: 0.5
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45356,7 +45421,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 1505ced683e49cf43ad9b781c2fad4d8, type: 3}
     name: Enemy_Death0
-    volume: 0.2
+    volume: 0.4
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45366,7 +45431,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: ecc9924ff902e714bba9c468ba7c0b6b, type: 3}
     name: Enemy_Death1
-    volume: 0.2
+    volume: 0.4
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45376,7 +45441,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: c302942b2068d5d419872c39bd7a064b, type: 3}
     name: Enemy_Death2
-    volume: 0.2
+    volume: 0.4
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45386,7 +45451,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: d88eb7c67a7a58348b2d077473853a7c, type: 3}
     name: Enemy_Death3
-    volume: 0.2
+    volume: 0.4
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45396,43 +45461,43 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: f3764573ac501104cbcbb154ecf6339f, type: 3}
     name: Bird_Fire
-    volume: 1
+    volume: 0.75
     pitch: 1
     loop: 0
     panStereo: 0
-    spacialBlend: 0
-    minDistance: 0
-    maxDistance: 0
+    spacialBlend: 1
+    minDistance: 1
+    maxDistance: 150
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: c0292baf5254ae24bbb197f7fbc81be0, type: 3}
     name: Bird_Caw_0
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     panStereo: 0
     spacialBlend: 1
     minDistance: 1
-    maxDistance: 50
+    maxDistance: 150
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: bbae3c6f700f2314980284be7155dcbf, type: 3}
     name: Bird_Caw_1
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     panStereo: 0
     spacialBlend: 1
     minDistance: 1
-    maxDistance: 50
+    maxDistance: 150
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 6705dbfe544b8fb4d987b8f6dfe57e60, type: 3}
     name: Bird_Caw_2
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     panStereo: 0
     spacialBlend: 1
     minDistance: 1
-    maxDistance: 50
+    maxDistance: 150
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 624f2b2e21c2cf049a36112fcea29b61, type: 3}
     name: Hyena_Alert_0
@@ -45456,7 +45521,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 13e7a27968771c446b68514e00f219c7, type: 3}
     name: Hyena_Flinch_0
-    volume: 0.25
+    volume: 0.6
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45466,7 +45531,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: dfa41f696dd76294bbfa15477a0764b3, type: 3}
     name: Hyena_Flinch_1
-    volume: 0.25
+    volume: 0.6
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45476,7 +45541,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 37bb67b3c2c1fdb4493c6ca8fabea0d4, type: 3}
     name: Hyena_Flinch_2
-    volume: 0.25
+    volume: 0.6
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45486,7 +45551,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: ae7a094e48325fa4e8cfaed5a86dc4bd, type: 3}
     name: Hyena_Flinch_3
-    volume: 0.25
+    volume: 0.6
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45504,9 +45569,9 @@ MonoBehaviour:
     minDistance: 0
     maxDistance: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 21193a3a9d78fcc489c13eea0fa53adb, type: 3}
+  - clip: {fileID: 8300000, guid: fea0ee1b51a6ac943a37f7e1d35593af, type: 3}
     name: Octo_Hurt
-    volume: 0.5
+    volume: 0.75
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45514,9 +45579,9 @@ MonoBehaviour:
     minDistance: 0
     maxDistance: 0
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: a35cb5afc2f4a90489366bf7b90691d1, type: 3}
+  - clip: {fileID: 8300000, guid: 403444d869d6cb340812669a55d20759, type: 3}
     name: Octo_Death
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45526,7 +45591,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 738c8d5b6343df5468dd0136905f1db0, type: 3}
     name: Applause
-    volume: 0.2
+    volume: 0.75
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45536,7 +45601,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 518dda0713c5b7242a7f1e18bcc8201c, type: 3}
     name: Victory
-    volume: 0.25
+    volume: 0.5
     pitch: 1
     loop: 0
     panStereo: 0
@@ -45545,7 +45610,7 @@ MonoBehaviour:
     maxDistance: 0
     source: {fileID: 0}
   masterMixer: {fileID: 24300002, guid: 16beec5b3293f7d439226b7676c5ef33, type: 2}
-  musicVolume: 0.25
+  musicVolume: 0.3
 --- !u!1 &1623148689
 GameObject:
   m_ObjectHideFlags: 0
@@ -48173,7 +48238,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 338.672, z: 0}
 --- !u!65 &1730281378
 BoxCollider:
@@ -59371,7 +59436,7 @@ Transform:
   - {fileID: 7471586673836598077}
   - {fileID: 6245377739293401172}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2094828451
 GameObject:
@@ -59442,7 +59507,7 @@ Transform:
   - {fileID: 4134505311768549995}
   - {fileID: 7696548424322247729}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2096777463
 GameObject:
@@ -59754,7 +59819,7 @@ Transform:
   m_Children:
   - {fileID: 543450652673892816}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2112044513
 GameObject:
@@ -63823,7 +63888,7 @@ Transform:
   - {fileID: 6629287728896008830}
   - {fileID: 6509233453710794464}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -50.776, z: 0}
 --- !u!4 &1420536309143464384
 Transform:
@@ -64457,7 +64522,7 @@ Transform:
   - {fileID: 1777765142799298875}
   - {fileID: 1824459528298750317}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -75.119, z: 0}
 --- !u!1 &1651091450975777110
 GameObject:
@@ -67811,7 +67876,7 @@ Transform:
   - {fileID: 8309442745404579945}
   - {fileID: 8279989793084024969}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2946382887005212201
 GameObject:
@@ -68124,7 +68189,7 @@ Transform:
   - {fileID: 4816311377635283916}
   - {fileID: 1689772362}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3014855017626813414
 GameObject:
@@ -73664,7 +73729,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -89.98, y: -30, z: -180}
 --- !u!1 &5296094753828220015
 GameObject:
@@ -76395,7 +76460,7 @@ Transform:
   m_Children:
   - {fileID: 6435618243938771820}
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6435618244168160259
 GameObject:
@@ -76739,7 +76804,7 @@ Transform:
   - {fileID: 6435618244504914858}
   - {fileID: 6435618244627489183}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6435618245724098410
 GameObject:
@@ -77155,7 +77220,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: -128.021, z: 0}
 --- !u!4 &6578626206483964880
 Transform:
@@ -82004,7 +82069,7 @@ Transform:
   - {fileID: 3279039608246615606}
   - {fileID: 8201592802880374315}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -53.029, z: 0}
 --- !u!23 &8126646244221157233
 MeshRenderer:
@@ -83353,7 +83418,7 @@ RectTransform:
   - {fileID: 8285285332891271136}
   - {fileID: 8285285332481664578}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -84119,7 +84184,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 115.263, z: 0}
 --- !u!4 &8556242713228755662
 Transform:
@@ -84199,7 +84264,7 @@ Transform:
   m_Children:
   - {fileID: 2456819516879156258}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &8578892572772348447
 MeshRenderer:

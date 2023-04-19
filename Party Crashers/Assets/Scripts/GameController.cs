@@ -75,7 +75,6 @@ public class GameController : MonoBehaviour
         if(devBossTesting)
             DevBossTest();
         ActivateUIMenu(pauseMenu);
-        am.Play("Menu_Confirm");
         am.Stop("Path_Footsteps");
         currentMusic = musicTrack;
         am.SwitchMusic(10);
@@ -313,6 +312,11 @@ public class GameController : MonoBehaviour
         Application.Quit();
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Main Scene");
+    }
+
     public void OpenSettings()
     {
         DeactivateUIMenu(pauseMenu);
@@ -328,8 +332,8 @@ public class GameController : MonoBehaviour
     {
         if (isPaused == false)
         {
-            am.Play("Menu_Confirm");
-            am.Stop("Path_Footsteps");
+            am.Play("Menu_Back");
+            am.Mute("Path_Footsteps");
             currentMusic = musicTrack;
             am.SwitchMusic(10);
             isPaused = true;
@@ -349,10 +353,10 @@ public class GameController : MonoBehaviour
 
     public void ResumeScene()
     {
-        am.Play("Menu_Back");
+        am.Play("Menu_Confirm");
         am.Stop("Pause_Music");
         am.SwitchMusic(currentMusic);
-        am.Play("Path_Footsteps");
+        am.Unmute("Path_Footsteps");
 
         Time.timeScale = 1;
         isPaused = false;

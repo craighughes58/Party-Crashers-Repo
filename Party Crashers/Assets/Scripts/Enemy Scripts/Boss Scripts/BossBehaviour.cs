@@ -43,9 +43,17 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField] private Transform _attackPos;
     [SerializeField] private Transform _exhaustPos;
 
-    [Header("Audio Delays")]
+    #endregion
+
+    #region Audio
+    [Header("Audio")]
     [Range(0f, 1f)]
     [SerializeField] private float _roarDelayTimer;
+    [Range(0f, 1f)]
+    [SerializeField] private float _exhaustDelayTimer;
+    [Range(0f, 2f)]
+    [SerializeField] private float _deathDelayTimer;
+
     #endregion
 
     #region Movement Variables
@@ -131,7 +139,7 @@ public class BossBehaviour : MonoBehaviour
     /// Sync the beginnning of the boss music with the release of the roar
     /// </summary>
     /// <returns></returns>
-    IEnumerator OctoRoar()
+    public IEnumerator OctoRoar()
     {
         yield return new WaitForSeconds(_roarDelayTimer);
         _audioManager.Play("Octo_Roar");
@@ -238,9 +246,9 @@ public class BossBehaviour : MonoBehaviour
     public IEnumerator MoveToExhPos()
     {
         animator.SetTrigger("Exhausted");
+        StartCoroutine(OctoExhaust());
         _currentBossState = BossState.MOVING;
         //SetBossState(BossState.MOVING);
-        _audioManager.Play("Octo_Exhausted");
         float pathPercentage = 0;
         Vector3 startPos = transform.position;
         Quaternion startQ = transform.rotation;
@@ -254,6 +262,12 @@ public class BossBehaviour : MonoBehaviour
             yield return null;
         }
         BeginExhaustion();
+    }
+
+    public IEnumerator OctoExhaust()
+    {
+        yield return new WaitForSeconds(_exhaustDelayTimer);
+        _audioManager.Play("Octo_Exhausted");
     }
 
     #endregion
@@ -311,11 +325,21 @@ public class BossBehaviour : MonoBehaviour
     private void BossDeath()
     {
         animator.SetTrigger("Lost");
-        _audioManager.Play("Octo_Death");
+        StartCoroutine(OctoDeath());
+        _audioManager.RemoveSound("Octo_Roar", GameObject.Find("AudioManager"));
         _transition.Invoke("LoadLevel", 3.5f);
         //do stuff when the boss dies
         //_transition.LoadLevel();
     }
+
+    public IEnumerator OctoDeath()
+    {
+        yield return new WaitForSeconds(_deathDelayTimer);
+        _audioManager.Play("Octo_Death");
+        yield return new WaitForSeconds(_audioManager.ClipLength("Octo_Death") / 2);
+        _audioManager.Play("Applause");
+    }
+
 
     #endregion
 
